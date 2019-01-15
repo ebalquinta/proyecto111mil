@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * En esta clase se crea el Seccion Factory y se agregan metodos para devolver un Session y cerrar el Factory
  */
 package org.integrados.bd;
 
