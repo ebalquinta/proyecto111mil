@@ -1,4 +1,4 @@
-package plan111mil.integrados;
+package org.integrados.data;
 
 public class Persona {    
 
