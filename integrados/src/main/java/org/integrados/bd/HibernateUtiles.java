@@ -3,15 +3,21 @@
  */
 package org.integrados.bd;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
 /**
  *
  * @author Mariela
  */
-public class HibernateUtil {
+public class HibernateUtiles {
 
     private static SessionFactory sessionFactory = null;
 
-    private HibernateUtil() {
+    private HibernateUtiles() {
     }
 
     public static void inicializar() {
@@ -20,7 +26,8 @@ public class HibernateUtil {
         try {
             sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         } catch (Exception e) {
-            System.out.println("Error al crear la comunicacion con la base de datos")
+            e.printStackTrace();
+            System.out.println("Error al crear la comunicacion con la base de datos");
         }
     }
 
