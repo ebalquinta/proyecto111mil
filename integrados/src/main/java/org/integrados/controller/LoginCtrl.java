@@ -11,4 +11,6 @@ package org.integrados.controller;
  */
 public class LoginCtrl {
     
+    
+    
 }
