@@ -2,7 +2,7 @@ package org.integrados;
 
 import org.integrados.bd.HibernateUtiles;
 import org.integrados.controller.PersonaABMCtrl;
-import org.integrados.data.Persona;
+import org.integrados.data.usuarios.Persona;
 
 /**
  *

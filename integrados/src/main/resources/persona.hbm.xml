@@ -40,8 +40,8 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-mapping>
-    <class name="org.integrados.data.Persona" table="persona">
-        <id name="id" column="id" />
-        <property name="nombre" column="nombre" />
-    </class>
+  <class name="org.integrados.data.usuarios.Persona" table="persona">
+    <id column="id" name="id"/>
+    <property column="nombre" name="nombre"/>
+  </class>
 </hibernate-mapping>

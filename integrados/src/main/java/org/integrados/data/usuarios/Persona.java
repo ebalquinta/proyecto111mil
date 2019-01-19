@@ -1,4 +1,4 @@
-package org.integrados.data;
+package org.integrados.data.usuarios;
 
 public abstract class Persona {    
 

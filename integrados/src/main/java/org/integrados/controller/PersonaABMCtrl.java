@@ -2,7 +2,7 @@ package org.integrados.controller;
 
 import org.hibernate.Session;
 import org.integrados.bd.HibernateUtiles;
-import org.integrados.data.Persona;
+import org.integrados.data.usuarios.Persona;
 
 public class PersonaABMCtrl {
     

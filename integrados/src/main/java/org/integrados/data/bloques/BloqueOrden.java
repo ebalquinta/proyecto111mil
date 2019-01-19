@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.integrados.data;
+package org.integrados.data.bloques;
 
 /**
  *
  * @author Yani
  */
-public class Memorama extends Plantilla {
+public class BloqueOrden extends Bloque {
     
 }
