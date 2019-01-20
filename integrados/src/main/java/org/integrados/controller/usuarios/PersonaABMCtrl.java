@@ -1,4 +1,4 @@
-package org.integrados.controller;
+package org.integrados.controller.usuarios;
 
 import org.hibernate.Session;
 import org.integrados.bd.HibernateUtiles;

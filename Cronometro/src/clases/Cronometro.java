@@ -158,10 +158,10 @@ public class Cronometro extends javax.swing.JFrame {
         btnStart.setText("Iniciar");
         btnPause.setEnabled(false);
         btnStop.setEnabled(false);
-        String temp = actualizarLabel();
+        String temp = actualizarLabel();    // ACA GUARDA EN UNA VARIABLE EL TIEMPO TRANSCURRIDO HASTA EL MOMENTO EN QUE FINALIZA EL CRONOMETRO
         h=0; m=0; s=0; cs=0;
         actualizarLabel();
-        System.out.println(temp);
+        System.out.println(temp);  //IMPRIME TIEMPO GUARDADO HASTA FINALIZAR
     }//GEN-LAST:event_btnStopActionPerformed
 
 

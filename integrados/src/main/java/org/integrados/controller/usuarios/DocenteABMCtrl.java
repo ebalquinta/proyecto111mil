@@ -3,7 +3,7 @@
  * getDocente()
  * guardarDocente()
  */
-package org.integrados.controller;
+package org.integrados.controller.usuarios;
 
 public class DocenteABMCtrl {
     
