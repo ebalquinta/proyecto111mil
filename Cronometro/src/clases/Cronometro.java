@@ -8,7 +8,7 @@ import javax.swing.Timer;
  * @author JCarlos;
  */
 public class Cronometro extends javax.swing.JFrame {
-
+    
     public Cronometro() {
         initComponents();
         setLocationRelativeTo(null);
@@ -129,9 +129,10 @@ public class Cronometro extends javax.swing.JFrame {
         
     };
     
-    private void actualizarLabel() {
+    private String actualizarLabel() {
         String tiempo = (h<=9?"0":"")+h+":"+(m<=9?"0":"")+m+":"+(s<=9?"0":"")+s+":"+(cs<=9?"0":"")+cs;
         etiquetaTiempo.setText(tiempo);
+        return tiempo;
     }
     
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
@@ -157,8 +158,10 @@ public class Cronometro extends javax.swing.JFrame {
         btnStart.setText("Iniciar");
         btnPause.setEnabled(false);
         btnStop.setEnabled(false);
+        String temp = actualizarLabel();
         h=0; m=0; s=0; cs=0;
         actualizarLabel();
+        System.out.println(temp);
     }//GEN-LAST:event_btnStopActionPerformed
 
 
