@@ -9,6 +9,6 @@ package org.integrados.data.plantillas;
  *
  * @author Yani
  */
-public abstract class Plantilla {
+public class Plantilla {
     
 }
