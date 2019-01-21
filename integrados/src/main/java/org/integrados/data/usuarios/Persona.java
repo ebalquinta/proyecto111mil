@@ -1,6 +1,6 @@
-package org.integrados.data;
+package org.integrados.data.usuarios;
 
-public class Persona {    
+public abstract class Persona {    
 
 	private String nombre;
 	private int edad;

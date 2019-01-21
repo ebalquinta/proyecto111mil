@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.integrados.controller;
+package org.integrados.data.bloques;
 
 /**
  *
- * @author Mariela
+ * @author Yani
  */
-public class LoginCtrl {
-    
-    
+public class BloqueAnd extends Bloque {
     
 }

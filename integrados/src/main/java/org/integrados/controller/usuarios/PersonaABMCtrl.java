@@ -1,8 +1,8 @@
-package org.integrados.controller;
+package org.integrados.controller.usuarios;
 
 import org.hibernate.Session;
 import org.integrados.bd.HibernateUtiles;
-import org.integrados.data.Persona;
+import org.integrados.data.usuarios.Persona;
 
 public class PersonaABMCtrl {
     
