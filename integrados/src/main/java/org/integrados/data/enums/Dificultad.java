@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.integrados.data.actividad;
+package org.integrados.data.enums;
 
 /**
  *
  * @author Yani
  */
 public enum Dificultad {
-    Bajo, Intermedio, Alto
+    BAJO, INTERMEDIO, ALTO
 }
