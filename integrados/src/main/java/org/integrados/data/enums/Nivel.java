@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.integrados.data.usuarios;
+package org.integrados.data.enums;
 
 /**
  *
@@ -12,5 +12,5 @@ package org.integrados.data.usuarios;
 public enum Nivel {
     //este enum lo utilizan alumno y actividad. Lo importe en esta clase xq es la primera en usarlo.
     
-    Inicial, Primario, Secundario, Terciario, Universitario
+    INICIAL, PRIMARIO, SECUNDARIO, TERCIARIO, UNIVERSIDAD
 }
