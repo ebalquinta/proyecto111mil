@@ -34,6 +34,14 @@ public class Institucion {
         this.administrador = administrador;
     }
 
+    public int getIdInstitucion() {
+        return idInstitucion;
+    }
+
+    public void setIdInstitucion(int idInstitucion) {
+        this.idInstitucion = idInstitucion;
+    }
+
     public String getNombreInstitucion() {
         return nombreInstitucion;
     }

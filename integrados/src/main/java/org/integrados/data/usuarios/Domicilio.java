@@ -39,6 +39,14 @@ public class Domicilio {
         this.departamento = departamento;
     }
 
+    public int getIdDomicilio() {
+        return idDomicilio;
+    }
+
+    public void setIdDomicilio(int idDomicilio) {
+        this.idDomicilio = idDomicilio;
+    }
+
     public String getCalle() {
         return calle;
     }
