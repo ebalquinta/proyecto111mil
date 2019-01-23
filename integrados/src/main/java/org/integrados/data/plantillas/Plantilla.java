@@ -17,12 +17,11 @@ public class Plantilla {
 
     protected Integer idPlantilla;
     protected BloqueTexto enunciado;
-    protected List<Bloque> respuesta;
+    protected List<Bloque> respuesta = new ArrayList<>();
     protected BloqueImagen imagen;
     protected BloqueSonido sonido;
 
     public Plantilla(List<Bloque> respuesta, BloqueTexto enunciado) {
-        this.respuesta = new ArrayList<>();
         this.respuesta = respuesta;
         this.enunciado = enunciado;
     }
