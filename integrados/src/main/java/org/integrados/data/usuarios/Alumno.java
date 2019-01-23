@@ -17,7 +17,7 @@ import org.integrados.data.enums.Nivel;
  */
 public class Alumno extends Persona {
 
-    private List<ActividadAlumno> actividades = new ArrayList<>();
+    private List<ActividadAlumno> actividades;
     private Date fechaNacimiento;
     private int edadMadurativa;
     private int grado;
@@ -29,12 +29,14 @@ public class Alumno extends Persona {
         super(dni, nombre, apellido);
         this.grado = grado;
         this.division = division;
+        this.actividades = new ArrayList<>();
     }
 
     public Alumno(int dni, String nombre, String apellido, String usuario, String clave, int grado, String division) {
         super(dni, nombre, apellido, usuario, clave);
         this.grado = grado;
         this.division = division;
+        this.actividades = new ArrayList<>();
     }
 
     public List<ActividadAlumno> getActividades() {

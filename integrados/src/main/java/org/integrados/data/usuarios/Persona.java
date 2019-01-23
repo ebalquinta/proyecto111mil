@@ -18,9 +18,7 @@ public abstract class Persona {
     }
 
     public Persona(int dni, String nombre, String apellido, String usuario, String clave) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this(dni, nombre, apellido);
         this.usuario = usuario;
         this.clave = clave;
     }

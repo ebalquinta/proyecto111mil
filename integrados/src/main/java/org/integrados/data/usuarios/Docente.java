@@ -15,15 +15,19 @@ import org.integrados.data.actividad.Actividad;
  */
 public class Docente extends Persona {
 
-    private List<Alumno> alumnos = new ArrayList<>();
-    private List<Actividad> actividades = new ArrayList<>();
+    private List<Alumno> alumnos;
+    private List<Actividad> actividades;
 
     public Docente(int dni, String nombre, String apellido) {
         super(dni, nombre, apellido);
+        this.alumnos = new ArrayList<>();
+        this.actividades = new ArrayList<>();
     }
 
     public Docente(int dni, String nombre, String apellido, String usuario, String clave) {
         super(dni, nombre, apellido, usuario, clave);
+        this.alumnos = new ArrayList<>();
+        this.actividades = new ArrayList<>();
     }
 
     public List<Alumno> getAlumnos() {
