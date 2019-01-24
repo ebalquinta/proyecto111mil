@@ -10,5 +10,9 @@ package org.integrados.data.actividad;
  * @author Yani
  */
 public abstract class Recompensa {
-    
+
+    public Recompensa() {
+    }
+
+    public abstract int getRecompensa();
 }

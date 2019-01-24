@@ -1,22 +1,34 @@
 package org.integrados.data.usuarios;
 
-public abstract class Persona {    
+public abstract class Persona {
 
-	private String nombre;
-	private int edad;
-	private int id;
+    protected int dni;
+    protected String nombre;
+    protected String apellido;
+    protected Domicilio domicilio;
+    protected int telefono;
+    protected String mail;
+    protected String usuario;
+    protected String clave;
 
-
-    public Persona() {
+    public Persona(int dni, String nombre, String apellido) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
-    public Persona(int edad) {
-        this.edad = edad;
+    public Persona(int dni, String nombre, String apellido, String usuario, String clave) {
+        this(dni, nombre, apellido);
+        this.usuario = usuario;
+        this.clave = clave;
     }
-    
-    public Persona (int edad, String nombre) {
-    	this.edad=edad;
-    	this.nombre=nombre;
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -27,25 +39,57 @@ public abstract class Persona {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public int getId() {
-        return id;
+    public Domicilio getDomicilio() {
+        return domicilio;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", id=" + id + '}';
+        return "Persona{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", telefono=" + telefono + ", mail=" + mail + ", usuario=" + usuario + ", clave=" + clave + '}';
     }
-    
+
 }

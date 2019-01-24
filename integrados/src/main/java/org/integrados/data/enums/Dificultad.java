@@ -10,5 +10,25 @@ package org.integrados.data.enums;
  * @author Yani
  */
 public enum Dificultad {
-    BAJO, INTERMEDIO, ALTO
+
+    BAJO("El nivel de dificultad de la actividad es Bajo", 1),
+    INTERMEDIO("El nivel de dificultad de la actividad es Intermedio", 2),
+    ALTO("El nivel de dificultad de la actividad es Alto", 3);
+
+    private String descripcion;
+    private int valor;
+
+    Dificultad(String descripcion, int valor) {
+        this.descripcion = descripcion;
+        this.valor = valor;
+    }
+
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+
+    public int getValor() {
+        return this.valor;
+    }
+
 }
