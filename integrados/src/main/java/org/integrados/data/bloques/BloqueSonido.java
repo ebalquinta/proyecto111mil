@@ -10,5 +10,25 @@ package org.integrados.data.bloques;
  * @author Yani
  */
 public class BloqueSonido extends Bloque {
-    
+
+    private String sonido;
+
+    public BloqueSonido(boolean valido, String sonido) {
+        super(valido);
+        this.sonido = sonido;
+    }
+
+    public String getSonido() {
+        return sonido;
+    }
+
+    public void setSonido(String sonido) {
+        this.sonido = sonido;
+    }
+
+    @Override
+    public String toString() {
+        return "BloqueSonido{" + "sonido=" + sonido + '}';
+    }
+
 }

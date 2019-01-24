@@ -29,12 +29,14 @@ public class Alumno extends Persona {
         super(dni, nombre, apellido);
         this.grado = grado;
         this.division = division;
+        this.actividades = actividades;
     }
 
     public Alumno(int dni, String nombre, String apellido, String usuario, String clave, int grado, String division) {
         super(dni, nombre, apellido, usuario, clave);
         this.grado = grado;
         this.division = division;
+        this.actividades = actividades;
     }
 
     public List<ActividadAlumno> getActividades() {

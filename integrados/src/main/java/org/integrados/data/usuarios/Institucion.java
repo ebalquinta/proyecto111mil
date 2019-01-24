@@ -14,31 +14,28 @@ import java.util.List;
  */
 public class Institucion {
 
-    private static int idActual = 0;
-    private int idInstitucion;
+    private Integer idInstitucion;
     private String nombreInstitucion;
-    private List<Docente> docentes = new ArrayList<>();
-    private List<Alumno> alumnos = new ArrayList<>();
+    private List<Docente> docentes;
+    private List<Alumno> alumnos;
     private Persona administrador;
 
     public Institucion(Persona administrador) {
-        idActual++;
-        this.idInstitucion = idActual;
         this.administrador = administrador;
+        this.docentes = new ArrayList<>();
+        this.alumnos = new ArrayList<>();
     }
 
-    public Institucion(String nombreInstitucion, Persona administrador) {
-        idActual++;
-        this.idInstitucion = idActual;
+    public Institucion(Persona administrador, String nombreInstitucion) {
+        this(administrador);
         this.nombreInstitucion = nombreInstitucion;
-        this.administrador = administrador;
     }
 
-    public int getIdInstitucion() {
+    public Integer getIdInstitucion() {
         return idInstitucion;
     }
 
-    public void setIdInstitucion(int idInstitucion) {
+    public void setIdInstitucion(Integer idInstitucion) {
         this.idInstitucion = idInstitucion;
     }
 

@@ -20,10 +20,14 @@ public class Docente extends Persona {
 
     public Docente(int dni, String nombre, String apellido) {
         super(dni, nombre, apellido);
+        this.alumnos = alumnos;
+        this.actividades = actividades;
     }
 
     public Docente(int dni, String nombre, String apellido, String usuario, String clave) {
         super(dni, nombre, apellido, usuario, clave);
+        this.alumnos = alumnos;
+        this.actividades = actividades;
     }
 
     public List<Alumno> getAlumnos() {

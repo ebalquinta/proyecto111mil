@@ -10,5 +10,25 @@ package org.integrados.data.bloques;
  * @author Yani
  */
 public class BloqueImagen extends Bloque {
-    
+
+    private String imagen;
+
+    public BloqueImagen(boolean valido, String imagen) {
+        super(valido);
+        this.imagen = imagen;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    @Override
+    public String toString() {
+        return "BloqueImagen{" + "imagen=" + imagen + '}';
+    }
+
 }

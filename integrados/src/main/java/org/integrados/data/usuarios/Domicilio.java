@@ -11,39 +11,35 @@ package org.integrados.data.usuarios;
  */
 public class Domicilio {
 
-    private static int idActual = 0;
-    private int idDomicilio;
+    private Integer idDomicilio;
     private String calle;
     private int numero;
     private String piso;
     private String departamento;
 
     public Domicilio() {
-        idActual++;
-        this.idDomicilio = idActual;
     }
 
     public Domicilio(String calle, int numero) {
-        idActual++;
-        this.idDomicilio = idActual;
         this.calle = calle;
         this.numero = numero;
     }
-
-    public Domicilio(String calle, int numero, String piso, String departamento) {
-        idActual++;
-        this.idDomicilio = idActual;
-        this.calle = calle;
-        this.numero = numero;
+    
+    public Domicilio(String calle, int numero, String piso) {
+        this(calle, numero);
         this.piso = piso;
+    }
+    
+    public Domicilio(String calle, int numero, String piso, String departamento) {
+        this(calle, numero, piso);
         this.departamento = departamento;
     }
 
-    public int getIdDomicilio() {
+    public Integer getIdDomicilio() {
         return idDomicilio;
     }
 
-    public void setIdDomicilio(int idDomicilio) {
+    public void setIdDomicilio(Integer idDomicilio) {
         this.idDomicilio = idDomicilio;
     }
 

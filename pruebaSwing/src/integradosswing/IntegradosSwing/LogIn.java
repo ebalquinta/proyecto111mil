@@ -71,6 +71,9 @@ public class LogIn extends javax.swing.JFrame {
                 
                  
                 }
+                else 
+                    System.out.print ("ERROR");
+                
             }
         }
         );
