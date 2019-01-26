@@ -1,53 +1,72 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.integrados.data.plantillas;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.integrados.data.bloques.*;
 
-/**
- *
- * @author Yani
- */
 public class Ordenamiento extends Plantilla {
 
-    private List<BloqueAnd> bloques= new ArrayList<>();;
-
-    public Ordenamiento(List<Bloque> respuesta, BloqueTexto enunciado, List<BloqueAnd> bloques) {
-        super(respuesta, enunciado);
-        this.bloques = bloques;
-    }
-
-    public Ordenamiento(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, List<BloqueAnd> bloques) {
-        super(respuesta, enunciado, imagen);
-        this.bloques = bloques;
-    }
-
-    public Ordenamiento(List<Bloque> respuesta, BloqueTexto enunciado, BloqueSonido sonido, List<BloqueAnd> bloques) {
-        super(respuesta, enunciado, sonido);
-        this.bloques = bloques;
-    }
-
-    public Ordenamiento(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, BloqueSonido sonido, List<BloqueAnd> bloques) {
-        super(respuesta, enunciado, imagen, sonido);
-        this.bloques = bloques;
-    }
-
-    public List<BloqueAnd> getBloques() {
-        return bloques;
-    }
-
-    public void setBloques(List<BloqueAnd> bloques) {
-        this.bloques = bloques;
+    public Ordenamiento(String enunciado, List<Bloque> solucion) {
+        super(enunciado, solucion);
     }
 
     @Override
-    public String toString() {
-        return "Ordenamiento{" + "bloques=" + bloques + '}';
+    public List<Bloque> clonarLista() {
+        List<Bloque> listaClonada = new ArrayList<>();
+        
+        for(Bloque b : super.solucion){
+            listaClonada.add(b);
+        }
+        return listaClonada;
     }
+
+    @Override
+    public List<Bloque> desordenar() {
+       int cambios = 0;
+        List<Bloque> listaDesordenada = this.clonarLista();
+       
+        while (cambios < listaDesordenada.size() ){
+            for (int i = 0; i < listaDesordenada.size(); i++) {
+                int index = (int) (Math.random() * listaDesordenada.size());
+                
+                Bloque bloqueActual = listaDesordenada.get(i);
+                Bloque auxiliar = listaDesordenada.get(index);
+
+                listaDesordenada.remove(i);
+                listaDesordenada.add(i, auxiliar);
+
+                listaDesordenada.remove(index);
+                listaDesordenada.add(index, bloqueActual);
+                
+                cambios++;
+            }
+        }
+        return listaDesordenada;
+    }
+
+    @Override
+    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
+       
+        for (int i = 0; i < respuestaAlumno.size(); i++){
+            //desarrollar metodo equals dentro de cada tipo de bloque para que compare por id
+            if(!respuestaAlumno.get(i).equals(super.solucion.get(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean validarPlantilla() {
+       if (super.solucion.size() < 1){
+           return false;
+       }
+        return true;
+    }
+    
+   
+
+    
 
 }
