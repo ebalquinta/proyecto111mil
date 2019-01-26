@@ -20,7 +20,7 @@ public class Ordenamiento extends Plantilla {
         }
         return listaClonada;
     }
-
+    
     @Override
     public List<Bloque> desordenar() {
        int cambios = 0;
