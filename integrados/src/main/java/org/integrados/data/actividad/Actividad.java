@@ -11,11 +11,11 @@ import org.integrados.data.usuarios.*;
 
 /**
  *
- * @author Yani
+ * @author Yani, Jacco
  */
 public class Actividad {
 
-    private Integer id;
+    private Integer id = null;
     private Plantilla plantilla;
     private Docente docente;
     private Materia materia;
@@ -27,8 +27,7 @@ public class Actividad {
     
     public Actividad(){    }
 
-    public Actividad(Integer id, Plantilla plantilla, Docente docente, Materia materia, String tema, int grado, Nivel nivel, Dificultad dificultad, int maxIntentos) {
-        this.id = id;
+    public Actividad( Plantilla plantilla, Docente docente, Materia materia, String tema, int grado, Nivel nivel, Dificultad dificultad, int maxIntentos) {
         this.plantilla = plantilla;
         this.docente = docente;
         this.materia = materia;
