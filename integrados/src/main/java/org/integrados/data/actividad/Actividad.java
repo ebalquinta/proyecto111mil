@@ -40,10 +40,6 @@ public class Actividad {
     //este metodo es para desarrollar a futuro 
     public void agregarMateria(){}
     
-    public void setId(Integer id){
-        this.id = id;
-    }
-    
     public Integer getId(){
         return this.id;
     }
