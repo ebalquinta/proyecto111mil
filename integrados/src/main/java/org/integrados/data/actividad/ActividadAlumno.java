@@ -43,15 +43,19 @@ public class ActividadAlumno {
     }
     
     /**
-     * 
+     * devuelve los minutos jugados en una hora
      */
     public double calcularMinutosJugados(){
-       
+        if(this.fechaInicio.getMinutes()<this.fechaFinal.getMinutes()){
+            return  (this.fechaFinal.getMinutes() - this.fechaInicio.getMinutes());
+        }else{
+            return (60 - this.fechaInicio.getMinutes()) + this.fechaFinal.getMinutes();
+        }
     }
     
     @Override
     public String toString() {
-        return "ActividadAlumno{" + "id=" + id + ", actividad=" + actividad + ", alumno=" + alumno + ", tiempo=" + tiempo + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", finalizoCorrectamente=" + finalizoCorrectamente + ", intentos=" + intentos + ", recompensas=" + recompensas + ", observaciones=" + observaciones + '}';
+        return "ActividadAlumno{" + "id=" + id + ", actividad=" + actividad + ", alumno=" + alumno + ", tiempo=" + tiempo + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", finalizoCorrectamente=" + finalizoCorrectamente + ", intentos=" + intentos +", corazon = " + corazon + ", observaciones=" + observaciones + '}';
     }
 
 }
