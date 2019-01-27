@@ -10,43 +10,23 @@ package org.integrados.data.actividad;
  * @author Yani
  */
 public class Materia {
-
-    private Integer id;
+    private Integer id = null;
     private String materia;
-    private int anio;
-
-    public Materia(String materia, int anio) {
-        this.materia = materia;
-        this.anio = anio;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getMateria() {
-        return materia;
-    }
-
-    public void setMateria(String materia) {
+    
+    public Materia(String materia){
         this.materia = materia;
     }
-
-    public int getAnio() {
-        return anio;
+    
+    public String getMateria(){
+        return this.materia;
     }
-
-    public void setAnio(int anio) {
-        this.anio = anio;
+    
+    public void setMateria(String materia){
+        this.materia = materia;
     }
-
+    
     @Override
-    public String toString() {
-        return "Materia{" + "id=" + id + ", materia=" + materia + ", anio=" + anio + '}';
+    public String toString(){
+        return "ID = " + this.id + ", materia = " + this.materia;
     }
-
 }
