@@ -15,52 +15,60 @@ import org.integrados.data.bloques.*;
  */
 public class Memorama extends Plantilla {
 
-    private List<Bloque> bloque1 = new ArrayList<>();
-    private List<Bloque> bloque2 = new ArrayList<>();
+    private List<Bloque> bloques1 = new ArrayList<>();
+    private List<Bloque> bloques2 = new ArrayList<>();
 
-    public Memorama(List<Bloque> respuesta, BloqueTexto enunciado, List<Bloque> bloque1, List<Bloque> bloque2) {
-        super(respuesta, enunciado);
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
+    public Memorama(){
+        super();
+    }
+    
+    public Memorama (String enunciado, List<Bloque> solucion, List<Bloque> bloques1, List<Bloque> bloques2) {
+        super(enunciado, solucion);
+        this.bloques1 = bloques1;
+        this.bloques2 = bloques2;
     }
 
-    public Memorama(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, List<Bloque> bloque1, List<Bloque> bloque2) {
-        super(respuesta, enunciado, imagen);
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
+    public List<Bloque> getBloques1() {
+        return bloques1;
     }
 
-    public Memorama(List<Bloque> respuesta, BloqueTexto enunciado, BloqueSonido sonido, List<Bloque> bloque1, List<Bloque> bloque2) {
-        super(respuesta, enunciado, sonido);
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
+    public void setBloques1(List<Bloque> bloques1) {
+        this.bloques1 = bloques1;
     }
 
-    public Memorama(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, BloqueSonido sonido, List<Bloque> bloque1, List<Bloque> bloque2) {
-        super(respuesta, enunciado, imagen, sonido);
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
+    public List<Bloque> getBloques2() {
+        return bloques2;
     }
 
-    public List<Bloque> getBloque1() {
-        return bloque1;
+    public void setBloques2(List<Bloque> bloques2) {
+        this.bloques2 = bloques2;
     }
 
-    public void setBloque1(List<Bloque> bloque1) {
-        this.bloque1 = bloque1;
+
+    @Override
+    public List<Bloque> clonarLista() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<Bloque> getBloque2() {
-        return bloque2;
+    @Override
+    public List<Bloque> desordenar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void setBloque2(List<Bloque> bloque2) {
-        this.bloque2 = bloque2;
+    @Override
+    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean validarPlantilla() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String toString() {
-        return "Memorama{" + "bloque1=" + bloque1 + ", bloque2=" + bloque2 + '}';
+        return super.toString() + "Memorama{" + "bloques1=" + bloques1 + ", bloques2=" + bloques2 + '}';
     }
+   
 
 }

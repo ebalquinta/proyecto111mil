@@ -15,17 +15,18 @@ import org.integrados.data.bloques.*;
  */
 public abstract class Plantilla {
 
-    protected Integer id;
+    protected Integer id = null;
     protected String enunciado;
-    protected List<Bloque> solucion;
-    protected String imagen;
-    protected String sonido;
+    protected List<Bloque> solucion = new ArrayList<>();
+    protected String imagen = null;
+    protected String sonido = null;
+
+    public Plantilla() {
+    }
 
     public Plantilla(String enunciado, List<Bloque> solucion) {
         this.enunciado = enunciado;
         this.solucion = solucion;
-        this.imagen = null;
-        this.sonido = null;
     }
 
     public Integer getId() {
@@ -42,6 +43,10 @@ public abstract class Plantilla {
 
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
+    }
+
+    public void setSolucion(List<Bloque> solucion) {
+        this.solucion = solucion;
     }
 
     public List<Bloque> getSolucion() {
@@ -64,14 +69,17 @@ public abstract class Plantilla {
         this.sonido = sonido;
     }
 
+    public abstract List<Bloque> clonarLista();
+
+    public abstract List<Bloque> desordenar();
+
+    public abstract boolean verificarResultado(List<Bloque> respuestaAlumno);
+
+    public abstract boolean validarPlantilla();
+
     @Override
     public String toString() {
         return "Plantilla{" + "id=" + id + ", enunciado=" + enunciado + ", solucion=" + solucion + ", imagen=" + imagen + ", sonido=" + sonido + '}';
     }
-    
-    public abstract List<Bloque> clonarLista();
-    public abstract List<Bloque> desordenar();
-    public abstract boolean verificarResultado(List<Bloque> respuestaAlumno);
-    public abstract boolean validarPlantilla();
 
 }

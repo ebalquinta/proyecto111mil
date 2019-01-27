@@ -17,29 +17,15 @@ public class Unir extends Plantilla {
 
     private List<Bloque> bloquesDer = new ArrayList<>();
     private List<Bloque> bloquesIzq = new ArrayList<>();
-
-    public Unir(List<Bloque> respuesta, BloqueTexto enunciado, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
-        super(respuesta, enunciado);
-        this.bloquesDer = bloquesDer;
-        this.bloquesIzq = bloquesIzq;
+    
+    public Unir(){
+        super();
     }
 
-    public Unir(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
-        super(respuesta, enunciado, imagen);
-        this.bloquesDer = bloquesDer;
-        this.bloquesIzq = bloquesIzq;
-    }
-
-    public Unir(List<Bloque> respuesta, BloqueTexto enunciado, BloqueSonido sonido, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
-        super(respuesta, enunciado, sonido);
-        this.bloquesDer = bloquesDer;
-        this.bloquesIzq = bloquesIzq;
-    }
-
-    public Unir(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, BloqueSonido sonido, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
-        super(respuesta, enunciado, imagen, sonido);
-        this.bloquesDer = bloquesDer;
-        this.bloquesIzq = bloquesIzq;
+    public Unir(String enunciado, List<Bloque> solucion, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
+        super(enunciado, solucion);
+        this.bloquesDer=bloquesDer;
+        this.bloquesIzq=bloquesIzq;
     }
 
     public List<Bloque> getBloquesDer() {
@@ -58,9 +44,30 @@ public class Unir extends Plantilla {
         this.bloquesIzq = bloquesIzq;
     }
 
+    
+
     @Override
-    public String toString() {
-        return "Unir{" + "bloquesDer=" + bloquesDer + ", bloquesIzq=" + bloquesIzq + '}';
+    public List<Bloque> clonarLista() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public List<Bloque> desordenar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean validarPlantilla() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Unir{" + "bloquesDer=" + bloquesDer + ", bloquesIzq=" + bloquesIzq + '}';
+    }
 }

@@ -15,39 +15,50 @@ import org.integrados.data.bloques.*;
  */
 public class PregYResp extends Plantilla {
 
-    private List<Plantilla> preguntas = new ArrayList<>();
-
-    public PregYResp(List<Bloque> respuesta, BloqueTexto enunciado, List<Plantilla> preguntas) {
-        super(respuesta, enunciado);
-        this.preguntas = preguntas;
+    private List<Bloque> opciones = new ArrayList<>();
+    
+    public PregYResp(){
+        super();
     }
 
-    public PregYResp(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, List<Plantilla> preguntas) {
-        super(respuesta, enunciado, imagen);
-        this.preguntas = preguntas;
+    public PregYResp(String enunciado, List<Bloque> solucion, List<Bloque> opciones) {
+        super(enunciado, solucion);
+        this.opciones = opciones;
     }
 
-    public PregYResp(List<Bloque> respuesta, BloqueTexto enunciado, BloqueSonido sonido, List<Plantilla> preguntas) {
-        super(respuesta, enunciado, sonido);
-        this.preguntas = preguntas;
+    public List<Bloque> getOpciones() {
+        return opciones;
     }
 
-    public PregYResp(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, BloqueSonido sonido, List<Plantilla> preguntas) {
-        super(respuesta, enunciado, imagen, sonido);
-        this.preguntas = preguntas;
+    public void setOpciones(List<Bloque> opciones) {
+        this.opciones = opciones;
     }
+    
 
-    public List<Plantilla> getPreguntas() {
-        return preguntas;
-    }
-
-    public void setPreguntas(List<Plantilla> preguntas) {
-        this.preguntas = preguntas;
+    @Override
+    public List<Bloque> clonarLista() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String toString() {
-        return "PregYResp{" + "preguntas=" + preguntas + '}';
+    public List<Bloque> desordenar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean validarPlantilla() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+       @Override
+    public String toString() {
+        return super.toString() + "PregYResp{" + "opciones=" + opciones + '}';
+    }
+    
 }
+
