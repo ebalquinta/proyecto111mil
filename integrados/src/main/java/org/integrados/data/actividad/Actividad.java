@@ -15,7 +15,7 @@ import org.integrados.data.usuarios.*;
  */
 public class Actividad {
 
-    private Integer idPlantilla;
+    private Integer id;
     private Plantilla plantilla;
     private Docente docente;
     private Materia materia;
@@ -24,9 +24,11 @@ public class Actividad {
     private Nivel nivel;
     private Dificultad dificultad;
     private int maxIntentos;
-    private int estrellasMax;
+    
+    public Actividad(){    }
 
-    public Actividad(Plantilla plantilla, Docente docente, Materia materia, String tema, int grado, Nivel nivel, Dificultad dificultad, int maxIntentos) {
+    public Actividad(Integer id, Plantilla plantilla, Docente docente, Materia materia, String tema, int grado, Nivel nivel, Dificultad dificultad, int maxIntentos) {
+        this.id = id;
         this.plantilla = plantilla;
         this.docente = docente;
         this.materia = materia;
@@ -36,16 +38,17 @@ public class Actividad {
         this.dificultad = dificultad;
         this.maxIntentos = maxIntentos;
     }
-
-    public Integer getIdPlantilla() {
-        return idPlantilla;
+    //este metodo es para desarrollar a futuro 
+    public void agregarMateria(){}
+    
+    public void setId(Integer id){
+        this.id = id;
     }
-
-    public void setIdPlantilla(Integer idPlantilla) {
-        this.idPlantilla = idPlantilla;
-
+    
+    public Integer getId(){
+        return this.id;
     }
-
+    
     public Plantilla getPlantilla() {
         return plantilla;
     }
@@ -110,17 +113,9 @@ public class Actividad {
         this.maxIntentos = maxIntentos;
     }
 
-    public int getEstrellasMax() {
-        return estrellasMax;
-    }
-
-    public void setEstrellasMax(int estrellasMax) {
-        this.estrellasMax = estrellasMax;
-    }
-
     @Override
     public String toString() {
-        return "Actividad{" + "idPlantilla=" + idPlantilla + ", plantilla=" + plantilla + ", docente=" + docente + ", materia=" + materia + ", tema=" + tema + ", grado=" + grado + ", nivel=" + nivel + ", dificultad=" + dificultad + ", maxIntentos=" + maxIntentos + ", estrellasMax=" + estrellasMax + '}';
+        return "Actividad{" + "idActividad=" + id + ", plantilla=" + plantilla + ", docente=" + docente + ", materia=" + materia + ", tema=" + tema + ", grado=" + grado + ", nivel=" + nivel + ", dificultad=" + dificultad + ", maxIntentos=" + maxIntentos + '}';
     }
 
 }
