@@ -12,9 +12,12 @@ package org.integrados.data.bloques;
 public class BloqueSonido extends Bloque {
 
     private String sonido;
+    
+    public BloqueSonido(){
+        super();
+    }
 
-    public BloqueSonido(boolean valido, String sonido) {
-        super(valido);
+    public BloqueSonido(String sonido) {
         this.sonido = sonido;
     }
 
@@ -26,9 +29,15 @@ public class BloqueSonido extends Bloque {
         this.sonido = sonido;
     }
 
+    // hay que hacer el metodo
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+    
     @Override
     public String toString() {
-        return "BloqueSonido{" + "sonido=" + sonido + '}';
+        return super.toString() + "BloqueSonido{" + "sonido=" + sonido + '}';
     }
 
 }

@@ -13,8 +13,11 @@ public class BloqueTexto extends Bloque {
 
     private String texto;
 
-    public BloqueTexto(boolean valido, String texto) {
-        super(valido);
+    public BloqueTexto(){
+        super();
+    }
+    
+    public BloqueTexto(String texto) {
         this.texto = texto;
     }
 
@@ -26,9 +29,15 @@ public class BloqueTexto extends Bloque {
         this.texto = texto;
     }
 
+    // hay que hacer el metodo
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+    
     @Override
     public String toString() {
-        return "BloqueTexto{" + "texto=" + texto + '}';
+        return super.toString() + "BloqueTexto{" + "texto=" + texto + '}';
     }
 
 }

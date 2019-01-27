@@ -10,12 +10,10 @@ package org.integrados.data.bloques;
  * @author Yani
  */
 public abstract class Bloque {
-    
-    protected Integer id;
-    protected boolean valido;
 
-    public Bloque(boolean valido) {
-        this.valido = valido;
+    protected Integer id = null;
+
+    public Bloque() {
     }
 
     public Integer getId() {
@@ -26,19 +24,9 @@ public abstract class Bloque {
         this.id = id;
     }
 
-    public boolean isValido() {
-        return valido;
-    }
-
-    public void setValido(boolean valido) {
-        this.valido = valido;
-    }
-
     @Override
     public String toString() {
-        return "Bloque{" + "id=" + id + ", valido=" + valido + '}';
+        return "Bloque{" + "id=" + id + '}';
     }
-    
-    
-    
+
 }
