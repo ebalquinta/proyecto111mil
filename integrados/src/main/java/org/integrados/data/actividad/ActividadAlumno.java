@@ -57,9 +57,6 @@ public class ActividadAlumno {
         return id;
     }
     
-    public void setId(Integer id){
-        this.id = id;
-    }
     public Actividad getActividad() {
         return actividad;
     }
