@@ -12,9 +12,12 @@ package org.integrados.data.bloques;
 public class BloqueImagen extends Bloque {
 
     private String imagen;
+    
+    public BloqueImagen(){
+        super();
+    }
 
-    public BloqueImagen(boolean valido, String imagen) {
-        super(valido);
+    public BloqueImagen(String imagen) {
         this.imagen = imagen;
     }
 
@@ -26,9 +29,15 @@ public class BloqueImagen extends Bloque {
         this.imagen = imagen;
     }
 
+    // hay que hacer el metodo
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+    
     @Override
     public String toString() {
-        return "BloqueImagen{" + "imagen=" + imagen + '}';
+        return super.toString() + "BloqueImagen{" + "imagen=" + imagen + '}';
     }
 
 }
