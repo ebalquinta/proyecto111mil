@@ -17,6 +17,9 @@ public class Materia {
         this.materia = materia;
     }
     
+    public Integer getId(){
+        return this.id;
+    }
     public String getMateria(){
         return this.materia;
     }
