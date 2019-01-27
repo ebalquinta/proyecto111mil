@@ -52,6 +52,100 @@ public class ActividadAlumno {
             return (60 - this.fechaInicio.getMinutes()) + this.fechaFinal.getMinutes();
         }
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Actividad getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(Actividad actividad) {
+        this.actividad = actividad;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+
+    public List<Bloque> getRespuestaAlumno() {
+        return respuestaAlumno;
+    }
+
+    public void setRespuestaAlumno(List<Bloque> respuestaAlumno) {
+        this.respuestaAlumno = respuestaAlumno;
+    }
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+
+    public boolean isFinalizoCorrectamente() {
+        return finalizoCorrectamente;
+    }
+
+    public void setFinalizoCorrectamente(boolean finalizoCorrectamente) {
+        this.finalizoCorrectamente = finalizoCorrectamente;
+    }
+
+    public int getIntentos() {
+        return intentos;
+    }
+
+    public void setIntentos(int intentos) {
+        this.intentos = intentos;
+    }
+
+    public int getEstrella() {
+        return estrella;
+    }
+
+    public void setEstrella(int estrella) {
+        this.estrella = estrella;
+    }
+
+    public String getCorazon() {
+        return corazon;
+    }
+
+    public void setCorazon(String corazon) {
+        this.corazon = corazon;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+    
+    
     
     @Override
     public String toString() {
