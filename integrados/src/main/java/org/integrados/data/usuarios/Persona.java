@@ -2,6 +2,7 @@ package org.integrados.data.usuarios;
 
 public abstract class Persona {
 
+    protected Integer id = null;
     protected int dni;
     protected String nombre;
     protected String apellido;
@@ -11,16 +12,21 @@ public abstract class Persona {
     protected String usuario;
     protected String clave;
 
+    public Persona() {
+    }
+
     public Persona(int dni, String nombre, String apellido) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    public Persona(int dni, String nombre, String apellido, String usuario, String clave) {
-        this(dni, nombre, apellido);
-        this.usuario = usuario;
-        this.clave = clave;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getDni() {
@@ -89,7 +95,7 @@ public abstract class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", telefono=" + telefono + ", mail=" + mail + ", usuario=" + usuario + ", clave=" + clave + '}';
+        return "Persona{" + "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", telefono=" + telefono + ", mail=" + mail + ", usuario=" + usuario + ", clave=" + clave + '}';
     }
 
 }
