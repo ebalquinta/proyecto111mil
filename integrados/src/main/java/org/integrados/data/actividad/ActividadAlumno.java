@@ -5,49 +5,58 @@
  */
 package org.integrados.data.actividad;
 
-import java.util.Date;
+import java.util.List;
+import org.integrados.data.bloques.Bloque;
 import org.integrados.data.usuarios.Alumno;
-
+import java.util.Date;
 /**
  *
- * @author Yani
+ * @author Yani, Jacco
  */
 public class ActividadAlumno {
-
-    private Integer id;
+    
+    private Integer id = null;
     private Actividad actividad;
     private Alumno alumno;
+    private List<Bloque> respuestaAlumno;
     private int tiempo;
     private Date fechaInicio;
     private Date fechaFinal;
     private boolean finalizoCorrectamente;
     private int intentos;
-    private Recompensa recompensas;
+    private int estrella;
+    private String corazon;
     private String observaciones;
+            
+    public ActividadAlumno(){ }
 
-    public ActividadAlumno(Actividad actividad, Alumno alumno, int tiempo, Date fechaInicio, Date fechaFinal, boolean finalizoCorrectamente, int intentos) {
+    public ActividadAlumno(Actividad actividad, Alumno alumno, List<Bloque> respuestaAlumno, int tiempo, Date fechaInicio, Date fechaFinal, boolean finalizoCorrectamente, int intentos, int estrella) {
         this.actividad = actividad;
         this.alumno = alumno;
+        this.respuestaAlumno = respuestaAlumno;
         this.tiempo = tiempo;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.finalizoCorrectamente = finalizoCorrectamente;
         this.intentos = intentos;
+        this.estrella = estrella;
     }
-
-    public ActividadAlumno(Actividad actividad, Alumno alumno, int tiempo, Date fechaInicio, Date fechaFinal, boolean finalizoCorrectamente, int intentos, Recompensa recompensas) {
-        this(actividad, alumno, tiempo, fechaInicio, fechaFinal, finalizoCorrectamente, intentos);
-        this.recompensas = recompensas;
+    
+    /**
+     * devuelve los minutos jugados en una hora
+     */
+    public double calcularMinutosJugados(){
+        if(this.fechaInicio.getMinutes()<this.fechaFinal.getMinutes()){
+            return  (this.fechaFinal.getMinutes() - this.fechaInicio.getMinutes());
+        }else{
+            return (60 - this.fechaInicio.getMinutes()) + this.fechaFinal.getMinutes();
+        }
     }
 
     public Integer getId() {
         return id;
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    
     public Actividad getActividad() {
         return actividad;
     }
@@ -62,6 +71,14 @@ public class ActividadAlumno {
 
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
+    }
+
+    public List<Bloque> getRespuestaAlumno() {
+        return respuestaAlumno;
+    }
+
+    public void setRespuestaAlumno(List<Bloque> respuestaAlumno) {
+        this.respuestaAlumno = respuestaAlumno;
     }
 
     public int getTiempo() {
@@ -104,12 +121,20 @@ public class ActividadAlumno {
         this.intentos = intentos;
     }
 
-    public Recompensa getRecompensas() {
-        return recompensas;
+    public int getEstrella() {
+        return estrella;
     }
 
-    public void setRecompensas(Recompensa recompensas) {
-        this.recompensas = recompensas;
+    public void setEstrella(int estrella) {
+        this.estrella = estrella;
+    }
+
+    public String getCorazon() {
+        return corazon;
+    }
+
+    public void setCorazon(String corazon) {
+        this.corazon = corazon;
     }
 
     public String getObservaciones() {
@@ -119,10 +144,12 @@ public class ActividadAlumno {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-
+    
+    
+    
     @Override
     public String toString() {
-        return "ActividadAlumno{" + "id=" + id + ", actividad=" + actividad + ", alumno=" + alumno + ", tiempo=" + tiempo + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", finalizoCorrectamente=" + finalizoCorrectamente + ", intentos=" + intentos + ", recompensas=" + recompensas + ", observaciones=" + observaciones + '}';
+        return "ActividadAlumno{" + "id=" + id + ", actividad=" + actividad + ", alumno=" + alumno + ", tiempo=" + tiempo + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", finalizoCorrectamente=" + finalizoCorrectamente + ", intentos=" + intentos +", corazon = " + corazon + ", observaciones=" + observaciones + '}';
     }
 
 }

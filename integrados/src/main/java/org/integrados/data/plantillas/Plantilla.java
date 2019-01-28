@@ -15,12 +15,15 @@ import org.integrados.data.bloques.*;
  */
 public abstract class Plantilla {
 
-    protected Integer id;
+    protected Integer id = null;
     protected String enunciado;
     protected List<Bloque> solucion;
     protected String imagen;
     protected String sonido;
 
+    public Plantilla(){
+        
+    }
     public Plantilla(String enunciado, List<Bloque> solucion) {
         this.enunciado = enunciado;
         this.solucion = solucion;
