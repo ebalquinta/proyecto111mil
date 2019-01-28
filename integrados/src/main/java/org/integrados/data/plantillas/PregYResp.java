@@ -27,17 +27,6 @@ public class PregYResp extends Plantilla {
     }
     
     @Override
-    public List<Bloque> clonarLista(){
-        List<Bloque> listaClonada = new ArrayList<>();
-        
-        for(Bloque b : this.opciones){
-            listaClonada.add(b);
-        }
-        return listaClonada;
-    }
-    
-    
-    @Override
     public List<Bloque> desordenar(){
         int cambios = 0;
         List<Bloque> listaDesordenada = this.clonarLista();
