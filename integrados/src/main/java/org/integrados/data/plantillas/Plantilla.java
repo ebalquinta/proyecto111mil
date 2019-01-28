@@ -24,9 +24,6 @@ public abstract class Plantilla {
     public Plantilla() {
     }
 
-    public Plantilla(){
-        
-    }
     public Plantilla(String enunciado, List<Bloque> solucion) {
         this.enunciado = enunciado;
         this.solucion = solucion;
@@ -80,6 +77,7 @@ public abstract class Plantilla {
         }
         return listaClonada;
     }
+    
     public abstract List<Bloque> desordenar();
 
     public abstract boolean verificarResultado(List<Bloque> respuestaAlumno);

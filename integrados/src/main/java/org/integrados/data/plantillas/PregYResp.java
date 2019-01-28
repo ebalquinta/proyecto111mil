@@ -29,7 +29,7 @@ public class PregYResp extends Plantilla {
     @Override
     public List<Bloque> desordenar(){
         int cambios = 0;
-        List<Bloque> listaDesordenada = this.clonarLista();
+        List<Bloque> listaDesordenada = this.clonarLista(this.opciones);
        
         while (cambios < listaDesordenada.size() ){
             for (int i = 0; i < listaDesordenada.size(); i++) {
