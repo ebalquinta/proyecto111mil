@@ -6,6 +6,11 @@ import java.util.List;
 import org.integrados.data.bloques.*;
 
 public class Ordenamiento extends Plantilla {
+    
+    
+    public Ordenamiento(){
+        super();
+    }
 
     public Ordenamiento(String enunciado, List<Bloque> solucion) {
         super(enunciado, solucion);
@@ -66,6 +71,10 @@ public class Ordenamiento extends Plantilla {
     }
     
    
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
     
 

@@ -22,8 +22,10 @@ public class Unir extends Plantilla {
         super();
     }
 
-    public Unir(String enunciado, List<Bloque> solucion) {
+    public Unir(String enunciado, List<Bloque> solucion, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
         super(enunciado, solucion);
+        this.bloquesDer=bloquesDer;
+        this.bloquesIzq=bloquesIzq;
     }
     
     @Override
@@ -73,7 +75,7 @@ public class Unir extends Plantilla {
         
         for(int i = 0; bloquesDerClonada.size()>i;i++){
             
-            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamaÃ±o de la lista
+            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamaño de la lista
             aux = (int) (Math.random() * bloquesDerClonada.size());
             aux2 = (int) (Math.random() * bloquesDerClonada.size());
             
