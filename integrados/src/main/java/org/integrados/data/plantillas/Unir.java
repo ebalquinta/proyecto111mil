@@ -26,12 +26,7 @@ public class Unir extends Plantilla {
         super(enunciado, solucion);
         this.bloquesDer=bloquesDer;
         this.bloquesIzq=bloquesIzq;
-    }
-    
-    @Override
-    public List<Bloque> clonarLista(){
-        return null;
-    }
+    } 
     
     
       /**
@@ -42,8 +37,8 @@ public class Unir extends Plantilla {
     public List<Bloque> desordenar(){
         
         // Clonacion y creacion de las listas a usar        
-        List<Bloque> bloquesDerClonada = this.bloquesDer;
-        List<Bloque> bloquesIzqClonada = this.bloquesIzq;
+        List<Bloque> bloquesDerClonada = this.clonarLista();
+        List<Bloque> bloquesIzqClonada = this.clonarLista();
         List<Bloque> bloquesAnd = new ArrayList<>();
         
         // Creacion de las variables auxiliares
