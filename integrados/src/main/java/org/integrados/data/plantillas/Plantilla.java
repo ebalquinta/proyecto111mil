@@ -72,8 +72,14 @@ public abstract class Plantilla {
         this.sonido = sonido;
     }
 
-    public abstract List<Bloque> clonarLista();
-
+    public List<Bloque> clonarLista(List<Bloque> listaClonar) {
+        List<Bloque> listaClonada = new ArrayList<>();
+        
+        for(Bloque b : listaClonar){
+            listaClonada.add(b);
+        }
+        return listaClonada;
+    }
     public abstract List<Bloque> desordenar();
 
     public abstract boolean verificarResultado(List<Bloque> respuestaAlumno);
