@@ -60,6 +60,13 @@ public class PregYResp extends Plantilla {
         }
         return listaDesordenada;
     }
+    
+    /**
+     * Primero checkea si la lista de respuestaalumnos es mas grande o mas chica que la de solucion
+     * Despues checkea si las respuestas del alumno son iguales a las de la solucion sin importar su orden
+     * @param List<Bloque> respuestaAlumno contiene las respuestas del alumno
+     * @return boolean 
+     */
     @Override
     public boolean verificarResultado(List<Bloque> respuestaAlumno){
         int respuestas = 0;
