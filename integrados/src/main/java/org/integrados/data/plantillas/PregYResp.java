@@ -15,50 +15,87 @@ import org.integrados.data.bloques.*;
  */
 public class PregYResp extends Plantilla {
 
-    private List<Bloque> opciones = new ArrayList<>();
+    private List<Bloque> opciones;
     
     public PregYResp(){
-        super();
+        
     }
 
-    public PregYResp(String enunciado, List<Bloque> solucion, List<Bloque> opciones) {
+    public PregYResp(List<Bloque> opciones, String enunciado, List<Bloque> solucion) {
         super(enunciado, solucion);
         this.opciones = opciones;
     }
-
-    public List<Bloque> getOpciones() {
-        return opciones;
-    }
-
-    public void setOpciones(List<Bloque> opciones) {
-        this.opciones = opciones;
+    
+    @Override
+    public List<Bloque> clonarLista(){
+        List<Bloque> listaClonada = new ArrayList<>();
+        
+        for(Bloque b : this.opciones){
+            listaClonada.add(b);
+        }
+        return listaClonada;
     }
     
-
+    
     @Override
-    public List<Bloque> clonarLista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<Bloque> desordenar(){
+        int cambios = 0;
+        List<Bloque> listaDesordenada = this.clonarLista();
+       
+        while (cambios < listaDesordenada.size() ){
+            for (int i = 0; i < listaDesordenada.size(); i++) {
+                int index = (int) (Math.random() * listaDesordenada.size());
+                
+                Bloque bloqueActual = listaDesordenada.get(i);
+                Bloque auxiliar = listaDesordenada.get(index);
 
+                listaDesordenada.remove(i);
+                listaDesordenada.add(i, auxiliar);
+
+                listaDesordenada.remove(index);
+                listaDesordenada.add(index, bloqueActual);
+                
+                cambios++;
+            }
+        }
+        return listaDesordenada;
+    }
+    
+    /**
+     * Primero checkea si la lista de respuestaalumnos es mas grande o mas chica que la de solucion
+     * Despues checkea si las respuestas del alumno son iguales a las de la solucion sin importar su orden
+     * @param List<Bloque> respuestaAlumno contiene las respuestas del alumno
+     * @return boolean 
+     */
     @Override
-    public List<Bloque> desordenar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean verificarResultado(List<Bloque> respuestaAlumno){
+        int respuestas = 0;
+        if(respuestaAlumno.size() == this.solucion.size()){
+            for(Bloque solucion:this.solucion){
+                for(Bloque rta:respuestaAlumno){
+                    if(solucion.equals(rta)){
+                       respuestas++;
+                    }
+                }
+            }
+            return (respuestas == this.solucion.size());
+        }
+        return false;
     }
-
+    
     @Override
-    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean validarPlantilla(){
+        return (this.solucion.size() >= 1);
     }
-
+    
     @Override
-    public boolean validarPlantilla() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String toString(){
+        return super.toString() + ", opciones = " + this.opciones;
     }
 
-       @Override
-    public String toString() {
-        return super.toString() + "PregYResp{" + "opciones=" + opciones + '}';
-    }
+    
+    
+    
     
 }
 

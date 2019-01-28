@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class ActividadAlumno {
     
-    private Integer id;
+    private Integer id = null;
     private Actividad actividad;
     private Alumno alumno;
     private List<Bloque> respuestaAlumno;
@@ -56,7 +56,7 @@ public class ActividadAlumno {
     public Integer getId() {
         return id;
     }
-
+    
     public Actividad getActividad() {
         return actividad;
     }
