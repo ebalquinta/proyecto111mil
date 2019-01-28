@@ -11,26 +11,24 @@ package org.integrados.data.usuarios;
  */
 public class Domicilio {
 
-    private Integer id=null;
+    private Integer id;
     private String calle;
     private int numero;
     private String piso;
     private String departamento;
 
     public Domicilio() {
+        this.id = null;
     }
 
     public Domicilio(String calle, int numero) {
+        this.id = null;
         this.calle = calle;
         this.numero = numero;
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getCalle() {

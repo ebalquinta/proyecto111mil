@@ -2,7 +2,7 @@ package org.integrados.data.usuarios;
 
 public abstract class Persona {
 
-    protected Integer id = null;
+    protected Integer id;
     protected int dni;
     protected String nombre;
     protected String apellido;
@@ -13,9 +13,11 @@ public abstract class Persona {
     protected String clave;
 
     public Persona() {
+        this.id = null;
     }
 
     public Persona(int dni, String nombre, String apellido) {
+        this.id = null;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -23,10 +25,6 @@ public abstract class Persona {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public int getDni() {
