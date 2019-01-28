@@ -75,7 +75,7 @@ public class Unir extends Plantilla {
         
         for(int i = 0; bloquesDerClonada.size()>i;i++){
             
-            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamaño de la lista
+            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamao de la lista
             aux = (int) (Math.random() * bloquesDerClonada.size());
             aux2 = (int) (Math.random() * bloquesDerClonada.size());
             
@@ -106,10 +106,8 @@ public class Unir extends Plantilla {
             solucion = (BloqueAnd) s;
             for(Bloque b: respuestaAlumno){
                 rtaAlumno = (BloqueAnd) b;
-                if(solucion.getBloque1() == rtaAlumno.getBloque1()){
-                    if(solucion.getBloque2() == rtaAlumno.getBloque2()){
-                        par++;
-                    }
+                if((solucion.getBloque1() == rtaAlumno.getBloque1()) && (solucion.getBloque2() == rtaAlumno.getBloque2()))
+                    par++;
                 }
             }
         }
