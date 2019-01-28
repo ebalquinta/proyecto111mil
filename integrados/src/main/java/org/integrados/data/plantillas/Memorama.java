@@ -37,8 +37,8 @@ public class Memorama extends Plantilla {
     public List<Bloque> desordenar(){
         
         // Clonacion y creacion de las listas a usar        
-        List<Bloque> bloques1Clonada = this.clonarLista();
-        List<Bloque> bloques2Clonada = this.clonarLista();
+        List<Bloque> bloques1Clonada = this.clonarLista(this.bloques1);
+        List<Bloque> bloques2Clonada = this.clonarLista(this.bloques2);
         List<Bloque> bloquesAnd = new ArrayList<>();
         
         

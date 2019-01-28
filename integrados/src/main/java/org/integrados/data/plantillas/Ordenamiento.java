@@ -15,21 +15,11 @@ public class Ordenamiento extends Plantilla {
     public Ordenamiento(String enunciado, List<Bloque> solucion) {
         super(enunciado, solucion);
     }
-
-    @Override
-    public List<Bloque> clonarLista() {
-        List<Bloque> listaClonada = new ArrayList<>();
-        
-        for(Bloque b : super.solucion){
-            listaClonada.add(b);
-        }
-        return listaClonada;
-    }
     
     @Override
     public List<Bloque> desordenar() {
        int cambios = 0;
-        List<Bloque> listaDesordenada = this.clonarLista();
+        List<Bloque> listaDesordenada = this.clonarLista(super.solucion);
        
         while (cambios < listaDesordenada.size() ){
             for (int i = 0; i < listaDesordenada.size(); i++) {
