@@ -24,9 +24,6 @@ public abstract class Plantilla {
     public Plantilla() {
     }
 
-    public Plantilla(){
-        
-    }
     public Plantilla(String enunciado, List<Bloque> solucion) {
         this.enunciado = enunciado;
         this.solucion = solucion;
