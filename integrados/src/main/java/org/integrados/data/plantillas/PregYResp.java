@@ -80,6 +80,11 @@ public class PregYResp extends Plantilla {
     public boolean validarPlantilla(){
         return (this.solucion.size() >= 1);
     }
+    
+    @Override
+    public String toString(){
+        return super.toString() + ", opciones = " + this.opciones;
+    }
 
     
     
