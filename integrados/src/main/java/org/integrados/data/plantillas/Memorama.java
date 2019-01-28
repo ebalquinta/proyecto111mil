@@ -11,56 +11,120 @@ import org.integrados.data.bloques.*;
 
 /**
  *
- * @author Yani
+ * @author Yani, Jacco
  */
 public class Memorama extends Plantilla {
 
-    private List<Bloque> bloque1 = new ArrayList<>();
-    private List<Bloque> bloque2 = new ArrayList<>();
+    private List<Bloque> bloques1;
+    private List<Bloque> bloques2;
 
-    public Memorama(List<Bloque> respuesta, BloqueTexto enunciado, List<Bloque> bloque1, List<Bloque> bloque2) {
-        super(respuesta, enunciado);
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
+    public Memorama(){
+        super();
     }
-
-    public Memorama(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, List<Bloque> bloque1, List<Bloque> bloque2) {
-        super(respuesta, enunciado, imagen);
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
+    
+    public Memorama(String enunciado, List<Bloque> solucion, List<Bloque> bloques1, List<Bloque> bloques2){
+        super(enunciado,solucion);
+        this.bloques1 = bloques1;
+        this.bloques2 = bloques2;
     }
-
-    public Memorama(List<Bloque> respuesta, BloqueTexto enunciado, BloqueSonido sonido, List<Bloque> bloque1, List<Bloque> bloque2) {
-        super(respuesta, enunciado, sonido);
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
-    }
-
-    public Memorama(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, BloqueSonido sonido, List<Bloque> bloque1, List<Bloque> bloque2) {
-        super(respuesta, enunciado, imagen, sonido);
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
-    }
-
-    public List<Bloque> getBloque1() {
-        return bloque1;
-    }
-
-    public void setBloque1(List<Bloque> bloque1) {
-        this.bloque1 = bloque1;
-    }
-
-    public List<Bloque> getBloque2() {
-        return bloque2;
-    }
-
-    public void setBloque2(List<Bloque> bloque2) {
-        this.bloque2 = bloque2;
-    }
-
+    
     @Override
-    public String toString() {
-        return "Memorama{" + "bloque1=" + bloque1 + ", bloque2=" + bloque2 + '}';
+    public List<Bloque> clonarLista(){
+        List<Bloque> listaClonada = new ArrayList<>();
+        
+        for(Bloque b : super.solucion){
+            listaClonada.add(b);
+        }
+        return listaClonada;
+    }
+    
+    /**
+     * Crea una lista desordenada de bloques and y la devuelve
+     * @return bloquesAnd 
+     */
+    @Override
+    public List<Bloque> desordenar(){
+        
+        // Clonacion y creacion de las listas a usar        
+        List<Bloque> bloques1Clonada = this.bloques1;
+        List<Bloque> bloques2Clonada = this.bloques2;
+        List<Bloque> bloquesAnd = new ArrayList<>();
+        
+        // Creacion de las variables auxiliares
+        BloqueAnd b;
+        int aux; 
+        int aux2;
+        
+        for(int i = 0; bloques1Clonada.size()>i;i++){
+            
+            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamaño de la lista
+            aux = (int) (Math.random() * bloques1Clonada.size());
+            aux2 = (int) (Math.random() * bloques1Clonada.size());
+            
+            // Creacion y asignacion a lista de el bloqueAnd
+            b = new BloqueAnd(this.bloques1.get(aux), this.bloques2.get(aux2));
+            bloquesAnd.add(b);
+            
+            // Eliminacion de los bloques ya asignados
+            bloques1Clonada.remove(aux);
+            bloques2Clonada.remove(aux2);
+        }
+        
+        return bloquesAnd;
+    }
+    
+    
+    /**
+     * Verifica el resultado teniendo en cuenta la cantidad de pares realizados correctamente
+     * @param respuestaAlumno del tipo Bloque que luego es casteada para poder trabajar con los metodos de la clase BloqueAnd
+     * @return boolean si la cantidad de pares correctos enviados por el alumno es igual a la cantidad de pares correctos en el sistema
+     */
+    @Override
+    public boolean verificarResultado(List<Bloque> respuestaAlumno){
+        
+        BloqueAnd rtaAlumno;
+        BloqueAnd solucion;
+        int par = 0;
+        for(Bloque s:this.solucion){
+            solucion = (BloqueAnd) s;
+            for(Bloque b: respuestaAlumno){
+                rtaAlumno = (BloqueAnd) b;
+                if(solucion.getBloque1() == rtaAlumno.getBloque1()){
+                    if(solucion.getBloque2() == rtaAlumno.getBloque2()){
+                        par++;
+                    }
+                }
+            }
+        }
+        return (par==this.solucion.size());
+    }
+    
+    @Override
+    public boolean validarPlantilla(){
+        return (this.solucion.size()>1);
+    }
+    
+    @Override 
+    public String toString(){
+        return "Bloques1 = " + this.bloques1 + ", Bloques2 = " + this.bloques2 + super.toString();
     }
 
+    public List<Bloque> getBloques1() {
+        return bloques1;
+    }
+
+    public void setBloques1(List<Bloque> bloques1) {
+        this.bloques1 = bloques1;
+    }
+
+    public List<Bloque> getBloques2() {
+        return bloques2;
+    }
+
+    public void setBloques2(List<Bloque> bloques2) {
+        this.bloques2 = bloques2;
+    }
+    
+    
+    
 }
