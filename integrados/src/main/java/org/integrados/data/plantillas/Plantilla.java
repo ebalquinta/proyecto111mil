@@ -13,77 +13,76 @@ import org.integrados.data.bloques.*;
  *
  * @author Yani
  */
-public class Plantilla {
+public abstract class Plantilla {
 
-    protected Integer idPlantilla;
-    protected BloqueTexto enunciado;
-    protected List<Bloque> respuesta = new ArrayList<>();
-    protected BloqueImagen imagen;
-    protected BloqueSonido sonido;
+    protected Integer id = null;
+    protected String enunciado;
+    protected List<Bloque> solucion = new ArrayList<>();
+    protected String imagen = null;
+    protected String sonido = null;
 
-    public Plantilla(List<Bloque> respuesta, BloqueTexto enunciado) {
-        this.respuesta = respuesta;
+    public Plantilla() {
+    }
+
+    public Plantilla(){
+        
+    }
+    public Plantilla(String enunciado, List<Bloque> solucion) {
         this.enunciado = enunciado;
+        this.solucion = solucion;
     }
 
-    public Plantilla(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen) {
-        this(respuesta, enunciado);
-        this.imagen = imagen;
+    public Integer getId() {
+        return id;
     }
 
-    public Plantilla(List<Bloque> respuesta, BloqueTexto enunciado, BloqueSonido sonido) {
-        this(respuesta, enunciado);
-        this.sonido = sonido;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Plantilla(List<Bloque> respuesta, BloqueTexto enunciado, BloqueImagen imagen, BloqueSonido sonido) {
-        this(respuesta, enunciado, imagen);
-        this.sonido = sonido;
-    }
-
-    public Integer getIdPlantilla() {
-        return idPlantilla;
-    }
-
-    public void setIdPlantilla(Integer idPlantilla) {
-        this.idPlantilla = idPlantilla;
-    }
-
-    public BloqueTexto getEnunciado() {
+    public String getEnunciado() {
         return enunciado;
     }
 
-    public void setEnunciado(BloqueTexto enunciado) {
+    public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
     }
 
-    public List<Bloque> getRespuesta() {
-        return respuesta;
+    public void setSolucion(List<Bloque> solucion) {
+        this.solucion = solucion;
     }
 
-    public void setRespuesta(List<Bloque> respuesta) {
-        this.respuesta = respuesta;
+    public List<Bloque> getSolucion() {
+        return solucion;
     }
 
-    public BloqueImagen getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(BloqueImagen imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
-    public BloqueSonido getSonido() {
+    public String getSonido() {
         return sonido;
     }
 
-    public void setSonido(BloqueSonido sonido) {
+    public void setSonido(String sonido) {
         this.sonido = sonido;
     }
 
+    public abstract List<Bloque> clonarLista();
+
+    public abstract List<Bloque> desordenar();
+
+    public abstract boolean verificarResultado(List<Bloque> respuestaAlumno);
+
+    public abstract boolean validarPlantilla();
+
     @Override
     public String toString() {
-        return "Plantilla{" + "idPlantilla=" + idPlantilla + ", enunciado=" + enunciado + ", respuesta=" + respuesta + ", imagen=" + imagen + ", sonido=" + sonido + '}';
+        return "Plantilla{" + "id=" + id + ", enunciado=" + enunciado + ", solucion=" + solucion + ", imagen=" + imagen + ", sonido=" + sonido + '}';
     }
 
 }

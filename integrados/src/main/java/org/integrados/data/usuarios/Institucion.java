@@ -14,31 +14,30 @@ import java.util.List;
  */
 public class Institucion {
 
-    private Integer idInstitucion;
+    private Integer id;
     private String nombreInstitucion;
     private List<Docente> docentes;
     private List<Alumno> alumnos;
     private Persona administrador;
 
-    public Institucion(Persona administrador) {
-        this.administrador = administrador;
-        this.docentes = new ArrayList<>();
+    public Institucion() {
         this.alumnos = new ArrayList<>();
+        this.docentes = new ArrayList<>();
+        this.id = null;
     }
 
-    public Institucion(Persona administrador, String nombreInstitucion) {
-        this(administrador);
+    public Institucion(String nombreInstitucion, Persona administrador) {
+        this.alumnos = new ArrayList<>();
+        this.docentes = new ArrayList<>();
+        this.id = null;
         this.nombreInstitucion = nombreInstitucion;
+        this.administrador = administrador;
     }
 
-    public Integer getIdInstitucion() {
-        return idInstitucion;
+    public Integer getId() {
+        return id;
     }
-
-    public void setIdInstitucion(Integer idInstitucion) {
-        this.idInstitucion = idInstitucion;
-    }
-
+    
     public String getNombreInstitucion() {
         return nombreInstitucion;
     }
@@ -73,7 +72,7 @@ public class Institucion {
 
     @Override
     public String toString() {
-        return "Institucion{" + "idInstitucion=" + idInstitucion + ", nombreInstitucion=" + nombreInstitucion + ", docentes=" + docentes + ", alumnos=" + alumnos + ", administrador=" + administrador + '}';
+        return "Institucion{" + "id=" + id + ", nombreInstitucion=" + nombreInstitucion + ", docentes=" + docentes + ", alumnos=" + alumnos + ", administrador=" + administrador + '}';
     }
 
 }

@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.integrados.data.actividad;
+package org.integrados.services;
 
 /**
  *
  * @author Yani
  */
-public abstract class Recompensa {
-
-    public Recompensa() {
-    }
-
-    public abstract int getRecompensa();
+public class ServiciosEstadistica {
+    
 }

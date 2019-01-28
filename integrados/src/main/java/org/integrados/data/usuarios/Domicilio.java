@@ -11,36 +11,24 @@ package org.integrados.data.usuarios;
  */
 public class Domicilio {
 
-    private Integer idDomicilio;
+    private Integer id;
     private String calle;
     private int numero;
     private String piso;
     private String departamento;
 
     public Domicilio() {
+        this.id = null;
     }
 
     public Domicilio(String calle, int numero) {
+        this.id = null;
         this.calle = calle;
         this.numero = numero;
     }
-    
-    public Domicilio(String calle, int numero, String piso) {
-        this(calle, numero);
-        this.piso = piso;
-    }
-    
-    public Domicilio(String calle, int numero, String piso, String departamento) {
-        this(calle, numero, piso);
-        this.departamento = departamento;
-    }
 
-    public Integer getIdDomicilio() {
-        return idDomicilio;
-    }
-
-    public void setIdDomicilio(Integer idDomicilio) {
-        this.idDomicilio = idDomicilio;
+    public Integer getId() {
+        return id;
     }
 
     public String getCalle() {
@@ -77,7 +65,7 @@ public class Domicilio {
 
     @Override
     public String toString() {
-        return "Domicilio{" + "idDomicilio=" + idDomicilio + ", calle=" + calle + ", numero=" + numero + ", piso=" + piso + ", departamento=" + departamento + '}';
+        return "Domicilio{" + "id=" + id + ", calle=" + calle + ", numero=" + numero + ", piso=" + piso + ", departamento=" + departamento + '}';
     }
 
 }

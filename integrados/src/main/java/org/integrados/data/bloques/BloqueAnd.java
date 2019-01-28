@@ -9,23 +9,18 @@ package org.integrados.data.bloques;
  *
  * @author Yani
  */
-public class BloqueAnd {
+public class BloqueAnd extends Bloque {
 
-    private Integer idBlqueAnd;
     private Bloque bloque1;
     private Bloque Bloque2;
+
+    public BloqueAnd() {
+        super();
+    }
 
     public BloqueAnd(Bloque bloque1, Bloque Bloque2) {
         this.bloque1 = bloque1;
         this.Bloque2 = Bloque2;
-    }
-
-    public Integer getIdBlqueAnd() {
-        return idBlqueAnd;
-    }
-
-    public void setIdBlqueAnd(Integer idBlqueAnd) {
-        this.idBlqueAnd = idBlqueAnd;
     }
 
     public Bloque getBloque1() {
@@ -44,9 +39,15 @@ public class BloqueAnd {
         this.Bloque2 = Bloque2;
     }
 
+    // hay que hacer el metodo
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+
     @Override
     public String toString() {
-        return "BloqueAnd{" + "idBlqueAnd=" + idBlqueAnd + ", bloque1=" + bloque1 + ", Bloque2=" + Bloque2 + '}';
+        return super.toString() + "BloqueAnd{" + "bloque1=" + bloque1 + ", Bloque2=" + Bloque2 + '}';
     }
 
 }
