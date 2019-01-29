@@ -13,7 +13,7 @@ public class Domicilio {
 
     private Integer id;
     private String calle;
-    private int numero;
+    private Integer numero;
     private String piso;
     private String departamento;
 
@@ -21,12 +21,19 @@ public class Domicilio {
         this.id = null;
     }
 
-    public Domicilio(String calle, int numero) {
+    public Domicilio(String calle, Integer numero) {
         this.id = null;
         this.calle = calle;
         this.numero = numero;
     }
 
+    public Domicilio(String calle, Integer numero, String piso, String departamento) {
+        this.calle = calle;
+        this.numero = numero;
+        this.piso = piso;
+        this.departamento = departamento;
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -39,11 +46,11 @@ public class Domicilio {
         this.calle = calle;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 

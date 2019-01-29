@@ -10,16 +10,22 @@ package org.integrados.data.actividad;
  * @author Yani
  */
 public class Materia {
-    private Integer id = null;
+    private Integer id;
     private String materia;
     
+    public Materia(){   
+        this.id = null;
+    }
+      
     public Materia(String materia){
+        this.id = null;
         this.materia = materia;
     }
-    
-    public Integer getId(){
-        return this.id;
+
+    public Integer getId() {
+        return id;
     }
+
     public String getMateria(){
         return this.materia;
     }

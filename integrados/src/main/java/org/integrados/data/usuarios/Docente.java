@@ -24,7 +24,7 @@ public class Docente extends Persona {
         this.alumnos = new ArrayList<>();
     }
 
-    public Docente(int dni, String nombre, String apellido) {
+    public Docente(Integer dni, String nombre, String apellido) {
         super(dni, nombre, apellido);
         this.actividades = new ArrayList<>();
         this.alumnos = new ArrayList<>();
