@@ -17,14 +17,16 @@ public abstract class Plantilla {
 
     protected Integer id = null;
     protected String enunciado;
-    protected List<Bloque> solucion = new ArrayList<>();
+    protected List<Bloque> solucion;
     protected String imagen = null;
     protected String sonido = null;
 
     public Plantilla() {
+        this.solucion = new ArrayList<>();
     }
 
     public Plantilla(String enunciado, List<Bloque> solucion) {
+        this.solucion = new ArrayList<>();
         this.enunciado = enunciado;
         this.solucion = solucion;
     }
@@ -33,24 +35,20 @@ public abstract class Plantilla {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public List<Bloque> getSolucion() {
+        return solucion;
     }
 
+    public void setSolucion(List<Bloque> solucion) {
+        this.solucion = solucion;
+    }
+ 
     public String getEnunciado() {
         return enunciado;
     }
 
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
-    }
-
-    public void setSolucion(List<Bloque> solucion) {
-        this.solucion = solucion;
-    }
-
-    public List<Bloque> getSolucion() {
-        return solucion;
     }
 
     public String getImagen() {
@@ -69,13 +67,20 @@ public abstract class Plantilla {
         this.sonido = sonido;
     }
 
-    public abstract List<Bloque> clonarLista();
-
+    public List<Bloque> clonarLista(List<Bloque> listaClonar) {
+        List<Bloque> listaClonada = new ArrayList<>();
+        
+        for(Bloque b : listaClonar){
+            listaClonada.add(b);
+        }
+        return listaClonada;
+    }
+    
     public abstract List<Bloque> desordenar();
 
-    public abstract boolean verificarResultado(List<Bloque> respuestaAlumno);
+    public abstract Boolean verificarResultado(List<Bloque> respuestaAlumno);
 
-    public abstract boolean validarPlantilla();
+    public abstract Boolean validarPlantilla();
 
     @Override
     public String toString() {

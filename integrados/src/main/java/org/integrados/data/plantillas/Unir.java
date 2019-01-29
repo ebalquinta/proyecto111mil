@@ -26,12 +26,7 @@ public class Unir extends Plantilla {
         super(enunciado, solucion);
         this.bloquesDer=bloquesDer;
         this.bloquesIzq=bloquesIzq;
-    }
-    
-    @Override
-    public List<Bloque> clonarLista(){
-        return null;
-    }
+    } 
     
     
       /**
@@ -42,8 +37,8 @@ public class Unir extends Plantilla {
     public List<Bloque> desordenar(){
         
         // Clonacion y creacion de las listas a usar        
-        List<Bloque> bloquesDerClonada = this.bloquesDer;
-        List<Bloque> bloquesIzqClonada = this.bloquesIzq;
+        List<Bloque> bloquesDerClonada = this.clonarLista(this.bloquesDer);
+        List<Bloque> bloquesIzqClonada = this.clonarLista(this.bloquesIzq);
         List<Bloque> bloquesAnd = new ArrayList<>();
         
         // Creacion de las variables auxiliares
@@ -75,7 +70,7 @@ public class Unir extends Plantilla {
         
         for(int i = 0; bloquesDerClonada.size()>i;i++){
             
-            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamaño de la lista
+            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamao de la lista
             aux = (int) (Math.random() * bloquesDerClonada.size());
             aux2 = (int) (Math.random() * bloquesDerClonada.size());
             
@@ -97,26 +92,22 @@ public class Unir extends Plantilla {
      * @return boolean si la cantidad de pares correctos enviados por el alumno es igual a la cantidad de pares correctos en el sistema
      */
     @Override
-    public boolean verificarResultado(List<Bloque> respuestaAlumno){
-        
+    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
+
         BloqueAnd rtaAlumno;
         BloqueAnd solucion;
         int par = 0;
-        for(Bloque s:this.solucion){
+        for (Bloque s : this.solucion) {
             solucion = (BloqueAnd) s;
-            for(Bloque b: respuestaAlumno){
+            for (Bloque b : respuestaAlumno) {
                 rtaAlumno = (BloqueAnd) b;
-                if(solucion.getBloque1() == rtaAlumno.getBloque1()){
-                    if(solucion.getBloque2() == rtaAlumno.getBloque2()){
-                        par++;
-                    }
+                if ((solucion.getBloque1() == rtaAlumno.getBloque1()) && (solucion.getBloque2() == rtaAlumno.getBloque2())) {
+                    par++;
                 }
             }
         }
-        return (par==this.solucion.size());
+        return (par == this.solucion.size());
     }
-    
-    
     @Override
     public boolean validarPlantilla(){
         return this.solucion.size() > 1;

@@ -19,18 +19,18 @@ public class ActividadAlumno {
     private Actividad actividad;
     private Alumno alumno;
     private List<Bloque> respuestaAlumno;
-    private int tiempo;
+    private Integer tiempo;
     private Date fechaInicio;
     private Date fechaFinal;
-    private boolean finalizoCorrectamente;
-    private int intentos;
-    private int estrella;
+    private Boolean finalizoCorrectamente;
+    private Integer intentos;
+    private Integer estrella;
     private String corazon;
     private String observaciones;
             
     public ActividadAlumno(){ }
 
-    public ActividadAlumno(Actividad actividad, Alumno alumno, List<Bloque> respuestaAlumno, int tiempo, Date fechaInicio, Date fechaFinal, boolean finalizoCorrectamente, int intentos, int estrella) {
+    public ActividadAlumno(Actividad actividad, Alumno alumno, List<Bloque> respuestaAlumno, Integer tiempo, Date fechaInicio, Date fechaFinal, Boolean finalizoCorrectamente, Integer intentos, Integer estrella) {
         this.actividad = actividad;
         this.alumno = alumno;
         this.respuestaAlumno = respuestaAlumno;
@@ -81,11 +81,11 @@ public class ActividadAlumno {
         this.respuestaAlumno = respuestaAlumno;
     }
 
-    public int getTiempo() {
+    public Integer getTiempo() {
         return tiempo;
     }
 
-    public void setTiempo(int tiempo) {
+    public void setTiempo(Integer tiempo) {
         this.tiempo = tiempo;
     }
 
@@ -105,7 +105,7 @@ public class ActividadAlumno {
         this.fechaFinal = fechaFinal;
     }
 
-    public boolean isFinalizoCorrectamente() {
+    public Boolean isFinalizoCorrectamente() {
         return finalizoCorrectamente;
     }
 
@@ -113,19 +113,19 @@ public class ActividadAlumno {
         this.finalizoCorrectamente = finalizoCorrectamente;
     }
 
-    public int getIntentos() {
+    public Integer getIntentos() {
         return intentos;
     }
 
-    public void setIntentos(int intentos) {
+    public void setIntentos(Integer intentos) {
         this.intentos = intentos;
     }
 
-    public int getEstrella() {
+    public Integer getEstrella() {
         return estrella;
     }
 
-    public void setEstrella(int estrella) {
+    public void setEstrella(Integer estrella) {
         this.estrella = estrella;
     }
 

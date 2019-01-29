@@ -28,15 +28,6 @@ public class Memorama extends Plantilla {
         this.bloques2 = bloques2;
     }
     
-    @Override
-    public List<Bloque> clonarLista(){
-        List<Bloque> listaClonada = new ArrayList<>();
-        
-        for(Bloque b : super.solucion){
-            listaClonada.add(b);
-        }
-        return listaClonada;
-    }
     
     /**
      * Crea una lista desordenada de bloques and y la devuelve
@@ -46,9 +37,11 @@ public class Memorama extends Plantilla {
     public List<Bloque> desordenar(){
         
         // Clonacion y creacion de las listas a usar        
-        List<Bloque> bloques1Clonada = this.bloques1;
-        List<Bloque> bloques2Clonada = this.bloques2;
+        List<Bloque> bloques1Clonada = this.clonarLista(this.bloques1);
+        List<Bloque> bloques2Clonada = this.clonarLista(this.bloques2);
         List<Bloque> bloquesAnd = new ArrayList<>();
+        
+        
         
         // Creacion de las variables auxiliares
         BloqueAnd b;

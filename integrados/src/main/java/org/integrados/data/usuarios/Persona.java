@@ -3,11 +3,11 @@ package org.integrados.data.usuarios;
 public abstract class Persona {
 
     protected Integer id;
-    protected int dni;
+    protected Integer dni;
     protected String nombre;
     protected String apellido;
     protected Domicilio domicilio;
-    protected int telefono;
+    protected Integer telefono;
     protected String mail;
     protected String usuario;
     protected String clave;
@@ -16,22 +16,22 @@ public abstract class Persona {
         this.id = null;
     }
 
-    public Persona(int dni, String nombre, String apellido) {
+    public Persona(Integer dni, String nombre, String apellido) {
         this.id = null;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
     }
-
+    
     public Integer getId() {
         return id;
     }
 
-    public int getDni() {
+    public Integer getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(Integer dni) {
         this.dni = dni;
     }
 
@@ -59,11 +59,11 @@ public abstract class Persona {
         this.domicilio = domicilio;
     }
 
-    public int getTelefono() {
+    public Integer getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
 
