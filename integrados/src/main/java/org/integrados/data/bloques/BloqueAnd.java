@@ -12,15 +12,16 @@ package org.integrados.data.bloques;
 public class BloqueAnd extends Bloque {
 
     private Bloque bloque1;
-    private Bloque Bloque2;
-
+    private Bloque bloque2;
+    
     public BloqueAnd() {
         super();
     }
 
-    public BloqueAnd(Bloque bloque1, Bloque Bloque2) {
+    public BloqueAnd(Bloque bloque1, Bloque bloque2) {
+        super();
         this.bloque1 = bloque1;
-        this.Bloque2 = Bloque2;
+        this.bloque2 = bloque2;
     }
 
     public Bloque getBloque1() {
@@ -32,11 +33,11 @@ public class BloqueAnd extends Bloque {
     }
 
     public Bloque getBloque2() {
-        return Bloque2;
+        return bloque2;
     }
 
-    public void setBloque2(Bloque Bloque2) {
-        this.Bloque2 = Bloque2;
+    public void setBloque2(Bloque bloque2) {
+        this.bloque2 = bloque2;
     }
 
     // hay que hacer el metodo
@@ -47,7 +48,7 @@ public class BloqueAnd extends Bloque {
 
     @Override
     public String toString() {
-        return super.toString() + "BloqueAnd{" + "bloque1=" + bloque1 + ", Bloque2=" + Bloque2 + '}';
+        return super.toString() + "BloqueAnd{" + "bloque1=" + bloque1 + ", Bloque2=" + bloque2 + '}';
     }
 
 }
