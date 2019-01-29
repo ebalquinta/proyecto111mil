@@ -41,7 +41,7 @@ public class Ordenamiento extends Plantilla {
     }
 
     @Override
-    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
+    public Boolean verificarResultado(List<Bloque> respuestaAlumno) {
        
         for (int i = 0; i < respuestaAlumno.size(); i++){
             //desarrollar metodo equals dentro de cada tipo de bloque para que compare por id
@@ -53,7 +53,7 @@ public class Ordenamiento extends Plantilla {
     }
 
     @Override
-    public boolean validarPlantilla() {
+    public Boolean validarPlantilla() {
        if (super.solucion.size() < 1){
            return false;
        }
