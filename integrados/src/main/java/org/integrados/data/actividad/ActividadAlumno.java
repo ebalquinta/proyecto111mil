@@ -33,10 +33,10 @@ public class ActividadAlumno {
     public ActividadAlumno(Actividad actividad, Alumno alumno, List<Bloque> respuestaAlumno, Integer tiempo, Date fechaInicio, Date fechaFinal, Boolean finalizoCorrectamente, Integer intentos, Integer estrella) {
         this.actividad = actividad;
         this.alumno = alumno;
-        this.respuestaAlumno = respuestaAlumno;
+        this.respuestaAlumno = respuestaAlumno; // respuesta alumno en el constructor??
         this.tiempo = tiempo;
-        this.fechaInicio = fechaInicio;
-        this.fechaFinal = fechaFinal;
+        this.fechaInicio = fechaInicio; //fecha inicio en el constructor??
+        this.fechaFinal = fechaFinal;  // fecha final en el constructor??
         this.finalizoCorrectamente = finalizoCorrectamente;
         this.intentos = intentos;
         this.estrella = estrella;
@@ -45,7 +45,7 @@ public class ActividadAlumno {
     /**
      * devuelve los minutos jugados en una hora
      */
-    public double calcularMinutosJugados(){
+    public Double calcularMinutosJugados(){
         if(this.fechaInicio.getMinutes()<this.fechaFinal.getMinutes()){
             return  (this.fechaFinal.getMinutes() - this.fechaInicio.getMinutes());
         }else{
@@ -144,8 +144,6 @@ public class ActividadAlumno {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    
-    
     
     @Override
     public String toString() {
