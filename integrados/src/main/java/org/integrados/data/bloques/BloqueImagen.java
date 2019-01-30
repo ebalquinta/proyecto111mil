@@ -18,6 +18,7 @@ public class BloqueImagen extends Bloque {
     }
 
     public BloqueImagen(String imagen) {
+        this();
         this.imagen = imagen;
     }
 
@@ -37,7 +38,7 @@ public class BloqueImagen extends Bloque {
     
     @Override
     public String toString() {
-        return super.toString() + "BloqueImagen{" + "imagen=" + imagen + '}';
+        return super.toString()+"\n"+ "BloqueImagen{" + "imagen=" + imagen + '}';
     }
 
 }

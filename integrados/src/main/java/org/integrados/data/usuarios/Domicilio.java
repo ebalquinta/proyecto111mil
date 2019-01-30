@@ -28,8 +28,7 @@ public class Domicilio {
     }
 
     public Domicilio(String calle, Integer numero, String piso, String departamento) {
-        this.calle = calle;
-        this.numero = numero;
+        this(calle, numero);
         this.piso = piso;
         this.departamento = departamento;
     }

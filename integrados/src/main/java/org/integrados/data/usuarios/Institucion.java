@@ -27,9 +27,7 @@ public class Institucion {
     }
 
     public Institucion(String nombreInstitucion, Docente administrador) {
-        this.alumnos = new ArrayList<>();
-        this.docentes = new ArrayList<>();
-        this.id = null;
+        this();
         this.nombreInstitucion = nombreInstitucion;
         this.administrador = administrador;
     }

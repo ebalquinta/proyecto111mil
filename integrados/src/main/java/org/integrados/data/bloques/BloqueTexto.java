@@ -18,6 +18,7 @@ public class BloqueTexto extends Bloque {
     }
     
     public BloqueTexto(String texto) {
+        this();
         this.texto = texto;
     }
 
@@ -37,7 +38,7 @@ public class BloqueTexto extends Bloque {
     
     @Override
     public String toString() {
-        return super.toString() + "BloqueTexto{" + "texto=" + texto + '}';
+        return super.toString()+"\n" + "BloqueTexto{" + "texto=" + texto + '}';
     }
 
 }

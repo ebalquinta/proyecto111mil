@@ -16,10 +16,12 @@ public class BloqueAnd extends Bloque {
     
     public BloqueAnd() {
         super();
+        this.bloque1= null;
+        this.bloque2= null;
     }
 
     public BloqueAnd(Bloque bloque1, Bloque bloque2) {
-        super();
+        this();
         this.bloque1 = bloque1;
         this.bloque2 = bloque2;
     }
@@ -40,15 +42,16 @@ public class BloqueAnd extends Bloque {
         this.bloque2 = bloque2;
     }
 
-    // hay que hacer el metodo
+    //falta desarrollar
     @Override
     public boolean equals(Object obj) {
+        BloqueAnd bloqueArg = (BloqueAnd) obj;
         return true;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "BloqueAnd{" + "bloque1=" + bloque1 + ", Bloque2=" + bloque2 + '}';
+        return super.toString() +"\n"+ "BloqueAnd{" + "bloque1=" + bloque1 + ", Bloque2=" + bloque2 + '}';
     }
 
 }
