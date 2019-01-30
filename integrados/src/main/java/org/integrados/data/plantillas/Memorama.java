@@ -20,6 +20,8 @@ public class Memorama extends Plantilla {
 
     public Memorama(){
         super();
+        this.bloques1 = new ArrayList<>();
+        this.bloques1 = new ArrayList<>();
     }
     
     public Memorama(String enunciado, List<Bloque> solucion, List<Bloque> bloques1, List<Bloque> bloques2){
@@ -28,15 +30,6 @@ public class Memorama extends Plantilla {
         this.bloques2 = bloques2;
     }
     
-    @Override
-    public List<Bloque> clonarLista(){
-        List<Bloque> listaClonada = new ArrayList<>();
-        
-        for(Bloque b : super.solucion){
-            listaClonada.add(b);
-        }
-        return listaClonada;
-    }
     
     /**
      * Crea una lista desordenada de bloques and y la devuelve
@@ -46,8 +39,8 @@ public class Memorama extends Plantilla {
     public List<Bloque> desordenar(){
         
         // Clonacion y creacion de las listas a usar        
-        List<Bloque> bloques1Clonada = this.bloques1;
-        List<Bloque> bloques2Clonada = this.bloques2;
+        List<Bloque> bloques1Clonada = this.clonarLista(this.bloques1);
+        List<Bloque> bloques2Clonada = this.clonarLista(this.bloques2);
         List<Bloque> bloquesAnd = new ArrayList<>();
         
         // Creacion de las variables auxiliares
@@ -72,15 +65,14 @@ public class Memorama extends Plantilla {
         
         return bloquesAnd;
     }
-    
-    
+        
     /**
      * Verifica el resultado teniendo en cuenta la cantidad de pares realizados correctamente
      * @param respuestaAlumno del tipo Bloque que luego es casteada para poder trabajar con los metodos de la clase BloqueAnd
      * @return boolean si la cantidad de pares correctos enviados por el alumno es igual a la cantidad de pares correctos en el sistema
      */
     @Override
-    public boolean verificarResultado(List<Bloque> respuestaAlumno){
+    public Boolean verificarResultado(List<Bloque> respuestaAlumno){
         
         BloqueAnd rtaAlumno;
         BloqueAnd solucion;
@@ -100,13 +92,8 @@ public class Memorama extends Plantilla {
     }
     
     @Override
-    public boolean validarPlantilla(){
+    public Boolean validarPlantilla(){
         return (this.solucion.size()>1);
-    }
-    
-    @Override 
-    public String toString(){
-        return "Bloques1 = " + this.bloques1 + ", Bloques2 = " + this.bloques2 + super.toString();
     }
 
     public List<Bloque> getBloques1() {
@@ -125,6 +112,9 @@ public class Memorama extends Plantilla {
         this.bloques2 = bloques2;
     }
     
-    
+    @Override 
+    public String toString(){
+        return super.toString()+"\n"+"Bloques1 = " + this.bloques1 + ", Bloques2 = " + this.bloques2 + super.toString();
+    }
     
 }

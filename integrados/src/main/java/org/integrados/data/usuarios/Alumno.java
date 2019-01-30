@@ -17,20 +17,22 @@ import org.integrados.data.enums.Nivel;
  */
 public class Alumno extends Persona {
 
-    private List<ActividadAlumno> actividades = new ArrayList<>();
+    private List<ActividadAlumno> actividades;
     private Date fechaNacimiento;
-    private int edadMadurativa;
-    private int grado;
+    private Integer edadMadurativa;
+    private Integer grado;
     private String division;
     private Nivel nivel;
     private String observaciones;
 
     public Alumno() {
         super();
+        this.actividades = new ArrayList<>();
     }
 
-    public Alumno(int dni, String nombre, String apellido, int grado, String division, Nivel nivel) {
+    public Alumno(Integer dni, String nombre, String apellido, Integer grado, String division, Nivel nivel) {
         super(dni, nombre, apellido);
+        this.actividades = new ArrayList<>();
         this.grado = grado;
         this.division = division;
         this.nivel = nivel;
@@ -52,19 +54,19 @@ public class Alumno extends Persona {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getEdadMadurativa() {
+    public Integer getEdadMadurativa() {
         return edadMadurativa;
     }
 
-    public void setEdadMadurativa(int edadMadurativa) {
+    public void setEdadMadurativa(Integer edadMadurativa) {
         this.edadMadurativa = edadMadurativa;
     }
 
-    public int getGrado() {
+    public Integer getGrado() {
         return grado;
     }
 
-    public void setGrado(int grado) {
+    public void setGrado(Integer grado) {
         this.grado = grado;
     }
 

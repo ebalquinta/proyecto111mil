@@ -6,8 +6,7 @@ import java.util.List;
 import org.integrados.data.bloques.*;
 
 public class Ordenamiento extends Plantilla {
-    
-    
+        
     public Ordenamiento(){
         super();
     }
@@ -15,21 +14,11 @@ public class Ordenamiento extends Plantilla {
     public Ordenamiento(String enunciado, List<Bloque> solucion) {
         super(enunciado, solucion);
     }
-
-    @Override
-    public List<Bloque> clonarLista() {
-        List<Bloque> listaClonada = new ArrayList<>();
-        
-        for(Bloque b : super.solucion){
-            listaClonada.add(b);
-        }
-        return listaClonada;
-    }
     
     @Override
     public List<Bloque> desordenar() {
-       int cambios = 0;
-        List<Bloque> listaDesordenada = this.clonarLista();
+        int cambios = 0;
+        List<Bloque> listaDesordenada = this.clonarLista(super.solucion);
        
         while (cambios < listaDesordenada.size() ){
             for (int i = 0; i < listaDesordenada.size(); i++) {
@@ -51,7 +40,7 @@ public class Ordenamiento extends Plantilla {
     }
 
     @Override
-    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
+    public Boolean verificarResultado(List<Bloque> respuestaAlumno) {
        
         for (int i = 0; i < respuestaAlumno.size(); i++){
             //desarrollar metodo equals dentro de cada tipo de bloque para que compare por id
@@ -63,19 +52,15 @@ public class Ordenamiento extends Plantilla {
     }
 
     @Override
-    public boolean validarPlantilla() {
+    public Boolean validarPlantilla() {
        if (super.solucion.size() < 1){
            return false;
        }
         return true;
     }
-    
    
     @Override
     public String toString() {
         return super.toString();
     }
-
-    
-
 }

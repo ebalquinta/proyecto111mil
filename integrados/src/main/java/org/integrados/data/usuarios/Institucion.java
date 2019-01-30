@@ -14,16 +14,20 @@ import java.util.List;
  */
 public class Institucion {
 
-    private Integer id = null;
+    private Integer id;
     private String nombreInstitucion;
-    private List<Docente> docentes = new ArrayList<>();
-    private List<Alumno> alumnos = new ArrayList<>();
-    private Persona administrador;
+    private List<Docente> docentes;
+    private List<Alumno> alumnos;
+    private Docente administrador;
 
     public Institucion() {
+        this.alumnos = new ArrayList<>();
+        this.docentes = new ArrayList<>();
+        this.id = null;
     }
 
-    public Institucion(String nombreInstitucion, Persona administrador) {
+    public Institucion(String nombreInstitucion, Docente administrador) {
+        this();
         this.nombreInstitucion = nombreInstitucion;
         this.administrador = administrador;
     }
@@ -31,11 +35,7 @@ public class Institucion {
     public Integer getId() {
         return id;
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    
     public String getNombreInstitucion() {
         return nombreInstitucion;
     }
@@ -60,11 +60,11 @@ public class Institucion {
         this.alumnos = alumnos;
     }
 
-    public Persona getAdministrador() {
+    public Docente getAdministrador() {
         return administrador;
     }
 
-    public void setAdministrador(Persona administrador) {
+    public void setAdministrador(Docente administrador) {
         this.administrador = administrador;
     }
 

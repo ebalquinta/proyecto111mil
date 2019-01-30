@@ -20,14 +20,14 @@ public class Actividad {
     private Docente docente;
     private Materia materia;
     private String tema;
-    private int grado;
+    private Integer grado;
     private Nivel nivel;
     private Dificultad dificultad;
-    private int maxIntentos;
+    private Integer maxIntentos;
     
     public Actividad(){    }
 
-    public Actividad( Plantilla plantilla, Docente docente, Materia materia, String tema, int grado, Nivel nivel, Dificultad dificultad, int maxIntentos) {
+    public Actividad( Plantilla plantilla, Docente docente, Materia materia, String tema, Integer grado, Nivel nivel, Dificultad dificultad, Integer maxIntentos) {
         this.plantilla = plantilla;
         this.docente = docente;
         this.materia = materia;
@@ -76,11 +76,11 @@ public class Actividad {
         this.tema = tema;
     }
 
-    public int getGrado() {
+    public Integer getGrado() {
         return grado;
     }
 
-    public void setGrado(int grado) {
+    public void setGrado(Integer grado) {
         this.grado = grado;
     }
 
@@ -100,11 +100,11 @@ public class Actividad {
         this.dificultad = dificultad;
     }
 
-    public int getMaxIntentos() {
+    public Integer getMaxIntentos() {
         return maxIntentos;
     }
 
-    public void setMaxIntentos(int maxIntentos) {
+    public void setMaxIntentos(Integer maxIntentos) {
         this.maxIntentos = maxIntentos;
     }
 
