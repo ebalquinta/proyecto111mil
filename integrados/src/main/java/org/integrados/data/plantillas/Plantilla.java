@@ -72,6 +72,9 @@ public abstract class Plantilla {
         this.sonido = sonido;
     }
     
+    /**
+     *     clona la solucion
+     */
     public List<Bloque> clonarLista(List<Bloque> listaClonar) {
         List<Bloque> listaClonada = new ArrayList<>();
         

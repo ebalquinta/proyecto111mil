@@ -8,7 +8,7 @@ package org.integrados.data.usuarios;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.integrados.data.actividad.ActividadAlumno;
+import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.enums.Nivel;
 
 /**
@@ -17,7 +17,7 @@ import org.integrados.data.enums.Nivel;
  */
 public class Alumno extends Persona {
 
-    private List<ActividadAlumno> actividades;
+    private List<RegistroActividad> actividades;
     private Date fechaNacimiento;
     private Integer edadMadurativa;
     private Integer grado;
@@ -38,11 +38,11 @@ public class Alumno extends Persona {
         this.nivel = nivel;
     }
 
-    public List<ActividadAlumno> getActividades() {
+    public List<RegistroActividad> getActividades() {
         return actividades;
     }
 
-    public void setActividades(List<ActividadAlumno> actividades) {
+    public void setActividades(List<RegistroActividad> actividades) {
         this.actividades = actividades;
     }
 

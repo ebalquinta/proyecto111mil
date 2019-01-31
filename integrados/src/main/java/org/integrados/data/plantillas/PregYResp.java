@@ -15,6 +15,7 @@ import org.integrados.data.bloques.*;
  */
 public class PregYResp extends Plantilla {
 
+    // opciones es una lista de la opcion correcta mas las incorrectas
     private List<Bloque> opciones;
     
     public PregYResp(){
