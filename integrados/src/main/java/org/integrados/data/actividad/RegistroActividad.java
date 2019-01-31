@@ -8,7 +8,6 @@ package org.integrados.data.actividad;
 import java.util.List;
 import org.integrados.data.bloques.Bloque;
 import org.integrados.data.usuarios.Alumno;
-import java.util.Date;
 import org.integrados.data.usuarios.Docente;
 
 /**
@@ -124,19 +123,6 @@ public class RegistroActividad {
         this.observaciones = observaciones;
     }
 
-    /**
-     * devuelve los minutos jugados en una hora
-     *
-     * @return
-     */
-    /*public double calcularMinutosJugados() {
-        if (this.fechaInicio.getMinutes() < this.fechaFinal.getMinutes()) {
-            return (this.fechaFinal.getMinutes() - this.fechaInicio.getMinutes());
-        } else {
-            return (60 - this.fechaInicio.getMinutes()) + this.fechaFinal.getMinutes();
-        }
-    }
-/*/
     @Override
     public String toString() {
         return "RegistroActividad{" + "id=" + id + ", actividad=" + actividad + ", alumno=" + alumno + ", docente=" + docente + ", respuestaAlumno=" + respuestaAlumno + ", tiempo=" + tiempo + ", finalizoCorrectamente" + finalizoCorrectamente + ", intentos=" + intentos + ", estrella=" + estrella + ", corazon=" + corazon + ", observaciones=" + observaciones + '}';

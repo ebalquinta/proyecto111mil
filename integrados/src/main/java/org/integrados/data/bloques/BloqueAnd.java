@@ -14,6 +14,8 @@ public class BloqueAnd extends Bloque {
     private Bloque bloque1;
     private Bloque bloque2;
     
+    
+    //ver si es necesario inicializar en null
     public BloqueAnd() {
         super();
         this.bloque1= null;
@@ -22,8 +24,6 @@ public class BloqueAnd extends Bloque {
 
     public BloqueAnd(Bloque bloque1, Bloque bloque2) {
         this();
-        this.bloque1 = bloque1;
-        this.bloque2 = bloque2;
     }
 
     public Bloque getBloque1() {

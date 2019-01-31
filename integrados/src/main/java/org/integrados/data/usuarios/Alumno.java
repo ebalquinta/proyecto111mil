@@ -5,11 +5,15 @@
  */
 package org.integrados.data.usuarios;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.enums.Nivel;
+import static org.integrados.data.util.Util.dateToString;
 
 /**
  *
@@ -95,8 +99,15 @@ public class Alumno extends Persona {
     }
 
     public int calcularEdad() {
-        int edad = 0;
-        return edad;
+
+        String fechaString = dateToString(this.fechaNacimiento);
+
+        LocalDate hoy = LocalDate.now();
+        DateTimeFormatter formatoEdad = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fecha = LocalDate.parse(fechaString, formatoEdad);
+        Period diff = Period.between(fecha, hoy);
+        
+        return diff.getYears();
     }
 
     @Override
