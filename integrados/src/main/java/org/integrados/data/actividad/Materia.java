@@ -18,7 +18,7 @@ public class Materia {
     }
       
     public Materia(String materia){
-        this.id = null;
+        this();
         this.materia = materia;
     }
 

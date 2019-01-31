@@ -6,8 +6,7 @@ import java.util.List;
 import org.integrados.data.bloques.*;
 
 public class Ordenamiento extends Plantilla {
-    
-    
+        
     public Ordenamiento(){
         super();
     }
@@ -18,7 +17,7 @@ public class Ordenamiento extends Plantilla {
     
     @Override
     public List<Bloque> desordenar() {
-       int cambios = 0;
+        int cambios = 0;
         List<Bloque> listaDesordenada = this.clonarLista(super.solucion);
        
         while (cambios < listaDesordenada.size() ){
@@ -59,13 +58,9 @@ public class Ordenamiento extends Plantilla {
        }
         return true;
     }
-    
    
     @Override
     public String toString() {
         return super.toString();
     }
-
-    
-
 }

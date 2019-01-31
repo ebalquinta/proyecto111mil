@@ -15,17 +15,22 @@ import org.integrados.data.bloques.*;
  */
 public abstract class Plantilla {
 
-    protected Integer id = null;
+    protected Integer id;
     protected String enunciado;
     protected List<Bloque> solucion;
-    protected String imagen = null;
-    protected String sonido = null;
+    protected String imagen;
+    protected String sonido;
 
     public Plantilla() {
+        this.sonido = null;
+        this.imagen = null;
+        this.id = null;
         this.solucion = new ArrayList<>();
     }
 
     public Plantilla(String enunciado, List<Bloque> solucion) {
+        this.sonido = null;
+        this.imagen = null;
         this.solucion = new ArrayList<>();
         this.enunciado = enunciado;
         this.solucion = solucion;
@@ -66,7 +71,10 @@ public abstract class Plantilla {
     public void setSonido(String sonido) {
         this.sonido = sonido;
     }
-
+    
+    /**
+     *     clona la solucion
+     */
     public List<Bloque> clonarLista(List<Bloque> listaClonar) {
         List<Bloque> listaClonada = new ArrayList<>();
         

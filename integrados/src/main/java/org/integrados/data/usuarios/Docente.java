@@ -45,6 +45,9 @@ public class Docente extends Persona {
     public void setActividades(List<Actividad> actividades) {
         this.actividades = actividades;
     }
+    
+    
+    
 
     @Override
     public String toString() {

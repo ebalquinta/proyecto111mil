@@ -15,9 +15,9 @@ import org.integrados.data.usuarios.*;
  */
 public class Actividad {
 
-    private Integer id = null;
+    private Integer id;
     private Plantilla plantilla;
-    private Docente docente;
+    private Docente docenteCreador;
     private Materia materia;
     private String tema;
     private Integer grado;
@@ -25,11 +25,14 @@ public class Actividad {
     private Dificultad dificultad;
     private Integer maxIntentos;
     
-    public Actividad(){    }
+    public Actividad(){ 
+        this.id = null;
+    }
 
-    public Actividad( Plantilla plantilla, Docente docente, Materia materia, String tema, Integer grado, Nivel nivel, Dificultad dificultad, Integer maxIntentos) {
+    public Actividad( Plantilla plantilla, Docente docenteCreador, Materia materia, String tema, Integer grado, Nivel nivel, Dificultad dificultad, Integer maxIntentos) {
+        this();
         this.plantilla = plantilla;
-        this.docente = docente;
+        this.docenteCreador = docenteCreador;
         this.materia = materia;
         this.tema = tema;
         this.grado = grado;
@@ -40,9 +43,6 @@ public class Actividad {
     //este metodo es para desarrollar a futuro 
     public void agregarMateria(){}
     
-    public Integer getId(){
-        return this.id;
-    }
     
     public Plantilla getPlantilla() {
         return plantilla;
@@ -52,12 +52,12 @@ public class Actividad {
         this.plantilla = plantilla;
     }
 
-    public Docente getDocente() {
-        return docente;
+    public Docente getDocenteCreador() {
+        return docenteCreador;
     }
 
-    public void setDocente(Docente docente) {
-        this.docente = docente;
+    public void setDocenteCreador(Docente docenteCreador) {
+        this.docenteCreador = docenteCreador;
     }
 
     public Materia getMateria() {
@@ -110,7 +110,7 @@ public class Actividad {
 
     @Override
     public String toString() {
-        return "Actividad{" + "idActividad=" + id + ", plantilla=" + plantilla + ", docente=" + docente + ", materia=" + materia + ", tema=" + tema + ", grado=" + grado + ", nivel=" + nivel + ", dificultad=" + dificultad + ", maxIntentos=" + maxIntentos + '}';
+        return "Actividad{" + "idActividad=" + id + ", plantilla=" + plantilla + ", docente=" + docenteCreador + ", materia=" + materia + ", tema=" + tema + ", grado=" + grado + ", nivel=" + nivel + ", dificultad=" + dificultad + ", maxIntentos=" + maxIntentos + '}';
     }
 
 }

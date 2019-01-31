@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.integrados.exceptions.IntegradosException;
+import org.integrados.view.Dialogo;
 
 /**
  *
@@ -20,18 +22,21 @@ public class HibernateUtiles {
     private HibernateUtiles() {
     }
 
-    public static void inicializar() {
+    public static void inicializar() throws IntegradosException {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 
         try {
             sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Error al crear la comunicacion con la base de datos");
+            throw new IntegradosException("Error de inicialización de Hibernate");
         }
     }
 
-    public static Session getSession() {
+    public static Session getSession() throws IntegradosException {
+        if (sessionFactory == null) 
+            throw new IntegradosException("No se ha creado un SessioFactory");
+        
         return sessionFactory.openSession();
     }
 

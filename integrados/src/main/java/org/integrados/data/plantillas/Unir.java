@@ -20,6 +20,8 @@ public class Unir extends Plantilla {
 
     public Unir() {
         super();
+        this.bloquesDer= new ArrayList<>();
+        this.bloquesIzq= new ArrayList<>();
     }
 
     public Unir(String enunciado, List<Bloque> solucion, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
@@ -92,7 +94,7 @@ public class Unir extends Plantilla {
      * @return boolean si la cantidad de pares correctos enviados por el alumno es igual a la cantidad de pares correctos en el sistema
      */
     @Override
-    public boolean verificarResultado(List<Bloque> respuestaAlumno) {
+    public Boolean verificarResultado(List<Bloque> respuestaAlumno) {
 
         BloqueAnd rtaAlumno;
         BloqueAnd solucion;
@@ -101,15 +103,15 @@ public class Unir extends Plantilla {
             solucion = (BloqueAnd) s;
             for (Bloque b : respuestaAlumno) {
                 rtaAlumno = (BloqueAnd) b;
-                if ((solucion.getBloque1() == rtaAlumno.getBloque1()) && (solucion.getBloque2() == rtaAlumno.getBloque2())) {
+                if ((solucion.getBloque1() == rtaAlumno.getBloque1()) && (solucion.getBloque2() == rtaAlumno.getBloque2()))
                     par++;
-                }
             }
         }
         return (par == this.solucion.size());
     }
+    
     @Override
-    public boolean validarPlantilla(){
+    public Boolean validarPlantilla(){
         return this.solucion.size() > 1;
     }
     
@@ -132,7 +134,7 @@ public class Unir extends Plantilla {
     
     @Override
     public String toString() {
-        return "Unir{" + "bloquesDer=" + bloquesDer + ", bloquesIzq=" + bloquesIzq + '}';
+        return super.toString()+"\n"+"Unir{" + "bloquesDer=" + bloquesDer + ", bloquesIzq=" + bloquesIzq + '}';
     }
 
 }
