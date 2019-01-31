@@ -122,6 +122,43 @@ public class RegistroActividad {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
+    
+    /**
+     * Este metodo calcula el porcentaje obtenido una ves realizada la actividad exitosamente.
+     * Teniendo en cuenta la cantidad de intentos en que se realizó la actividad.
+     * 
+     * @return  double
+     */
+    public double calcularPuntaje() {
+        double porcentaje;
+        
+        //compara la cantidad de intentos realizados con el maximo cargado por el docente.
+        if (this.intentos == 1) {
+            porcentaje = 100;
+
+            return porcentaje;
+        } else {
+            this.intentos -= 1;
+            double totalPorc = 100 / this.actividad.getMaxIntentos();
+            porcentaje = 100 - (totalPorc * this.intentos);
+
+            return porcentaje;
+        }
+    }
+    /**
+     * En base al porcentaje de aciertos calcula la cantidad de estrellas que se otorgaran por la actividad realizada.
+     * @return int
+     */
+     public int calcularEstrellas() {
+        double porcentaje = this.calcularPuntaje();
+
+        if (porcentaje == 100) {
+            return 3;
+        } else if ((porcentaje <= 99) && (porcentaje >= 33)) {
+            return 2;
+        }
+        return 1;
+    }
 
     @Override
     public String toString() {
