@@ -15,16 +15,23 @@ import org.integrados.data.bloques.*;
  */
 public abstract class Plantilla {
 
-    protected Integer id = null;
+    protected Integer id;
     protected String enunciado;
-    protected List<Bloque> solucion = new ArrayList<>();
-    protected String imagen = null;
-    protected String sonido = null;
+    protected List<Bloque> solucion;
+    protected String imagen;
+    protected String sonido;
 
     public Plantilla() {
+        this.sonido = null;
+        this.imagen = null;
+        this.id = null;
+        this.solucion = new ArrayList<>();
     }
 
     public Plantilla(String enunciado, List<Bloque> solucion) {
+        this.sonido = null;
+        this.imagen = null;
+        this.solucion = new ArrayList<>();
         this.enunciado = enunciado;
         this.solucion = solucion;
     }
@@ -33,24 +40,20 @@ public abstract class Plantilla {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public List<Bloque> getSolucion() {
+        return solucion;
     }
 
+    public void setSolucion(List<Bloque> solucion) {
+        this.solucion = solucion;
+    }
+ 
     public String getEnunciado() {
         return enunciado;
     }
 
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
-    }
-
-    public void setSolucion(List<Bloque> solucion) {
-        this.solucion = solucion;
-    }
-
-    public List<Bloque> getSolucion() {
-        return solucion;
     }
 
     public String getImagen() {
@@ -68,7 +71,10 @@ public abstract class Plantilla {
     public void setSonido(String sonido) {
         this.sonido = sonido;
     }
-
+    
+    /**
+     *     clona la solucion
+     */
     public List<Bloque> clonarLista(List<Bloque> listaClonar) {
         List<Bloque> listaClonada = new ArrayList<>();
         
@@ -80,9 +86,9 @@ public abstract class Plantilla {
     
     public abstract List<Bloque> desordenar();
 
-    public abstract boolean verificarResultado(List<Bloque> respuestaAlumno);
+    public abstract Boolean verificarResultado(List<Bloque> respuestaAlumno);
 
-    public abstract boolean validarPlantilla();
+    public abstract Boolean validarPlantilla();
 
     @Override
     public String toString() {

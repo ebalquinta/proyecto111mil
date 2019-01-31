@@ -9,19 +9,16 @@ package org.integrados.data.bloques;
  *
  * @author Yani
  */
-public abstract class Bloque {
+public class Bloque {
 
-    protected Integer id = null;
+    protected Integer id;
 
-    public Bloque() {
+    protected Bloque() {
+        this.id= null;
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     @Override

@@ -15,10 +15,12 @@ import org.integrados.data.bloques.*;
  */
 public class PregYResp extends Plantilla {
 
+    // opciones es una lista de la opcion correcta mas las incorrectas
     private List<Bloque> opciones;
     
     public PregYResp(){
-        
+        super();
+        this.opciones = new ArrayList<>();
     }
 
     public PregYResp(List<Bloque> opciones, String enunciado, List<Bloque> solucion) {
@@ -57,7 +59,7 @@ public class PregYResp extends Plantilla {
      * @return boolean 
      */
     @Override
-    public boolean verificarResultado(List<Bloque> respuestaAlumno){
+    public Boolean verificarResultado(List<Bloque> respuestaAlumno){
         int respuestas = 0;
         if(respuestaAlumno.size() == this.solucion.size()){
             for(Bloque solucion:this.solucion){
@@ -73,18 +75,14 @@ public class PregYResp extends Plantilla {
     }
     
     @Override
-    public boolean validarPlantilla(){
+    public Boolean validarPlantilla(){
         return (this.solucion.size() >= 1);
     }
     
     @Override
     public String toString(){
-        return super.toString() + ", opciones = " + this.opciones;
+        return super.toString() +"\n"+ ",opciones = " + this.opciones;
     }
-
-    
-    
-    
-    
+  
 }
 

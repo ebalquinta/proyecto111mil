@@ -18,7 +18,7 @@ public class Institucion {
     private String nombreInstitucion;
     private List<Docente> docentes;
     private List<Alumno> alumnos;
-    private Persona administrador;
+    private Docente administrador;
 
     public Institucion() {
         this.alumnos = new ArrayList<>();
@@ -26,10 +26,8 @@ public class Institucion {
         this.id = null;
     }
 
-    public Institucion(String nombreInstitucion, Persona administrador) {
-        this.alumnos = new ArrayList<>();
-        this.docentes = new ArrayList<>();
-        this.id = null;
+    public Institucion(String nombreInstitucion, Docente administrador) {
+        this();
         this.nombreInstitucion = nombreInstitucion;
         this.administrador = administrador;
     }
@@ -62,11 +60,11 @@ public class Institucion {
         this.alumnos = alumnos;
     }
 
-    public Persona getAdministrador() {
+    public Docente getAdministrador() {
         return administrador;
     }
 
-    public void setAdministrador(Persona administrador) {
+    public void setAdministrador(Docente administrador) {
         this.administrador = administrador;
     }
 
