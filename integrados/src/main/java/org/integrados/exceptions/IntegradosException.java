@@ -10,5 +10,9 @@ package org.integrados.exceptions;
  * @author Yani
  */
 public class IntegradosException extends Exception {
+
+    public IntegradosException(String mensaje) {
+        super(mensaje); 
+    }
     
 }

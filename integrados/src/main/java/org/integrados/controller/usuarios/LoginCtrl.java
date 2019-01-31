@@ -5,53 +5,65 @@
  */
 package org.integrados.controller.usuarios;
 
+import org.hibernate.Session;
+import org.integrados.Aplicacion;
+import org.integrados.bd.HibernateUtiles;
+import org.integrados.data.usuarios.Alumno;
+import org.integrados.data.usuarios.Docente;
+import org.integrados.data.usuarios.Persona;
+import org.integrados.exceptions.IntegradosException;
+import org.integrados.view.LoginDlg;
+
 /**
  *
  * @author Mariela
  */
 public class LoginCtrl {
-    /*
-    +login
-    +validar usuario
-    +finalizar
-    +cancel (cierra pantalla) en login cierra sesion integrados.finalizar
     
-    login ctrl {
-    logionDlg logindlg =null;
-    aplicacion app;
-    LoginCtrl(Aplicacion app){
-    this.app = app;
+    private Aplicacion app;
+    private Persona persona;
+    private LoginDlg loginDlg;
+
+    public LoginCtrl(Aplicacion app) {
+        this.app = app;
+        this.persona = null;
+        this.loginDlg = null;
     }
     
-    +login(){
-    loginDig dlg = new LoginDig(this);
-    dis.mostrar();   //metodo en view loginDlg.
+    public void login() {
+        this.loginDlg = new LoginDlg(this);
+        this.loginDlg.mostrar();
     }
     
-    +validar(String usuario, String clave) throws validacionException{
-    
-    Session session = hibernateUtiles.getSession():
-    session.begintTransaction(); // hecho en clase personaABMCtrl
-    
-    Docente docente = session.get("From docte where usuario = " + usuario + " and clave= " + clave);  //REVISAR EL METODO EN LAS FILMINAS.
-     //SE VERIFICA EN QUE TABLA SE ENCUENTRA EL USUARIO INGRESADO.
-    if(docente !=null){
-    persona = docente;return;
+    public void validar(String usuario, String clave) throws IntegradosException {
+
+        Session session = HibernateUtiles.getSession();
+        
+        session.beginTransaction(); // hecho en clase personaABMCtrl
+
+        Docente docente = (Docente) session.createQuery("from Docente where usuario = " + usuario + " and clave= " + clave, Docente.class);  //REVISAR EL METODO EN LAS FILMINAS.
+        
+         //SE VERIFICA EN QUE TABLA SE ENCUENTRA EL USUARIO INGRESADO.
+        if(docente !=null){
+            this.persona = docente;
+            return;
+        }
+        Alumno alumno = (Alumno) session.createQuery("from Alumno where usuario = " + usuario + " and clave= " + clave, Alumno.class);
+        if(alumno !=null){
+            this.persona = alumno;
+            return;
+        }
+
+        throw new IntegradosException("Usuario y/o Clave incorrectos");
     }
     
-    alumno alumno = ----------
-    if (alumno = null)  //DEVUELVE UNA EXCEPTION.  NO SE ENCUENTRA EL USUARIO EN LA BASE
-    
-    +finalizar(){
-        this.app.setPersonalogueada(persona);
-        this.logindlg.cerrar();
-    this.app.finalizar();
+    public void finalizar() {
+        this.app.setPersonaLogueada(persona);
+        this.loginDlg.ocultar();
     }
     
-    +cancelar(){
-        this.logindlg.cerrar()
-        thiis.app.finalizar();
+    public void cancelar() {
+        this.loginDlg.ocultar();
+        this.app.cerrar();
     }
-    
-    */
-}
+}   
