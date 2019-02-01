@@ -25,7 +25,7 @@ public class BloqueImagen extends Bloque {
     //yani: dado que hay que comparar bloques, usaria este metodo en el padre. en el caso de and que lo sobreEscriba. anotacion en bloque
     @Override
     public boolean equals(Object obj) {
-        return true;
+        return super.equals(obj);
     }
     
     @Override

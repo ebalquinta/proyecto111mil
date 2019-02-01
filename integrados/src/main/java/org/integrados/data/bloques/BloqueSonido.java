@@ -30,10 +30,9 @@ public class BloqueSonido extends Bloque {
         this.sonido = sonido;
     }
 
-    // hay que hacer el metodo
     @Override
     public boolean equals(Object obj) {
-        return true;
+        return super.equals(obj);
     }
     
     @Override
