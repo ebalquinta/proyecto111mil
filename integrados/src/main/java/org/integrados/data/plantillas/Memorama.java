@@ -81,6 +81,7 @@ public class Memorama extends Plantilla {
             solucion = (BloqueAnd) s;
             for(Bloque b: respuestaAlumno){
                 rtaAlumno = (BloqueAnd) b;
+                // tendriamos que usar un equals para esos objetos??
                 if(solucion.getBloque1() == rtaAlumno.getBloque1()){
                     if(solucion.getBloque2() == rtaAlumno.getBloque2()){
                         par++;

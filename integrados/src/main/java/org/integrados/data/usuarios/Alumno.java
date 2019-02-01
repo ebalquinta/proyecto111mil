@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.usuarios;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.enums.Nivel;
+import static org.integrados.data.util.Util.dateToString;
 
-/**
- *
- * @author Yani
- */
+
 public class Alumno extends Persona {
 
     private List<RegistroActividad> actividades;
@@ -95,8 +91,15 @@ public class Alumno extends Persona {
     }
 
     public int calcularEdad() {
-        int edad = 0;
-        return edad;
+
+        String fechaString = dateToString(this.fechaNacimiento);
+
+        LocalDate hoy = LocalDate.now();
+        DateTimeFormatter formatoEdad = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fecha = LocalDate.parse(fechaString, formatoEdad);
+        Period diff = Period.between(fecha, hoy);
+        
+        return diff.getYears();
     }
 
     @Override

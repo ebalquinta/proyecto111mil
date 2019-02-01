@@ -30,10 +30,9 @@ public class BloqueTexto extends Bloque {
         this.texto = texto;
     }
 
-    // hay que hacer el metodo
     @Override
     public boolean equals(Object obj) {
-        return true;
+        return super.equals(obj);
     }
     
     @Override

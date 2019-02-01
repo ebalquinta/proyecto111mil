@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.bloques;
 
-/**
- *
- * @author Yani
- */
+import java.util.Objects;
+
 public class Bloque {
 
     protected Integer id;
@@ -26,4 +19,32 @@ public class Bloque {
         return "Bloque{" + "id=" + id + '}';
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Bloque other = (Bloque) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
+    /**
+     * el metodo equals recibiria dos objetos. dentro del metodo solo se compara si son dos bloques iguales, sin depender del tipo de bloque
+     
+     public boolean equals(Bloque solucion, Bloque respuestaAlumno){
+     *  
+     * return (respuestaAlumno.equals(solucion);
+     *      
+     }
+     */
+    
 }

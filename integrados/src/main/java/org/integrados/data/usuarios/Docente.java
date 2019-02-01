@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.usuarios;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.integrados.data.actividad.Actividad;
 
-/**
- *
- * @author Yani
- */
 public class Docente extends Persona {
 
     private List<Alumno> alumnos;
@@ -46,12 +37,8 @@ public class Docente extends Persona {
         this.actividades = actividades;
     }
     
-    
-    
-
     @Override
     public String toString() {
-        return super.toString() + "Docente{" + "alumnos=" + alumnos + ", actividades=" + actividades + '}';
+        return super.toString() +"\n"+ "Docente{" + "alumnos=" + alumnos + ", actividades=" + actividades + '}';
     }
-
 }

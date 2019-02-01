@@ -73,9 +73,9 @@ public abstract class Plantilla {
     }
     
     /**
-     *     clona la solucion
+     *     clona una lista 
      */
-    public List<Bloque> clonarLista(List<Bloque> listaClonar) {
+    public List<Bloque> clonarLista(List<Bloque>listaClonar) {
         List<Bloque> listaClonada = new ArrayList<>();
         
         for(Bloque b : listaClonar){

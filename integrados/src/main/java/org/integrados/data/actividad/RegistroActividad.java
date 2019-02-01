@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.actividad;
 
 import java.util.List;
 import org.integrados.data.bloques.Bloque;
 import org.integrados.data.usuarios.Alumno;
-import java.util.Date;
 import org.integrados.data.usuarios.Docente;
 
 /**
@@ -123,20 +117,44 @@ public class RegistroActividad {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-
+    
     /**
-     * devuelve los minutos jugados en una hora
-     *
-     * @return
+     * Este metodo calcula el porcentaje obtenido una ves realizada la actividad exitosamente.
+     * Teniendo en cuenta la cantidad de intentos en que se realizó la actividad.
+     * 
+     * @return  double
      */
-    /*public double calcularMinutosJugados() {
-        if (this.fechaInicio.getMinutes() < this.fechaFinal.getMinutes()) {
-            return (this.fechaFinal.getMinutes() - this.fechaInicio.getMinutes());
+    public double calcularPuntaje() {
+        double porcentaje;
+        
+        //compara la cantidad de intentos realizados con el maximo cargado por el docente.
+        if (this.intentos == 1) {
+            porcentaje = 100;
+
+            return porcentaje;
         } else {
-            return (60 - this.fechaInicio.getMinutes()) + this.fechaFinal.getMinutes();
+            this.intentos -= 1;
+            double totalPorc = 100 / this.actividad.getMaxIntentos();
+            porcentaje = 100 - (totalPorc * this.intentos);
+
+            return porcentaje;
         }
     }
-/*/
+    /**
+     * En base al porcentaje de aciertos calcula la cantidad de estrellas que se otorgaran por la actividad realizada.
+     * @return int
+     */
+     public int calcularEstrellas() {
+        double porcentaje = this.calcularPuntaje();
+
+        if (porcentaje == 100) {
+            return 3;
+        } else if ((porcentaje <= 99) && (porcentaje >= 33)) {
+            return 2;
+        }
+        return 1;
+    }
+
     @Override
     public String toString() {
         return "RegistroActividad{" + "id=" + id + ", actividad=" + actividad + ", alumno=" + alumno + ", docente=" + docente + ", respuestaAlumno=" + respuestaAlumno + ", tiempo=" + tiempo + ", finalizoCorrectamente" + finalizoCorrectamente + ", intentos=" + intentos + ", estrella=" + estrella + ", corazon=" + corazon + ", observaciones=" + observaciones + '}';

@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.plantillas;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.integrados.data.bloques.*;
 
-/**
- *
- * @author Yani
- */
 public class PregYResp extends Plantilla {
 
-    // opciones es una lista de la opcion correcta mas las incorrectas
+    // opciones es una lista: opcion correcta mas las incorrectas
     private List<Bloque> opciones;
     
     public PregYResp(){
@@ -28,18 +19,27 @@ public class PregYResp extends Plantilla {
         this.opciones = opciones;
     }
     
+    /**
+     * Clona la lista opciones, para luego desordenar los objetos contenidos. Mediante un indice aleatorio.
+     * @return List<Bloque>
+     */
     @Override
     public List<Bloque> desordenar(){
         int cambios = 0;
         List<Bloque> listaDesordenada = this.clonarLista(this.opciones);
        
+        //Cambia los objetos de lugar hasta que cambios se iguale al tamaño de la lista.
         while (cambios < listaDesordenada.size() ){
             for (int i = 0; i < listaDesordenada.size(); i++) {
+                
+                //devuelve un valor aleatorio entre 0 y el tamaño de la lista -1.
                 int index = (int) (Math.random() * listaDesordenada.size());
                 
+                //toma el valor donde se situa el indice en el for(bloqueActual) y el valor en que se encuentra index (auxiliar)
                 Bloque bloqueActual = listaDesordenada.get(i);
                 Bloque auxiliar = listaDesordenada.get(index);
-
+                
+                //remueve y agrega los bloques en la posicion contraria. 
                 listaDesordenada.remove(i);
                 listaDesordenada.add(i, auxiliar);
 
@@ -61,10 +61,10 @@ public class PregYResp extends Plantilla {
     @Override
     public Boolean verificarResultado(List<Bloque> respuestaAlumno){
         int respuestas = 0;
-        if(respuestaAlumno.size() == this.solucion.size()){
+        if(respuestaAlumno.size() == this.solucion.size()){   //para comparar objetos usar equals
             for(Bloque solucion:this.solucion){
                 for(Bloque rta:respuestaAlumno){
-                    if(solucion.equals(rta)){
+                    if(solucion.equals(rta)){     //esta parte se modulariza al metodo equals en Bloque. if(equals){respuesta++}
                        respuestas++;
                     }
                 }
