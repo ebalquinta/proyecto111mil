@@ -4,13 +4,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *
- * @author
+ *paqiuete util: con .java con metodos que sean utiles para implemetar en distintas clases. 
+los metodos estaticos. la clase NO (publica).
+constrructor privado.
+clacularPorcentaje y estrellas podrian estar en util.
  */
 
-public class Util {
-
+ public class Util {
     private static final String FORMATO_FECHA = "dd/MM/yyyy";
+    
+    private Util(){
+        
+    }
     
     /**
      * El método convierte un Date a String
