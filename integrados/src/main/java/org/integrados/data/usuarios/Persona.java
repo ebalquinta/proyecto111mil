@@ -17,7 +17,7 @@ public abstract class Persona {
     }
 
     public Persona(Integer dni, String nombre, String apellido) {
-        this.id = null;
+        this();
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
