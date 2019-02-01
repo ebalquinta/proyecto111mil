@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.usuarios;
 
 import java.time.LocalDate;
@@ -15,10 +10,7 @@ import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.enums.Nivel;
 import static org.integrados.data.util.Util.dateToString;
 
-/**
- *
- * @author Yani
- */
+
 public class Alumno extends Persona {
 
     private List<RegistroActividad> actividades;

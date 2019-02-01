@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.bloques;
 
-/**
- *
- * @author Yani
- */
 public class BloqueImagen extends Bloque {
 
     private String imagen;
@@ -31,6 +22,7 @@ public class BloqueImagen extends Bloque {
     }
 
     // hay que hacer el metodo
+    //yani: dado que hay que comparar bloques, usaria este metodo en el padre. en el caso de and que lo sobreEscriba. anotacion en bloque
     @Override
     public boolean equals(Object obj) {
         return true;

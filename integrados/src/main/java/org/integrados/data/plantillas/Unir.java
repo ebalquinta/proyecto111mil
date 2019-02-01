@@ -69,7 +69,6 @@ public class Unir extends Plantilla {
             
         }
         
-        
         for(int i = 0; bloquesDerClonada.size()>i;i++){
             
             // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamao de la lista
@@ -103,7 +102,8 @@ public class Unir extends Plantilla {
             solucion = (BloqueAnd) s;
             for (Bloque b : respuestaAlumno) {
                 rtaAlumno = (BloqueAnd) b;
-                if ((solucion.getBloque1() == rtaAlumno.getBloque1()) && (solucion.getBloque2() == rtaAlumno.getBloque2()))
+                // comparando dos objetos con == :  se compara a un mismo espacion en memoria(heap). con equals compara sus hashCode.
+                if ((solucion.getBloque1() == rtaAlumno.getBloque1()) && (solucion.getBloque2() == rtaAlumno.getBloque2()))  //para comparar objetos usar equals
                     par++;
             }
         }
