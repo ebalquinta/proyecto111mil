@@ -1,5 +1,7 @@
 package org.integrados.data.bloques;
 
+import java.util.Objects;
+
 public class BloqueAnd extends Bloque {
 
     private Bloque bloque1;
@@ -32,12 +34,12 @@ public class BloqueAnd extends Bloque {
         this.bloque2 = bloque2;
     }
 
-    //falta desarrollar
     @Override
     public boolean equals(Object obj) {
-        BloqueAnd bloqueArg = (BloqueAnd) obj;
-        return true;
+        return super.equals(obj);
     }
+
+    
 
     @Override
     public String toString() {

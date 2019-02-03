@@ -36,9 +36,9 @@ public class Docente extends Persona {
     public void setActividades(List<Actividad> actividades) {
         this.actividades = actividades;
     }
-
+    
     @Override
     public String toString() {
-        return super.toString() + "Docente{" + "alumnos=" + alumnos + ", actividades=" + actividades + '}';
+        return super.toString() +"\n"+ "Docente{" + "alumnos=" + alumnos + ", actividades=" + actividades + '}';
     }
 }
