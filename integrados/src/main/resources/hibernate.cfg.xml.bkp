@@ -6,7 +6,7 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/integrados_db?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">yanina030</property>
+    <property name="hibernate.connection.password">xxx</property>
     <mapping resource="docente.hbm.xml"/>
     <mapping resource="alumno.hbm.xml"/>
     <mapping resource="plantilla.hbm.xml"/>
