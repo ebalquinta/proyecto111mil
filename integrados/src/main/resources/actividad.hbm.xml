@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="org.integrados.data.actividad.Actividad" table="actividad"/>
+    <id name = "id" type = "Integer">
+        <generator class = "increment" />
+    </id>    
+    <property name = "tema" type= "String" not-null = "true"/>
+    <property name = "grado" type = "Integer" not-null = "true" />
+    <property name = "maxIntentos" type = "Integer" not-null = "true" />
+    
+    <many-to-one name ="nivel" class = "org.integrados.data.enums.Nivel" column = "id_Nivel" not-null = "true"/>
+    <many-to-one name ="dificultad" class = "org.integrados.data.enums.Difcultad" column = "id_Dificultad" not-null = "true"/>
+    <many-to-one name ="materia" class = "org.integrados.data.enums.Materia" column = "id_Materia" not-null = "true"/>
+    <many-to-one name ="materia" class = "org.integrados.data.enums.Materia" column = "id_Materia" not-null = "true"/>
+    
+</hibernate-mapping>

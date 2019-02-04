@@ -10,5 +10,12 @@
     <mapping resource="docente.hbm.xml"/>
     <mapping resource="alumno.hbm.xml"/>
     <mapping resource="plantilla.hbm.xml"/>
+    <mapping resource="domicilio.hbm.xml"/>
+    <mapping resource="registroActividad.hbm.xml"/>
+    <mapping resource="actividad.hbm.xml"/>
+    <mapping resource="materia.hbm.xml"/>
+    <mapping resource="bloque.hbm.xml"/>
+    <mapping resource="bloque_and.hbm.xml"/>
+    <mapping resource="institucion.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
