@@ -45,10 +45,6 @@ public abstract class Plantilla {
     public Integer getId() {
         return id;
     }
-    
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     private void setId(Integer id) {
         this.id = id;

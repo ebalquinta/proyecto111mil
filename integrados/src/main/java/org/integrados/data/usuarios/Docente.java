@@ -15,10 +15,6 @@ public class Docente extends Persona {
         this.alumnos = new ArrayList<>();
     }
 
-    private void setId(Integer id) {
-        this.id = id;
-    }
-
     public Docente(Integer dni, String nombre, String apellido) {
         super(dni, nombre, apellido);
         this.actividades = new ArrayList<>();

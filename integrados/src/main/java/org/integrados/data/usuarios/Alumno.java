@@ -34,9 +34,6 @@ public class Alumno extends Persona {
         this.nivel = nivel;
     }
 
-    private void setId(Integer id) {
-        this.id = id;
-    }
     public List<RegistroActividad> getActividades() {
         return actividades;
     }

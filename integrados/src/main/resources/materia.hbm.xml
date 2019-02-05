@@ -6,6 +6,6 @@
     <id name="id" type="java.lang.Integer" column="id" >
       <generator class="identity" />
     </id>
-  <property name="materia" column="materia"/>
+  <property type="string" name="materia" column="materia"/>
   </class>
 </hibernate-mapping>
