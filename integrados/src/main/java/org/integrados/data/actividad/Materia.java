@@ -25,6 +25,10 @@ public class Materia {
     public String getMateria(){
         return this.materia;
     }
+
+    private void setId(Integer id) {
+        this.id = id;
+    }
     
     public void setMateria(String materia){
         this.materia = materia;

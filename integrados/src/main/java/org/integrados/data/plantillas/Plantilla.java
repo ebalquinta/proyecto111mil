@@ -50,6 +50,10 @@ public abstract class Plantilla {
         this.id = id;
     }
 
+    private void setId(Integer id) {
+        this.id = id;
+    }
+
     public List<Bloque> getSolucion() {
         return solucion;
     }
