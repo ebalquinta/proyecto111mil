@@ -20,16 +20,33 @@ public class Memorama extends Plantilla {
 
     public Memorama(){
         super();
+        super.tipoPlantilla = 4;
         this.bloques1 = new ArrayList<>();
         this.bloques1 = new ArrayList<>();
     }
     
     public Memorama(String enunciado, List<Bloque> solucion, List<Bloque> bloques1, List<Bloque> bloques2){
         super(enunciado,solucion);
+        super.tipoPlantilla = 4;
         this.bloques1 = bloques1;
         this.bloques2 = bloques2;
     }
     
+     public List<Bloque> getBloques1() {
+        return bloques1;
+    }
+
+    public void setBloques1(List<Bloque> bloques1) {
+        this.bloques1 = bloques1;
+    }
+
+    public List<Bloque> getBloques2() {
+        return bloques2;
+    }
+
+    public void setBloques2(List<Bloque> bloques2) {
+        this.bloques2 = bloques2;
+    }
     
     /**
      * Crea una lista desordenada de bloques and y la devuelve
@@ -95,22 +112,6 @@ public class Memorama extends Plantilla {
     @Override
     public Boolean validarPlantilla(){
         return (this.solucion.size()>1);
-    }
-
-    public List<Bloque> getBloques1() {
-        return bloques1;
-    }
-
-    public void setBloques1(List<Bloque> bloques1) {
-        this.bloques1 = bloques1;
-    }
-
-    public List<Bloque> getBloques2() {
-        return bloques2;
-    }
-
-    public void setBloques2(List<Bloque> bloques2) {
-        this.bloques2 = bloques2;
     }
     
     @Override 

@@ -27,12 +27,20 @@ public abstract class Persona {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getDni() {
         return dni;
     }
 
     public void setDni(Integer dni) {
         this.dni = dni;
+    }
+
+    private void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {

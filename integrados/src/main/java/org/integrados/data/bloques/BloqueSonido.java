@@ -15,6 +15,7 @@ public class BloqueSonido extends Bloque {
     
     public BloqueSonido(){
         super();
+        super.tipoBloque = 1;
     }
 
     public BloqueSonido(String sonido) {

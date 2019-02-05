@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
 
 <hibernate-mapping>
   <class name="org.integrados.data.actividad.Materia" table="Materia">
-  <id name="id" column="id"/>
+    <id name="id" type="java.lang.Integer" column="id" >
+      <generator class="identity" />
+    </id>
   <property name="materia" column="materia"/>
   </class>
 </hibernate-mapping>
