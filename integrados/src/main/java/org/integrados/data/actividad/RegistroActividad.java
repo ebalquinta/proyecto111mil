@@ -38,6 +38,10 @@ public class RegistroActividad {
         return id;
     }
 
+    private void setId(Integer id) {
+        this.id = id;
+    }
+
     public Actividad getActividad() {
         return actividad;
     }

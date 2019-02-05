@@ -14,6 +14,10 @@ public class Bloque {
         return id;
     }
 
+    private void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Bloque{" + "id=" + id + '}';

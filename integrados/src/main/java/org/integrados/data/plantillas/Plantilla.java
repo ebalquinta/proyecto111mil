@@ -40,6 +40,10 @@ public abstract class Plantilla {
         return id;
     }
 
+    private void setId(Integer id) {
+        this.id = id;
+    }
+
     public List<Bloque> getSolucion() {
         return solucion;
     }
