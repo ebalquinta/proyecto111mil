@@ -27,6 +27,10 @@ public abstract class Persona {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getDni() {
         return dni;
     }

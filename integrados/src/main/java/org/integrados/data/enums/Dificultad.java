@@ -7,7 +7,7 @@ package org.integrados.data.enums;
 
 /**
  *
- * @author Yani
+ * @author
  */
 public enum Dificultad {
 

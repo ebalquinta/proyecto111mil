@@ -14,12 +14,20 @@ import org.integrados.data.bloques.*;
  * @author Yani
  */
 public abstract class Plantilla {
-
+/*
+    tipo Plantilla:
+    ordenamiento = 1
+    unir = 2
+    preg y resp = 3
+    memorama = 4
+    
+    */
     protected Integer id;
     protected String enunciado;
     protected List<Bloque> solucion;
     protected String imagen;
     protected String sonido;
+    protected Integer tipoPlantilla;
 
     public Plantilla() {
         this.sonido = null;
@@ -29,15 +37,17 @@ public abstract class Plantilla {
     }
 
     public Plantilla(String enunciado, List<Bloque> solucion) {
-        this.sonido = null;
-        this.imagen = null;
-        this.solucion = new ArrayList<>();
+        this();
         this.enunciado = enunciado;
         this.solucion = solucion;
     }
 
     public Integer getId() {
         return id;
+    }
+    
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public List<Bloque> getSolucion() {
@@ -71,6 +81,15 @@ public abstract class Plantilla {
     public void setSonido(String sonido) {
         this.sonido = sonido;
     }
+
+    public Integer getTipoPlantilla() {
+        return tipoPlantilla;
+    }
+
+    public void setTipoPlantilla(Integer tipoPlantilla) {
+        this.tipoPlantilla = tipoPlantilla;
+    }
+    
     
     /**
      *     clona una lista 

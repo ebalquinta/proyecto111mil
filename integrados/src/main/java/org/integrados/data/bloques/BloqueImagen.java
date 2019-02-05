@@ -6,6 +6,7 @@ public class BloqueImagen extends Bloque {
     
     public BloqueImagen(){
         super();
+        super.tipoBloque = 2;
     }
 
     public BloqueImagen(String imagen) {

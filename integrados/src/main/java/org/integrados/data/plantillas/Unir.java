@@ -20,16 +20,33 @@ public class Unir extends Plantilla {
 
     public Unir() {
         super();
+        super.tipoPlantilla = 2;
         this.bloquesDer= new ArrayList<>();
         this.bloquesIzq= new ArrayList<>();
     }
 
     public Unir(String enunciado, List<Bloque> solucion, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
         super(enunciado, solucion);
+        super.tipoPlantilla = 2;
         this.bloquesDer=bloquesDer;
         this.bloquesIzq=bloquesIzq;
     } 
     
+     public List<Bloque> getBloquesDer() {
+        return bloquesDer;
+    }
+
+    public void setBloquesDer(List<Bloque> bloquesDer) {
+        this.bloquesDer = bloquesDer;
+    }
+
+    public List<Bloque> getBloquesIzq() {
+        return bloquesIzq;
+    }
+
+    public void setBloquesIzq(List<Bloque> bloquesIzq) {
+        this.bloquesIzq = bloquesIzq;
+    }
     
       /**
      * Crea una lista desordenada de bloques and y la devuelve
@@ -113,23 +130,6 @@ public class Unir extends Plantilla {
     @Override
     public Boolean validarPlantilla(){
         return this.solucion.size() > 1;
-    }
-    
-
-    public List<Bloque> getBloquesDer() {
-        return bloquesDer;
-    }
-
-    public void setBloquesDer(List<Bloque> bloquesDer) {
-        this.bloquesDer = bloquesDer;
-    }
-
-    public List<Bloque> getBloquesIzq() {
-        return bloquesIzq;
-    }
-
-    public void setBloquesIzq(List<Bloque> bloquesIzq) {
-        this.bloquesIzq = bloquesIzq;
     }
     
     @Override

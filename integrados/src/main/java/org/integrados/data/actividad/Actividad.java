@@ -35,9 +35,14 @@ public class Actividad {
         this.dificultad = dificultad;
         this.maxIntentos = maxIntentos;
     }
-    //este metodo es para desarrollar a futuro 
-    public void agregarMateria(){}
-    
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     
     public Plantilla getPlantilla() {
         return plantilla;

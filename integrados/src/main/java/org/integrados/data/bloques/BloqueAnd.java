@@ -10,6 +10,7 @@ public class BloqueAnd extends Bloque {
     //ver si es necesario inicializar en null
     public BloqueAnd() {
         super();
+        super.tipoBloque = 4;
         this.bloque1= null;
         this.bloque2= null;
     }

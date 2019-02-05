@@ -35,6 +35,10 @@ public class Institucion {
     public Integer getId() {
         return id;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     
     public String getNombreInstitucion() {
         return nombreInstitucion;

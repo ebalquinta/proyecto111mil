@@ -4,7 +4,15 @@ import java.util.Objects;
 
 public class Bloque {
 
+    /*
+    bloque: 
+    sonido = 1
+    imagen = 2
+    texto = 3
+    and = 4
+    */
     protected Integer id;
+    protected Integer tipoBloque;
 
     protected Bloque() {
         this.id= null;
@@ -14,9 +22,21 @@ public class Bloque {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getTipoBloque() {
+        return tipoBloque;
+    }
+
+    public void setTipoBloque(Integer tipoBloque) {
+        this.tipoBloque = tipoBloque;
+    }
+
     @Override
     public String toString() {
-        return "Bloque{" + "id=" + id + '}';
+        return "Bloque{" + "id=" + id + ", tipoBloque=" + tipoBloque + '}';
     }
 
     @Override

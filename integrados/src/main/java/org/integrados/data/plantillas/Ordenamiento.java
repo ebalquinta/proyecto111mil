@@ -9,10 +9,12 @@ public class Ordenamiento extends Plantilla {
         
     public Ordenamiento(){
         super();
+        super.tipoPlantilla = 1;
     }
 
     public Ordenamiento(String enunciado, List<Bloque> solucion) {
         super(enunciado, solucion);
+        super.tipoPlantilla = 1;
     }
     
     @Override

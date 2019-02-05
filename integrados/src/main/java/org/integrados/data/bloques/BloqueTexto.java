@@ -15,6 +15,7 @@ public class BloqueTexto extends Bloque {
 
     public BloqueTexto(){
         super();
+        super.tipoBloque = 3;
     }
     
     public BloqueTexto(String texto) {
