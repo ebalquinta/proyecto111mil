@@ -2,5 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="org.integrados.data.bloques.BloqueAnd" table="bloque_and"/>
+  <class name="org.integrados.data.bloques.BloqueAnd" table="bloque_and">
+  <id name="id" column="id">   
+  <one-to-one name="bloque1" class="org.integrados.data.bloques.Bloque" column="id" />
+  <one-to-one name="bloque2" class="org.integrados.data.bloques.Bloque" column="id"/>
+  <one-to-one name="bloque1" class="org.integrados.data.bloques.Bloqueand" column="id" />
+  <one-to-one name="bloque2" class="org.integrados.data.bloques.Bloqueand" column="id"/>
+  </class>
 </hibernate-mapping>

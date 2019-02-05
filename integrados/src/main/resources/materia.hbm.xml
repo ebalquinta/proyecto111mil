@@ -2,5 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="org.integrados.data.actividad.Materia" table="materia"/>
+  <class name="org.integrados.data.actividad.Materia" table="Materia">
+  <id name="id" column="id"/>
+  <property name="materia" column="materia"/>
+  </class>
 </hibernate-mapping>
