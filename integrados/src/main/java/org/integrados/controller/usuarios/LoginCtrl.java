@@ -16,7 +16,7 @@ import org.integrados.view.LoginDlg;
 
 /**
  *
- * @author Mariela
+ * @author Grupo Front
  */
 public class LoginCtrl {
     
@@ -37,22 +37,27 @@ public class LoginCtrl {
     
     public void validar(String usuario, String clave) throws IntegradosException {
 
-        Session session = HibernateUtiles.getSession();
-        
-        session.beginTransaction(); // hecho en clase personaABMCtrl
-
-        Docente docente = (Docente) session.createQuery("from Docente where usuario = " + usuario + " and clave= " + clave, Docente.class);  //REVISAR EL METODO EN LAS FILMINAS.
-        
-         //SE VERIFICA EN QUE TABLA SE ENCUENTRA EL USUARIO INGRESADO.
-        if(docente !=null){
-            this.persona = docente;
+        // Comprobación de usuario y contraseña genéricos, sin acceder a la base
+        // de datos (para prueba de las GUIs)
+        if (usuario.equals("usuario") && clave.equals("usuario")){
+            System.out.println("Usuario logueado con éxito");
             return;
         }
-        Alumno alumno = (Alumno) session.createQuery("from Alumno where usuario = " + usuario + " and clave= " + clave, Alumno.class);
-        if(alumno !=null){
-            this.persona = alumno;
-            return;
-        }
+   
+//        Session session = HibernateUtiles.getSession();
+//        session.beginTransaction(); // hecho en clase personaABMCtrl
+//        Docente docente = (Docente) session.createQuery("from Docente where usuario = " + usuario + " and clave= " + clave, Docente.class);  //REVISAR EL METODO EN LAS FILMINAS.
+//        
+//         //SE VERIFICA EN QUE TABLA SE ENCUENTRA EL USUARIO INGRESADO.
+//        if(docente !=null){
+//            this.persona = docente;
+//            return;
+//        }
+//        Alumno alumno = (Alumno) session.createQuery("from Alumno where usuario = " + usuario + " and clave= " + clave, Alumno.class);
+//        if(alumno !=null){
+//            this.persona = alumno;
+//            return;
+//        }
 
         throw new IntegradosException("Usuario y/o Clave incorrectos");
     }

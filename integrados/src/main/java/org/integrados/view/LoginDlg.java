@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.exceptions.IntegradosException;
+import org.integrados.view.DocenteInicioDlg;
 
 public class LoginDlg extends JFrame {
     private JLabel lblFondo;
@@ -55,7 +56,14 @@ public class LoginDlg extends JFrame {
                     Dialogo.mostrarError(e, null);
                     return;
                 }
-                loginCtrl.finalizar();
+                
+                // Aquí debemos enlazar con la siguiente pantalla
+                // La de docente que tiene los botones Actividades y Alumnos
+                
+                DocenteInicioDlg docenteInicioDlg = new DocenteInicioDlg();
+                docenteInicioDlg.mostrar();
+                
+                // loginCtrl.finalizar();
             }
         });
         
@@ -69,13 +77,8 @@ public class LoginDlg extends JFrame {
             }
         });
 
-//        ImageIcon icon = createImageIcon("assets/img/LogIn1.1.jpg","a pretty but meaningless splat");
-//
-//        System.out.println("org.integrados.view.LoginDlg.initComponents()");
-//        lblFondo.setIcon(icon);
-
-
-
+        ImageIcon icon = createImageIcon("/imagenes/LoginBackground.jpg","descripción");
+        lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 600, 600);
         
@@ -85,16 +88,15 @@ public class LoginDlg extends JFrame {
         this.mostrar();
     }
     
-//    protected ImageIcon createImageIcon(String path,
-//                                           String description) {
-//    java.net.URL imgURL = getClass().getResource(path);
-//    if (imgURL != null) {
-//        return new ImageIcon(imgURL, description);
-//    } else {
-//        System.err.println("Couldn't find file: " + path);
-//        return null;
-//    }
-//}
+    protected ImageIcon createImageIcon(String path, String description) {
+    java.net.URL imgURL = getClass().getResource(path);
+    if (imgURL != null) {
+        return new ImageIcon(imgURL, description);
+    } else {
+        System.out.println("Couldn't find file: " + path);
+        return null;
+    }
+}
     
     public void mostrar() {
         this.setVisible(true);

@@ -7,21 +7,19 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import org.integrados.controller.usuarios.DocenteInicioCtrl;
-
+import org.integrados.view.Dialogo;
+        
 public class DocenteInicioDlg extends JFrame {
     private JLabel lblFondo;
     private JButton btnActividades;
     private JButton btnAlumnos;
     private JButton btnCerrarSesion;
-    private DocenteInicioCtrl ppalFrmDocenteCtrl;
-
-    public DocenteInicioDlg(DocenteInicioCtrl ppalFrmDocenteCtrl) {
-        this.ppalFrmDocenteCtrl = ppalFrmDocenteCtrl;
+    
+    public DocenteInicioDlg() {
         initComponents();
     }
-    
-    private void initComponents() {
+
+    void initComponents() {
         btnActividades = new JButton();
         btnAlumnos = new JButton();
         btnCerrarSesion = new JButton();
@@ -36,7 +34,8 @@ public class DocenteInicioDlg extends JFrame {
         btnActividades.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {                
-                ppalFrmDocenteCtrl.finalizar();
+                // Aquí debemos enlazar con el browser
+                
             }
         });
         
@@ -46,7 +45,7 @@ public class DocenteInicioDlg extends JFrame {
         btnAlumnos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ppalFrmDocenteCtrl.finalizar();
+                Dialogo.mostrarError("¡En construcción!", null);
             }
         });
 
@@ -58,15 +57,12 @@ public class DocenteInicioDlg extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 
-                ppalFrmDocenteCtrl.finalizar();
             }
         });
 //        ImageIcon icon = createImageIcon("assets/img/LogIn1.1.jpg","a pretty but meaningless splat");
 //
 //        System.out.println("org.integrados.view.LoginDlg.initComponents()");
 //        lblFondo.setIcon(icon);
-
-
 
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 1200, 600);

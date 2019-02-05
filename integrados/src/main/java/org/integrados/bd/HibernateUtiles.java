@@ -13,7 +13,7 @@ import org.integrados.view.Dialogo;
 
 /**
  *
- * @author Mariela
+ * @author Grupo Front
  */
 public class HibernateUtiles {
 

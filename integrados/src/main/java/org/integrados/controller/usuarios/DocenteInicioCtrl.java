@@ -9,11 +9,14 @@ import org.integrados.view.DocenteInicioDlg;
 
 /**
  *
- * @author Mariela
+ * @author Grupo Front
  */
 public class DocenteInicioCtrl {
     
     private DocenteInicioDlg ppalFrmDocenteDlg;
+
+    public DocenteInicioCtrl() {
+    }
     
     public void finalizar() {
         this.ppalFrmDocenteDlg.ocultar();
