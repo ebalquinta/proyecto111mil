@@ -30,57 +30,54 @@ public class LoginCtrl {
         this.persona = null;
         this.loginDlg = null;
     }
-    
+
     public void login() {
         this.loginDlg = new LoginDlg(this);
         this.loginDlg.mostrar();
     }
-    
-    public void validar(String usuario, String clave) throws IntegradosException {
 
-        // Comprobación de usuario y contraseña genéricos, sin acceder a la base
-        // de datos (para prueba de las GUIs)
-        if (usuario.equals("usuario") && clave.equals("usuario")){
-            System.out.println("Usuario logueado con éxito");
-            return;
-        }
-   
+    public void validar(String usuario, String clave) throws IntegradosException {
+        Session session = null;
         try {
-            Session session = HibernateUtiles.getSession();
-        session.beginTransaction(); // hecho en clase personaABMCtrl
-        Query query = session.createQuery("from Docente where usuario='" + usuario + "' and clave='" + clave + "'");  //REVISAR EL METODO EN LAS FILMINAS.        
-        Docente docente = (Docente) query.uniqueResult();
-        
-//        Docente docente = (Docente) session.get(Docente.class, 1);  //REVISAR EL METODO EN LAS FILMINAS.
-         //SE VERIFICA EN QUE TABLA SE ENCUENTRA EL USUARIO INGRESADO.
-        if(docente != null){
-            this.persona = docente;
-            return;
-        }
-        
-        query = session.createQuery("from Alumno where usuario='" + usuario + "' and clave='" + clave + "'");  
-        Alumno alumno = (Alumno) query.uniqueResult();
-        if(alumno != null){
-            this.persona = alumno;
-            return;
-        }
-        
+            session = HibernateUtiles.getSession();
+            session.beginTransaction();             
+            Query query = session.createQuery("from Docente where usuario='" + usuario + "' and clave='" + clave + "'");  
+            Docente docente = (Docente) query.uniqueResult();
+            session.getTransaction().commit();
+            
+            if (docente != null) {
+                this.persona = docente;
+                return;
+            }
+
+            session.beginTransaction();
+            query = session.createQuery("from Alumno where usuario='" + usuario + "' and clave='" + clave + "'");
+            Alumno alumno = (Alumno) query.uniqueResult();
+            session.getTransaction().commit();
+            
+            if (alumno != null) {
+                this.persona = alumno;
+                return;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new IntegradosException("Error al consultar el usuario", e);
+        } finally {
+            if (session.isConnected())
+                session.close();
         }
-        
 
-        throw new IntegradosException("Usuario y/o Clave incorrectos (Utilice 'usuario' - 'usuario')");
+        throw new IntegradosException("Usuario y/o Clave incorrectos");
     }
-    
+
     public void finalizar() {
         this.app.setPersonaLogueada(persona);
         this.loginDlg.ocultar();
     }
-    
+
     public void cancelar() {
         this.loginDlg.ocultar();
         this.app.cerrar();
     }
-}   
+}

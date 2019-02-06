@@ -63,7 +63,7 @@ public class Dialogo {
      * @param mensaje con la descripción del error
      */
     public static void error(String titulo, String mensaje) {
-        JOptionPane.showConfirmDialog(null, mensaje, titulo, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showConfirmDialog(null, mensaje, titulo, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);        
     }
 
     /**
@@ -87,6 +87,10 @@ public class Dialogo {
         Yes,
         No,
         Cancelar
+    }
+    
+     public interface ListenerCerrarDialogo {
+        public void ejecutar();
     }
 }
 
@@ -164,7 +168,4 @@ public class Dialogo {
 //        crearVentana(msg, listener);
 //    }
 //    
-//    public interface ListenerCerrarDialogo {
-//        public void ejecutar();
-//    }
 //}
