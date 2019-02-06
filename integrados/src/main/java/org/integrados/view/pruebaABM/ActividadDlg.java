@@ -202,7 +202,7 @@ public class ActividadDlg {
         try {
             validarComponentes();
         } catch (Exception e) {
-            Dialogo.Error("Error al validar: ", e.getMessage());
+            Dialogo.error("Error al validar: ", e.getMessage());
             return;
         }
         
@@ -212,7 +212,7 @@ public class ActividadDlg {
             
             this.controlador.guardar(actividad, alta);
         } catch (Exception e) {
-            Dialogo.Error("Error al guardar: ", e.getMessage());
+            Dialogo.error("Error al guardar: ", e.getMessage());
             return;
         } finally {
             // Código que se ejecuta con o sin excepción.

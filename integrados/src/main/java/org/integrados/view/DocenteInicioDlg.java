@@ -51,7 +51,7 @@ public class DocenteInicioDlg extends JFrame {
         btnAlumnos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Dialogo.Mensaje(" En construcción ", "¡ Estamos trabajando para usted! ");
+                Dialogo.mensaje(" En construcción ", "¡ Estamos trabajando para usted! ");
             }
         });
 
@@ -61,7 +61,7 @@ public class DocenteInicioDlg extends JFrame {
         btnCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Dialogo.Mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");        
+                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");        
             }
         });
     }

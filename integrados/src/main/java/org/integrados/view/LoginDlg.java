@@ -53,7 +53,7 @@ public class LoginDlg extends JFrame {
                 try {
                     loginCtrl.validar(txtUsuario.getText(), String.valueOf(pswClave.getPassword()));
                 } catch (IntegradosException e) {
-                    Dialogo.mostrarError(e, null);
+                    Dialogo.error("Error de Logueo", e.getMessage());
                     return;
                 }
                 

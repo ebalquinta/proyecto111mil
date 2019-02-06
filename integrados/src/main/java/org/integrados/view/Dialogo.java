@@ -23,7 +23,7 @@ public class Dialogo {
      * @param titulo del diálogo
      * @param mensaje información a mostrar.
      */
-    public static void Mensaje(String titulo, String mensaje) {
+    public static void mensaje(String titulo, String mensaje) {
         JOptionPane.showConfirmDialog(null, mensaje, titulo, JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -35,7 +35,7 @@ public class Dialogo {
      * @param mensaje pregunta que se muestra
      * @return ResultadoDialogo.Yes o ResultadoDialogo.No
      */
-    public static ResultadoDialogo Confirmacion(String titulo, String mensaje) {
+    public static ResultadoDialogo confirmacion(String titulo, String mensaje) {
         if (JOptionPane.showConfirmDialog(null, mensaje, titulo, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             return ResultadoDialogo.Yes;
         } else {
@@ -51,8 +51,8 @@ public class Dialogo {
      * @param mensaje pregunta que se muestra
      * @return ResultadoDialogo.Yes o ResultadoDialogo.No
      */
-    public static ResultadoDialogo Confirmacion(String mensaje) {
-        return Confirmacion("Confirmacion", mensaje);
+    public static ResultadoDialogo confirmacion(String mensaje) {
+        return confirmacion("Confirmacion", mensaje);
     }
 
     /**
@@ -62,7 +62,7 @@ public class Dialogo {
      * @param titulo del diálogo
      * @param mensaje con la descripción del error
      */
-    public static void Error(String titulo, String mensaje) {
+    public static void error(String titulo, String mensaje) {
         JOptionPane.showConfirmDialog(null, mensaje, titulo, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
     }
 

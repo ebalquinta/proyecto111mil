@@ -138,7 +138,7 @@ public class ActividadBrw {
         botonProbar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.Mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
+                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
             }
         });
         
@@ -149,7 +149,7 @@ public class ActividadBrw {
         botonVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.Mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });
         
@@ -193,7 +193,7 @@ public class ActividadBrw {
                 controlador.borrar(actividad);
                 ((ActividadTableModel)tablaActividades.getModel()).removeActividad(actividad);        
             } catch (Exception e) {
-                Dialogo.Error("Error al borrar: ", e.getMessage());
+                Dialogo.error("Error al borrar: ", e.getMessage());
             }
         }
     }   
