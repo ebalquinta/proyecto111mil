@@ -71,7 +71,7 @@ public class LoginCtrl {
         }
         
 
-//        throw new IntegradosException("Usuario y/o Clave incorrectos");
+        throw new IntegradosException("Usuario y/o Clave incorrectos (Utilice 'usuario' - 'usuario')");
     }
     
     public void finalizar() {
