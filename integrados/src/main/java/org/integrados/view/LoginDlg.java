@@ -77,7 +77,7 @@ public class LoginDlg extends JFrame {
             }
         });
 
-        ImageIcon icon = createImageIcon("/imagenes/LoginBackground.jpg","descripción");
+        ImageIcon icon = createImageIcon("images/LoginBackground.jpg","descripción");
         lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 600, 600);
