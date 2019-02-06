@@ -11,6 +11,7 @@ public abstract class Persona {
     protected String mail;
     protected String usuario;
     protected String clave;
+    protected Institucion institucion;
 
     public Persona() {
         this.id = null;
@@ -95,6 +96,14 @@ public abstract class Persona {
         this.clave = clave;
     }
 
+    public Institucion getInstitucion() {
+        return institucion;
+    }
+
+    public void setInstitucion(Institucion institucion) {
+        this.institucion = institucion;
+    }
+    
     @Override
     public String toString() {
         return "Persona{" + "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", telefono=" + telefono + ", mail=" + mail + ", usuario=" + usuario + ", clave=" + clave + '}';
