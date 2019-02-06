@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import org.integrados.view.Dialogo;
+import org.integrados.view.pruebaABM.*;
         
 public class DocenteInicioDlg extends JFrame {
     private JLabel lblFondo;
@@ -20,70 +21,51 @@ public class DocenteInicioDlg extends JFrame {
     }
 
     void initComponents() {
+        this.setSize(800, 600);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setLayout(null);
+        this.mostrar();
+               
         btnActividades = new JButton();
         btnAlumnos = new JButton();
         btnCerrarSesion = new JButton();
         lblFondo = new JLabel();
-        
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
-        
+                       
         btnActividades.setText("Actividades");
         getContentPane().add(btnActividades);
-        btnActividades.setBounds(170, 260, 360, 135);
+        btnActividades.setBounds(50, 400, 200, 100);
         btnActividades.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {                
                 // Aquí debemos enlazar con el browser
-                
+                    ActividadCtrl ctrl = new ActividadCtrl();
+                    ctrl.mostrarBrw(null);
             }
         });
         
         btnAlumnos.setText("Alumnos");
         getContentPane().add(btnAlumnos);
-        btnAlumnos.setBounds(620, 260, 360, 135);
+        btnAlumnos.setBounds(300, 400, 200, 100);
         btnAlumnos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Dialogo.mostrarError("¡En construcción!", null);
+                Dialogo.Mensaje(" En construcción ", "¡ Estamos trabajando para usted! ");
             }
         });
 
-        
-        btnCerrarSesion.setText("Cerrar Sesión");
+         btnCerrarSesion.setText("Cerrar Sesión");
         getContentPane().add(btnCerrarSesion);
-        btnCerrarSesion.setBounds(170, 260, 360, 135);
+        btnCerrarSesion.setBounds(550, 400, 200, 100);
         btnCerrarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                Dialogo.Mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");        
             }
         });
-//        ImageIcon icon = createImageIcon("assets/img/LogIn1.1.jpg","a pretty but meaningless splat");
-//
-//        System.out.println("org.integrados.view.LoginDlg.initComponents()");
-//        lblFondo.setIcon(icon);
-
-        getContentPane().add(lblFondo);
-        lblFondo.setBounds(0, 0, 1200, 600);
-        
-        this.setBounds(new Rectangle(1200, 600));
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        this.mostrar();
     }
-    
-//    protected ImageIcon createImageIcon(String path,
-//                                           String description) {
-//    java.net.URL imgURL = getClass().getResource(path);
-//    if (imgURL != null) {
-//        return new ImageIcon(imgURL, description);
-//    } else {
-//        System.err.println("Couldn't find file: " + path);
-//        return null;
-//    }
-//}
-    
+
     public void mostrar() {
         this.setVisible(true);
     }

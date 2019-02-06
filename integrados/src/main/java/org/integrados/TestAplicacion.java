@@ -19,13 +19,14 @@ public class TestAplicacion {
         
         try {
             app.inicializar();
-        } catch (IntegradosException e) {            
-            Dialogo.mostrarError(e.getMessage(), new Dialogo.ListenerCerrarDialogo() {
-                @Override
-                public void ejecutar() {
-                    System.exit(0);        
-                }
-            });
+        } catch (IntegradosException e) { 
+            Dialogo.Error("ERROR FATAL", "Falló la inicialización");
+//            // Dialogo.Error(e.getMessage(), new Dialogo.ListenerCerrarDialogo() {
+//                @Override
+//                public void ejecutar() {
+//                    System.exit(0);        
+//                }
+//            });
             return;
         }
         app.ejecutar();
