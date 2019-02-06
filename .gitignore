@@ -2,7 +2,7 @@
 /integrados/bin
 /integrados/.classpath
 /integrados/.project
-/.DS_Store
+**/.DS_Store
 /integrados/target
 /basededatos/Proyecto111mil.mwb.bak
 /pruebaSwing/nbproject/private/private.properties

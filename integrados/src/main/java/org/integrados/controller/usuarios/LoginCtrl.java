@@ -6,6 +6,7 @@
 package org.integrados.controller.usuarios;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.integrados.Aplicacion;
 import org.integrados.bd.HibernateUtiles;
 import org.integrados.data.usuarios.Alumno;
@@ -44,20 +45,31 @@ public class LoginCtrl {
             return;
         }
    
-//        Session session = HibernateUtiles.getSession();
-//        session.beginTransaction(); // hecho en clase personaABMCtrl
-//        Docente docente = (Docente) session.createQuery("from Docente where usuario = " + usuario + " and clave= " + clave, Docente.class);  //REVISAR EL METODO EN LAS FILMINAS.
-//        
-//         //SE VERIFICA EN QUE TABLA SE ENCUENTRA EL USUARIO INGRESADO.
-//        if(docente !=null){
-//            this.persona = docente;
-//            return;
-//        }
-//        Alumno alumno = (Alumno) session.createQuery("from Alumno where usuario = " + usuario + " and clave= " + clave, Alumno.class);
-//        if(alumno !=null){
-//            this.persona = alumno;
-//            return;
-//        }
+        try {
+            Session session = HibernateUtiles.getSession();
+        session.beginTransaction(); // hecho en clase personaABMCtrl
+        Query query = session.createQuery("from Docente where usuario='" + usuario + "' and clave='" + clave + "'");  //REVISAR EL METODO EN LAS FILMINAS.        
+        Docente docente = (Docente) query.uniqueResult();
+        
+//        Docente docente = (Docente) session.get(Docente.class, 1);  //REVISAR EL METODO EN LAS FILMINAS.
+         //SE VERIFICA EN QUE TABLA SE ENCUENTRA EL USUARIO INGRESADO.
+        if(docente != null){
+            this.persona = docente;
+            return;
+        }
+        
+        query = session.createQuery("from Alumno where usuario='" + usuario + "' and clave='" + clave + "'");  
+        Alumno alumno = (Alumno) query.uniqueResult();
+        if(alumno != null){
+            this.persona = alumno;
+            return;
+        }
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IntegradosException("Error al consultar el usuario", e);
+        }
+        
 
         throw new IntegradosException("Usuario y/o Clave incorrectos (Utilice 'usuario' - 'usuario')");
     }

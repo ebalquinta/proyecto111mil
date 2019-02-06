@@ -15,4 +15,7 @@ public class IntegradosException extends Exception {
         super(mensaje); 
     }
     
+    public IntegradosException(String mensaje, Exception cause) {
+        super(mensaje, cause); 
+    }
 }
