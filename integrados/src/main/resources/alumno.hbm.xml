@@ -16,6 +16,8 @@
             <column name="user_Usuario" length="45" />
         </many-to-one>-->
         <property name="nombre" type="string" column="nombre" length="45" not-null="true" />
+        <property name="usuario" type="string" column="usuario" length="45" />
+        <property name="clave" type="string" column="password" length="45" />
         <property name="apellido" type="string" column="apellido" length="45" not-null="true" />
         <property name="dni" type="int" column="dni" not-null="true" />
         <property name="grado" type="int" column="grado" not-null="true" />

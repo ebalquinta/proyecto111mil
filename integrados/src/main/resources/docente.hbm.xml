@@ -6,12 +6,12 @@
         <id name="id" type="java.lang.Integer" column="id">
            <generator class="identity" />
         </id>
-        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="select">
-           <column name="Domicilio_id" />
+        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
+           <column name="id_Domicilio" />
         </many-to-one>
-        <!--<many-to-one name="usuario" class="org.integrados.data.usuarios.Usuario" fetch="select">
-            <column name="Usuario_user" length="45" />
-        </many-to-one>-->
+        <property name="usuario" type="string" column="usuario" length="45"/>
+        <property name="clave" type="string" column="password" length="45" not-null="false" />
+        
         <property name="nombre" type="string" column="nombre" length="45" not-null="true" />
         <property name="apellido" type="string" column="apellido" length="45" not-null="true" />
         <property name="dni" type="int" column="dni" not-null="true" unique="true" />
