@@ -4,7 +4,7 @@
 <hibernate-mapping>
   <class name="org.integrados.data.actividad.Actividad" table="actividad">
     <id name="id" type="java.lang.Integer">
-        <generator class="increment" />
+        <generator class="identity" />
     </id>    
     <property name="tema" type="string" not-null="true"/>
     <property name="grado" type="java.lang.Integer" not-null="true" />
