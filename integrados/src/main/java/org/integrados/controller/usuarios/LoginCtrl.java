@@ -37,38 +37,38 @@ public class LoginCtrl {
     }
 
     public void validar(String usuario, String clave) throws IntegradosException {
-        Session session = null;
-        try {
-            session = HibernateUtiles.getSession();
-            session.beginTransaction();             
-            Query query = session.createQuery("from Docente where usuario='" + usuario + "' and clave='" + clave + "'");  
-            Docente docente = (Docente) query.uniqueResult();
-            session.getTransaction().commit();
-            
-            if (docente != null) {
-                this.persona = docente;
-                return;
-            }
-
-            session.beginTransaction();
-            query = session.createQuery("from Alumno where usuario='" + usuario + "' and clave='" + clave + "'");
-            Alumno alumno = (Alumno) query.uniqueResult();
-            session.getTransaction().commit();
-            
-            if (alumno != null) {
-                this.persona = alumno;
-                return;
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new IntegradosException("Error al consultar el usuario", e);
-        } finally {
-            if (session.isConnected())
-                session.close();
-        }
-
-        throw new IntegradosException("Usuario y/o Clave incorrectos");
+//        Session session = null;
+//        try {
+//            session = HibernateUtiles.getSession();
+//            session.beginTransaction();             
+//            Query query = session.createQuery("from Docente where usuario='" + usuario + "' and clave='" + clave + "'");  
+//            Docente docente = (Docente) query.uniqueResult();
+//            session.getTransaction().commit();
+//            
+//            if (docente != null) {
+//                this.persona = docente;
+//                return;
+//            }
+//
+//            session.beginTransaction();
+//            query = session.createQuery("from Alumno where usuario='" + usuario + "' and clave='" + clave + "'");
+//            Alumno alumno = (Alumno) query.uniqueResult();
+//            session.getTransaction().commit();
+//            
+//            if (alumno != null) {
+//                this.persona = alumno;
+//                return;
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            throw new IntegradosException("Error al consultar el usuario", e);
+//        } finally {
+//            if (session.isConnected())
+//                session.close();
+//        }
+        return;
+//        throw new IntegradosException("Usuario y/o Clave incorrectos");
     }
 
     public void finalizar() {

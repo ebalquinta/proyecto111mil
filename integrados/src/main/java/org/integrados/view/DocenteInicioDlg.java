@@ -14,28 +14,28 @@ public class DocenteInicioDlg extends JFrame {
     private JLabel lblFondo;
     private JButton btnActividades;
     private JButton btnAlumnos;
-    private JButton btnCerrarSesion;
+    private JButton btnVolver;
     
     public DocenteInicioDlg() {
         initComponents();
     }
 
     void initComponents() {
-        this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setLayout(null);
-        this.mostrar();
-               
+        
         btnActividades = new JButton();
         btnAlumnos = new JButton();
-        btnCerrarSesion = new JButton();
+        btnVolver = new JButton();
         lblFondo = new JLabel();
-                       
+        
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        // Propiedades del botón Actividades
         btnActividades.setText("Actividades");
+        btnActividades.setFont(new java.awt.Font("Comic Sans MS", 1, 18));
+        btnActividades.setForeground(new java.awt.Color(0, 102, 102));
+        btnActividades.setBounds(295, 320, 170, 60);       
         getContentPane().add(btnActividades);
-        btnActividades.setBounds(50, 400, 200, 100);
         btnActividades.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {                
@@ -45,27 +45,54 @@ public class DocenteInicioDlg extends JFrame {
             }
         });
         
+        // Propiedades del botón Alumnos
         btnAlumnos.setText("Alumnos");
+        btnAlumnos.setFont(new java.awt.Font("Comic Sans MS", 1, 18));
+        btnAlumnos.setForeground(new java.awt.Color(0, 102, 102));
+        btnAlumnos.setBounds(400, 120, 170, 60);
         getContentPane().add(btnAlumnos);
-        btnAlumnos.setBounds(300, 400, 200, 100);
         btnAlumnos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Dialogo.mensaje(" En construcción ", "¡ Estamos trabajando para usted! ");
+                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });
 
-         btnCerrarSesion.setText("Cerrar Sesión");
-        getContentPane().add(btnCerrarSesion);
-        btnCerrarSesion.setBounds(550, 400, 200, 100);
-        btnCerrarSesion.addActionListener(new ActionListener() {
+        // Propiedades de botón Volver
+        btnVolver.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
+        btnVolver.setText("Volver");
+        btnVolver.setBounds(295, 510, 170, 30);
+        JFrame aux = this;
+        getContentPane().add(btnVolver);
+        btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");        
+                aux.dispose();        
             }
         });
+        
+        // Propiedades del fondo de pantalla
+        ImageIcon icon = createImageIcon("images/ver1.0-DocenteInicioDlgBackground.jpg","descripción");
+        lblFondo.setIcon(icon);
+        getContentPane().add(lblFondo);
+        lblFondo.setBounds(0, 0, 800, 600);
+
+        this.setBounds(new Rectangle(800, 600));
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.mostrar();
     }
 
+    protected ImageIcon createImageIcon(String path, String description) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL, description);
+        } else {
+            System.out.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
+    
     public void mostrar() {
         this.setVisible(true);
     }
