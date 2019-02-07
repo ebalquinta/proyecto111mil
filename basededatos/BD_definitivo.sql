@@ -27,24 +27,20 @@ DROP TABLE IF EXISTS `actividad`;
 CREATE TABLE `actividad` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tema` varchar(100) NOT NULL,
-  `grado` int(11) NOT NULL,
-  `maxIntentos` int(11) NOT NULL,
-  `id_Nivel` int(11) NOT NULL,
-  `id_Dificultad` int(11) NOT NULL,
+  `grado` tinyint(4) NOT NULL,
+  `maxIntentos` tinyint(4) NOT NULL,
+  `nivel` tinyint(4) NOT NULL,
+  `dificultad` tinyint(4) NOT NULL,
   `id_Materia` int(11) NOT NULL,
   `id_Docente` int(11) NOT NULL,
   `id_Plantilla` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Actividad_Nivel1_idx` (`id_Nivel`),
   KEY `fk_Actividad_Materia1_idx` (`id_Materia`),
-  KEY `fk_Actividad_dificultad1_idx` (`id_Dificultad`),
   KEY `fk_Actividad_Plantilla1_idx` (`id_Plantilla`),
   KEY `fk_Actividad_Docente1_idx` (`id_Docente`),
   CONSTRAINT `fk_Actividad_Docente1` FOREIGN KEY (`id_Docente`) REFERENCES `docente` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_Actividad_Materia1` FOREIGN KEY (`id_Materia`) REFERENCES `materia` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Actividad_Nivel1` FOREIGN KEY (`id_Nivel`) REFERENCES `nivel` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Actividad_Plantilla1` FOREIGN KEY (`id_Plantilla`) REFERENCES `plantilla` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Actividad_dificultad1` FOREIGN KEY (`id_Dificultad`) REFERENCES `dificultad` (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_Actividad_Plantilla1` FOREIGN KEY (`id_Plantilla`) REFERENCES `plantilla` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,32 +51,6 @@ CREATE TABLE `actividad` (
 LOCK TABLES `actividad` WRITE;
 /*!40000 ALTER TABLE `actividad` DISABLE KEYS */;
 /*!40000 ALTER TABLE `actividad` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `actividades_docente`
---
-
-DROP TABLE IF EXISTS `actividades_docente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `actividades_docente` (
-  `id_Actividad` int(11) NOT NULL,
-  `id_Docente` int(11) NOT NULL,
-  KEY `fk_ListaActividades_Actividad1_idx` (`id_Actividad`),
-  KEY `fk_ListaActividades_docente_Docente1_idx` (`id_Docente`),
-  CONSTRAINT `fk_ListaActividades_Actividad1` FOREIGN KEY (`id_Actividad`) REFERENCES `actividad` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_ListaActividades_docente_Docente1` FOREIGN KEY (`id_Docente`) REFERENCES `docente` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `actividades_docente`
---
-
-LOCK TABLES `actividades_docente` WRITE;
-/*!40000 ALTER TABLE `actividades_docente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `actividades_docente` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -97,22 +67,20 @@ CREATE TABLE `alumno` (
   `dni` int(11) NOT NULL,
   `grado` int(11) NOT NULL,
   `division` varchar(10) NOT NULL,
-  `usuario` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `nivel` tinyint(4) NOT NULL,
+  `usuario` varchar(20) DEFAULT NULL,
+  `password` varchar(10) DEFAULT NULL,
   `FechaDeNacimiento` date DEFAULT NULL,
   `observaciones` varchar(2000) DEFAULT NULL,
   `edadMadurativa` int(11) DEFAULT NULL,
-  `telefono` int(11) DEFAULT NULL,
-  `mail` varchar(45) DEFAULT NULL,
+  `telefono` varchar(50) DEFAULT NULL,
+  `mail` varchar(60) DEFAULT NULL,
   `id_Domicilio` int(11) DEFAULT NULL,
-  `id_Nivel` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
-  KEY `fk_Alumno_Nivel2_idx` (`id_Nivel`),
   KEY `fk_Alumno_Domicilio1_idx` (`id_Domicilio`),
-  CONSTRAINT `fk_Alumno_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Alumno_Nivel2` FOREIGN KEY (`id_Nivel`) REFERENCES `nivel` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_Alumno_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,6 +89,7 @@ CREATE TABLE `alumno` (
 
 LOCK TABLES `alumno` WRITE;
 /*!40000 ALTER TABLE `alumno` DISABLE KEYS */;
+INSERT INTO `alumno` VALUES (1,'Maria','Garcia',12345678,2,'2',1,'alumno','alumno',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,32 +117,6 @@ CREATE TABLE `alumnos_docente` (
 LOCK TABLES `alumnos_docente` WRITE;
 /*!40000 ALTER TABLE `alumnos_docente` DISABLE KEYS */;
 /*!40000 ALTER TABLE `alumnos_docente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `alumnos_institucion`
---
-
-DROP TABLE IF EXISTS `alumnos_institucion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `alumnos_institucion` (
-  `id_Institucion` int(11) NOT NULL,
-  `id_Alumno` int(11) NOT NULL,
-  KEY `fk_Alumnos_institucion_Institucion1_idx` (`id_Institucion`),
-  KEY `fk_Alumnos_institucion_Alumno1_idx` (`id_Alumno`),
-  CONSTRAINT `fk_Alumnos_institucion_Alumno1` FOREIGN KEY (`id_Alumno`) REFERENCES `alumno` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Alumnos_institucion_Institucion1` FOREIGN KEY (`id_Institucion`) REFERENCES `institucion` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `alumnos_institucion`
---
-
-LOCK TABLES `alumnos_institucion` WRITE;
-/*!40000 ALTER TABLE `alumnos_institucion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `alumnos_institucion` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -210,20 +153,17 @@ DROP TABLE IF EXISTS `bloque_and`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloque_and` (
-  `id` int(11) NOT NULL COMMENT 'el id del bloqueAnd lo tengo que obtener primero como un autoincremental de bloque',
-  `id_Bloque1` int(11) DEFAULT NULL,
-  `id_Bloque2` int(11) DEFAULT NULL COMMENT 'cada ves que se cree un bloque and tambien hay que agregarlo en la tabla bloque',
-  `id_BloqueAnd_1` int(11) DEFAULT NULL,
-  `id_BloqueAnd_2` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_Bloque` int(11) NOT NULL,
+  `id_Bloque1` int(11) NOT NULL,
+  `id_Bloque2` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Bloque_and_Bloques1_idx` (`id_Bloque2`),
-  KEY `fk_Bloque_and_Bloques3_idx` (`id_Bloque1`),
-  KEY `fk_Bloque_and_Bloque_and1_idx` (`id_BloqueAnd_1`),
-  KEY `fk_Bloque_and_Bloque_and2_idx` (`id_BloqueAnd_2`),
-  CONSTRAINT `fk_Bloque_and_Bloque_and1` FOREIGN KEY (`id_BloqueAnd_1`) REFERENCES `bloque_and` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Bloque_and_Bloque_and2` FOREIGN KEY (`id_BloqueAnd_2`) REFERENCES `bloque_and` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Bloque_and_Bloques1` FOREIGN KEY (`id_Bloque2`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Bloque_and_Bloques3` FOREIGN KEY (`id_Bloque1`) REFERENCES `bloque` (`id`) ON DELETE CASCADE
+  KEY `fk_Bloque_And_Bloque1_idx` (`id_Bloque`),
+  KEY `fk_Bloque_And_Bloque2_idx` (`id_Bloque1`),
+  KEY `fk_Bloque_And_Bloque3_idx` (`id_Bloque2`),
+  CONSTRAINT `fk_Bloque_And_Bloque1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_Bloque_And_Bloque2` FOREIGN KEY (`id_Bloque1`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_Bloque_And_Bloque3` FOREIGN KEY (`id_Bloque2`) REFERENCES `bloque` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -244,8 +184,10 @@ DROP TABLE IF EXISTS `bloques_plantilla_1`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloques_plantilla_1` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_Plantilla` int(11) NOT NULL,
   `id_Bloque` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_lista_1_Plantilla1_idx` (`id_Plantilla`),
   KEY `fk_lista_1_Bloques1_idx` (`id_Bloque`),
   CONSTRAINT `fk_lista_1_Bloques1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
@@ -270,8 +212,10 @@ DROP TABLE IF EXISTS `bloques_plantilla_2`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloques_plantilla_2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_Plantilla` int(11) NOT NULL,
   `id_Bloque` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_lista_2_Plantilla1_idx` (`id_Plantilla`),
   KEY `fk_lista_2_Bloques1_idx` (`id_Bloque`),
   CONSTRAINT `fk_lista_2_Bloques1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
@@ -296,8 +240,10 @@ DROP TABLE IF EXISTS `bloques_registroactividad`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloques_registroactividad` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_RegistroActividad` int(11) NOT NULL,
   `id_Bloque` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_Bloques_RegistroActividad_Registro_actividad1_idx` (`id_RegistroActividad`),
   KEY `fk_Bloques_RegistroActividad_Bloque1_idx` (`id_Bloque`),
   CONSTRAINT `fk_Bloques_RegistroActividad_Bloque1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
@@ -315,29 +261,6 @@ LOCK TABLES `bloques_registroactividad` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `dificultad`
---
-
-DROP TABLE IF EXISTS `dificultad`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `dificultad` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `dificultad`
---
-
-LOCK TABLES `dificultad` WRITE;
-/*!40000 ALTER TABLE `dificultad` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dificultad` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `docente`
 --
 
@@ -349,17 +272,17 @@ CREATE TABLE `docente` (
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `dni` int(11) NOT NULL,
-  `usuario` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `telefono` int(11) DEFAULT NULL,
-  `mail` varchar(45) DEFAULT NULL,
+  `usuario` varchar(20) DEFAULT NULL,
+  `password` varchar(10) DEFAULT NULL,
+  `telefono` varchar(50) DEFAULT NULL,
+  `mail` varchar(60) DEFAULT NULL,
   `id_Domicilio` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni_UNIQUE` (`dni`),
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `fk_Docente_Domicilio1_idx` (`id_Domicilio`),
   CONSTRAINT `fk_Docente_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -368,34 +291,8 @@ CREATE TABLE `docente` (
 
 LOCK TABLES `docente` WRITE;
 /*!40000 ALTER TABLE `docente` DISABLE KEYS */;
-INSERT INTO `docente` VALUES (1,'Yanina','Gallardo',34856583,'docente','docente',NULL,NULL,NULL);
+INSERT INTO `docente` VALUES (1,'Juan','Perez',234587,'docente','docente',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `docente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `docentes_institucion`
---
-
-DROP TABLE IF EXISTS `docentes_institucion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `docentes_institucion` (
-  `id_Institucion` int(11) NOT NULL,
-  `id_Docente` int(11) NOT NULL,
-  KEY `fk_Docentes_institucion_Institucion1_idx` (`id_Institucion`),
-  KEY `fk_Docentes_institucion_Docente1_idx` (`id_Docente`),
-  CONSTRAINT `fk_Docentes_institucion_Docente1` FOREIGN KEY (`id_Docente`) REFERENCES `docente` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Docentes_institucion_Institucion1` FOREIGN KEY (`id_Institucion`) REFERENCES `institucion` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `docentes_institucion`
---
-
-LOCK TABLES `docentes_institucion` WRITE;
-/*!40000 ALTER TABLE `docentes_institucion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `docentes_institucion` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -474,29 +371,6 @@ LOCK TABLES `materia` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `nivel`
---
-
-DROP TABLE IF EXISTS `nivel`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `nivel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `nivel`
---
-
-LOCK TABLES `nivel` WRITE;
-/*!40000 ALTER TABLE `nivel` DISABLE KEYS */;
-/*!40000 ALTER TABLE `nivel` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `plantilla`
 --
 
@@ -532,10 +406,10 @@ DROP TABLE IF EXISTS `registro_actividad`;
 CREATE TABLE `registro_actividad` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tiempo` int(11) DEFAULT NULL,
-  `finalizo_correctamente` tinyint(4) DEFAULT NULL,
+  `finalizo_correctamente` bit(1) DEFAULT NULL,
   `fecha_realizado` date DEFAULT NULL,
-  `intentos` int(11) DEFAULT NULL,
-  `estrella` int(11) DEFAULT NULL,
+  `intentos` tinyint(4) DEFAULT NULL,
+  `estrella` tinyint(4) DEFAULT NULL,
   `corazon` varchar(200) DEFAULT NULL COMMENT 'texto libre de recompensa del docente',
   `observaciones` varchar(2000) DEFAULT NULL,
   `id_Actividad` int(11) NOT NULL,
@@ -561,32 +435,6 @@ LOCK TABLES `registro_actividad` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `registros_alumno`
---
-
-DROP TABLE IF EXISTS `registros_alumno`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `registros_alumno` (
-  `id_Alumno` int(11) NOT NULL,
-  `id_RegistroActividad` int(11) NOT NULL,
-  KEY `fk_Registros_alumno_Alumno1_idx` (`id_Alumno`),
-  KEY `fk_Registros_alumno_Registro_actividad1_idx` (`id_RegistroActividad`),
-  CONSTRAINT `fk_Registros_alumno_Alumno1` FOREIGN KEY (`id_Alumno`) REFERENCES `alumno` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Registros_alumno_Registro_actividad1` FOREIGN KEY (`id_RegistroActividad`) REFERENCES `registro_actividad` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `registros_alumno`
---
-
-LOCK TABLES `registros_alumno` WRITE;
-/*!40000 ALTER TABLE `registros_alumno` DISABLE KEYS */;
-/*!40000 ALTER TABLE `registros_alumno` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `solucion`
 --
 
@@ -594,8 +442,10 @@ DROP TABLE IF EXISTS `solucion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `solucion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_Plantilla` int(11) NOT NULL,
   `id_Bloque` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_Lista_bloques1_Bloques1_idx` (`id_Bloque`),
   KEY `fk_Lista_bloques1_Plantilla1_idx` (`id_Plantilla`),
   CONSTRAINT `fk_Lista_bloques1_Bloques1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
@@ -621,4 +471,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-05 18:40:52
+-- Dump completed on 2019-02-07 19:12:47
