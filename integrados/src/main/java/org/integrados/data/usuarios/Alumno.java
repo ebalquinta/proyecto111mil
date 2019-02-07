@@ -10,9 +10,9 @@ import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.enums.Nivel;
 import static org.integrados.data.util.Util.dateToString;
 
-
 public class Alumno extends Persona {
 
+    private List<Docente> docentes;
     private List<RegistroActividad> actividades;
     private Date fechaNacimiento;
     private Integer edadMadurativa;
@@ -23,15 +23,25 @@ public class Alumno extends Persona {
 
     public Alumno() {
         super();
+        this.docentes = new ArrayList<>();
         this.actividades = new ArrayList<>();
     }
 
     public Alumno(Integer dni, String nombre, String apellido, Integer grado, String division, Nivel nivel) {
         super(dni, nombre, apellido);
+        this.docentes = new ArrayList<>();
         this.actividades = new ArrayList<>();
         this.grado = grado;
         this.division = division;
         this.nivel = nivel;
+    }
+
+    public List<Docente> getDocentes() {
+        return docentes;
+    }
+
+    public void setDocentes(List<Docente> docentes) {
+        this.docentes = docentes;
     }
 
     public List<RegistroActividad> getActividades() {
@@ -98,13 +108,13 @@ public class Alumno extends Persona {
         DateTimeFormatter formatoEdad = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fecha = LocalDate.parse(fechaString, formatoEdad);
         Period diff = Period.between(fecha, hoy);
-        
+
         return diff.getYears();
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Alumno{" + "actividades=" + actividades + ", fechaNacimiento=" + fechaNacimiento + ", edadMadurativa=" + edadMadurativa + ", grado=" + grado + ", division=" + division + ", nivel=" + nivel + ", observaciones=" + observaciones + '}';
+        return "Alumno{" + "docentes=" + docentes + ", actividades=" + actividades + ", fechaNacimiento=" + fechaNacimiento + ", edadMadurativa=" + edadMadurativa + ", grado=" + grado + ", division=" + division + ", nivel=" + nivel + ", observaciones=" + observaciones + '}';
     }
 
 }
