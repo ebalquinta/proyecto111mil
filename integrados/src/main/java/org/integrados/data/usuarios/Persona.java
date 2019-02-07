@@ -7,11 +7,10 @@ public abstract class Persona {
     protected String nombre;
     protected String apellido;
     protected Domicilio domicilio;
-    protected Integer telefono;
+    protected String telefono;
     protected String mail;
     protected String usuario;
     protected String clave;
-    protected Institucion institucion;
 
     public Persona() {
         this.id = null;
@@ -64,11 +63,11 @@ public abstract class Persona {
         this.domicilio = domicilio;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -96,14 +95,6 @@ public abstract class Persona {
         this.clave = clave;
     }
 
-    public Institucion getInstitucion() {
-        return institucion;
-    }
-
-    public void setInstitucion(Institucion institucion) {
-        this.institucion = institucion;
-    }
-    
     @Override
     public String toString() {
         return "Persona{" + "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", telefono=" + telefono + ", mail=" + mail + ", usuario=" + usuario + ", clave=" + clave + '}';
