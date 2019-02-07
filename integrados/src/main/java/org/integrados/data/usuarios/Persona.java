@@ -7,7 +7,7 @@ public abstract class Persona {
     protected String nombre;
     protected String apellido;
     protected Domicilio domicilio;
-    protected Integer telefono;
+    protected String telefono;
     protected String mail;
     protected String usuario;
     protected String clave;
@@ -64,11 +64,11 @@ public abstract class Persona {
         this.domicilio = domicilio;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
