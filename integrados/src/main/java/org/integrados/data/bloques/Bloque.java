@@ -10,12 +10,12 @@ public class Bloque {
     imagen = 2
     texto = 3
     and = 4
-    */
+     */
     protected Integer id;
     protected Integer tipoBloque;
 
     protected Bloque() {
-        this.id= null;
+        this.id = null;
     }
 
     public Integer getId() {
@@ -34,11 +34,16 @@ public class Bloque {
         this.tipoBloque = tipoBloque;
     }
 
-    @Override
-    public String toString() {
-        return "Bloque{" + "id=" + id + ", tipoBloque=" + tipoBloque + '}';
-    }
-
+    /**
+     * el metodo equals recibiria dos objetos. dentro del metodo solo se compara
+     * si son dos bloques iguales, sin depender del tipo de bloque
+     *
+     * public boolean equals(Bloque solucion, Bloque respuestaAlumno){
+     *
+     * return (respuestaAlumno.equals(solucion);
+     *
+     * }
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -56,15 +61,10 @@ public class Bloque {
         }
         return true;
     }
-    
-    /**
-     * el metodo equals recibiria dos objetos. dentro del metodo solo se compara si son dos bloques iguales, sin depender del tipo de bloque
-     
-     public boolean equals(Bloque solucion, Bloque respuestaAlumno){
-     *  
-     * return (respuestaAlumno.equals(solucion);
-     *      
-     }
-     */
-    
+
+    @Override
+    public String toString() {
+        return "Bloque{" + "id=" + id + ", tipoBloque=" + tipoBloque + '}';
+    }
+
 }

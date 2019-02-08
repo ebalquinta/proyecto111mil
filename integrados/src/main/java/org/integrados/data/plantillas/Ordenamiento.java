@@ -1,13 +1,11 @@
-
 package org.integrados.data.plantillas;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.integrados.data.bloques.*;
 
 public class Ordenamiento extends Plantilla {
-        
-    public Ordenamiento(){
+
+    public Ordenamiento() {
         super();
         super.tipoPlantilla = 1;
     }
@@ -16,16 +14,16 @@ public class Ordenamiento extends Plantilla {
         super(enunciado, solucion);
         super.tipoPlantilla = 1;
     }
-    
+
     @Override
     public List<Bloque> desordenar() {
         int cambios = 0;
         List<Bloque> listaDesordenada = this.clonarLista(super.solucion);
-       
-        while (cambios < listaDesordenada.size() ){
+
+        while (cambios < listaDesordenada.size()) {
             for (int i = 0; i < listaDesordenada.size(); i++) {
                 int index = (int) (Math.random() * listaDesordenada.size());
-                
+
                 Bloque bloqueActual = listaDesordenada.get(i);
                 Bloque auxiliar = listaDesordenada.get(index);
 
@@ -34,7 +32,7 @@ public class Ordenamiento extends Plantilla {
 
                 listaDesordenada.remove(index);
                 listaDesordenada.add(index, bloqueActual);
-                
+
                 cambios++;
             }
         }
@@ -43,10 +41,10 @@ public class Ordenamiento extends Plantilla {
 
     @Override
     public Boolean verificarResultado(List<Bloque> respuestaAlumno) {
-       
-        for (int i = 0; i < respuestaAlumno.size(); i++){
+
+        for (int i = 0; i < respuestaAlumno.size(); i++) {
             //desarrollar metodo equals dentro de cada tipo de bloque para que compare por id
-            if(!respuestaAlumno.get(i).equals(super.solucion.get(i))){
+            if (!respuestaAlumno.get(i).equals(super.solucion.get(i))) {
                 return false;
             }
         }
@@ -55,12 +53,12 @@ public class Ordenamiento extends Plantilla {
 
     @Override
     public Boolean validarPlantilla() {
-       if (super.solucion.size() < 1){
-           return false;
-       }
+        if (super.solucion.size() < 1) {
+            return false;
+        }
         return true;
     }
-   
+
     @Override
     public String toString() {
         return super.toString();
