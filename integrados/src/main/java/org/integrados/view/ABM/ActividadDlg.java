@@ -1,4 +1,4 @@
-package org.integrados.view.pruebaABM;
+package org.integrados.view.ABM;
 
 /**
  *
@@ -31,7 +31,7 @@ import org.integrados.view.Dialogo;
 public class ActividadDlg {
 
     private ActividadCtrl controlador = null;
-    private Actividad actividad = null;
+    private ActividadABM actividad = null;
     
     //Booleano que indica si se está dando de alta una actividad o es una edición.
     private boolean alta = false;
@@ -57,13 +57,13 @@ public class ActividadDlg {
         this.controlador = controlador;
     }
     
-    public void editar(Actividad actividad) {
+    public void editar(ActividadABM actividad) {
         this.actividad = actividad;
         this.alta = false;        
         this.titulo = "Edición de Actividad nro. " + actividad.getId();
     }
     
-    public void nuevo(Actividad actividad) {
+    public void nuevo(ActividadABM actividad) {
         this.actividad = actividad;
         this.alta = true; 
         this.titulo = "Agregar Nueva Actividad";
