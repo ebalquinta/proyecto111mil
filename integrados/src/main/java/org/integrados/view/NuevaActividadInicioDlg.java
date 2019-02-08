@@ -13,7 +13,10 @@ public class NuevaActividadInicioDlg extends JFrame{
 
     private JLabel lblFondo;
     private JButton btnVolver;
-
+    private JToggleButton jToggleButton1;
+    private JToggleButton jToggleButton2;
+    private JToggleButton jToggleButton3;
+    private JToggleButton jToggleButton4;
     
     public NuevaActividadInicioDlg() {
         initComponents();
@@ -23,11 +26,14 @@ public class NuevaActividadInicioDlg extends JFrame{
         
         lblFondo = new JLabel();
         btnVolver = new JButton();
-        
+        jToggleButton1 = new JToggleButton();
+        jToggleButton2 = new JToggleButton();
+        jToggleButton3 = new JToggleButton();
+        jToggleButton4 = new JToggleButton();        
+       
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
-
-          
+         
         // Propiedades de botón Volver
         btnVolver.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
         btnVolver.setText("Volver");
@@ -41,8 +47,61 @@ public class NuevaActividadInicioDlg extends JFrame{
             }
         });
 
+      
+        // Propiedades del boton jToggleButton1 (ordenar)
+        jToggleButton1.setBackground(new java.awt.Color(255, 255, 204));
+        jToggleButton1.setIcon(new ImageIcon(getClass().getResource("images/ordenar2.jpg")));
+        jToggleButton1.setBounds(230, 150, 140, 140);
+        jToggleButton1.setToolTipText("Crea una nueva actividad de Ordenar");
+        getContentPane().add(jToggleButton1);
+        jToggleButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+            }
+        });
+
+        // Propiedades del boton jToggleButton2 (Unir)
+        jToggleButton2.setBackground(new java.awt.Color(255, 255, 204));
+        jToggleButton2.setIcon(new ImageIcon(getClass().getResource("images/unir.jpg")));
+        jToggleButton2.setBounds(400, 150, 140, 140);
+        jToggleButton2.setToolTipText("Crea una nueva actividad de Unir");
+        getContentPane().add(jToggleButton2);
+        jToggleButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+            }
+        });
+        
+        // Propiedades del boton jToggleButton3 (Preguntas y respuestas)
+        jToggleButton3.setBackground(new java.awt.Color(255, 255, 204));
+        jToggleButton3.setIcon(new ImageIcon(getClass().getResource("images/memorama.jpg")));
+        jToggleButton3.setBounds(230, 320, 140, 140);
+        jToggleButton3.setToolTipText("Crea una nueva actividad de Memorama");
+        getContentPane().add(jToggleButton3);
+        jToggleButton3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+            }
+        });
+        
+        // Propiedades del boton jToggleButton4 (Memorama)
+        jToggleButton4.setBackground(new java.awt.Color(255, 255, 204));
+        jToggleButton4.setIcon(new ImageIcon(getClass().getResource("images/pre_res.jpg")));
+        jToggleButton4.setBounds(400, 320, 140, 140);
+        jToggleButton4.setToolTipText("Crea una nueva actividad de Preguntas y Respuestas");
+        getContentPane().add(jToggleButton4);
+        jToggleButton4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+            }
+        });
+        
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/ver1.0-NuevaActividadInicioDlgBackground.jpg","descripción");
+        ImageIcon icon = createImageIcon("images/NuevaActividadInicioDlgBackground.jpg","descripción");
         lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 800, 600);
