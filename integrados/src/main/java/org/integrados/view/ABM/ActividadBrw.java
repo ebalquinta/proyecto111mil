@@ -1,4 +1,4 @@
-package org.integrados.view.pruebaABM;
+package org.integrados.view.ABM;
         
 import java.awt.BorderLayout;
 import java.awt.Color;
