@@ -72,7 +72,7 @@ public class DocenteInicioDlg extends JFrame {
         });
         
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/ver1.0-DocenteInicioDlgBackground.jpg","descripción");
+        ImageIcon icon = createImageIcon("images/DocenteInicioDlgBackground.jpg","descripción");
         lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 800, 600);

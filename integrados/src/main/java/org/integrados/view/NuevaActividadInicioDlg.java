@@ -9,48 +9,25 @@ import javax.swing.*;
  *
  * @author GrupoFront
  */
-public class SobreNosotrosDlg extends JFrame {
-    
+public class NuevaActividadInicioDlg extends JFrame{
+
     private JLabel lblFondo;
     private JButton btnVolver;
-    private JLabel jLabel2;
-    private JLabel jLabel3;   
-    private JLabel jLabel4;
+
     
-    public SobreNosotrosDlg() {
+    public NuevaActividadInicioDlg() {
         initComponents();
     }
     
     private void initComponents() {
         
         lblFondo = new JLabel();
-        jLabel2 = new JLabel();
-        jLabel3 = new JLabel();
-        jLabel4 = new JLabel();
         btnVolver = new JButton();
-                
+        
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        // Propiedades de los textos de pie de foto
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 18));
-        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel3.setText("Alumnos del Plan 111Mil Comisión Sab-005 Año 2018");
-        jLabel3.setBounds(190, 370, 450, 50);
-        getContentPane().add(jLabel3);
-
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel2.setText("Mariela-Ezequiel-Yanina-Jacco");
-        jLabel2.setBounds(220, 430, 420, 60);
-        getContentPane().add(jLabel2);
-
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 24));
-        jLabel4.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel4.setText("Viviana-Sebastián-Leandro-Paz-Bruno");
-        jLabel4.setBounds(175, 410, 470, 40);
-        getContentPane().add(jLabel4);
-        
+          
         // Propiedades de botón Volver
         btnVolver.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
         btnVolver.setText("Volver");
@@ -65,7 +42,7 @@ public class SobreNosotrosDlg extends JFrame {
         });
 
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/SobreNosotrosDLGBackground.jpg","descripción");
+        ImageIcon icon = createImageIcon("images/NuevaActividadInicioDlgBackground.jpg","descripción");
         lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 800, 600);
@@ -93,4 +70,5 @@ public class SobreNosotrosDlg extends JFrame {
     public void ocultar() {
         this.setVisible(false);
     }   
+   
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import org.integrados.view.Dialogo;
+import org.integrados.view.NuevaActividadInicioDlg;
 
 /**
  *
@@ -24,13 +25,13 @@ public class ActividadCtrl {
         
         //Levantar actividades desde la base de datos        
        List<Actividad> listaActividades = new ArrayList<>();
-       listaActividades.add(new Actividad(1, "Preguntas", "Cynthia", "Historia", "1era GM"));
+       listaActividades.add(new Actividad(1, "Preguntas", "Cynthia", "Historia", "1era Guerra Mundial"));
        listaActividades.add(new Actividad(2, "Memorama", "Mauricio", "Física", "Caída libre"));
        listaActividades.add(new Actividad(3, "Unir", "Pablo", "Matemática", "Cálculo de Area"));
        listaActividades.add(new Actividad(4, "Unir", "Pablo", "Matemática", "Cálculo de Perímetro"));
-       listaActividades.add(new Actividad(5, "Ordenar", "Mauricio", "Física", "MRU"));
-       listaActividades.add(new Actividad(6, "Memorama", "Cynthia", "Historia", "2da GM"));
-       listaActividades.add(new Actividad(7, "Ordenar", "Cynthia", "Historia", "Indep. Arg."));
+       listaActividades.add(new Actividad(5, "Ordenar", "Mauricio", "Física", "Movimiento Rectilineo"));
+       listaActividades.add(new Actividad(6, "Memorama", "Malena", "Historia", "2da Guerra Mundial"));
+       listaActividades.add(new Actividad(7, "Ordenar", "Cynthia", "Historia", "Independencia Argentina"));
               
         actividadBrw = new ActividadBrw(this, listaActividades);
         this.actividadBrw.mostrar(framePadre);
@@ -40,10 +41,12 @@ public class ActividadCtrl {
         Actividad actividad = new Actividad();
         //acá podría poner valores por defecto.
         
-        actividadDlg = new ActividadDlg(this);
-        actividadDlg.nuevo(actividad);
-        actividadDlg.mostrar(actividadBrw.getFrame());
+        // actividadDlg = new ActividadDlg(this);
+        // actividadDlg.nuevo(actividad);
+        //actividadDlg.mostrar(actividadBrw.getFrame());
         
+        NuevaActividadInicioDlg nuevaActividadInicioDlg = new NuevaActividadInicioDlg();
+        nuevaActividadInicioDlg.mostrar();        
     }
     
     public void editar(Actividad actividad) {        
@@ -71,5 +74,9 @@ public class ActividadCtrl {
         } catch (Exception e) {
             throw new Exception("Error al borrar", e);
         }
+    }
+    
+    public void volver(){
+        actividadBrw.getFrame().dispose();
     }    
 }
