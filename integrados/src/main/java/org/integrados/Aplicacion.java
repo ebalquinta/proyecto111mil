@@ -36,6 +36,7 @@ public class Aplicacion {
     
     public void cerrar() {
         HibernateUtiles.finalizar();
+        System.exit(0);
     }
     
     

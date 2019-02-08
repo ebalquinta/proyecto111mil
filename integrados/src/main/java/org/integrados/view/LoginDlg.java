@@ -39,7 +39,13 @@ public class LoginDlg extends JFrame {
         etiUsuario = new JLabel();
         etiClave = new JLabel();
         
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                loginCtrl.cerrarAplicacion();
+            }
+        });
         getContentPane().setLayout(null);
         
         // Propiedades de etiqueta de usuario
@@ -98,7 +104,7 @@ public class LoginDlg extends JFrame {
         btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                loginCtrl.finalizar();
+                loginCtrl.cerrarAplicacion();
             }
         });
 
