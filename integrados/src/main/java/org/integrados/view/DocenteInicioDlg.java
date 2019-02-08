@@ -7,8 +7,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import org.integrados.view.Dialogo;
-import org.integrados.view.pruebaABM.*;
+import org.integrados.view.ABM.*;
 import org.integrados.data.util.Util;
         
 public class DocenteInicioDlg extends JFrame {
