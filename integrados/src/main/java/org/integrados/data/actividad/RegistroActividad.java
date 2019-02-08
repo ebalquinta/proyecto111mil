@@ -1,5 +1,6 @@
 package org.integrados.data.actividad;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.integrados.data.bloques.Bloque;
 import org.integrados.data.usuarios.Alumno;
@@ -25,6 +26,7 @@ public class RegistroActividad {
 
     public RegistroActividad() {
         this.id = null;
+        this.respuestaAlumno= new ArrayList<>();
     }
 
     public RegistroActividad(Actividad actividad, Alumno alumno, Docente docente) {
@@ -126,9 +128,9 @@ public class RegistroActividad {
      * Este metodo calcula el porcentaje obtenido una ves realizada la actividad exitosamente.
      * Teniendo en cuenta la cantidad de intentos en que se realizó la actividad.
      * 
-     * @return  double
+     * @return  Double
      */
-    public double calcularPuntaje() {
+    public Double calcularPuntaje() {
         double porcentaje;
         
         //compara la cantidad de intentos realizados con el maximo cargado por el docente.
@@ -146,9 +148,9 @@ public class RegistroActividad {
     }
     /**
      * En base al porcentaje de aciertos calcula la cantidad de estrellas que se otorgaran por la actividad realizada.
-     * @return int
+     * @return Integer
      */
-     public int calcularEstrellas() {
+     public Integer calcularEstrellas() {
         double porcentaje = this.calcularPuntaje();
 
         if (porcentaje == 100) {

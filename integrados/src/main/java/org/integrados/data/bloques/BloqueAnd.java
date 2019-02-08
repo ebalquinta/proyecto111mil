@@ -1,7 +1,5 @@
 package org.integrados.data.bloques;
 
-import java.util.Objects;
-
 public class BloqueAnd extends Bloque {
 
     private Bloque bloque1;
