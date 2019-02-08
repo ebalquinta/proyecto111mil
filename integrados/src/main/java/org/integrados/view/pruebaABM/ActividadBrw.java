@@ -80,7 +80,20 @@ public class ActividadBrw {
         pnlCentral.setLayout(pnlCentralLayout);
         dialogoPrincipal.getContentPane().add(pnlCentral, BorderLayout.CENTER);
 
+        // Propiedades de la tabla de actividades
         tablaActividades = new JTable();
+        tablaActividades.setBackground(new java.awt.Color(252, 241, 224));
+        tablaActividades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tablaActividades.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); 
+        
+        tablaActividades.setAlignmentX(1.0F);
+        tablaActividades.setAlignmentY(1.0F);
+        tablaActividades.setGridColor(new java.awt.Color(255, 51, 0));
+        tablaActividades.setIntercellSpacing(new java.awt.Dimension(2, 2));
+        tablaActividades.setSelectionBackground(new java.awt.Color(255, 204, 0));
+
+              
+        
         pnlCentral.add(new JScrollPane(tablaActividades), BorderLayout.CENTER);
         tablaActividades.setModel(new ActividadTableModel(listaActividades));
 
@@ -99,6 +112,7 @@ public class ActividadBrw {
         pnlBotonesEdicion.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
         dialogoPrincipal.getContentPane().add(pnlBotonesEdicion, BorderLayout.SOUTH);
 
+        // Propiedades del botón Nuevo
         botonNuevo = new JButton();
         botonNuevo.setText("Nuevo");
         botonNuevo.setBounds(20, 7, 90, 22);
@@ -110,6 +124,7 @@ public class ActividadBrw {
             }
         });
 
+        // Propiedades del botón Editar
         botonEdicion = new JButton();
         botonEdicion.setText("Editar");
         botonEdicion.setBounds(120, 7, 90, 22);
@@ -117,10 +132,12 @@ public class ActividadBrw {
         botonEdicion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                editarActividadActual();
+                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+                //editarActividadActual();
             }
         });
 
+        // Propiedades del botón Borrar
         botonBorrar = new JButton();
         botonBorrar.setText("Borrar");
         botonBorrar.setBounds(220, 7, 90, 22);
@@ -132,6 +149,7 @@ public class ActividadBrw {
             }
         });
         
+        // Propiedades del botón Probar
         botonProbar = new JButton();
         botonProbar.setText("Probar");
         botonProbar.setBounds(320, 7, 90, 22);
@@ -143,6 +161,7 @@ public class ActividadBrw {
             }
         });
         
+        // Propiedades del botón Volver
         botonVolver = new JButton();
         botonVolver.setText("Volver");
         botonVolver.setBounds(420, 7, 90, 22);
@@ -150,13 +169,11 @@ public class ActividadBrw {
         botonVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+                volver();
             }
         });
         
     }
-
-
     
     //////////////////////////////////////Nueva Actividad//////////////////////////////////////
     private void nuevaActividad() {
@@ -184,6 +201,12 @@ public class ActividadBrw {
     }
     ///////////////////////////////////FIN->Editar Actividad///////////////////////////////////
 
+    //////////////////////////////////////////Volver///////////////////////////////////////////
+    public void volver() {
+        this.controlador.volver();
+    }
+    ///////////////////////////////////////////FIN->Volver/////////////////////////////////////
+    
     /////////////////////////////////////Borrar Actividad//////////////////////////////////////
     private void borrarActividad() {
         System.out.println("borrarActividad");
@@ -239,7 +262,7 @@ public class ActividadBrw {
         @Override
         public Class getColumnClass(int column) {
             if (column == 0) {
-                return Integer.class;
+                return String.class;
             } else if (column == 1) {
                 return String.class;
             } else if (column == 2) {
