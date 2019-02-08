@@ -13,6 +13,7 @@ import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.data.usuarios.Persona;
 import org.integrados.exceptions.IntegradosException;
+import org.integrados.view.Dialogo;
 import org.integrados.view.LoginDlg;
 
 /**
@@ -75,8 +76,11 @@ public class LoginCtrl {
         this.loginDlg.ocultar();
     }
 
-    public void cancelar() {
-        this.loginDlg.ocultar();
-        this.app.cerrar();
+    public void cerrarAplicacion() {
+        Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
+        if (resultado == Dialogo.ResultadoDialogo.Yes) {
+            this.loginDlg.ocultar();
+            this.app.cerrar();
+        }
     }
 }
