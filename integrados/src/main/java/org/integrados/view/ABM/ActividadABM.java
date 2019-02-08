@@ -5,7 +5,7 @@
  */
 package org.integrados.view.ABM;
 
-public class Actividad {
+public class ActividadABM {
     
     private Integer id;
     private String plantilla;
@@ -13,9 +13,9 @@ public class Actividad {
     private String materia;
     private String tema;
     
-    public Actividad() {}
+    public ActividadABM() {}
     
-    public Actividad(Integer id, String plantilla, String docente, 
+    public ActividadABM(Integer id, String plantilla, String docente, 
             String materia, String tema) {
         this.id = id;
         this.plantilla = plantilla;
@@ -65,7 +65,7 @@ public class Actividad {
     }
     
     public boolean equals(Object argObject) {
-        Actividad argActividad = (Actividad)argObject;        
+        ActividadABM argActividad = (ActividadABM)argObject;        
         return (this.id.equals(argActividad.getId()));
     } 
 }
