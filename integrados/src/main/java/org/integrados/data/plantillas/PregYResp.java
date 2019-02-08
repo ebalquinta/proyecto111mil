@@ -15,8 +15,8 @@ public class PregYResp extends Plantilla {
         this.opciones = new ArrayList<>();
     }
 
-    public PregYResp(List<Bloque> opciones, String enunciado, List<Bloque> solucion) {
-        super(enunciado, solucion);
+    public PregYResp(List<Bloque> opciones, String enunciado, List<Bloque> soluciones) {
+        super(enunciado, soluciones);
         super.tipoPlantilla = 3;
         this.opciones = opciones;
     }
@@ -75,22 +75,22 @@ public class PregYResp extends Plantilla {
     @Override
     public Boolean verificarResultado(List<Bloque> respuestaAlumno) {
         int respuestas = 0;
-        if (respuestaAlumno.size() == this.solucion.size()) {   //para comparar objetos usar equals
-            for (Bloque solucion : this.solucion) {
+        if (respuestaAlumno.size() == this.soluciones.size()) {   //para comparar objetos usar equals
+            for (Bloque solucion : this.soluciones) {
                 for (Bloque rta : respuestaAlumno) {
                     if (solucion.equals(rta)) {     //esta parte se modulariza al metodo equals en Bloque. if(equals){respuesta++}
                         respuestas++;
                     }
                 }
             }
-            return (respuestas == this.solucion.size());
+            return (respuestas == this.soluciones.size());
         }
         return false;
     }
 
     @Override
     public Boolean validarPlantilla() {
-        return (this.solucion.size() >= 1);
+        return (this.soluciones.size() >= 1);
     }
 
     @Override

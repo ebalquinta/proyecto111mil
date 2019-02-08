@@ -25,8 +25,8 @@ public class Memorama extends Plantilla {
         this.bloques1 = new ArrayList<>();
     }
 
-    public Memorama(String enunciado, List<Bloque> solucion, List<Bloque> bloques1, List<Bloque> bloques2) {
-        super(enunciado, solucion);
+    public Memorama(String enunciado, List<Bloque> soluciones, List<Bloque> bloques1, List<Bloque> bloques2) {
+        super(enunciado, soluciones);
         super.tipoPlantilla = 4;
         this.bloques1 = bloques1;
         this.bloques2 = bloques2;
@@ -99,7 +99,7 @@ public class Memorama extends Plantilla {
         BloqueAnd rtaAlumno;
         BloqueAnd solucion;
         int par = 0;
-        for (Bloque s : this.solucion) {
+        for (Bloque s : this.soluciones) {
             solucion = (BloqueAnd) s;
             for (Bloque b : respuestaAlumno) {
                 rtaAlumno = (BloqueAnd) b;
@@ -111,12 +111,12 @@ public class Memorama extends Plantilla {
                 }
             }
         }
-        return (par == this.solucion.size());
+        return (par == this.soluciones.size());
     }
 
     @Override
     public Boolean validarPlantilla() {
-        return (this.solucion.size() > 1);
+        return (this.soluciones.size() > 1);
     }
 
     @Override

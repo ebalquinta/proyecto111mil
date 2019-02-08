@@ -25,7 +25,7 @@ public abstract class Plantilla {
      */
     protected Integer id;
     protected String enunciado;
-    protected List<Bloque> solucion;
+    protected List<Bloque> soluciones;
     protected String imagenEnunciado;
     protected String sonidoEnunciado;
     protected Integer tipoPlantilla;
@@ -34,13 +34,13 @@ public abstract class Plantilla {
         this.sonidoEnunciado = null;
         this.imagenEnunciado = null;
         this.id = null;
-        this.solucion = new ArrayList<>();
+        this.soluciones = new ArrayList<>();
     }
 
-    public Plantilla(String enunciado, List<Bloque> solucion) {
+    public Plantilla(String enunciado, List<Bloque> soluciones) {
         this();
         this.enunciado = enunciado;
-        this.solucion = solucion;
+        this.soluciones = soluciones;
     }
 
     public Integer getId() {
@@ -51,12 +51,12 @@ public abstract class Plantilla {
         this.id = id;
     }
 
-    public List<Bloque> getSolucion() {
-        return solucion;
+    public List<Bloque> getSoluciones() {
+        return soluciones;
     }
 
-    public void setSolucion(List<Bloque> solucion) {
-        this.solucion = solucion;
+    public void setSoluciones(List<Bloque> soluciones) {
+        this.soluciones = soluciones;
     }
 
     public String getEnunciado() {
@@ -111,7 +111,7 @@ public abstract class Plantilla {
 
     @Override
     public String toString() {
-        return "Plantilla{" + "id=" + id + ", enunciado=" + enunciado + ", solucion=" + solucion + ", imagenEnunciado=" + imagenEnunciado + ", sonidoEnunciado=" + sonidoEnunciado + ", tipoPlantilla=" + tipoPlantilla + '}';
+        return "Plantilla{" + "id=" + id + ", enunciado=" + enunciado + ", solucion=" + soluciones + ", imagenEnunciado=" + imagenEnunciado + ", sonidoEnunciado=" + sonidoEnunciado + ", tipoPlantilla=" + tipoPlantilla + '}';
     }
 
 }

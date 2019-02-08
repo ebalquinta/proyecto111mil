@@ -25,8 +25,8 @@ public class Unir extends Plantilla {
         this.bloquesIzq = new ArrayList<>();
     }
 
-    public Unir(String enunciado, List<Bloque> solucion, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
-        super(enunciado, solucion);
+    public Unir(String enunciado, List<Bloque> soluciones, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
+        super(enunciado, soluciones);
         super.tipoPlantilla = 2;
         this.bloquesDer = bloquesDer;
         this.bloquesIzq = bloquesIzq;
@@ -120,7 +120,7 @@ public class Unir extends Plantilla {
         BloqueAnd rtaAlumno;
         BloqueAnd solucion;
         int par = 0;
-        for (Bloque s : this.solucion) {
+        for (Bloque s : this.soluciones) {
             solucion = (BloqueAnd) s;
             for (Bloque b : respuestaAlumno) {
                 rtaAlumno = (BloqueAnd) b;
@@ -131,12 +131,12 @@ public class Unir extends Plantilla {
                 }
             }
         }
-        return (par == this.solucion.size());
+        return (par == this.soluciones.size());
     }
 
     @Override
     public Boolean validarPlantilla() {
-        return this.solucion.size() > 1;
+        return this.soluciones.size() > 1;
     }
 
     @Override

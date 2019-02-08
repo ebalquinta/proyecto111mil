@@ -10,15 +10,15 @@ public class Ordenamiento extends Plantilla {
         super.tipoPlantilla = 1;
     }
 
-    public Ordenamiento(String enunciado, List<Bloque> solucion) {
-        super(enunciado, solucion);
+    public Ordenamiento(String enunciado, List<Bloque> soluciones) {
+        super(enunciado, soluciones);
         super.tipoPlantilla = 1;
     }
 
     @Override
     public List<Bloque> desordenar() {
         int cambios = 0;
-        List<Bloque> listaDesordenada = this.clonarLista(super.solucion);
+        List<Bloque> listaDesordenada = this.clonarLista(super.soluciones);
 
         while (cambios < listaDesordenada.size()) {
             for (int i = 0; i < listaDesordenada.size(); i++) {
@@ -44,7 +44,7 @@ public class Ordenamiento extends Plantilla {
 
         for (int i = 0; i < respuestaAlumno.size(); i++) {
             //desarrollar metodo equals dentro de cada tipo de bloque para que compare por id
-            if (!respuestaAlumno.get(i).equals(super.solucion.get(i))) {
+            if (!respuestaAlumno.get(i).equals(super.soluciones.get(i))) {
                 return false;
             }
         }
@@ -53,7 +53,7 @@ public class Ordenamiento extends Plantilla {
 
     @Override
     public Boolean validarPlantilla() {
-        if (super.solucion.size() < 1) {
+        if (super.soluciones.size() < 1) {
             return false;
         }
         return true;
