@@ -80,7 +80,7 @@ CREATE TABLE `alumno` (
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `fk_Alumno_Domicilio1_idx` (`id_Domicilio`),
   CONSTRAINT `fk_Alumno_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +89,6 @@ CREATE TABLE `alumno` (
 
 LOCK TABLES `alumno` WRITE;
 /*!40000 ALTER TABLE `alumno` DISABLE KEYS */;
-INSERT INTO `alumno` VALUES (1,'Maria','Garcia',12345678,2,'2',1,'alumno','alumno',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +131,10 @@ CREATE TABLE `bloque` (
   `ruta_sonido` varchar(300) DEFAULT NULL,
   `ruta_imagen` varchar(300) DEFAULT NULL,
   `texto` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id_Bloque_And` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_Bloque_Bloque_And1_idx` (`id_Bloque_And`),
+  CONSTRAINT `fk_Bloque_Bloque_And1` FOREIGN KEY (`id_Bloque_And`) REFERENCES `bloque_and` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -154,14 +156,11 @@ DROP TABLE IF EXISTS `bloque_and`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloque_and` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_Bloque` int(11) NOT NULL,
   `id_Bloque1` int(11) NOT NULL,
   `id_Bloque2` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Bloque_And_Bloque1_idx` (`id_Bloque`),
   KEY `fk_Bloque_And_Bloque2_idx` (`id_Bloque1`),
   KEY `fk_Bloque_And_Bloque3_idx` (`id_Bloque2`),
-  CONSTRAINT `fk_Bloque_And_Bloque1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_Bloque_And_Bloque2` FOREIGN KEY (`id_Bloque1`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_Bloque_And_Bloque3` FOREIGN KEY (`id_Bloque2`) REFERENCES `bloque` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -291,7 +290,7 @@ CREATE TABLE `docente` (
 
 LOCK TABLES `docente` WRITE;
 /*!40000 ALTER TABLE `docente` DISABLE KEYS */;
-INSERT INTO `docente` VALUES (1,'Juan','Perez',234587,'docente','docente',NULL,NULL,NULL);
+INSERT INTO `docente` VALUES (1,'Maria','Perez',1234564,'docente','docente',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `docente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -471,4 +470,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-07 19:12:47
+-- Dump completed on 2019-02-08 20:37:56
