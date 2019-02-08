@@ -100,7 +100,7 @@ public class Alumno extends Persona {
         this.observaciones = observaciones;
     }
 
-    public int calcularEdad() {
+    public Integer calcularEdad() {
 
         String fechaString = dateToString(this.fechaNacimiento);
 

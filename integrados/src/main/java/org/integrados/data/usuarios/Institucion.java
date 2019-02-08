@@ -17,11 +17,9 @@ public class Institucion {
     private Integer id;
     private String nombreInstitucion;
     private List<Docente> docentes;
-    private List<Alumno> alumnos;
     private Docente administrador;
 
     public Institucion() {
-        this.alumnos = new ArrayList<>();
         this.docentes = new ArrayList<>();
         this.id = null;
     }
@@ -56,14 +54,6 @@ public class Institucion {
         this.docentes = docentes;
     }
 
-    public List<Alumno> getAlumnos() {
-        return alumnos;
-    }
-
-    public void setAlumnos(List<Alumno> alumnos) {
-        this.alumnos = alumnos;
-    }
-
     public Docente getAdministrador() {
         return administrador;
     }
@@ -74,7 +64,7 @@ public class Institucion {
 
     @Override
     public String toString() {
-        return "Institucion{" + "id=" + id + ", nombreInstitucion=" + nombreInstitucion + ", docentes=" + docentes + ", alumnos=" + alumnos + ", administrador=" + administrador + '}';
+        return "Institucion{" + "id=" + id + ", nombreInstitucion=" + nombreInstitucion + ", docentes=" + docentes + ", administrador=" + administrador + '}';
     }
 
 }
