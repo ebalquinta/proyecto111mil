@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import org.integrados.data.util.Util;
 import org.integrados.view.Dialogo;
 
 public class ActividadDlg {
@@ -163,21 +164,21 @@ public class ActividadDlg {
         chkActivo.setText("Hacer una copia local");
         chkActivo.setBounds(160, 132, 206, 20);
 
-        botonGuardar = new JButton();
-        botonGuardar.setText("Guardar");
+        botonGuardar = Util.crearBoton("Guardar", 12);
         botonGuardar.setBounds(169, 9, 100, 22);
         pnlBotonesEdicion.add(botonGuardar);
         botonGuardar.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 guardar();
             }
         });
 
-        botonCancelar = new JButton();
-        botonCancelar.setText("Cancelar");
+        botonCancelar = Util.crearBoton("Cancelar", 12);
         botonCancelar.setBounds(276, 9, 100, 22);
         pnlBotonesEdicion.add(botonCancelar);
         botonCancelar.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 cancelar();
             }

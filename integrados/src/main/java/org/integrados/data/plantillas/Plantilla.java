@@ -14,32 +14,33 @@ import org.integrados.data.bloques.*;
  * @author Yani
  */
 public abstract class Plantilla {
-/*
+
+    /*
     tipo Plantilla:
     ordenamiento = 1
     unir = 2
     preg y resp = 3
     memorama = 4
     
-    */
+     */
     protected Integer id;
     protected String enunciado;
-    protected List<Bloque> solucion;
-    protected String imagen;
-    protected String sonido;
+    protected List<Bloque> soluciones;
+    protected String imagenEnunciado;
+    protected String sonidoEnunciado;
     protected Integer tipoPlantilla;
 
     public Plantilla() {
-        this.sonido = null;
-        this.imagen = null;
+        this.sonidoEnunciado = null;
+        this.imagenEnunciado = null;
         this.id = null;
-        this.solucion = new ArrayList<>();
+        this.soluciones = new ArrayList<>();
     }
 
-    public Plantilla(String enunciado, List<Bloque> solucion) {
+    public Plantilla(String enunciado, List<Bloque> soluciones) {
         this();
         this.enunciado = enunciado;
-        this.solucion = solucion;
+        this.soluciones = soluciones;
     }
 
     public Integer getId() {
@@ -50,14 +51,14 @@ public abstract class Plantilla {
         this.id = id;
     }
 
-    public List<Bloque> getSolucion() {
-        return solucion;
+    public List<Bloque> getSoluciones() {
+        return soluciones;
     }
 
-    public void setSolucion(List<Bloque> solucion) {
-        this.solucion = solucion;
+    public void setSoluciones(List<Bloque> soluciones) {
+        this.soluciones = soluciones;
     }
- 
+
     public String getEnunciado() {
         return enunciado;
     }
@@ -67,19 +68,19 @@ public abstract class Plantilla {
     }
 
     public String getImagen() {
-        return imagen;
+        return imagenEnunciado;
     }
 
     public void setImagen(String imagen) {
-        this.imagen = imagen;
+        this.imagenEnunciado = imagen;
     }
 
     public String getSonido() {
-        return sonido;
+        return sonidoEnunciado;
     }
 
     public void setSonido(String sonido) {
-        this.sonido = sonido;
+        this.sonidoEnunciado = sonido;
     }
 
     public Integer getTipoPlantilla() {
@@ -89,20 +90,19 @@ public abstract class Plantilla {
     public void setTipoPlantilla(Integer tipoPlantilla) {
         this.tipoPlantilla = tipoPlantilla;
     }
-    
-    
+
     /**
-     *     clona una lista 
+     * clona una lista
      */
-    public List<Bloque> clonarLista(List<Bloque>listaClonar) {
+    public List<Bloque> clonarLista(List<Bloque> listaClonar) {
         List<Bloque> listaClonada = new ArrayList<>();
-        
-        for(Bloque b : listaClonar){
+
+        for (Bloque b : listaClonar) {
             listaClonada.add(b);
         }
         return listaClonada;
     }
-    
+
     public abstract List<Bloque> desordenar();
 
     public abstract Boolean verificarResultado(List<Bloque> respuestaAlumno);
@@ -111,7 +111,7 @@ public abstract class Plantilla {
 
     @Override
     public String toString() {
-        return "Plantilla{" + "id=" + id + ", enunciado=" + enunciado + ", solucion=" + solucion + ", imagen=" + imagen + ", sonido=" + sonido + '}';
+        return "Plantilla{" + "id=" + id + ", enunciado=" + enunciado + ", solucion=" + soluciones + ", imagenEnunciado=" + imagenEnunciado + ", sonidoEnunciado=" + sonidoEnunciado + ", tipoPlantilla=" + tipoPlantilla + '}';
     }
 
 }

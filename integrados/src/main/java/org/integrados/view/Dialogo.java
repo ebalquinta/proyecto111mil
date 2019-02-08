@@ -52,7 +52,7 @@ public class Dialogo {
      * @return ResultadoDialogo.Yes o ResultadoDialogo.No
      */
     public static ResultadoDialogo confirmacion(String mensaje) {
-        return confirmacion("Confirmacion", mensaje);
+        return confirmacion("Confirmación", mensaje);
     }
 
     /**

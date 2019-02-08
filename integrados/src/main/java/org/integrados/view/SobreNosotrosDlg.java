@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import org.integrados.data.util.Util;
 
 /**
  *
@@ -27,7 +28,7 @@ public class SobreNosotrosDlg extends JFrame {
         jLabel2 = new JLabel();
         jLabel3 = new JLabel();
         jLabel4 = new JLabel();
-        btnVolver = new JButton();
+        btnVolver = Util.crearBoton("Volver", 14);
                 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -52,8 +53,6 @@ public class SobreNosotrosDlg extends JFrame {
         getContentPane().add(jLabel4);
         
         // Propiedades de botón Volver
-        btnVolver.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
-        btnVolver.setText("Volver");
         btnVolver.setBounds(295, 510, 170, 30);
         JFrame aux = this;
         getContentPane().add(btnVolver);
@@ -65,7 +64,7 @@ public class SobreNosotrosDlg extends JFrame {
         });
 
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/SobreNosotrosDLGBackground.jpg","descripción");
+        ImageIcon icon = createImageIcon("images/SobreNosotrosDLGBkg.jpg","descripción");
         lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 800, 600);

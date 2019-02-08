@@ -22,13 +22,9 @@ public class Domicilio {
     }
 
     public Domicilio(String calle, Integer numero) {
-        this.id = null;
+        this();
         this.calle = calle;
         this.numero = numero;
-    }
-
-    private void setId(Integer id) {
-        this.id = id;
     }
 
     public Domicilio(String calle, Integer numero, String piso, String departamento) {
@@ -36,9 +32,13 @@ public class Domicilio {
         this.piso = piso;
         this.departamento = departamento;
     }
-    
+
     public Integer getId() {
         return id;
+    }
+    
+    private void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCalle() {
