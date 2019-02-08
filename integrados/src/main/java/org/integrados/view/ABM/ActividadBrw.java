@@ -1,7 +1,6 @@
 package org.integrados.view.ABM;
         
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -9,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -188,7 +185,8 @@ public class ActividadBrw {
     	Actividad actividad = getActividadSeleccionada();
 
     	if (actividad != null) {
-            this.controlador.editar(actividad);
+//            this.controlador.editar(actividad);
+                Dialogo.error("En construcción","¡Estamos trabajando para usted!");
     	}
     }
     
