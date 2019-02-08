@@ -3,13 +3,14 @@
  */
 package org.integrados.view;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import org.integrados.controller.usuarios.LoginCtrl;
+import org.integrados.data.util.Util;
 import org.integrados.exceptions.IntegradosException;
-import org.integrados.view.DocenteInicioDlg;
 
 public class LoginDlg extends JFrame {
     private JLabel lblFondo;
@@ -31,9 +32,9 @@ public class LoginDlg extends JFrame {
         
         txtUsuario = new JTextField();
         pswClave = new JPasswordField();
-        btnAceptar = new JButton();
-        btnCancelar = new JButton();
-        btnSobreNosotros = new JButton();
+        btnAceptar = Util.crearBoton("Aceptar", 14);
+        btnCancelar = Util.crearBoton("Salir", 14);
+        btnSobreNosotros = Util.crearBoton("Sobre Nosotros", 14);
         lblFondo = new JLabel();
         etiUsuario = new JLabel();
         etiClave = new JLabel();
@@ -49,6 +50,8 @@ public class LoginDlg extends JFrame {
         
         // Propiedades de campo de usuario
         txtUsuario.setBackground(new java.awt.Color(0, 204, 204));
+        txtUsuario.setForeground(Color.white);
+        txtUsuario.setFont(new java.awt.Font("Verdana",java.awt.Font.BOLD, 14));
         txtUsuario.setText("");
         txtUsuario.setToolTipText("Ingrese su usuario");
         txtUsuario.setBounds(630, 145, 120, 30);
@@ -62,14 +65,13 @@ public class LoginDlg extends JFrame {
 
         // Propiedades de campo de clave
         pswClave.setBackground(new java.awt.Color(0, 204, 204));
+        pswClave.setForeground(Color.white);
         pswClave.setText("");
         pswClave.setToolTipText("Ingrese su contraseña");
         getContentPane().add(pswClave);
         pswClave.setBounds(630, 225, 120, 30);
        
         // Propiedades de botón Aceptar
-        btnAceptar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        btnAceptar.setText("Aceptar");
         btnAceptar.setBounds(510, 370, 120, 30);
         getContentPane().add(btnAceptar);
         btnAceptar.addActionListener(new ActionListener() {
@@ -82,7 +84,7 @@ public class LoginDlg extends JFrame {
                     return;
                 }
                 
-                // Aquí debemos enlazar con la siguiente pantalla
+                // Aquí enlazamos con la siguiente pantalla
                 // La de docente que tiene los botones Actividades y Alumnos
                 
                 DocenteInicioDlg docenteInicioDlg = new DocenteInicioDlg();
@@ -91,9 +93,6 @@ public class LoginDlg extends JFrame {
         });
         
         // Propiedades de botón Cancelar
-        // btnCancelar.setBackground(new java.awt.Color(255, 153, 51));
-        btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
-        btnCancelar.setText("Salir");
         btnCancelar.setBounds(645, 370, 120, 30);
         getContentPane().add(btnCancelar);
         btnCancelar.addActionListener(new ActionListener() {
@@ -104,9 +103,7 @@ public class LoginDlg extends JFrame {
         });
 
         // Propiedades del botón SobreNosotros
-        btnSobreNosotros.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
-        btnSobreNosotros.setText("Sobre Nosotros");
-        btnSobreNosotros.setBounds(295, 510, 170, 30);
+        btnSobreNosotros.setBounds(292, 510, 170, 30);
         getContentPane().add(btnSobreNosotros);
         btnSobreNosotros.addActionListener(new ActionListener() {
             @Override
@@ -118,7 +115,7 @@ public class LoginDlg extends JFrame {
         });
         
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/LoginBackground.jpg","descripción");
+        ImageIcon icon = createImageIcon("images/LoginBkg.jpg","descripción");
         lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 800, 600);

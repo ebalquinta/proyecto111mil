@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import org.integrados.view.Dialogo;
 import org.integrados.view.pruebaABM.*;
+import org.integrados.data.util.Util;
         
 public class DocenteInicioDlg extends JFrame {
     private JLabel lblFondo;
@@ -22,18 +23,15 @@ public class DocenteInicioDlg extends JFrame {
 
     void initComponents() {
         
-        btnActividades = new JButton();
-        btnAlumnos = new JButton();
-        btnVolver = new JButton();
+        btnActividades = Util.crearBoton("Actividades", 18);
+        btnAlumnos = Util.crearBoton("Alumnos", 18);
+        btnVolver = Util.crearBoton("Volver", 14);
         lblFondo = new JLabel();
         
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         // Propiedades del botón Actividades
-        btnActividades.setText("Actividades");
-        btnActividades.setFont(new java.awt.Font("Comic Sans MS", 1, 18));
-        btnActividades.setForeground(new java.awt.Color(0, 102, 102));
         btnActividades.setBounds(295, 320, 170, 60);       
         getContentPane().add(btnActividades);
         btnActividades.addActionListener(new ActionListener() {
@@ -46,9 +44,6 @@ public class DocenteInicioDlg extends JFrame {
         });
         
         // Propiedades del botón Alumnos
-        btnAlumnos.setText("Alumnos");
-        btnAlumnos.setFont(new java.awt.Font("Comic Sans MS", 1, 18));
-        btnAlumnos.setForeground(new java.awt.Color(0, 102, 102));
         btnAlumnos.setBounds(400, 120, 170, 60);
         getContentPane().add(btnAlumnos);
         btnAlumnos.addActionListener(new ActionListener() {
@@ -57,10 +52,8 @@ public class DocenteInicioDlg extends JFrame {
                 Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });
-
+        
         // Propiedades de botón Volver
-        btnVolver.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
-        btnVolver.setText("Volver");
         btnVolver.setBounds(295, 510, 170, 30);
         JFrame aux = this;
         getContentPane().add(btnVolver);
@@ -72,7 +65,7 @@ public class DocenteInicioDlg extends JFrame {
         });
         
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/DocenteInicioDlgBackground.jpg","descripción");
+        ImageIcon icon = createImageIcon("images/DocenteInicioDlgBkg.jpg","descripción");
         lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 800, 600);
