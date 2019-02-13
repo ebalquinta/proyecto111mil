@@ -15,15 +15,15 @@ import org.integrados.view.Dialogo;
 public class TestAplicacion {
 
     public static void main(String[] args) {
-
-        try {
-            CfgMySql f = new CfgMySql();
-            f.modificarXml("root", "q4xJolas");
-            f.generarXml();
-        } catch (Exception e) {
-            System.out.println("xd");
-            e.printStackTrace();
-        }
+//
+//        try {
+//            CfgMySql f = new CfgMySql();
+//            f.modificarXml("root", "q4xJolas");
+//            f.generarXml();
+//        } catch (Exception e) {
+//            System.out.println("xd");
+//            e.printStackTrace();
+//        }
 
         Aplicacion app = new Aplicacion();
 
