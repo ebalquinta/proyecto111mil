@@ -4,7 +4,6 @@ import org.integrados.exceptions.IntegradosException;
 import org.integrados.bd.HibernateUtiles;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.usuarios.Persona;
-import org.integrados.view.MySqlLog;
 
 /**
  *
