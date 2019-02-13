@@ -31,7 +31,7 @@ public class DocenteInicioDlg extends JFrame {
         getContentPane().setLayout(null);
 
         // Propiedades del botón Actividades
-        btnActividades.setBounds(295, 320, 170, 60);       
+        btnActividades.setBounds(230, 320, 170, 60);       
         getContentPane().add(btnActividades);
         btnActividades.addActionListener(new ActionListener() {
             @Override
