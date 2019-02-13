@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.plantillas;
 
 import java.util.ArrayList;
@@ -11,7 +6,7 @@ import org.integrados.data.bloques.*;
 
 /**
  *
- * @author Yani
+ * @author BackEnd
  */
 public abstract class Plantilla {
 
@@ -21,7 +16,6 @@ public abstract class Plantilla {
     unir = 2
     preg y resp = 3
     memorama = 4
-    
      */
     protected Integer id;
     protected String enunciado;

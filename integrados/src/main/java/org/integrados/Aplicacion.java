@@ -4,6 +4,7 @@ import org.integrados.exceptions.IntegradosException;
 import org.integrados.bd.HibernateUtiles;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.usuarios.Persona;
+import org.integrados.view.MySqlLog;
 
 /**
  *
@@ -26,6 +27,9 @@ public class Aplicacion {
     }
     
     public void inicializar() throws IntegradosException {
+//        LoginCtrl loginCtrl = new LoginCtrl(this);
+//        MySqlLog logIn = new MySqlLog(loginCtrl);
+//        logIn.setVisible(true);
         HibernateUtiles.inicializar();
     }
     
