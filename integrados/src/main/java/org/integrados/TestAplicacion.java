@@ -12,14 +12,24 @@ import org.integrados.view.Dialogo;
  *
  * @author balquinta
  */
-public class TestAplicacion { 
-    
+public class TestAplicacion {
+
     public static void main(String[] args) {
+
+        try {
+            CfgMySql f = new CfgMySql();
+            f.modificarXml("root", "q4xJolas");
+            f.generarXml();
+        } catch (Exception e) {
+            System.out.println("xd");
+            e.printStackTrace();
+        }
+
         Aplicacion app = new Aplicacion();
-        
+
         try {
             app.inicializar();
-        } catch (IntegradosException e) { 
+        } catch (IntegradosException e) {
             Dialogo.error("ERROR FATAL", "Falló la inicialización");
 //            // Dialogo.error(e.getMessage(), new Dialogo.ListenerCerrarDialogo() {
 //                @Override
@@ -30,6 +40,6 @@ public class TestAplicacion {
             return;
         }
         app.ejecutar();
-        
+
     }
 }
