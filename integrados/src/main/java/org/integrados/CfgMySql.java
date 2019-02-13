@@ -33,9 +33,10 @@ import org.xml.sax.SAXException;
 public class CfgMySql {
 
     private Document document;
-
-    public CfgMySql() throws ParserConfigurationException, SAXException, IOException {
-        String filepath = "C:\\Users\\Jacco.FLIA\\Desktop\\xd\\integrados\\src\\main\\resources\\hibernate.cfg.xml";
+    private String filepath;
+    public CfgMySql(String filepath ) throws ParserConfigurationException, SAXException, IOException {
+       // String filepath = "C:\\Users\\Jacco.FLIA\\Desktop\\xd\\integrados\\src\\main\\resources\\hibernate.cfg.xml";
+       
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();
 
@@ -68,7 +69,7 @@ public class CfgMySql {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(this.document);
-        String filepath = "C:\\Users\\Jacco.FLIA\\Desktop\\xd\\integrados\\src\\main\\resources\\hibernate.cfg.xml";
+        String filepath = this.filepath;
         StreamResult result = new StreamResult(new File(filepath));
         transformer.transform(source, result);
     }

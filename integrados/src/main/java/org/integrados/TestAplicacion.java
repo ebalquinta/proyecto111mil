@@ -7,6 +7,7 @@ package org.integrados;
 
 import org.integrados.exceptions.IntegradosException;
 import org.integrados.view.Dialogo;
+import org.integrados.view.MySqlLog;
 
 /**
  *
@@ -15,15 +16,8 @@ import org.integrados.view.Dialogo;
 public class TestAplicacion {
 
     public static void main(String[] args) {
-//
-//        try {
-//            CfgMySql f = new CfgMySql();
-//            f.modificarXml("root", "q4xJolas");
-//            f.generarXml();
-//        } catch (Exception e) {
-//            System.out.println("xd");
-//            e.printStackTrace();
-//        }
+    
+        
 
         Aplicacion app = new Aplicacion();
 
