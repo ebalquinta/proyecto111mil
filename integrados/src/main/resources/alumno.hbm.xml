@@ -6,10 +6,10 @@
         <id name="id" type="java.lang.Integer" column="id" >
             <generator class="identity" />
         </id>
-        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="select">
+        <!--<many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="select">
             <column name="id_Domicilio" />
         </many-to-one>
-        <!--<many-to-one name="nivel" class="org.integrados.data.enums.Nivel" fetch="select">
+        <many-to-one name="nivel" class="org.integrados.data.enums.Nivel" fetch="select">
             <column name="id_Nivel" not-null="true" />
         </many-to-one>
         <many-to-one name="usuario" class="org.integrados.data.usuarios.Usuario" fetch="select">  
