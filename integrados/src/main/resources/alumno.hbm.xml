@@ -26,7 +26,7 @@
         <property name="telefono" type="string" column="telefono" length="50" />
         <property name="mail" type="string" column="mail" length="60" />
            
-        <list name="actividades"  inverse="true" cascade="all">
+        <list name="registroActividades"  inverse="true" cascade="all">
             <key column="id_alumno" not-null="true"/>
             <index column="id"></index>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
