@@ -3,7 +3,11 @@
 
 <hibernate-mapping>
   <class name="org.integrados.data.bloques.BloqueTexto" table="bloque" catalog="integrados_db" optimistic-lock="version">
-    <property name="texto" type="string" column="texto" lentgh="1000" />
-    
+        <id name="id" type="java.lang.Integer" column="id" >
+            <generator class="identity" />
+        </id>
+        <property name="tipoBloque" type="integer" column="tipo_bloque" not-null="true" />
+        <property name="texto" type="string" column="texto" />
+
   </class>
 </hibernate-mapping>
