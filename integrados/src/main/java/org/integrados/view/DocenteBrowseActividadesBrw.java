@@ -18,7 +18,6 @@ import org.integrados.data.util.Util;
 public class DocenteBrowseActividadesBrw {
 
     private DocenteBrowseActividadesCtrl controlador;
-    private List<String> actividadesRequeridos;
 
     private JDialog dialogoPrincipal;
 
@@ -103,7 +102,7 @@ public class DocenteBrowseActividadesBrw {
 
         // Propiedades del botón Nuevo
         botonNuevo = Util.crearBoton("Nuevo", 12);
-        botonNuevo.setBounds(20, 7, 90, 22);
+        botonNuevo.setBounds(150, 7, 90, 22);
         pnlBotonesEdicion.add(botonNuevo);
         botonNuevo.addActionListener(new ActionListener() {
             @Override
@@ -114,7 +113,7 @@ public class DocenteBrowseActividadesBrw {
 
         // Propiedades del botón Editar
         botonEdicion = Util.crearBoton("Editar", 12);
-        botonEdicion.setBounds(120, 7, 90, 22);
+        botonEdicion.setBounds(250, 7, 90, 22);
         pnlBotonesEdicion.add(botonEdicion);
         botonEdicion.addActionListener(new ActionListener() {
             @Override
@@ -126,7 +125,7 @@ public class DocenteBrowseActividadesBrw {
 
         // Propiedades del botón Borrar
         botonBorrar = Util.crearBoton("Borrar", 12);
-        botonBorrar.setBounds(220, 7, 90, 22);
+        botonBorrar.setBounds(350, 7, 90, 22);
         pnlBotonesEdicion.add(botonBorrar);
         botonBorrar.addActionListener(new ActionListener() {
             @Override
@@ -137,7 +136,7 @@ public class DocenteBrowseActividadesBrw {
         
         // Propiedades del botón Probar
         botonProbar = Util.crearBoton("Probar", 12);
-        botonProbar.setBounds(320, 7, 90, 22);
+        botonProbar.setBounds(450, 7, 90, 22);
         pnlBotonesEdicion.add(botonProbar);
         botonProbar.addActionListener(new ActionListener() {
             @Override
@@ -148,7 +147,7 @@ public class DocenteBrowseActividadesBrw {
         
         // Propiedades del botón Volver
         botonVolver = Util.crearBoton("Volver", 12);
-        botonVolver.setBounds(420, 7, 90, 22);
+        botonVolver.setBounds(550, 7, 90, 22);
         pnlBotonesEdicion.add(botonVolver);
         botonVolver.addActionListener(new ActionListener() {
             @Override
