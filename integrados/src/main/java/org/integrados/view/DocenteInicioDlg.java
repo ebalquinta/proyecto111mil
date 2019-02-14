@@ -7,8 +7,8 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import org.integrados.view.ABM.*;
 import org.integrados.data.util.Util;
+import org.integrados.controller.actividades.DocenteBrowseActividadesCtrl;
         
 public class DocenteInicioDlg extends JFrame {
     private JLabel lblFondo;
@@ -37,7 +37,7 @@ public class DocenteInicioDlg extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {                
                 // Aquí debemos enlazar con el browser
-                    ActividadCtrl ctrl = new ActividadCtrl();
+                    DocenteBrowseActividadesCtrl ctrl = new DocenteBrowseActividadesCtrl();
                     ctrl.mostrarBrw(null);
             }
         });
