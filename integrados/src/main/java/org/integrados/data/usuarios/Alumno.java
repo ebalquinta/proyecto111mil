@@ -13,7 +13,7 @@ import static org.integrados.data.util.Util.dateToString;
 public class Alumno extends Persona {
 
     private List<Docente> docentes;
-    private List<RegistroActividad> actividades;
+    private List<RegistroActividad> registroActividades;
     private Date fechaNacimiento;
     private Integer edadMadurativa;
     private Integer grado;
@@ -24,13 +24,13 @@ public class Alumno extends Persona {
     public Alumno() {
         super();
         this.docentes = new ArrayList<>();
-        this.actividades = new ArrayList<>();
+        this.registroActividades = new ArrayList<>();
     }
 
     public Alumno(Integer dni, String nombre, String apellido, Integer grado, String division, Nivel nivel) {
         super(dni, nombre, apellido);
         this.docentes = new ArrayList<>();
-        this.actividades = new ArrayList<>();
+        this.registroActividades = new ArrayList<>();
         this.grado = grado;
         this.division = division;
         this.nivel = nivel;
@@ -44,12 +44,12 @@ public class Alumno extends Persona {
         this.docentes = docentes;
     }
 
-    public List<RegistroActividad> getActividades() {
-        return actividades;
+    public List<RegistroActividad> getRegistroActividades() {
+        return registroActividades;
     }
 
-    public void setActividades(List<RegistroActividad> actividades) {
-        this.actividades = actividades;
+    public void setRegistroActividades(List<RegistroActividad> registroActividades) {
+        this.registroActividades = registroActividades;
     }
 
     public Date getFechaNacimiento() {
@@ -114,7 +114,7 @@ public class Alumno extends Persona {
 
     @Override
     public String toString() {
-        return "Alumno{" + "docentes=" + docentes + ", actividades=" + actividades + ", fechaNacimiento=" + fechaNacimiento + ", edadMadurativa=" + edadMadurativa + ", grado=" + grado + ", division=" + division + ", nivel=" + nivel + ", observaciones=" + observaciones + '}';
+        return "Alumno{" + "docentes=" + docentes + ", registroActividades=" + registroActividades + ", fechaNacimiento=" + fechaNacimiento + ", edadMadurativa=" + edadMadurativa + ", grado=" + grado + ", division=" + division + ", nivel=" + nivel + ", observaciones=" + observaciones + '}';
     }
 
 }

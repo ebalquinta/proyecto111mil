@@ -2,15 +2,15 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
 
 <hibernate-mapping>
-  <class name="org.integrados.data.usuarios.Docente" table="docente" catalog="integrados_db" optimistic-lock="version">
+    <class name="org.integrados.data.usuarios.Docente" table="docente" catalog="integrados_db" optimistic-lock="version">
         <id name="id" type="integer" column="id">
-           <generator class="identity" />
+            <generator class="identity" />
         </id>
         <property name="nombre" type="string" column="nombre" length="45" not-null="true" />
         <property name="apellido" type="string" column="apellido" length="45" not-null="true" />
         <property name="dni" type="int" column="dni" not-null="true" unique="true" />
-        <property name="usuario" type="string" column="usuario" length="20" not-null="false"/>
-        <property name="clave" type="string" column="password" length="10" not-null="false" />
+        <property name="usuario" type="string" column="usuario" length="20" />
+        <property name="clave" type="string" column="password" length="10" />
         <property name="telefono" type="string" column="telefono" length="50" not-null="false"/>
         <property name="mail" type="string" column="mail" length="60" not-null="false"/>
         <!--<set name="docentesInstitucions" table="docentes_institucion" inverse="true" lazy="false" fetch="select">
@@ -49,18 +49,18 @@
             </key>
             <one-to-many class="org.integrados.data.usuarios.AlumnosDocente" />
         </set>  -->
-<!--        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
-           <column name="id_Domicilio" />
-        </many-to-one>-->
+        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
+            <column name="id_Domicilio" />
+        </many-to-one>
         <!--<list name="alumnos" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
            <key column="id_docente" not-null="true"/>
-	   <index column="id" />
-	   <many-to-many class="org.integrados.data.usuarios.Alumno"/>
+           <index column="id" />
+           <many-to-many class="org.integrados.data.usuarios.Alumno"/>
         </list>-->
         <list name="registroActividades" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
-           <key column="id_docente" not-null="true"/>
-	   <index column="id" />
-           <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
+            <key column="id_docente" not-null="true"/>
+            <index column="id" />
+            <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
         </list>
-  </class>
+    </class>
 </hibernate-mapping>
