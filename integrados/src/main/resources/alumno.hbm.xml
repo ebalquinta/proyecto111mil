@@ -35,6 +35,12 @@
         <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
         </list>
         
+        <list name="docentes" table="Alumnos_docente" inverse="true" cascade="all">
+        <key column="id_alumno" not-null="true"/>
+        <index column="id"></index>
+        <one-to-many class="org.integrados.data.usuarios.Docente"/>
+        </list>
+        
         <!-- <set name="alumnosDocentes" table="alumnos_docente" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_Alumno" not-null="true" />

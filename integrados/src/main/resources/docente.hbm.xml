@@ -49,9 +49,9 @@
             </key>
             <one-to-many class="org.integrados.data.usuarios.AlumnosDocente" />
         </set>  -->
-        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
+<!--        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
            <column name="id_Domicilio" />
-        </many-to-one>
+        </many-to-one>-->
         <list name="alumnos" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
            <key column="id_docente" not-null="true"/>
 	   <index column="id" />
