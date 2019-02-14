@@ -13,12 +13,14 @@
     <mapping resource="registroActividad.hbm.xml"/>
     <!--<mapping resource="actividad.hbm.xml"/>-->
     <!--<mapping resource="materia.hbm.xml"/>-->
-    <!--<mapping resource="bloque.hbm.xml"/>-->
-    <!--<mapping resource="bloque_and.hbm.xml"/>-->
-    <!--<mapping resource="institucion.hbm.xml"/>-->
-    <!--<mapping resource="bloqueImagen.hbm.xml"/>-->
-    <!--<mapping resource="bloqueSonido.hbm.xml"/>-->
-    <!--<mapping resource="bloqueTexto.hbm.xml"/>-->
+    <mapping resource="bloque_and.hbm.xml"/>
+    <mapping resource="institucion.hbm.xml"/>
+    <mapping resource="bloqueImagen.hbm.xml"/>
+    <mapping resource="bloqueSonido.hbm.xml"/>
+    <mapping resource="bloqueTexto.hbm.xml"/>
     <!--<mapping resource="unir.hbm.xml"/>-->
+    <!--<mapping resource="pregYResp.hbm.xml"/>-->
+    <!--<mapping resource="ordenamiento.hbm.xml"/>-->
+    <!--<mapping resource="memorama.hbm.xml"/>-->
   </session-factory>
 </hibernate-configuration>-configuration>

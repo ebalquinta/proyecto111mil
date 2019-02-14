@@ -2,11 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
 
 <hibernate-mapping>
-    <class name="org.integrados.data.usuarios.Institucion" table="Institucion"catalog="integrados_db" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer" column="id" >
+    <class name="org.integrados.data.usuarios.Institucion" table="institucion" catalog="integrados_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer" column="id">
             <generator class="identity" />
         </id>
-        <property name="nombreInstitucion" type="string" column="nombreInstitucion" length="45" not-null="true"/>
-        <many-to-one name="administrador" class="org.integrados.data.usuarios.Docente" fetch="join" column="id_Docente" not-null="true"/>
+         <property name="nombreInstitucion" type="string" column="nombreInstitucion" length="45" not-null="true"/>
+         <many-to-one name="administrador" class="org.integrados.data.usuarios.Docente" fetch="join" column="id_Docente" not-null="true"/>
     </class>
 </hibernate-mapping>
