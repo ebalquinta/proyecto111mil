@@ -6,20 +6,19 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/integrados_db?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">yanina030</property>
+    <property name="hibernate.connection.password">1234</property>
     <mapping resource="docente.hbm.xml"/>
     <mapping resource="alumno.hbm.xml"/>
-    <mapping resource="plantilla.hbm.xml"/>
     <mapping resource="domicilio.hbm.xml"/>
     <mapping resource="registroActividad.hbm.xml"/>
-    <mapping resource="actividad.hbm.xml"/>
-    <mapping resource="materia.hbm.xml"/>
+    <!--<mapping resource="actividad.hbm.xml"/>-->
+    <!--<mapping resource="materia.hbm.xml"/>
     <mapping resource="bloque.hbm.xml"/>
     <mapping resource="bloque_and.hbm.xml"/>
-    <mapping resource="institucion.hbm.xml"/>
-    <mapping resource="bloqueImagen.hbm.xml"/>
-    <mapping resource="bloqueSonido.hbm.xml"/>
-    <mapping resource="bloqueTexto.hbm.xml"/>
+    <mapping resource="institucion.hbm.xml"/>-->
+    <!--<mapping resource="bloqueImagen.hbm.xml"/>-->
+    <!--<mapping resource="bloqueSonido.hbm.xml"/>-->
+    <!--<mapping resource="bloqueTexto.hbm.xml"/>-->
     <mapping resource="unir.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
