@@ -37,6 +37,12 @@ public abstract class Plantilla {
         this.soluciones = new ArrayList<>();
     }
 
+    public Plantilla(String enunciado) {
+        this();
+        this.enunciado = enunciado;
+        this.soluciones = new ArrayList();
+    }
+    
     public Plantilla(String enunciado, List<Bloque> soluciones) {
         this();
         this.enunciado = enunciado;
@@ -85,6 +91,18 @@ public abstract class Plantilla {
 
     public Integer getTipoPlantilla() {
         return tipoPlantilla;
+    }
+    
+    public String verNombrePlantilla() {        
+        if (tipoPlantilla == 1) {
+            return "Ordenamiento";
+        } else if (tipoPlantilla == 2) {
+            return "Unir";
+        } else if (tipoPlantilla == 3) {
+            return "Pregunta y Respuestas";
+        } else {
+            return "Memorama";
+        }
     }
 
     public void setTipoPlantilla(Integer tipoPlantilla) {

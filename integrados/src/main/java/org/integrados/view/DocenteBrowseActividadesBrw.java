@@ -227,15 +227,19 @@ public class DocenteBrowseActividadesBrw {
         @Override
         public String getColumnName(int column) {
             if (column == 0) {
-                return "Número";
-            } else if (column == 1) {
-                return "Plantilla";
-            } else if (column == 2) {
-                return "Docente";
-            } else if (column == 3) {
                 return "Materia";
+            } else if (column == 1) {
+                return "Tema";
+            } else if (column == 2) {
+                return "Grado";
+            } else if (column == 3) {
+                return "Nivel";
+            } else if (column == 4) {
+                return "Dificultad";
+            } else if (column == 5) {
+                return "Tipo";
             } else 
-                return "Tema";    
+                return "Enunciado";    
         }
 
         @Override
@@ -255,6 +259,8 @@ public class DocenteBrowseActividadesBrw {
                 return String.class;
             } else if (column == 4) {
                 return String.class;
+            } else if (column == 5) {
+                return String.class;
             } else {
                 return String.class;
             }
@@ -264,15 +270,19 @@ public class DocenteBrowseActividadesBrw {
         public Object getValueAt(int row, int column) {
             Actividad actividad = actividades.get(row);
             if (column == 0) {
-                return actividad.getId();
+                return actividad.getMateria().getMateria();
             } else if (column == 1) {
-                return actividad.getPlantilla();
-            } else if (column == 2) {
-                return actividad.getDocenteCreador();
-            } else if (column == 3) {
-                return actividad.getMateria();
-            } else {
                 return actividad.getTema();
+            } else if (column == 2) {
+                return actividad.getGrado();
+            } else if (column == 3) {
+                return actividad.getNivel();
+            } else if (column == 4) {
+                return actividad.getDificultad();
+            } else if (column == 5) {
+                return actividad.getPlantilla().verNombrePlantilla();
+            } else {
+                return actividad.getPlantilla().getEnunciado();
             }
         }
 
@@ -287,7 +297,7 @@ public class DocenteBrowseActividadesBrw {
 
         @Override
         public int getColumnCount() {
-            return 5;
+            return 7;
         }
 
         public Actividad getActividad(int index) {

@@ -30,11 +30,11 @@ public class DocenteBrowseActividadesCtrl {
         
         //Levantar actividades desde la base de datos        
        List<Actividad> listaActividades = new ArrayList<>();
-       listaActividades.add(new Actividad(new PregYResp(), new Docente(28200912, "Mariela", "Gonzalez"), new Materia("Matematica"), "Logaritmos", 2, Nivel.INICIAL, Dificultad.INTERMEDIO, 3));
-       listaActividades.add(new Actividad(new PregYResp(), new Docente(28200913, "Pablo", "Martinez"), new Materia("Lengua"), "Vervos", 4, Nivel.PRIMARIO, Dificultad.BAJO, 4));
-       listaActividades.add(new Actividad(new PregYResp(), new Docente(28200914, "Jose", "Gomez"), new Materia("Historia"), "1ra guerra mundial", 5, Nivel.SECUNDARIO, Dificultad.INTERMEDIO, 3));
-       listaActividades.add(new Actividad(new PregYResp(), new Docente(28200915, "Pedro", "Sanchez"), new Materia("Biología"), "Células", 6, Nivel.PRIMARIO, Dificultad.ALTO, 3));
-       listaActividades.add(new Actividad(new PregYResp(), new Docente(28200916, "Marta", "Rodriguez"), new Materia("Química"), "Elementos", 7, Nivel.SECUNDARIO, Dificultad.ALTO, 3));
+       listaActividades.add(new Actividad(new PregYResp("¿Cuál es la raiz cuadrada de 25?"), new Docente(28200912, "Mariela", "Gonzalez"), new Materia("Matematica"), "Logaritmos", 2, Nivel.INICIAL, Dificultad.INTERMEDIO, 3));
+       listaActividades.add(new Actividad(new PregYResp("¿Cuál es el pasado de correr?"), new Docente(28200913, "Pablo", "Martinez"), new Materia("Lengua"), "Verbos", 4, Nivel.PRIMARIO, Dificultad.BAJO, 4));
+       listaActividades.add(new Actividad(new PregYResp("¿Quién ganó?"), new Docente(28200914, "Jose", "Gomez"), new Materia("Historia"), "1ra guerra mundial", 5, Nivel.SECUNDARIO, Dificultad.INTERMEDIO, 3));
+       listaActividades.add(new Actividad(new PregYResp("¿Cuántos genes tiene una molécula de ADN?"), new Docente(28200915, "Pedro", "Sanchez"), new Materia("Biología"), "Genes", 6, Nivel.PRIMARIO, Dificultad.ALTO, 3));
+       listaActividades.add(new Actividad(new PregYResp("¿Cuál es el símbolo del Magnesio?"), new Docente(28200916, "Marta", "Rodriguez"), new Materia("Química"), "Elementos", 7, Nivel.SECUNDARIO, Dificultad.ALTO, 3));
               
         actividadBrw = new DocenteBrowseActividadesBrw(this, listaActividades);
         this.actividadBrw.mostrar(framePadre);
