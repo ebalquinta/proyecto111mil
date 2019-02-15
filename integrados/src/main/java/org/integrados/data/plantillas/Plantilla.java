@@ -61,20 +61,20 @@ public abstract class Plantilla {
         this.enunciado = enunciado;
     }
 
-    public String getImagen() {
+    public String getImagenEnunciado() {
         return imagenEnunciado;
     }
 
-    public void setImagen(String imagen) {
-        this.imagenEnunciado = imagen;
+    public void setImagenEnunciado(String imagenEnunciado) {
+        this.imagenEnunciado = imagenEnunciado;
     }
 
-    public String getSonido() {
+    public String getSonidoEnunciado() {
         return sonidoEnunciado;
     }
 
-    public void setSonido(String sonido) {
-        this.sonidoEnunciado = sonido;
+    public void setSonidoEnunciado(String sonidoEnunciado) {
+        this.sonidoEnunciado = sonidoEnunciado;
     }
 
     public Integer getTipoPlantilla() {

@@ -27,17 +27,16 @@
         <property name="mail" type="string" column="mail" length="60" />
            
         <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all">
-            <key column="id_alumno" not-null="true"/>
+            <key column="id_Alumno" not-null="true"/>
             <index column="id"></index>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
         </list>
         <!--falta encontrar solución a esta lista que apunta a tabla Alumnos_docente para representar lista de docentes-->
-        <list name="docentes" inverse="true" cascade="all">
-            <key column="id_alumno" not-null="true"/>
-            <index column="id"></index>
-            <one-to-many class="org.integrados.data.usuarios.Docente"/>
-        </list>
-        
+        <!--<list name="docentes" table="Alumnos_docente" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
+            <key column="id_Alumno" not-null="true"/>
+            <index column="id"/>
+            <many-to-many column="id" class="org.integrados.data.usuarios.Docente"/>
+        </list>-->        
         <!-- <set name="alumnosDocentes" table="alumnos_docente" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_Alumno" not-null="true" />

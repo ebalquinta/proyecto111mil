@@ -20,7 +20,7 @@
     <mapping resource="bloqueTexto.hbm.xml"/>
     <!--<mapping resource="unir.hbm.xml"/>-->
     <!--<mapping resource="pregYResp.hbm.xml"/>-->
-    <!--<mapping resource="ordenamiento.hbm.xml"/>-->
+    <mapping resource="ordenamiento.hbm.xml"/>
     <!--<mapping resource="memorama.hbm.xml"/>-->
   </session-factory>
 </hibernate-configuration>-configuration>
