@@ -18,8 +18,10 @@ public class NuevaActividadInicioDlg extends JFrame{
     private JToggleButton jToggleButton2;
     private JToggleButton jToggleButton3;
     private JToggleButton jToggleButton4;
+    public DocenteBrowseActividadesBrw docenteBrowseActividadesBrw;
     
-    public NuevaActividadInicioDlg() {
+    public NuevaActividadInicioDlg(DocenteBrowseActividadesBrw docenteBrowseActividadesBrw) {
+        this.docenteBrowseActividadesBrw = docenteBrowseActividadesBrw;
         initComponents();
     }
     
@@ -39,12 +41,12 @@ public class NuevaActividadInicioDlg extends JFrame{
         btnVolver.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
         btnVolver.setText("Volver");
         btnVolver.setBounds(295, 510, 170, 30);
-        JFrame aux = this;
         getContentPane().add(btnVolver);
         btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                aux.dispose();
+                ocultar();
+                docenteBrowseActividadesBrw.controlador.mostrarBrw();
             }
         });
 

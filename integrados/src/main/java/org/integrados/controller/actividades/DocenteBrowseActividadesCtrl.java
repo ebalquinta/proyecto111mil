@@ -13,6 +13,7 @@ import org.integrados.data.usuarios.Docente;
 import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
 import org.integrados.view.DocenteBrowseActividadesDlg;
+import org.integrados.view.DocenteInicioDlg;
 import org.integrados.view.NuevaActividadInicioDlg;
 
 /**
@@ -21,13 +22,13 @@ import org.integrados.view.NuevaActividadInicioDlg;
  */
 public class DocenteBrowseActividadesCtrl {
     
-    private Aplicacion app;
-    
-    private DocenteBrowseActividadesBrw actividadBrw = null;
-    
+    private Aplicacion app;    
+    private DocenteBrowseActividadesBrw actividadBrw = null;    
     private DocenteBrowseActividadesDlg actividadDlg = null;
+    public DocenteInicioDlg docenteInicioDlg;
     
-    public DocenteBrowseActividadesCtrl() {        
+    public DocenteBrowseActividadesCtrl(DocenteInicioDlg docenteInicioDlg) {        
+        this.docenteInicioDlg = docenteInicioDlg;
     }
     
     public void mostrarBrw() {
@@ -52,7 +53,7 @@ public class DocenteBrowseActividadesCtrl {
         // actividadDlg.nuevo(actividad);
         //actividadDlg.mostrar(actividadBrw.getFrame());
         
-        NuevaActividadInicioDlg nuevaActividadInicioDlg = new NuevaActividadInicioDlg();
+        NuevaActividadInicioDlg nuevaActividadInicioDlg = new NuevaActividadInicioDlg(actividadBrw);
         nuevaActividadInicioDlg.mostrar();        
     }
     
