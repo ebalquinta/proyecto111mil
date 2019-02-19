@@ -1,5 +1,6 @@
 package org.integrados.test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,11 +17,16 @@ public class TestGetAlumno {
     public static void main(String[] args) {
         Alumno a = obtenerAlumno();
         System.out.println("El DNI del alumno es: "+a.getDni());
-//        List<Docente> docentes = a.getDocentes();
-//        System.out.println("La cantidad de docentes es : "+docentes.size());
-//        for (Docente docente : docentes) {
-//            System.out.println("El Docente es : "+docente.getNombre());
-//        }
+       
+        
+        List<Docente> docentes = new ArrayList<>();
+        Docente d = new Docente(1313, "Pedro", "Pedro");
+        docentes.add(d);
+        a.setDocentes(docentes);
+        System.out.println("La cantidad de docentes es : "+docentes.size());
+       for (Docente docente : docentes) {
+            System.out.println("El Docente es : "+docente.getNombre());
+        }
     }
 
     public static Alumno obtenerAlumno() {
