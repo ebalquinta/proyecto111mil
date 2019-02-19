@@ -37,6 +37,14 @@ public class LoginCtrl {
         this.loginDlg.mostrar();
     }
 
+    public Aplicacion getApp() {
+        return app;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
     public void validar(String usuario, String clave) throws IntegradosException {
         Session session = null;
         try {

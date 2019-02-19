@@ -17,7 +17,7 @@ import org.integrados.data.util.Util;
  */
 public class DocenteBrowseActividadesBrw extends JFrame {
     private JLabel lblFondo;
-    private DocenteBrowseActividadesCtrl controlador;
+    public DocenteBrowseActividadesCtrl controlador;
     private JPanel pnlBotonesEdicion = null;
     public JButton botonNuevo = null;
     public JButton botonEdicion = null;
@@ -105,6 +105,7 @@ public class DocenteBrowseActividadesBrw extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 nuevaActividad();
+                ocultar();
             }
         });
 
@@ -209,6 +210,7 @@ public class DocenteBrowseActividadesBrw extends JFrame {
     //////////////////////////////////////////Volver///////////////////////////////////////////
     public void volver() {
         this.controlador.ocultar();
+        this.controlador.docenteInicioDlg.initComponents();
     }
     ///////////////////////////////////////////FIN->Volver/////////////////////////////////////
     

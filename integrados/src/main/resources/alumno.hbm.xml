@@ -2,17 +2,19 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
 
 <hibernate-mapping>
-  <class name="org.integrados.data.usuarios.Alumno" table="alumno" catalog="integrados_db" optimistic-lock="version">
+    <class name="org.integrados.data.usuarios.Alumno" table="alumno" catalog="integrados_db" optimistic-lock="version">
         <id name="id" type="java.lang.Integer" column="id" >
             <generator class="identity" />
         </id>
         <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
             <column name="id_Domicilio" />
         </many-to-one>
-        <!--<many-to-one name="nivel" class="org.integrados.data.enums.Nivel" fetch="select">
-            <column name="id_Nivel" not-null="true" />
-        </many-to-one>-->
-        
+        <property name="nivel" column="nivel" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">org.integrados.data.enums.Nivel</param>
+                <param name="type">-6</param>
+            </type>
+        </property> 
         <property name="nombre" type="string" column="nombre" length="45" not-null="true" />
         <property name="usuario" type="string" column="usuario" length="20" />
         <property name="clave" type="string" column="password" length="10" />
@@ -25,7 +27,6 @@
         <property name="edadMadurativa" type="integer" column="edadMadurativa" />
         <property name="telefono" type="string" column="telefono" length="50" />
         <property name="mail" type="string" column="mail" length="60" />
-           
         <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all">
             <key column="id_Alumno" not-null="true"/>
             <index column="id"></index>
