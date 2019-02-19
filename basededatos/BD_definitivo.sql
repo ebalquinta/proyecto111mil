@@ -61,7 +61,7 @@ DROP TABLE IF EXISTS `alumno`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alumno` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `dni` int(11) NOT NULL,
