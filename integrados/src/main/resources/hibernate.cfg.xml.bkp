@@ -23,4 +23,4 @@
     <mapping resource="ordenamiento.hbm.xml"/>
     <!--<mapping resource="memorama.hbm.xml"/>-->
   </session-factory>
-</hibernate-configuration>-configuration>
+</hibernate-configuration>
