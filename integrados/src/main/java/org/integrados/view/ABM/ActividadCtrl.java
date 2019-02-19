@@ -45,7 +45,7 @@ public class ActividadCtrl {
         // actividadDlg.nuevo(actividad);
         //actividadDlg.mostrar(actividadBrw.getFrame());
         
-        NuevaActividadInicioDlg nuevaActividadInicioDlg = new NuevaActividadInicioDlg();
+        NuevaActividadInicioDlg nuevaActividadInicioDlg = new NuevaActividadInicioDlg(null);
         nuevaActividadInicioDlg.mostrar();        
     }
     
