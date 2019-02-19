@@ -77,6 +77,7 @@ CREATE TABLE `alumno` (
   `mail` varchar(60) DEFAULT NULL,
   `id_Domicilio` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `dni_UNIQUE` (`dni`),
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `fk_Alumno_Domicilio1_idx` (`id_Domicilio`),
   CONSTRAINT `fk_Alumno_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE
@@ -101,8 +102,10 @@ DROP TABLE IF EXISTS `alumnos_docente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `alumnos_docente` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_Docente` int(11) NOT NULL,
   `id_Alumno` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_ListaAlumnos_docente_Docente1_idx` (`id_Docente`),
   KEY `fk_ListaAlumnos_docente_Alumno1_idx` (`id_Alumno`),
   CONSTRAINT `fk_ListaAlumnos_docente_Alumno1` FOREIGN KEY (`id_Alumno`) REFERENCES `alumno` (`id`) ON DELETE CASCADE,
