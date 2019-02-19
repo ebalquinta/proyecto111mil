@@ -2,21 +2,17 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
 
 <hibernate-mapping>
-  <class name="org.integrados.data.usuarios.Docente" table="docente" catalog="integrados_db" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer" column="id">
-           <generator class="identity" />
+    <class name="org.integrados.data.usuarios.Docente" table="docente" catalog="integrados_db" optimistic-lock="version">
+        <id name="id" type="integer" column="id">
+            <generator class="identity" />
         </id>
-        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
-           <column name="id_Domicilio" />
-        </many-to-one>
-        <property name="usuario" type="string" column="usuario" length="45"/>
-        <property name="clave" type="string" column="password" length="45" not-null="false" />
-        
         <property name="nombre" type="string" column="nombre" length="45" not-null="true" />
         <property name="apellido" type="string" column="apellido" length="45" not-null="true" />
         <property name="dni" type="int" column="dni" not-null="true" unique="true" />
-        <property name="telefono" type="java.lang.Integer" column="telefono" />
-        <property name="mail" type="string" column="mail" length="45" />
+        <property name="usuario" type="string" column="usuario" length="20" />
+        <property name="clave" type="string" column="password" length="10" />
+        <property name="telefono" type="string" column="telefono" length="50" not-null="false"/>
+        <property name="mail" type="string" column="mail" length="60" not-null="false"/>
         <!--<set name="docentesInstitucions" table="docentes_institucion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_Docente" not-null="true" />
@@ -53,5 +49,19 @@
             </key>
             <one-to-many class="org.integrados.data.usuarios.AlumnosDocente" />
         </set>  -->
-  </class>
+        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
+            <column name="id_Domicilio" />
+        </many-to-one>
+        <!--falta encontrar solución a esta lista que apunta a tabla Alumnos_docente para representar lista de alumnos-->
+        <!--<list name="alumnos" table="Alumnos_docente" cascade="all-delete-orphan" fetch="join" lazy="false">
+           <key column="id_Docente" not-null="true"/>
+           <index column="id"/>
+           <many-to-many column="id" class="org.integrados.data.usuarios.Alumno"/>
+        </list>-->
+        <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
+            <key column="id_Docente" not-null="true"/>
+            <index column="id"/>
+            <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
+        </list>
+    </class>
 </hibernate-mapping>

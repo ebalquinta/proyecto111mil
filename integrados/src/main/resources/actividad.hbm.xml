@@ -6,12 +6,24 @@
     <id name="id" type="java.lang.Integer">
         <generator class="identity" />
     </id>    
-    <property name="tema" type="string" not-null="true"/>
-    <property name="grado" type="java.lang.Integer" not-null="true" />
-    <property name="maxIntentos" type="java.lang.Integer" not-null="true" />    
-    <!--<many-to-one name="nivel" class="org.integrados.data.enums.Nivel" column="id_Nivel" not-null="true"/>
-    <many-to-one name="dificultad" class="org.integrados.data.enums.Difcultad" column="id_Dificultad" not-null="true"/>
-    <many-to-one name="materia" class="org.integrados.data.enums.Materia" column="id_Materia" not-null="true"/>
-    <many-to-one name="materia" class="org.integrados.data.enums.Materia" column="id_Materia" not-null="true"/>-->
-</class>
+    
+    <property name="tema" type="string" length="100" not-null="true"/>
+    <property name="grado" type="integer" not-null="true" />
+    <property name="maxIntentos" type="integer" not-null="true" />    
+    
+     <many-to-one name="docenteCreador" class="org.integrados.data.usuarios.Docente" fetch="join">
+     <column name="id_Docente" />
+     </many-to-one>
+     
+     <many-to-one name="materia" class="org.integrados.data.actividad.Materia" fetch="join">
+         <column name="id_Materia" />
+     </many-to-one>
+     
+<!--    <many-to-one name="nivel" class="org.integrados.data.enums.Nivel" column="id_Nivel" not-null="true"/>
+    <many-to-one name="dificultad" class="org.integrados.data.enums.Difcultad" column="id_Dificultad" not-null="true"/>-->
+    
+<!--    <many-to-one name="plantilla" class="org.integrados.data.plantillas.Plantilla" column="id_Plantilla" not-null="true"/>-->
+   
+    
+  </class>
 </hibernate-mapping>

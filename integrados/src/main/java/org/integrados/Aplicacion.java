@@ -26,6 +26,9 @@ public class Aplicacion {
     }
     
     public void inicializar() throws IntegradosException {
+//        LoginCtrl loginCtrl = new LoginCtrl(this);
+//        MySqlLog logIn = new MySqlLog(loginCtrl);
+//        logIn.setVisible(true);
         HibernateUtiles.inicializar();
     }
     
