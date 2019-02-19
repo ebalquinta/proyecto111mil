@@ -32,35 +32,10 @@
             <index column="id"></index>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
         </list>
-        <!--falta encontrar solución a esta lista que apunta a tabla Alumnos_docente para representar lista de docentes-->
-        <!--<list name="docentes" table="Alumnos_docente" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
+       <list name="docentes" table="Alumnos_docente" lazy="false" cascade="all-delete-orphan">
             <key column="id_Alumno" not-null="true"/>
-            <index column="id"/>
-            <many-to-many column="id" class="org.integrados.data.usuarios.Docente"/>
-        </list>-->        
-        <!-- <set name="alumnosDocentes" table="alumnos_docente" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Alumno" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.AlumnosDocente" />
-        </set>
-        <set name="registrosAlumnos" table="registros_alumno" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Alumno" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.RegistrosAlumno" />
-        </set>
-        <set name="alumnosInstitucions" table="alumnos_institucion" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Alumno" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.AlumnosInstitucion" />
-        </set>
-        <set name="registroActividads" table="registro_actividad" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Alumno" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.RegistroActividad" />
-        </set>-->
+            <list-index column="id"/>
+            <many-to-many class="org.integrados.data.usuarios.Docente" column="id_Docente"/>
+        </list>
     </class>
 </hibernate-mapping>

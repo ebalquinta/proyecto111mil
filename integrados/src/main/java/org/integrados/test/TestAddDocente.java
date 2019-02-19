@@ -23,13 +23,13 @@ public class TestAddDocente {
 
     public static boolean agregarDocente() {
         boolean agregarDocente = false;
-        Docente docente = new Docente(2121, "Profesora", "La Mejor");
-        docente.setUsuario("docente4");
-        docente.setClave("docente4");
+        Docente docente = new Docente(6666, "Profesora", "La Mejor");
+        docente.setUsuario("docente6");
+        docente.setClave("docente6");
         
          
         List<Alumno> alumnos = new ArrayList<>();
-        Alumno a = new Alumno(2020, "Es", "Ese", 5, "c", Nivel.SECUNDARIO);
+        Alumno a = new Alumno(6666, "Es", "Ese", 5, "c", Nivel.SECUNDARIO);
         alumnos.add(a);
         docente.setAlumnos(alumnos);
 

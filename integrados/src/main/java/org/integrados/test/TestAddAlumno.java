@@ -16,8 +16,6 @@ public class TestAddAlumno {
 
     public static void main(String[] args) {
         boolean add = agregarAlumno();
-        
-        
         System.out.println("*****************************************");
         System.out.println("¿El alumno se agrego correctamente?: " + add);
         System.out.println("*****************************************");
@@ -27,13 +25,13 @@ public class TestAddAlumno {
 
     public static boolean agregarAlumno() {
         boolean agregarAlumno = false;
-        Alumno alumno = new Alumno(2020, "Es", "Ese", 5, "c", Nivel.SECUNDARIO);
-        alumno.setUsuario("alumno10");
-        alumno.setClave("alumno10");
+        Alumno alumno = new Alumno(1313, "Carla", "Carla", 5, "c", Nivel.SECUNDARIO);
+        alumno.setUsuario("alumno13");
+        alumno.setClave("alumno13");
         
         
         List<Docente> docentes = new ArrayList<>();
-        Docente d = new Docente(2020, "Es", "Ese");
+        Docente d = new Docente(1313, "Pedro", "Pedro");
         docentes.add(d);
         alumno.setDocentes(docentes);
 

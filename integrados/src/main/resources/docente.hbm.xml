@@ -19,45 +19,36 @@
             </key>
             <one-to-many class="org.integrados.data.usuarios.DocentesInstitucion" />
         </set>
-        <set name="actividads" table="actividad" inverse="true" lazy="false" fetch="select">
+        
+        <set name="actividades" table="actividad" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_Docente" not-null="true" />
             </key>
             <one-to-many class="org.integrados.data.usuarios.Actividad" />
         </set>
-        <set name="institucions" table="institucion" inverse="true" lazy="false" fetch="select">
+        
+        <set name="instituciones" table="institucion" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_Docente" not-null="true" />
             </key>
             <one-to-many class="org.integrados.data.usuarios.Institucion" />
         </set>
-        <set name="registroActividads" table="registro_actividad" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Docente" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.RegistroActividad" />
-        </set>
+        
         <set name="actividadesDocentes" table="actividades_docente" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_Docente" not-null="true" />
             </key>
             <one-to-many class="org.integrados.data.usuarios.ActividadesDocente" />
         </set>
-        <set name="alumnosDocentes" table="alumnos_docente" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Docente" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.AlumnosDocente" />
-        </set>  -->
+        
         <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
             <column name="id_Domicilio" />
-        </many-to-one>
-        <!--falta encontrar solución a esta lista que apunta a tabla Alumnos_docente para representar lista de alumnos-->
-        <!--<list name="alumnos" table="Alumnos_docente" cascade="all-delete-orphan" fetch="join" lazy="false">
-           <key column="id_Docente" not-null="true"/>
-           <index column="id"/>
-           <many-to-many column="id" class="org.integrados.data.usuarios.Alumno"/>
-        </list>-->
+        </many-to-one>-->
+        <list name="alumnos" table="Alumnos_docente" lazy="false" cascade="all-delete-orphan">
+            <key column="id_Docente" not-null="true"/>
+            <list-index column="id"/>
+            <many-to-many class="org.integrados.data.usuarios.Alumno" column="id_Alumno"/>
+        </list>
         <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
             <key column="id_Docente" not-null="true"/>
             <index column="id"/>
