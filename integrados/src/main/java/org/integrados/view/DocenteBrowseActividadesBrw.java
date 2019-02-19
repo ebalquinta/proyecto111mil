@@ -15,12 +15,9 @@ import org.integrados.data.util.Util;
  *
  * @author Grupo Front
  */
-public class DocenteBrowseActividadesBrw {
-
+public class DocenteBrowseActividadesBrw extends JFrame {
+    private JLabel lblFondo;
     private DocenteBrowseActividadesCtrl controlador;
-
-    private JDialog dialogoPrincipal;
-
     private JPanel pnlBotonesEdicion = null;
     public JButton botonNuevo = null;
     public JButton botonEdicion = null;
@@ -28,61 +25,59 @@ public class DocenteBrowseActividadesBrw {
     public JButton botonProbar = null;
     public JButton botonVolver = null;
     private JTable tablaActividades = null;
-    
     private List<Actividad> listaActividades;
     
     public DocenteBrowseActividadesBrw(DocenteBrowseActividadesCtrl controlador, List<Actividad> listaActividades) {
         this.controlador = controlador;
         this.listaActividades = listaActividades;
-    }
-
-    public Window getFrame() {
-        return dialogoPrincipal;
+        initComponents();
     }
     
-    public void mostrar(Window parent) {
-        if (parent != null) {
-            if (parent instanceof JDialog) {
-                dialogoPrincipal = new JDialog((JDialog) parent, true);
-            }   else {
-                dialogoPrincipal = new JDialog((JFrame) parent, true);
-            }             
-        } else {
-            dialogoPrincipal = new JDialog();    
-        }
+    private void initComponents() {        
+        this.setTitle("Lista de Actividades");
+        this.pack();
+        this.setSize(800, 600);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                controlador.cerrarAplicacion();
+            }
+        });            
         
-        dialogoPrincipal.setPreferredSize(new Dimension(800, 600));
-        dialogoPrincipal.pack();
-        dialogoPrincipal.setLocationRelativeTo(parent);
-        dialogoPrincipal.setResizable(false);
-        dialogoPrincipal.setTitle("Lista de Actividades disponibles");
-
-        initComponentes();
-        
-        dialogoPrincipal.setVisible(true);
-    }
-
-    private void initComponentes() {
         JPanel pnlCentral = new JPanel();
         BorderLayout pnlCentralLayout = new BorderLayout();
+        pnlCentral.setOpaque(false);
         pnlCentral.setLayout(pnlCentralLayout);
-        dialogoPrincipal.getContentPane().add(pnlCentral, BorderLayout.CENTER);
+        
+        lblFondo = new JLabel();        
+        // Propiedades del fondo de pantalla
+        ImageIcon icon = createImageIcon("images/Fondo.jpg","Fondo");
+        lblFondo.setIcon(icon);
+//        lblFondo.setBounds(0, 0, 800, 600);
+        lblFondo.setLayout(new BorderLayout());        
 
         // Propiedades de la tabla de actividades
         tablaActividades = new JTable();
-        tablaActividades.setBackground(new java.awt.Color(252, 241, 224));
-        tablaActividades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tablaActividades.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); 
+        tablaActividades.setOpaque(true);           
+//        ((DefaultTableCellRenderer)tablaActividades.getDefaultRenderer(Object.class)).setOpaque(false);
+        
+        tablaActividades.setBackground(new java.awt.Color(250, 255, 113));
+        tablaActividades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 90, 39)));
+        tablaActividades.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); 
         
         tablaActividades.setAlignmentX(1.0F);
         tablaActividades.setAlignmentY(1.0F);
-        tablaActividades.setGridColor(new java.awt.Color(255, 51, 0));
-        tablaActividades.setIntercellSpacing(new java.awt.Dimension(2, 2));
-        tablaActividades.setSelectionBackground(new java.awt.Color(255, 204, 0));
-
-              
+        tablaActividades.setGridColor(new java.awt.Color(237, 90, 39));
+        tablaActividades.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tablaActividades.setSelectionBackground(new java.awt.Color(85, 196, 190));           
         
-        pnlCentral.add(new JScrollPane(tablaActividades), BorderLayout.CENTER);
+        JScrollPane jScrollPane = new JScrollPane(tablaActividades);
+        jScrollPane.setOpaque(false);
+        jScrollPane.getViewport().setOpaque(false);
+        
         tablaActividades.setModel(new ActividadTableModel(listaActividades));
 
         tablaActividades.addMouseListener(new MouseAdapter() {
@@ -93,12 +88,14 @@ public class DocenteBrowseActividadesBrw {
                 }
             }
         });
+        pnlCentral.add(jScrollPane, BorderLayout.CENTER);
+        lblFondo.add(pnlCentral, BorderLayout.CENTER);
 
         pnlBotonesEdicion = new JPanel();
         pnlBotonesEdicion.setLayout(null);
+        pnlBotonesEdicion.setOpaque(false);
         pnlBotonesEdicion.setPreferredSize(new java.awt.Dimension(300, 35));
         pnlBotonesEdicion.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
-        dialogoPrincipal.getContentPane().add(pnlBotonesEdicion, BorderLayout.SOUTH);
 
         // Propiedades del botón Nuevo
         botonNuevo = Util.crearBoton("Nuevo", 12);
@@ -156,7 +153,31 @@ public class DocenteBrowseActividadesBrw {
             }
         });
         
+        getContentPane().add(pnlBotonesEdicion, BorderLayout.SOUTH);
+        
+        this.add(lblFondo);
+        
+        this.mostrar();
+        
     }
+    
+    protected ImageIcon createImageIcon(String path, String description) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL, description);
+        } else {
+            System.out.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
+    
+    public void mostrar() {
+        this.setVisible(true);
+    }
+    
+    public void ocultar() {
+        this.setVisible(false);
+    }   
     
     //////////////////////////////////////Nueva Actividad//////////////////////////////////////
     private void nuevaActividad() {
@@ -176,7 +197,7 @@ public class DocenteBrowseActividadesBrw {
 
     	if (actividad != null) {
 //            this.controlador.editar(actividad);
-                Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
     	}
     }
     
@@ -187,7 +208,7 @@ public class DocenteBrowseActividadesBrw {
 
     //////////////////////////////////////////Volver///////////////////////////////////////////
     public void volver() {
-        this.controlador.volver();
+        this.controlador.ocultar();
     }
     ///////////////////////////////////////////FIN->Volver/////////////////////////////////////
     
@@ -328,6 +349,6 @@ public class DocenteBrowseActividadesBrw {
                 index = index + 1;
             }
         }
-    }
+    }    
     
 }

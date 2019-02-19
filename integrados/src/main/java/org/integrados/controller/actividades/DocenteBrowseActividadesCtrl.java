@@ -3,12 +3,14 @@ package org.integrados.controller.actividades;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
+import org.integrados.Aplicacion;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.actividad.Materia;
 import org.integrados.data.enums.Dificultad;
 import org.integrados.data.enums.Nivel;
 import org.integrados.data.plantillas.PregYResp;
 import org.integrados.data.usuarios.Docente;
+import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
 import org.integrados.view.DocenteBrowseActividadesDlg;
 import org.integrados.view.NuevaActividadInicioDlg;
@@ -19,6 +21,8 @@ import org.integrados.view.NuevaActividadInicioDlg;
  */
 public class DocenteBrowseActividadesCtrl {
     
+    private Aplicacion app;
+    
     private DocenteBrowseActividadesBrw actividadBrw = null;
     
     private DocenteBrowseActividadesDlg actividadDlg = null;
@@ -26,7 +30,7 @@ public class DocenteBrowseActividadesCtrl {
     public DocenteBrowseActividadesCtrl() {        
     }
     
-    public void mostrarBrw(JFrame framePadre) {
+    public void mostrarBrw() {
         
         //Levantar actividades desde la base de datos        
        List<Actividad> listaActividades = new ArrayList<>();
@@ -37,7 +41,7 @@ public class DocenteBrowseActividadesCtrl {
        listaActividades.add(new Actividad(new PregYResp("¿Cuál es el símbolo del Magnesio?"), new Docente(28200916, "Marta", "Rodriguez"), new Materia("Química"), "Elementos", 7, Nivel.SECUNDARIO, Dificultad.ALTO, 3));
               
         actividadBrw = new DocenteBrowseActividadesBrw(this, listaActividades);
-        this.actividadBrw.mostrar(framePadre);
+        this.actividadBrw.mostrar();
     }   
 
     public void agregar() {
@@ -55,7 +59,7 @@ public class DocenteBrowseActividadesCtrl {
     public void editar(Actividad actividad) {        
         actividadDlg = new DocenteBrowseActividadesDlg(this);
         actividadDlg.editar(actividad);
-        actividadDlg.mostrar(actividadBrw.getFrame());
+        actividadDlg.mostrar();
     }
     
     
@@ -79,8 +83,16 @@ public class DocenteBrowseActividadesCtrl {
         }
     }
     
-    public void volver(){
-        actividadBrw.getFrame().dispose();
+    public void ocultar(){
+        actividadBrw.setVisible(false);
     }    
+    
+    public void cerrarAplicacion() {
+        Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
+        if (resultado == Dialogo.ResultadoDialogo.Yes) {
+            this.actividadBrw.ocultar();
+//            this.app.cerrar();
+        }
+    }
     
 }

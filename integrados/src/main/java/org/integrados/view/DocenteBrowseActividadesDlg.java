@@ -14,7 +14,9 @@ import org.integrados.data.util.Util;
  *
  * @author Grupo Front
  */
-public class DocenteBrowseActividadesDlg {
+public class DocenteBrowseActividadesDlg extends JFrame {
+    
+    private JLabel lblFondo;
 
     private DocenteBrowseActividadesCtrl controlador = null;
     private Actividad actividad = null;
@@ -23,7 +25,7 @@ public class DocenteBrowseActividadesDlg {
     private boolean alta = false;
     private String titulo = null;
 
-    private JDialog dialogoPrincipal;
+//    private JDialog dialogoPrincipal;
 
     private JPanel pnlBotonesEdicion = null;
     public JButton botonGuardar = null;
@@ -37,9 +39,11 @@ public class DocenteBrowseActividadesDlg {
     
     /**
      * Constructor
+     * @param controlador
      */
     public DocenteBrowseActividadesDlg(DocenteBrowseActividadesCtrl controlador) {
-        this.controlador = controlador;        
+        this.controlador = controlador;                
+        initComponents();
     }
     
     public void editar(Actividad actividad) {
@@ -59,37 +63,24 @@ public class DocenteBrowseActividadesDlg {
      *
      * @param parent para que actue como modal con el Frame o Dialog padre
      */
-    public void mostrar(Window parent) {
-        if (parent != null) {
-            if (parent instanceof JDialog) {
-                dialogoPrincipal = new JDialog((JDialog) parent, true);
-            }   else {
-                dialogoPrincipal = new JDialog((JFrame) parent, true);
-            }             
-        } else {
-            dialogoPrincipal = new JDialog();    
-        }
-        dialogoPrincipal.setPreferredSize(new Dimension(800, 600));
-        dialogoPrincipal.pack();
-        dialogoPrincipal.setLocationRelativeTo(parent);
-        dialogoPrincipal.setResizable(false);
-        initComponentes();
-        actualizarComponentes();
-        dialogoPrincipal.setTitle(titulo);
-        dialogoPrincipal.setVisible(true);
+//    
+    public void mostrar() {
+        this.setVisible(true);
     }
 
     //Inicializa la interfaz de usuario
-    private void initComponentes() {
+    private void initComponents() {
+        
+        lblFondo = new JLabel();
         ///////////////////////////Botones//////////////////////////
         pnlBotonesEdicion = new JPanel();
         pnlBotonesEdicion.setLayout(null);
         pnlBotonesEdicion.setPreferredSize(new java.awt.Dimension(300, 35));
         pnlBotonesEdicion.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
-        dialogoPrincipal.getContentPane().add(pnlBotonesEdicion, BorderLayout.SOUTH);
+        this.add(pnlBotonesEdicion, BorderLayout.SOUTH);
 
         JPanel pnlCentral = new JPanel();
-        dialogoPrincipal.getContentPane().add(pnlCentral, BorderLayout.CENTER);
+        this.add(pnlCentral, BorderLayout.CENTER);
         pnlCentral.setLayout(null);
 
         JLabel lblNombre = new JLabel();
@@ -168,6 +159,23 @@ public class DocenteBrowseActividadesDlg {
                 cancelar();
             }
         });
+        
+        
+        // Propiedades del fondo de pantalla
+        ImageIcon icon = createImageIcon("images/Fondo.jpg","Fondo");
+        lblFondo.setIcon(icon);
+        getContentPane().add(lblFondo);
+        lblFondo.setBounds(0, 0, 800, 600);
+    }
+    
+    protected ImageIcon createImageIcon(String path, String description) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL, description);
+        } else {
+            System.out.println("Couldn't find file: " + path);
+            return null;
+        }
     }
 
     //Habilita o no los componentes de edición de archivos por Path
@@ -204,7 +212,7 @@ public class DocenteBrowseActividadesDlg {
         }
         
         //Si anduvo todo bien se guardó la actividad y se debe cerrar la ventana de edición
-        cerrarDialogo();
+        ocultar();
     }
 
     //Actualiza los componentes con los datos del modelo
@@ -228,14 +236,13 @@ public class DocenteBrowseActividadesDlg {
         this.actividad.setPlantilla(new PregYResp());
     }
 
-    //Cierra el Dialogo
-    private void cerrarDialogo() {
-        this.dialogoPrincipal.dispose();
-    }
+    public void ocultar() {
+        this.setVisible(false);
+    }   
 
     //Cancela, en respuesta al requerimiento del usuario
     private void cancelar() {
-        cerrarDialogo();
+        ocultar();
     }
 
     //Irían las validaciones de los componentes, antes de pasar los valores a las 
