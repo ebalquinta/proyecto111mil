@@ -9,7 +9,7 @@ import org.integrados.exceptions.IntegradosException;
 
 public class TestUpdateAlumno {
     private static final int ID = 1; //id del alumno que quiero obtener
-    private static final String NUEVO_APELLIDO = "Nuevo";
+    private static final String NUEVO_APELLIDO = "OtroNuevo";
 
 
     public static void main(String[] args) {
@@ -21,9 +21,9 @@ public class TestUpdateAlumno {
         Alumno a1 = obtenerAlumno();
         System.out.println("*****************************************");
         System.out.println("El nuevo apellido es: " + a1.getApellido());
-        System.out.println("*****************************************");
+        System.out.println("*****************************************");       
     }
-
+    
     public static void actualizarAlumno(Alumno alumno) {
         alumno.setApellido(NUEVO_APELLIDO);
         try {

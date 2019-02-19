@@ -11,49 +11,46 @@ import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.exceptions.IntegradosException;
 
-public class TestAddAlumno {
-    
+public class TestAddDocente {
 
     public static void main(String[] args) {
-        boolean add = agregarAlumno();
-        
-        
+        boolean add = agregarDocente();
         System.out.println("*****************************************");
-        System.out.println("¿El alumno se agrego correctamente?: " + add);
+        System.out.println("¿El Docente se agrego correctamente?: " + add);
         System.out.println("*****************************************");
- 
 
     }
 
-    public static boolean agregarAlumno() {
-        boolean agregarAlumno = false;
-        Alumno alumno = new Alumno(2020, "Es", "Ese", 5, "c", Nivel.SECUNDARIO);
-        alumno.setUsuario("alumno10");
-        alumno.setClave("alumno10");
+    public static boolean agregarDocente() {
+        boolean agregarDocente = false;
+        Docente docente = new Docente(2121, "Profesora", "La Mejor");
+        docente.setUsuario("docente4");
+        docente.setClave("docente4");
         
-        
-        List<Docente> docentes = new ArrayList<>();
-        Docente d = new Docente(2020, "Es", "Ese");
-        docentes.add(d);
-        alumno.setDocentes(docentes);
+         
+        List<Alumno> alumnos = new ArrayList<>();
+        Alumno a = new Alumno(2020, "Es", "Ese", 5, "c", Nivel.SECUNDARIO);
+        alumnos.add(a);
+        docente.setAlumnos(alumnos);
 
+        
         try {
-            saveAlumno(alumno);
-            agregarAlumno = true;
+            saveDocente(docente);
+            agregarDocente = true;
         } catch (IntegradosException ex) {
-            Logger.getLogger(TestAddAlumno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestAddDocente.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return agregarAlumno;
+        return agregarDocente;
     }
 
-    public static void saveAlumno(Alumno alumno) throws IntegradosException {
+    public static void saveDocente(Docente docente) throws IntegradosException {
         HibernateUtiles.inicializar();
         Session s;
         try {
             s = HibernateUtiles.getSession();
             s.beginTransaction();
-            s.saveOrUpdate(alumno);
+            s.saveOrUpdate(docente);
             s.getTransaction().commit();
             s.close();
         } catch (IntegradosException e) {
