@@ -12,27 +12,26 @@ import org.integrados.data.usuarios.Docente;
 import org.integrados.exceptions.IntegradosException;
 
 public class TestAddAlumno {
-    
 
     public static void main(String[] args) {
         boolean add = agregarAlumno();
         System.out.println("*****************************************");
         System.out.println("¿El alumno se agrego correctamente?: " + add);
         System.out.println("*****************************************");
- 
 
     }
 
     public static boolean agregarAlumno() {
         boolean agregarAlumno = false;
-        Alumno alumno = new Alumno(1313, "Carla", "Carla", 5, "c", Nivel.SECUNDARIO);
-        alumno.setUsuario("alumno13");
-        alumno.setClave("alumno13");
-        
-        
+        Alumno alumno = new Alumno(10987, "Carla", "Carla", 5, "c", Nivel.SECUNDARIO);
+        alumno.setUsuario("alumno90");
+        alumno.setClave("alumno90");
+
         List<Docente> docentes = new ArrayList<>();
-        Docente d = new Docente(1313, "Pedro", "Pedro");
+        Docente d = new Docente(10987, "Pedro", "Sac");
+        Docente d1 = new Docente(10897, "Padra", "sacv");
         docentes.add(d);
+        docentes.add(d1);
         alumno.setDocentes(docentes);
 
         try {
