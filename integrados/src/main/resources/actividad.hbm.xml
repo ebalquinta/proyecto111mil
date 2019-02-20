@@ -27,6 +27,10 @@
                 <param name="type">-6</param>
             </type>
         </property>
-        <!--    <many-to-one name="plantilla" class="org.integrados.data.plantillas.Plantilla" column="id_Plantilla" not-null="true"/>-->
+        
+            <many-to-one name="plantilla" class="org.integrados.data.plantillas.Plantilla" fetch="join" not-null="true">
+            <column name="id_Plantilla" />
+        </many-to-one>
+
     </class>
 </hibernate-mapping>
