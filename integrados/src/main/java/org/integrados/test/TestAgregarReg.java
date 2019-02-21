@@ -45,20 +45,16 @@ public class TestAgregarReg {
         Alumno alumno1 = new Alumno(1, "Pepe", "Caseros", 2, "A", Nivel.PRIMARIO);
         alumno1.setDni(dniAleatorio(alumno1));
         
-        alumno1.setUsuario("alumno1");
-        alumno1.setClave("alumno1");
         saveObjeto(alumno1);
         
         Alumno alumno2 = new Alumno(1, "Juan", "Perez", 2, "A", Nivel.PRIMARIO);
         alumno2.setDni(dniAleatorio(alumno2));
-        alumno2.setUsuario("alumno2");
-        alumno2.setClave("alumno2");
+        
         saveObjeto(alumno2);
         
         Alumno alumno3 = new Alumno(1, "Pipo", "Pezcador", 2, "A", Nivel.PRIMARIO);
         alumno3.setDni(dniAleatorio(alumno3));
-        alumno3.setUsuario("alumno3");
-        alumno3.setClave("alumno3");
+        
         saveObjeto(alumno3);
         
         //Lista alumnos
@@ -71,14 +67,12 @@ public class TestAgregarReg {
         
         Docente docente1 = new Docente(2, "Marta", "Sanches");
         docente1.setDni(dniAleatorio(docente1));
-        docente1.setUsuario("docente1");
-        docente1.setClave("docente");
+        
         saveObjeto(docente1);
         
         Docente docente2 = new Docente(2, "Paola", "Krum");
         docente2.setDni(dniAleatorio(docente2));
-        docente2.setUsuario("docente2");
-        docente2.setClave("docente");
+        
         saveObjeto(docente2);
         
         //Lista docentes
