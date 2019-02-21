@@ -2,21 +2,32 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
 
 <hibernate-mapping>
-  <class name="org.integrados.data.actividad.RegistroActividad" table="registro_actividad">
-    <id name="id" type="java.lang.Integer" column="id" >
-      <generator class="identity" />
-    </id>
-    
-    <property name="tiempo" type="java.lang.Integer" column="tiempo"/>
-    <property name="finalizoCorrectamente" type="java.lang.Boolean" column="finalizo_correctamente"/>
-    <property name="intentos" type="java.lang.Integer" column="intentos"/>
-    <property name="estrella" type="java.lang.Integer" column="estrella"/>
-    <property name="corazon" type="java.lang.String" column="corazon" length="200"/>
-    <property name="observaciones" type="java.lang.String" column="observaciones" length="2000"/>
-    
-    <many-to-one name="docente" class="org.integrados.data.usuarios.Docente" fetch="join" column="id_Docente" not-null="true"/>
-   <!-- <many-to-one name="actividad" class="org.integrados.data.actividad.Actividad" fetch="join" column="id_Actividad" not-null="true"/>-->
-    <many-to-one name="alumno" class="org.integrados.data.usuarios.Alumno" column="id_Alumno" not-null="true"/>
+    <class name="org.integrados.data.actividad.RegistroActividad" table="registro_actividad">
+        <id name="id" type="java.lang.Integer" column="id" >
+            <generator class="identity" />
+        </id>
+        <property name="tiempo" type="java.lang.Integer" column="tiempo"/>
+        <property name="finalizoCorrectamente" type="java.lang.Boolean" column="finalizo_correctamente"/>
+        <property name="intentos" type="java.lang.Integer" column="intentos"/>
+        <property name="estrella" type="java.lang.Integer" column="estrella"/>
+        <property name="corazon" type="java.lang.String" column="corazon" length="200"/>
+        <property name="observaciones" type="java.lang.String" column="observaciones" length="2000"/>
+        <many-to-one name="docente" class="org.integrados.data.usuarios.Docente" fetch="join">
+            <column name="id_Docente" />
+        </many-to-one>    
 
-  </class>
+        <many-to-one name="actividad" class="org.integrados.data.actividad.Actividad" fetch="join">
+            <column name="id_Actividad" />
+        </many-to-one>
+    
+        <many-to-one name="alumno" class="org.integrados.data.usuarios.Alumno" fetch="join">
+            <column name="id_Alumno" />
+        </many-to-one>
+        
+        <list name="respuestaAlumno" table="bloques_registroactividad" cascade="all-delete-orphan">
+            <key column="id_RegistroActividad"/>
+            <list-index column="id"/>
+            <many-to-many class="org.integrados.data.bloques.Bloque" column="id_Bloque"/>
+        </list>
+    </class>
 </hibernate-mapping>
