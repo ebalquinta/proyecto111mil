@@ -18,13 +18,15 @@
         <mapping resource="materia.hbm.xml"/>
         <!--    mapeo bloque-->
         <mapping resource="bloque_and.hbm.xml"/>
-        <mapping resource="bloqueImagen.hbm.xml"/>
-        <mapping resource="bloqueSonido.hbm.xml"/>
-        <mapping resource="bloqueTexto.hbm.xml"/>
+        
         <!--    mapeo plantilla-->
         <mapping resource="plantilla.hbm.xml"/>
 
         <!--    
+        <mapping resource="bloqueImagen.hbm.xml"/>
+        <mapping resource="bloqueSonido.hbm.xml"/>
+        <mapping resource="bloqueTexto.hbm.xml"/>
+
         <mapping resource="unir.hbm.xml"/>
         <mapping resource="pregYResp.hbm.xml"/>
         <mapping resource="ordenamiento.hbm.xml"/>
