@@ -113,23 +113,27 @@ public class TestAgregarReg {
         Bloque bTex = new BloqueTexto("¿Cuanto es 2+2?");
         saveObjeto(bTex);
         Bloque bAnd = new BloqueAnd(bImg, bTex);
-        //saveObjeto(bAnd);   Todavia no funciona el guardar bloques dentro de AND
+        saveObjeto(bAnd);  
         
         //Lista Bloques
         List<Bloque> bloques = new ArrayList<>();
         bloques.add(bImg);
         bloques.add(bSon);
         bloques.add(bTex);
-        //bloques.add(bAnd);
+        bloques.add(bAnd);
         
         //Plantillas
         
-        Plantilla unir = new Unir();
+        Unir unir = new Unir();
         unir.setEnunciado("unir respuestas correctas");
+        unir.setBloquesDer(bloques);
+        unir.setBloquesIzq(bloques);
         saveObjeto(unir);
         
-        Plantilla pregunta = new PregYResp();
+        PregYResp pregunta = new PregYResp();
         pregunta.setEnunciado("¿que es una célula?");
+        pregunta.setSoluciones(bloques);
+        pregunta.setOpciones(bloques);
         saveObjeto(pregunta);
         
         Plantilla orden = new Ordenamiento();
@@ -139,6 +143,7 @@ public class TestAgregarReg {
         Plantilla memo = new Memorama();
         memo.setEnunciado("encuentre los pares");
         saveObjeto(memo);
+        
         
         //Materia
         
