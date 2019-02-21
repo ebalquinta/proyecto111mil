@@ -18,23 +18,8 @@
         <mapping resource="materia.hbm.xml"/>
         <!--    mapeo bloque-->
         <mapping resource="bloque.hbm.xml"/>
-        <mapping resource="bloque_and.hbm.xml"/>
         
         <!--    mapeo plantilla-->
         <mapping resource="plantilla.hbm.xml"/>
-<<<<<<< HEAD
-
-        <!--    
-        <mapping resource="bloqueImagen.hbm.xml"/>
-        <mapping resource="bloqueSonido.hbm.xml"/>
-        <mapping resource="bloqueTexto.hbm.xml"/>
-
-        <mapping resource="unir.hbm.xml"/>
-        <mapping resource="pregYResp.hbm.xml"/>
-        <mapping resource="ordenamiento.hbm.xml"/>
-        <mapping resource="memorama.hbm.xml"/>
-        -->
-=======
->>>>>>> master
     </session-factory>
 </hibernate-configuration>
