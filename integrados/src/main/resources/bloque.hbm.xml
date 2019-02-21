@@ -6,16 +6,19 @@
     <id name="id" type="java.lang.Integer" column="id" >
       <generator class="identity" />
     </id>
+     <discriminator column="tipo_bloque" type="string" />
     
-   <!-- 3 mapeos one to one con bloqueAnd -->
-   
-    <many-to-one name="BloqueAnd" class="org.integrados.data.bloques.BloqueAnd" fetch="join" not-null="false"> 
-        <column name="bloque_and" />
-    </many-to-one>
-    
-    <!--Atributos en bloque -->
-    
-    <property name="tipoBloque" type="integer" column="tipo_bloque" not-null="true" />
+    <subclass name="org.integrados.data.bloques.BloqueAnd" discriminator-value="bloque_and" >
+    </subclass>
+    <subclass name="org.integrados.data.bloques.BloqueImagen" discriminator-value="bloque_imagen" >
+        <property name="imagen" type="string" column="ruta_imagen" length="300"/>
+    </subclass>
+    <subclass name="org.integrados.data.bloques.BloqueSonido" discriminator-value="bloque_sonido" >
+        <property name="sonido" type="string" column="ruta_sonido" length="300"/>
+    </subclass>
+    <subclass name="org.integrados.data.bloques.BloqueTexto" discriminator-value="bloque_texto" >
+        <property name="texto" type="string" column="texto" length="1000"/>
+    </subclass>
     
   </class>
 </hibernate-mapping>
