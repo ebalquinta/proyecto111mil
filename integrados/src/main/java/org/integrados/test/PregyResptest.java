@@ -20,14 +20,14 @@ public class PregyResptest {
     public static void main(String[] args) {
 
         ArrayList<String> s = new ArrayList();
-        s.add("Aguante el paco");
-        s.add("Aguante el paca");
-        s.add("Aguante el caca");
-        s.add("Aguante el paccaco");
-        s.add("Aguante el paco");
-        s.add("Aguante el paco");
+        s.add("3");
+        s.add("5");
+        s.add("2");
+        s.add("4");
+       
 
-        PregRespBrowse frame = new PregRespBrowse(s, "Cuantos pacos hay?");
+        PregRespBrowse frame = new PregRespBrowse(s, "¿Cuantos reinos existen?");
+        
         frame.setVisible(true);
     }
 }

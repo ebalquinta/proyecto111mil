@@ -22,22 +22,19 @@ import org.integrados.data.util.Util;
 public class PregRespBrowse extends javax.swing.JFrame {
 
     private JLabel pregunta;
-    private List<JLabel> opciones;
-    private List<JCheckBox> checks;
+    private List<JCheckBox> opciones;
     private JButton terminar;
     private JButton verificar;
 
-    public PregRespBrowse(ArrayList<String> opciones, String pregunta) {
+    public PregRespBrowse(List<String> opciones, String pregunta) {
         this.initComponents(opciones, pregunta);
     }
 
-    public void initComponents(ArrayList<String> opciones, String pregunta) {
+    public void initComponents(List<String> opciones, String pregunta) {
         this.pregunta = new JLabel();
         this.pregunta.setText(pregunta);
-        this.pregunta.setBounds(525, 100, 120, 20);
+        this.pregunta.setBounds(300, 100, pregunta.length()*10, 20);
         getContentPane().add(this.pregunta);
-
-        this.checks = new ArrayList();
         this.opciones = new ArrayList();
         this.setOpciones(opciones);
 
@@ -53,25 +50,14 @@ public class PregRespBrowse extends javax.swing.JFrame {
         this.setResizable(false);
     }
 
-    public void setOpciones(ArrayList<String> opciones) {
-
-        for (int i = 0; i < opciones.size(); i++) {
-            JLabel etiqueta = new JLabel();
-            JCheckBox check = new JCheckBox();
-            this.opciones.add(etiqueta);
-            this.checks.add(check);
-        }
+    public void setOpciones(List<String> opciones) {
         int y = 150;
-
         for (int i = 0; i < opciones.size(); i++) {
-
-            this.opciones.get(i).setText(opciones.get(i));
-            this.opciones.get(i).setBounds(525, y, 120, 20);
-            this.checks.get(i).setBounds(400, y, 120, 20);
-            add(this.checks.get(i));
+            JCheckBox opcion = new JCheckBox(opciones.get(i));
+            opcion.setBounds(200, y, 120, 20);
+            this.opciones.add(opcion);
             add(this.opciones.get(i));
-            y += 50;
-
+            y+=50;
         }
     }
 
