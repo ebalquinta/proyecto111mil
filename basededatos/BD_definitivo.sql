@@ -81,7 +81,7 @@ CREATE TABLE `alumno` (
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `fk_Alumno_Domicilio1_idx` (`id_Domicilio`),
   CONSTRAINT `fk_Alumno_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,6 +90,7 @@ CREATE TABLE `alumno` (
 
 LOCK TABLES `alumno` WRITE;
 /*!40000 ALTER TABLE `alumno` DISABLE KEYS */;
+INSERT INTO `alumno` VALUES (4,'Es','Ese',66,5,'c',2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,6 +118,7 @@ CREATE TABLE `alumnos_docente` (
 
 LOCK TABLES `alumnos_docente` WRITE;
 /*!40000 ALTER TABLE `alumnos_docente` DISABLE KEYS */;
+INSERT INTO `alumnos_docente` VALUES (0,4,4);
 /*!40000 ALTER TABLE `alumnos_docente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +257,7 @@ CREATE TABLE `docente` (
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `fk_Docente_Domicilio1_idx` (`id_Domicilio`),
   CONSTRAINT `fk_Docente_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,6 +266,7 @@ CREATE TABLE `docente` (
 
 LOCK TABLES `docente` WRITE;
 /*!40000 ALTER TABLE `docente` DISABLE KEYS */;
+INSERT INTO `docente` VALUES (4,'Profesora','La Mejor',6676,'docente','docente',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `docente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -353,10 +356,11 @@ CREATE TABLE `plantilla` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_plantilla` varchar(45) NOT NULL,
   `enunciado` varchar(1000) NOT NULL,
+  `tipoPersistente` varchar(60) NOT NULL,
   `imagen_enunciado` varchar(300) DEFAULT NULL,
   `sonido_enunciado` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,4 +445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-21 16:15:17
+-- Dump completed on 2019-02-26 12:01:29
