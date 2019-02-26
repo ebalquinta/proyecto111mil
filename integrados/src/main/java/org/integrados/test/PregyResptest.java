@@ -24,16 +24,20 @@ public class PregyResptest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        List<BloqueTexto> opciones = new ArrayList();
+        List<Bloque> opciones = new ArrayList();
         opciones.add(new BloqueTexto("Va a explotar"));
         opciones.add(new BloqueTexto("va a prenderse"));
         opciones.add(new BloqueTexto("No va a pasar nada"));
         String enunciado = "¿Que pasa si metemos una lampara en un microondas?"; 
-        List<Bloque> soluciones;
-        PregYResp plantilla = new PregYResp();
-        Actividad actividad;
-        RegistroActividad registro;
-
-        PregRespCtrl p = new PregRespCtrl();
+        List<Bloque> soluciones = new ArrayList();
+        soluciones.add(opciones.get(1));
+        PregYResp plantilla = new PregYResp(opciones,enunciado,soluciones);
+        Actividad actividad = new Actividad();
+        RegistroActividad registro = new RegistroActividad();
+        try{
+            PregRespCtrl p = new PregRespCtrl(registro,actividad,plantilla);
+        }catch(Exception e){
+           e.printStackTrace();
+        }
     }
 }

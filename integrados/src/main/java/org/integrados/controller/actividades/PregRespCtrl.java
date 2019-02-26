@@ -28,6 +28,7 @@ public class PregRespCtrl {
         this.plantilla = plantilla;
         this.actividad = actividad;
         this.registro = registro;
+        jugar();
     }
 
     public void jugar() {
@@ -38,20 +39,10 @@ public class PregRespCtrl {
 
     public boolean verificar(List<Bloque> rtaAlumno) {
         boolean b = plantilla.verificarResultado(rtaAlumno);
-        return b;
+//        System.out.println(rtaAlumno.get(0).getTipoBloque());
+        return false;
     }
 
-   
-
-    // private List<Bloque>{
-    public List<String> crearListaString(List<Bloque> listaBloques) {
-        ArrayList<String> listaString = new ArrayList();
-        for (Bloque b : listaBloques) {
-            BloqueTexto bt = (BloqueTexto) b;
-            listaString.add(bt.getTexto());
-        }
-        return listaString;
-    }
 
 }
 

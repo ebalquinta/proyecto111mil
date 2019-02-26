@@ -37,23 +37,26 @@ public class PregRespBrowse extends javax.swing.JFrame {
     private JButton verificar;
     private PregRespCtrl controller;
     private List<Bloque> rtaAlumno;
-    private List<Panel> opciones;
+    private List<Bloque> opciones;
+    private List<Panel> cuadroOpciones;
 //    private JPanel p = new JPanel();
     public PregRespBrowse(List<Bloque> opciones, String pregunta, PregRespCtrl controller) {
-        this.initComponents(opciones, pregunta);
+        this.opciones=opciones;
+        this.initComponents(pregunta);
         this.controller = controller;
         this.rtaAlumno = new ArrayList();
+        
     }
 
-    public void initComponents(List<Bloque> opciones, String pregunta) {
+    public void initComponents(String pregunta) {
         this.pregunta = new JLabel();
         this.pregunta.setText(pregunta);
         this.pregunta.setBounds(300, 100, pregunta.length() * 10, 20);
         getContentPane().add(this.pregunta);
         
-        this.opciones = new ArrayList();
+        this.cuadroOpciones = new ArrayList();
         this.checks = new ArrayList();
-        this.setOpciones(opciones);
+        this.setOpciones();
         
        
         JButton terminar = Util.crearBoton("terminar", 14);
@@ -62,6 +65,7 @@ public class PregRespBrowse extends javax.swing.JFrame {
         verificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                opcionesSeleccionadas();
                 controller.verificar(rtaAlumno);
             }
         });
@@ -75,41 +79,25 @@ public class PregRespBrowse extends javax.swing.JFrame {
         this.setResizable(false);
     }
 
-    public void setOpciones(List<Bloque> opciones) {
+    public void setOpciones() {
 
-        int y = 150;
-        for (Bloque b : opciones) {
-            Panel panelOpcion = new Panel();
-            JCheckBox opcion = new JCheckBox(b.getTexto());
+        int y = 200;
+        for (Bloque b : this.opciones) {
+            Panel panelOpcion = new Panel(b,y);
+            JCheckBox opcion = new JCheckBox();
             opcion.setBounds(200, y, 120, 20);
-            opcion.addItemListener(new ItemListener() {
-                @Override
-                public void itemStateChanged(ItemEvent ie) {
-                    if (ie.getStateChange() == ItemEvent.SELECTED) {
-                        rtaAlumno.add(b);
-                    }
-                }
-            });
             this.checks.add(opcion);
-            add(opcion);
+            panelOpcion.add(opcion);
+            add(panelOpcion);
             y += 50;
         }
     }
-
-    public void castearBloque(Bloque bloque) {
-        switch (bloque.getTipoBloque()) {
-            case 1:
-                BloqueSonido bs = (BloqueSonido) bloque;
-                break;
-            case 2: 
-                BloqueImagen bi = (BloqueImagen) bloque;
-                break;
-            case 3: 
-                BloqueTexto bt = (BloqueTexto) bloque;
-                break;
-            case 4: 
-                BloqueAnd ba = (BloqueAnd) bloque;
-                break;
+    public void opcionesSeleccionadas(){
+        for (int i = 0; i < checks.size(); i++) {
+            if(checks.get(i).isSelected()){
+                rtaAlumno.add(opciones.get(i));
+            }
+           
         }
     }
 }
