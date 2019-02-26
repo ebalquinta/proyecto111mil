@@ -22,7 +22,7 @@ public abstract class Plantilla {
     protected List<Bloque> soluciones;
     protected String imagenEnunciado;
     protected String sonidoEnunciado;
-    protected Integer tipoPlantilla;
+    protected String tipoPlantilla;
 
     public Plantilla() {
         this.sonidoEnunciado = null;
@@ -83,23 +83,23 @@ public abstract class Plantilla {
         this.sonidoEnunciado = sonidoEnunciado;
     }
 
-    public Integer getTipoPlantilla() {
+    public String getTipoPlantilla() {
         return tipoPlantilla;
     }
     
-    public String verNombrePlantilla() {        
-        if (tipoPlantilla == 1) {
-            return "Ordenamiento";
-        } else if (tipoPlantilla == 2) {
-            return "Unir";
-        } else if (tipoPlantilla == 3) {
-            return "Pregunta y Respuestas";
-        } else {
-            return "Memorama";
-        }
-    }
+//    public String verNombrePlantilla() {        
+//        if (tipoPlantilla == 1) {
+//            return "Ordenamiento";
+//        } else if (tipoPlantilla == 2) {
+//            return "Unir";
+//        } else if (tipoPlantilla == 3) {
+//            return "Pregunta y Respuestas";
+//        } else {
+//            return "Memorama";
+//        }
+//    }
 
-    public void setTipoPlantilla(Integer tipoPlantilla) {
+    public void setTipoPlantilla(String tipoPlantilla) {
         this.tipoPlantilla = tipoPlantilla;
     }
 

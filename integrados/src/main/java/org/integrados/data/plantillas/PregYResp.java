@@ -11,19 +11,19 @@ public class PregYResp extends Plantilla {
 
     public PregYResp() {
         super();
-        super.tipoPlantilla = 3;
+        super.tipoPlantilla = "Preguntas y Respuestas";
         this.opciones = new ArrayList<>();
     }
 
     public PregYResp(String enunciado) {
         super(enunciado);
-        super.tipoPlantilla = 3;
+        super.tipoPlantilla = "Preguntas y Respuestas";
         this.opciones = new ArrayList();
     }
     
     public PregYResp(List<Bloque> opciones, String enunciado, List<Bloque> soluciones) {
         super(enunciado, soluciones);
-        super.tipoPlantilla = 3;
+        super.tipoPlantilla = "Preguntas y Respuestas";
         this.opciones = opciones;
     }
 

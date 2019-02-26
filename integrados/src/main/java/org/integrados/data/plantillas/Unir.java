@@ -16,14 +16,14 @@ public class Unir extends Plantilla {
 
     public Unir() {
         super();
-        super.tipoPlantilla = 2;
+        super.tipoPlantilla = "Unir";
         this.bloquesDer = new ArrayList<>();
         this.bloquesIzq = new ArrayList<>();
     }
 
     public Unir(String enunciado, List<Bloque> soluciones, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
         super(enunciado, soluciones);
-        super.tipoPlantilla = 2;
+        super.tipoPlantilla = "Unir";
         this.bloquesDer = bloquesDer;
         this.bloquesIzq = bloquesIzq;
     }

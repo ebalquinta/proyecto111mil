@@ -7,12 +7,12 @@ public class Ordenamiento extends Plantilla {
 
     public Ordenamiento() {
         super();
-        super.tipoPlantilla = 1;
+        super.tipoPlantilla = "Ordenamiento";
     }
 
     public Ordenamiento(String enunciado, List<Bloque> soluciones) {
         super(enunciado, soluciones);
-        super.tipoPlantilla = 1;
+        super.tipoPlantilla = "Ordenamiento";
     }
 
     @Override
