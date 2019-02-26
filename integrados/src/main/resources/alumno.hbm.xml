@@ -6,6 +6,18 @@
         <id name="id" type="java.lang.Integer" column="id" >
             <generator class="identity" />
         </id>
+        <property name="dni" type="integer" column="dni" not-null="true" />
+        <property name="nombre" type="string" column="nombre" length="45" not-null="true" />
+        <property name="apellido" type="string" column="apellido" length="45" not-null="true" />
+        <property name="telefono" type="string" column="telefono" length="50" />
+        <property name="mail" type="string" column="mail" length="60" />
+        <property name="usuario" type="string" column="usuario" length="20" />
+        <property name="clave" type="string" column="password" length="10" /> 
+        <property name="fechaNacimiento" type="date" column="FechaDeNacimiento" length="10" />
+        <property name="edadMadurativa" type="integer" column="edadMadurativa" />
+        <property name="grado" type="integer" column="grado" not-null="true" />
+        <property name="division" type="string" column="division" length="10" not-null="true" />
+        <property name="observaciones" type="string" column="observaciones" length="2000" />
         <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
             <column name="id_Domicilio" />
         </many-to-one>
@@ -14,25 +26,13 @@
                 <param name="enumClass">org.integrados.data.enums.Nivel</param>
                 <param name="type">-6</param>
             </type>
-        </property> 
-        <property name="nombre" type="string" column="nombre" length="45" not-null="true" />
-        <property name="usuario" type="string" column="usuario" length="20" />
-        <property name="clave" type="string" column="password" length="10" />
-        <property name="apellido" type="string" column="apellido" length="45" not-null="true" />
-        <property name="dni" type="integer" column="dni" not-null="true" />
-        <property name="grado" type="integer" column="grado" not-null="true" />
-        <property name="division" type="string" column="division" length="10" not-null="true" />
-        <property name="fechaNacimiento" type="date" column="FechaDeNacimiento" length="10" />
-        <property name="observaciones" type="string" column="observaciones" length="2000" />
-        <property name="edadMadurativa" type="integer" column="edadMadurativa" />
-        <property name="telefono" type="string" column="telefono" length="50" />
-        <property name="mail" type="string" column="mail" length="60" />
+        </property>
         <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all">
             <key column="id_Alumno" not-null="true"/>
             <index column="id"></index>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
         </list>
-       <list name="docentes" table="Alumnos_docente" lazy="false" cascade="all-delete-orphan">
+        <list name="docentes" table="Alumnos_docente" lazy="false" cascade="all-delete-orphan">
             <key column="id_Alumno" not-null="true"/>
             <list-index column="id"/>
             <many-to-many class="org.integrados.data.usuarios.Docente" column="id_Docente"/>
