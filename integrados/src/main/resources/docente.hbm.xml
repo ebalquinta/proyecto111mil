@@ -8,42 +8,16 @@
         </id>
         <property name="nombre" type="string" column="nombre" length="45" not-null="true" />
         <property name="apellido" type="string" column="apellido" length="45" not-null="true" />
-        <property name="dni" type="int" column="dni" not-null="true" unique="true" />
+        <property name="dni" type="integer" column="dni" not-null="true" unique="true" />
         <property name="usuario" type="string" column="usuario" length="20" />
         <property name="clave" type="string" column="password" length="10" />
         <property name="telefono" type="string" column="telefono" length="50" not-null="false"/>
         <property name="mail" type="string" column="mail" length="60" not-null="false"/>
-        <!--<set name="docentesInstitucions" table="docentes_institucion" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Docente" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.DocentesInstitucion" />
-        </set>
-        
-        <set name="actividades" table="actividad" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Docente" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.Actividad" />
-        </set>
-        
-        <set name="instituciones" table="institucion" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Docente" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.Institucion" />
-        </set>
-        
-        <set name="actividadesDocentes" table="actividades_docente" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="id_Docente" not-null="true" />
-            </key>
-            <one-to-many class="org.integrados.data.usuarios.ActividadesDocente" />
-        </set>
-        
+
         <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
             <column name="id_Domicilio" />
-        </many-to-one>-->
+        </many-to-one>
+        
         <list name="alumnos" table="Alumnos_docente" lazy="false" cascade="all-delete-orphan">
             <key column="id_Docente" not-null="true"/>
             <list-index column="id"/>
@@ -53,6 +27,11 @@
             <key column="id_Docente" not-null="true"/>
             <index column="id"/>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
+        </list>
+        <list name="actividades" table="Actividad" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
+            <key column="id_Docente" not-null="true"/>
+            <index column="id"/>
+            <one-to-many class="org.integrados.data.actividad.Actividad"/>
         </list>
     </class>
 </hibernate-mapping>

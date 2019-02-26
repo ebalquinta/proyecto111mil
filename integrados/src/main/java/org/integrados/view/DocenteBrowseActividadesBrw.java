@@ -303,7 +303,7 @@ public class DocenteBrowseActividadesBrw extends JFrame {
             } else if (column == 4) {
                 return actividad.getDificultad();
             } else if (column == 5) {
-                return actividad.getPlantilla().verNombrePlantilla();
+                return null;
             } else {
                 return actividad.getPlantilla().getEnunciado();
             }
