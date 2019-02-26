@@ -24,7 +24,7 @@ public class DocenteBrowseActividadesCtrl {
     private DocenteBrowseActividadesDlg actividadDlg = null;
     public DocenteInicioDlg docenteInicioDlg;
     private ActividadABM actividadABM;
-    private LoginCtrl id;
+    
     
     public DocenteBrowseActividadesCtrl(DocenteInicioDlg docenteInicioDlg) {        
         this.docenteInicioDlg = docenteInicioDlg;
