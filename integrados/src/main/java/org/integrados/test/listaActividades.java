@@ -68,7 +68,7 @@ public class listaActividades {
         Materia materia = new Materia("Lengua");
         guardar(materia);
         
-        Docente docente = get(1);
+        Docente docente = get(4);
 //        System.out.println(docente.getDni());
 //        List<Actividad> actividades = listaActividades(4);
 //        for(Actividad a : actividades){
