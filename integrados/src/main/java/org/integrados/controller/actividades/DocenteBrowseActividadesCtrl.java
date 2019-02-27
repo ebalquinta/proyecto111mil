@@ -1,12 +1,18 @@
 package org.integrados.controller.actividades;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.integrados.Aplicacion;
 import org.integrados.controller.ABM.ActividadABM;
 import org.integrados.controller.ABM.PersonaABM;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
+import org.integrados.data.actividad.Materia;
+import org.integrados.data.enums.Dificultad;
+import org.integrados.data.enums.Nivel;
+import org.integrados.data.plantillas.PregYResp;
 import org.integrados.data.usuarios.Docente;
+import org.integrados.data.usuarios.Persona;
 import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
 import org.integrados.view.DocenteBrowseActividadesDlg;
@@ -24,6 +30,7 @@ public class DocenteBrowseActividadesCtrl {
     private DocenteBrowseActividadesDlg actividadDlg = null;
     public DocenteInicioDlg docenteInicioDlg;
     private ActividadABM actividadABM;
+    private LoginCtrl id;
     
     
     public DocenteBrowseActividadesCtrl(DocenteInicioDlg docenteInicioDlg) {        
@@ -31,19 +38,18 @@ public class DocenteBrowseActividadesCtrl {
     }
     
     public void mostrarBrw() {
-        
-        //Levantar actividades desde la base de datos 
-        PersonaABM personaABM = new PersonaABM();
-        Docente docente = (Docente) personaABM.get(this.app.getPersonaLogueada().getId());
-        
-       List<Actividad> listaActividades = docente.getActividades();
-       
-//       listaActividades.add(new Actividad(new PregYResp("¿Cuál es la raiz cuadrada de 25?"), new Docente(28200912, "Mariela", "Gonzalez"), new Materia("Matematica"), "Logaritmos", 2, Nivel.INICIAL, Dificultad.INTERMEDIO, 3));
-//       listaActividades.add(new Actividad(new PregYResp("¿Cuál es el pasado de correr?"), new Docente(28200913, "Pablo", "Martinez"), new Materia("Lengua"), "Verbos", 4, Nivel.PRIMARIO, Dificultad.BAJO, 4));
-//       listaActividades.add(new Actividad(new PregYResp("¿Quién ganó?"), new Docente(28200914, "Jose", "Gomez"), new Materia("Historia"), "1ra guerra mundial", 5, Nivel.SECUNDARIO, Dificultad.INTERMEDIO, 3));
-//       listaActividades.add(new Actividad(new PregYResp("¿Cuántos genes tiene una molécula de ADN?"), new Docente(28200915, "Pedro", "Sanchez"), new Materia("Biología"), "Genes", 6, Nivel.PRIMARIO, Dificultad.ALTO, 3));
-//       listaActividades.add(new Actividad(new PregYResp("¿Cuál es el símbolo del Magnesio?"), new Docente(28200916, "Marta", "Rodriguez"), new Materia("Química"), "Elementos", 7, Nivel.SECUNDARIO, Dificultad.ALTO, 3));
-              
+       ActividadABM act = new ActividadABM();
+//       Docente docente = app.getDocenteLogueado();
+     List<Actividad> listaActividades = act.listaActividades(1);
+     
+//        //Levantar actividades desde la base de datos         
+      // List<Actividad> listaActividades = new ArrayList<>(); 
+//       listaActividades.add(new Actividad(new PregYResp("¿Cuál es la raiz cuadrada de 25?"), new Docente(28200912, "Mariela", "Gonzalez"), new Materia("Matematica"), "Logaritmos", 2, Nivel.INICIAL, Dificultad.INTERMEDIO, 3)); 
+//       listaActividades.add(new Actividad(new PregYResp("¿Cuál es el pasado de correr?"), new Docente(28200913, "Pablo", "Martinez"), new Materia("Lengua"), "Verbos", 4, Nivel.PRIMARIO, Dificultad.BAJO, 4)); 
+//       listaActividades.add(new Actividad(new PregYResp("¿Quién ganó?"), new Docente(28200914, "Jose", "Gomez"), new Materia("Historia"), "1ra guerra mundial", 5, Nivel.SECUNDARIO, Dificultad.INTERMEDIO, 3)); 
+//       listaActividades.add(new Actividad(new PregYResp("¿Cuántos genes tiene una molécula de ADN?"), new Docente(28200915, "Pedro", "Sanchez"), new Materia("Biología"), "Genes", 6, Nivel.PRIMARIO, Dificultad.ALTO, 3)); 
+//       listaActividades.add(new Actividad(new PregYResp("¿Cuál es el símbolo del Magnesio?"), new Docente(28200916, "Marta", "Rodriguez"), new Materia("Química"), "Elementos", 7, Nivel.SECUNDARIO, Dificultad.ALTO, 3)); 
+//                            
         actividadBrw = new DocenteBrowseActividadesBrw(this, listaActividades);
         this.actividadBrw.mostrar();
     }   
