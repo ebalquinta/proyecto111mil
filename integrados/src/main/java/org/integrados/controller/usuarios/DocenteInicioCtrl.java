@@ -19,6 +19,14 @@ public class DocenteInicioCtrl {
         this.app = app;
         this.docente = docente;
     }    
+
+    public Aplicacion getApp() {
+        return app;
+    }
+
+    public Docente getDocente() {
+        return docente;
+    }
     
     public void iniciar() {
         this.docenteInicioDlg = new DocenteInicioDlg(this);

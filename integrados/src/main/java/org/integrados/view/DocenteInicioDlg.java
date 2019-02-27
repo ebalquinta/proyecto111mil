@@ -23,6 +23,10 @@ public class DocenteInicioDlg extends JFrame {
         initComponents();
     }
 
+    public DocenteInicioCtrl getDocenteInicioCtrl() {
+        return docenteInicioCtrl;
+    }
+
     void initComponents() {
         
         btnActividades = Util.crearBoton("Actividades", 18);
