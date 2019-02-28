@@ -72,9 +72,9 @@ public class ActividadABM {
             session = HibernateUtiles.getSession();
             session.beginTransaction();             
             Query query = session.createQuery("from Actividad where id_Docente='" + id  + "'");  
-            actividades =  query.list();
+            actividades = (List<Actividad>) query.getResultList();
             session.getTransaction().commit();
-            
+            session.close();
         }catch(Exception e){
             
         }
