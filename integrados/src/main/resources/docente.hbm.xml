@@ -28,8 +28,8 @@
             <index column="id"/>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
         </list>
-        <list name="actividades" table="Actividad" inverse="true" fetch="join">
-            <key column="id_Docente" not-null="true"/>
+        <list name="actividades" table="Actividad" inverse="true" fetch="join" lazy="false">       
+        <key column="id_Docente" not-null="true"/>
             <index column="id"/>
             <one-to-many class="org.integrados.data.actividad.Actividad"/>
         </list>

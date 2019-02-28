@@ -5,7 +5,10 @@
  */
 package org.integrados.controller.ABM;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.integrados.bd.HibernateUtiles;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.actividad.Materia;
@@ -60,5 +63,21 @@ public class ActividadABM {
         }catch (Exception e){
             System.out.println("Error al borrar la Actividad");
         }
+    }
+    
+    public List<Actividad> listaActividades(int id){
+        List<Actividad> actividades = new ArrayList<>();
+        Session session = null;
+        try {
+            session = HibernateUtiles.getSession();
+            session.beginTransaction();             
+            Query query = session.createQuery("from Actividad where id_Docente='" + id  + "'");  
+            actividades =  query.list();
+            session.getTransaction().commit();
+            
+        }catch(Exception e){
+            
+        }
+        return actividades;
     }
 }
