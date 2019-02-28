@@ -13,6 +13,7 @@ import org.integrados.view.actividades.PregRespBrowse;
 import java.util.List;
 import org.integrados.data.bloques.Bloque;
 import org.integrados.data.bloques.BloqueTexto;
+import org.integrados.exceptions.IntegradosException;
 
 /**
  *
@@ -23,26 +24,70 @@ public class PregRespCtrl {
     private PregYResp plantilla;
     private Actividad actividad;
     private RegistroActividad registro;
+    private PregRespBrowse frame;
+    private int intentos;
 
-    public PregRespCtrl(RegistroActividad registro, Actividad actividad, PregYResp plantilla) {
+    public PregRespCtrl(RegistroActividad registro) {
+        this.registro = registro;
+        this.actividad = this.registro.getActividad();
+        this.plantilla = (PregYResp) this.registro.getActividad().getPlantilla();
+        this.intentos = this.registro.getActividad().getMaxIntentos();
+        jugar();
+    }
+
+    public PregRespCtrl(Actividad actividad, PregYResp plantilla) {
         this.plantilla = plantilla;
         this.actividad = actividad;
-        this.registro = registro;
+        this.registro = null;
         jugar();
     }
 
     public void jugar() {
-        plantilla.desordenar();
-        PregRespBrowse frame = new PregRespBrowse(plantilla.getOpciones(), plantilla.getEnunciado(), this);
+
+        plantilla.setOpciones(plantilla.desordenar());
+        frame = new PregRespBrowse(plantilla.getOpciones(), plantilla.getEnunciado(), this);
+        frame.setIntentos(intentos);
+
         frame.setVisible(true);
     }
 
-    public boolean verificar(List<Bloque> rtaAlumno) {
-        boolean b = plantilla.verificarResultado(rtaAlumno);
-//        System.out.println(rtaAlumno.get(0).getTipoBloque());
-        return false;
+    public void verificar(List<Bloque> rtaAlumno) throws IntegradosException {
+        if (rtaAlumno.isEmpty()) {
+            throw new IntegradosException("Seleccione alguna opcion");
+        }
+        if (intentos > 0) {
+            ArrayList<Bloque> respuestas = new ArrayList();
+            if (plantilla.verificarResultado(rtaAlumno)) {
+                frame.setHecho();
+                if (registro != null) {
+                    for (Bloque b : rtaAlumno) {
+                        respuestas.add(b);
+                    }
+                    registro.setIntentos(intentos);
+                    registro.setRespuestaAlumno(respuestas);
+                    registro.setFinalizoCorrectamente(true);
+                    registro.setEstrella(registro.calcularEstrellas());
+                }
+            } else {
+                intentos -= 1;
+                frame.setIntentos(intentos);
+                //Agrega todos los bloques de la lista a la lista RespuesAlumno que se encuenta en registro
+                for (Bloque b : rtaAlumno) {
+                    respuestas.add(b);
+                }
+            }
+        } else {
+            if (registro != null) {
+                registro.setRespuestaAlumno(rtaAlumno);
+                registro.setFinalizoCorrectamente(false);
+                registro.setIntentos(intentos);
+
+                registro.setEstrella(registro.calcularEstrellas());
+            }
+            throw new IntegradosException("No te quedan mas intentos");
+
+        }
+
     }
 
-
 }
-

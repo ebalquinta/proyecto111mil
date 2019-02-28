@@ -28,39 +28,36 @@ public class Panel extends JPanel {
     private static int x = 150;
 
     public Panel(Bloque bloque, int y) {
-//        setSize(300,300 );
         setBounds(200, altura,150,150);
-//        if(y >151){
-//            setBackground(Color.blue);
-//        }else {
-//            setBackground(Color.yellow);
-//        }
         initComponents(bloque, y);
         altura += 150;
-        x += 50;
     }
-
+    /**
+     * Este metodo se encarga de castear el bloque que recibe por parametro
+     * @param bloque Bloque
+     * @param y int
+     */
     private void initComponents(Bloque bloque, int y) {
         switch (bloque.getTipoBloque()) {
             case 1:
-                BloqueSonido bs = (BloqueSonido) bloque;
+                this.bloqueSonido = (BloqueSonido) bloque;
                 //agregar al panel el sonido
                 break;
             case 2:
-                BloqueImagen bi = (BloqueImagen) bloque;
+                this.bloqueImagen = (BloqueImagen) bloque;
                 //agregar al panel el sonido
                 break;
             case 3:
-                BloqueTexto bt = (BloqueTexto) bloque;
+                this.bloqueTexto = (BloqueTexto) bloque;
                 JLabel opcion = new JLabel();
-                opcion.setText(bt.getTexto());
+                opcion.setText(bloqueTexto.getTexto());
                 opcion.setBounds(500, y, 500, 20);
                 add(opcion);
                 break;
             case 4:
-                BloqueAnd ba = (BloqueAnd) bloque;
-                initComponents(ba.getBloque1(), y);
-                initComponents(ba.getBloque2(), y + 10);
+                this.bloqueAnd= (BloqueAnd) bloque;
+                initComponents(bloqueAnd.getBloque1(), y);
+                initComponents(bloqueAnd.getBloque2(), y + 10);
                 break;
         }
     }
