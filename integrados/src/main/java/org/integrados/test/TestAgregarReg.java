@@ -44,18 +44,25 @@ public class TestAgregarReg {
         
         Alumno alumno1 = new Alumno(1, "Pepe", "Caseros", 2, "A", Nivel.PRIMARIO);
         alumno1.setDni(dniAleatorio(alumno1));
+        alumno1.setUsuario("alumno1");
+        alumno1.setClave("alumno1");
         
+        savePersona(alumno1);
         
         
         Alumno alumno2 = new Alumno(1, "Juan", "Perez", 2, "A", Nivel.PRIMARIO);
         alumno2.setDni(dniAleatorio(alumno2));
+        alumno2.setUsuario("alumno");
+        alumno2.setClave("alumno");
         
-        saveObjeto(alumno2);
+        savePersona(alumno2);
         
         Alumno alumno3 = new Alumno(1, "Pipo", "Pezcador", 2, "A", Nivel.PRIMARIO);
         alumno3.setDni(dniAleatorio(alumno3));
+        alumno3.setUsuario("alumno3");
+        alumno3.setClave("alumno3");
         
-        saveObjeto(alumno3);
+        savePersona(alumno3);
         
         //Lista alumnos
         List<Alumno> alumnos = new ArrayList<>();
@@ -68,10 +75,12 @@ public class TestAgregarReg {
         Docente docente1 = new Docente(2, "Marta", "Sanches");
         docente1.setDni(dniAleatorio(docente1));
         
+        savePersona(docente1);
+        
         Docente docente2 = new Docente(2, "Paola", "Krum");
         docente2.setDni(dniAleatorio(docente2));
         
-        saveObjeto(docente2);
+        savePersona(docente2);
         
         //Lista docentes
         List<Docente> docentes = new ArrayList<>();
@@ -82,11 +91,11 @@ public class TestAgregarReg {
         
         //Alumno1 posee una lista de docentes
         alumno1.setDocentes(docentes);
-        saveObjeto(alumno1);
+        savePersona(alumno1);
         
         //docente1 posee una lista de alumnos
         docente1.setAlumnos(alumnos);
-        saveObjeto(docente1);
+        savePersona(docente1);
         //-------------------------------------------------------------//
         
         //Domicilios
@@ -179,6 +188,21 @@ public class TestAgregarReg {
             s.saveOrUpdate(objeto);
             s.getTransaction().commit();
             objetoAgregado = true;
+            s.close();
+        } catch (IntegradosException e) {
+            System.out.println("no agrego ALUMNO");
+        }
+    }
+    public static void savePersona(Persona persona) throws IntegradosException {
+        boolean personaAgregada = false;
+        HibernateUtiles.inicializar();
+        Session s;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            s.saveOrUpdate(persona);
+            s.getTransaction().commit();
+            personaAgregada = true;
             s.close();
         } catch (IntegradosException e) {
             System.out.println("no agrego ALUMNO");
