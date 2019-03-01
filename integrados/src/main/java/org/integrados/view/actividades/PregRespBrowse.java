@@ -75,7 +75,7 @@ public class PregRespBrowse extends javax.swing.JFrame {
         //Inicializa los arrays de componentes
         this.cuadroOpciones = new ArrayList();//es una lista de paneles que contiene los diferentes bloques
         this.checks = new ArrayList();//Lista de checks
-        this.setOpciones();
+        this.initOpciones();
         
         //inicializacion del label bien hecho
         bienHecho = new JLabel("Bien hecho");
@@ -129,7 +129,7 @@ public class PregRespBrowse extends javax.swing.JFrame {
      * asignarlos a sus determinadas listas Tambien se encarga de agregar los
      * paneles al frame
      */
-    public void setOpciones() {
+    public void initOpciones() {
         //Esta variable representa las coordenadas y para poder alinear correctamente los componentes
         int y = 200;
         //Se recorre la lista de opciones 
@@ -151,6 +151,12 @@ public class PregRespBrowse extends javax.swing.JFrame {
         }
     }
 
+    public List<Bloque> getOpciones() {
+        return opciones;
+    }
+    public void setOpciones(List<Bloque> opciones){
+        this.opciones=opciones;
+    }
     /**
      * Este metodo se encarga de revisar la lista de checks y agregar a la lista
      * rtaAlumno los checksBox seleccionados
