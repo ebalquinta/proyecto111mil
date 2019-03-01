@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 <hibernate-mapping>
-  <class name="org.integrados.data.actividad.Actividad" table="actividad">
-    <id name="id" type="java.lang.Integer">
-        <generator class="identity" />
-    </id>    
-    <property name="tema" type="string" not-null="true"/>
-    <property name="grado" type="java.lang.Integer" not-null="true" />
-    <property name="maxIntentos" type="java.lang.Integer" not-null="true" />    
-    <!--<many-to-one name="nivel" class="org.integrados.data.enums.Nivel" column="id_Nivel" not-null="true"/>
-    <many-to-one name="dificultad" class="org.integrados.data.enums.Difcultad" column="id_Dificultad" not-null="true"/>
-    <many-to-one name="materia" class="org.integrados.data.enums.Materia" column="id_Materia" not-null="true"/>
-    <many-to-one name="materia" class="org.integrados.data.enums.Materia" column="id_Materia" not-null="true"/>-->
-</class>
+    <class name="org.integrados.data.actividad.Actividad" table="actividad">
+        <id name="id" type="java.lang.Integer">
+            <generator class="identity" />
+        </id>    
+        <property name="tema" type="string" length="100" not-null="true"/>
+        <property name="grado" type="integer" not-null="true" />
+        <property name="maxIntentos" type="integer" not-null="true" />    
+        <many-to-one name="docenteCreador" class="org.integrados.data.usuarios.Docente" fetch="join">
+            <column name="id_Docente" />
+        </many-to-one>
+        <many-to-one name="materia" class="org.integrados.data.actividad.Materia" fetch="join" lazy="false">
+            <column name="id_Materia" />
+        </many-to-one>
+        <property name="nivel" column="nivel" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">org.integrados.data.enums.Nivel</param>
+                <param name="type">-6</param>
+            </type>
+        </property>
+        <property name="dificultad" column="dificultad" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">org.integrados.data.enums.Dificultad</param>
+                <param name="type">-6</param>
+            </type>
+        </property>
+        <many-to-one name="plantilla" class="org.integrados.data.plantillas.Plantilla" fetch="join" not-null="true" lazy="false">
+            <column name="id_Plantilla" />
+        </many-to-one>
+
+    </class>
 </hibernate-mapping>

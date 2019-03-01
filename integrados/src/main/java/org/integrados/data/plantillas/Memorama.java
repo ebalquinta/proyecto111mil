@@ -20,14 +20,14 @@ public class Memorama extends Plantilla {
 
     public Memorama() {
         super();
-        super.tipoPlantilla = 4;
+        super.tipoPlantilla = "Memorama";
         this.bloques1 = new ArrayList<>();
         this.bloques1 = new ArrayList<>();
     }
 
     public Memorama(String enunciado, List<Bloque> soluciones, List<Bloque> bloques1, List<Bloque> bloques2) {
         super(enunciado, soluciones);
-        super.tipoPlantilla = 4;
+        super.tipoPlantilla = "Memorama";
         this.bloques1 = bloques1;
         this.bloques2 = bloques2;
     }

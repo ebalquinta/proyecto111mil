@@ -5,9 +5,6 @@
  */
 package org.integrados.data.usuarios;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Yani
@@ -16,11 +13,9 @@ public class Institucion {
 
     private Integer id;
     private String nombreInstitucion;
-    private List<Docente> docentes;
     private Docente administrador;
 
     public Institucion() {
-        this.docentes = new ArrayList<>();
         this.id = null;
     }
 
@@ -46,14 +41,6 @@ public class Institucion {
         this.nombreInstitucion = nombreInstitucion;
     }
 
-    public List<Docente> getDocentes() {
-        return docentes;
-    }
-
-    public void setDocentes(List<Docente> docentes) {
-        this.docentes = docentes;
-    }
-
     public Docente getAdministrador() {
         return administrador;
     }
@@ -64,7 +51,7 @@ public class Institucion {
 
     @Override
     public String toString() {
-        return "Institucion{" + "id=" + id + ", nombreInstitucion=" + nombreInstitucion + ", docentes=" + docentes + ", administrador=" + administrador + '}';
+        return "Institucion{" + "id=" + id + ", nombreInstitucion=" + nombreInstitucion + ", administrador=" + administrador + '}';
     }
 
 }

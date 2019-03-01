@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.data.plantillas;
 
 import java.util.ArrayList;
@@ -11,24 +6,16 @@ import org.integrados.data.bloques.*;
 
 /**
  *
- * @author Yani
+ * @author BackEnd
  */
 public abstract class Plantilla {
 
-    /*
-    tipo Plantilla:
-    ordenamiento = 1
-    unir = 2
-    preg y resp = 3
-    memorama = 4
-    
-     */
     protected Integer id;
     protected String enunciado;
     protected List<Bloque> soluciones;
     protected String imagenEnunciado;
     protected String sonidoEnunciado;
-    protected Integer tipoPlantilla;
+    protected String tipoPlantilla;
 
     public Plantilla() {
         this.sonidoEnunciado = null;
@@ -37,6 +24,12 @@ public abstract class Plantilla {
         this.soluciones = new ArrayList<>();
     }
 
+    public Plantilla(String enunciado) {
+        this();
+        this.enunciado = enunciado;
+        this.soluciones = new ArrayList();
+    }
+    
     public Plantilla(String enunciado, List<Bloque> soluciones) {
         this();
         this.enunciado = enunciado;
@@ -67,27 +60,27 @@ public abstract class Plantilla {
         this.enunciado = enunciado;
     }
 
-    public String getImagen() {
+    public String getImagenEnunciado() {
         return imagenEnunciado;
     }
 
-    public void setImagen(String imagen) {
-        this.imagenEnunciado = imagen;
+    public void setImagenEnunciado(String imagenEnunciado) {
+        this.imagenEnunciado = imagenEnunciado;
     }
 
-    public String getSonido() {
+    public String getSonidoEnunciado() {
         return sonidoEnunciado;
     }
 
-    public void setSonido(String sonido) {
-        this.sonidoEnunciado = sonido;
+    public void setSonidoEnunciado(String sonidoEnunciado) {
+        this.sonidoEnunciado = sonidoEnunciado;
     }
 
-    public Integer getTipoPlantilla() {
+    public String getTipoPlantilla() {
         return tipoPlantilla;
     }
 
-    public void setTipoPlantilla(Integer tipoPlantilla) {
+    public void setTipoPlantilla(String tipoPlantilla) {
         this.tipoPlantilla = tipoPlantilla;
     }
 

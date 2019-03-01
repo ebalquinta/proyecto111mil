@@ -10,7 +10,6 @@ public class Docente extends Persona {
     private List<Alumno> alumnos;
     private List<Actividad> actividades;
     private List<RegistroActividad> registroActividades;
-    private Institucion institucion;
 
     public Docente() {
         super();
@@ -50,17 +49,9 @@ public class Docente extends Persona {
         this.registroActividades = registroActividades;
     }
 
-    public Institucion getInstitucion() {
-        return institucion;
-    }
-
-    public void setInstitucion(Institucion institucion) {
-        this.institucion = institucion;
-    }
-
     @Override
     public String toString() {
-        return "Docente{" + "alumnos=" + alumnos + ", actividades=" + actividades + ", registroActividades=" + registroActividades + ", institucion=" + institucion + '}';
+        return "Docente{" + "alumnos=" + alumnos + ", actividades=" + actividades + ", registroActividades=" + registroActividades + '}';
     }
 
 }

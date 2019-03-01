@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 <hibernate-mapping>
   <class name="org.integrados.data.usuarios.Domicilio" table="domicilio">
-    <id name="id" type="java.lang.Integer" column="id" >
+    <id name="id" type="integer" column="id" >
       <generator class="identity" />
     </id>
+    <property name="calle" type="string" column="calle" length="45" not-null="false"/>
+    <property name="numero" type="integer" column="numero" not-null="false"/>
+    <property name="piso" type="string" column="piso" length="10" not-null="false"/>
+    <property name="departamento" type="string" column="departamento" length="10" not-null="false"/>
   </class>
 </hibernate-mapping>

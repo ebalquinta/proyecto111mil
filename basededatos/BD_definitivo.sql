@@ -77,6 +77,7 @@ CREATE TABLE `alumno` (
   `mail` varchar(60) DEFAULT NULL,
   `id_Domicilio` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `dni_UNIQUE` (`dni`),
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `fk_Alumno_Domicilio1_idx` (`id_Domicilio`),
   CONSTRAINT `fk_Alumno_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE
@@ -100,6 +101,7 @@ DROP TABLE IF EXISTS `alumnos_docente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `alumnos_docente` (
+  `id` int(11) NOT NULL,
   `id_Docente` int(11) NOT NULL,
   `id_Alumno` int(11) NOT NULL,
   KEY `fk_ListaAlumnos_docente_Docente1_idx` (`id_Docente`),
@@ -127,14 +129,18 @@ DROP TABLE IF EXISTS `bloque`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloque` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_bloque` tinyint(4) NOT NULL,
+  `tipo_bloque` varchar(45) NOT NULL,
+  `tipoBloquePersistente` int(11) NOT NULL,
   `ruta_sonido` varchar(300) DEFAULT NULL,
   `ruta_imagen` varchar(300) DEFAULT NULL,
   `texto` varchar(1000) DEFAULT NULL,
-  `id_Bloque_And` int(11) DEFAULT NULL,
+  `id_Bloque1` int(11) DEFAULT NULL,
+  `id_Bloque2` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Bloque_Bloque_And1_idx` (`id_Bloque_And`),
-  CONSTRAINT `fk_Bloque_Bloque_And1` FOREIGN KEY (`id_Bloque_And`) REFERENCES `bloque_and` (`id`) ON DELETE CASCADE
+  KEY `fk_Bloque_Bloque1_idx` (`id_Bloque1`),
+  KEY `fk_Bloque_Bloque2_idx` (`id_Bloque2`),
+  CONSTRAINT `fk_Bloque_Bloque1` FOREIGN KEY (`id_Bloque1`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_Bloque_Bloque2` FOREIGN KEY (`id_Bloque2`) REFERENCES `bloque` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -148,34 +154,6 @@ LOCK TABLES `bloque` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `bloque_and`
---
-
-DROP TABLE IF EXISTS `bloque_and`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `bloque_and` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_Bloque1` int(11) NOT NULL,
-  `id_Bloque2` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_Bloque_And_Bloque2_idx` (`id_Bloque1`),
-  KEY `fk_Bloque_And_Bloque3_idx` (`id_Bloque2`),
-  CONSTRAINT `fk_Bloque_And_Bloque2` FOREIGN KEY (`id_Bloque1`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Bloque_And_Bloque3` FOREIGN KEY (`id_Bloque2`) REFERENCES `bloque` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `bloque_and`
---
-
-LOCK TABLES `bloque_and` WRITE;
-/*!40000 ALTER TABLE `bloque_and` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bloque_and` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `bloques_plantilla_1`
 --
 
@@ -183,10 +161,9 @@ DROP TABLE IF EXISTS `bloques_plantilla_1`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloques_plantilla_1` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_Plantilla` int(11) NOT NULL,
   `id_Bloque` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
   KEY `fk_lista_1_Plantilla1_idx` (`id_Plantilla`),
   KEY `fk_lista_1_Bloques1_idx` (`id_Bloque`),
   CONSTRAINT `fk_lista_1_Bloques1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
@@ -211,10 +188,9 @@ DROP TABLE IF EXISTS `bloques_plantilla_2`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloques_plantilla_2` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_Plantilla` int(11) NOT NULL,
   `id_Bloque` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
   KEY `fk_lista_2_Plantilla1_idx` (`id_Plantilla`),
   KEY `fk_lista_2_Bloques1_idx` (`id_Bloque`),
   CONSTRAINT `fk_lista_2_Bloques1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
@@ -239,10 +215,9 @@ DROP TABLE IF EXISTS `bloques_registroactividad`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `bloques_registroactividad` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_RegistroActividad` int(11) NOT NULL,
   `id_Bloque` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
   KEY `fk_Bloques_RegistroActividad_Registro_actividad1_idx` (`id_RegistroActividad`),
   KEY `fk_Bloques_RegistroActividad_Bloque1_idx` (`id_Bloque`),
   CONSTRAINT `fk_Bloques_RegistroActividad_Bloque1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
@@ -281,7 +256,7 @@ CREATE TABLE `docente` (
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `fk_Docente_Domicilio1_idx` (`id_Domicilio`),
   CONSTRAINT `fk_Docente_Domicilio1` FOREIGN KEY (`id_Domicilio`) REFERENCES `domicilio` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,7 +265,6 @@ CREATE TABLE `docente` (
 
 LOCK TABLES `docente` WRITE;
 /*!40000 ALTER TABLE `docente` DISABLE KEYS */;
-INSERT INTO `docente` VALUES (1,'Maria','Perez',1234564,'docente','docente',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `docente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +302,7 @@ DROP TABLE IF EXISTS `institucion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `institucion` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombreInstitucion` varchar(45) NOT NULL,
   `id_Docente` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -377,9 +351,10 @@ DROP TABLE IF EXISTS `plantilla`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `plantilla` (
-  `id` int(11) NOT NULL,
-  `tipo_plantilla` tinyint(4) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_plantilla` varchar(45) NOT NULL,
   `enunciado` varchar(1000) NOT NULL,
+  `tipoPersistente` varchar(60) NOT NULL,
   `imagen_enunciado` varchar(300) DEFAULT NULL,
   `sonido_enunciado` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -406,7 +381,6 @@ CREATE TABLE `registro_actividad` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tiempo` int(11) DEFAULT NULL,
   `finalizo_correctamente` bit(1) DEFAULT NULL,
-  `fecha_realizado` date DEFAULT NULL,
   `intentos` tinyint(4) DEFAULT NULL,
   `estrella` tinyint(4) DEFAULT NULL,
   `corazon` varchar(200) DEFAULT NULL COMMENT 'texto libre de recompensa del docente',
@@ -441,10 +415,9 @@ DROP TABLE IF EXISTS `solucion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `solucion` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_Plantilla` int(11) NOT NULL,
   `id_Bloque` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
   KEY `fk_Lista_bloques1_Bloques1_idx` (`id_Bloque`),
   KEY `fk_Lista_bloques1_Plantilla1_idx` (`id_Plantilla`),
   CONSTRAINT `fk_Lista_bloques1_Bloques1` FOREIGN KEY (`id_Bloque`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
@@ -470,4 +443,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-08 20:37:56
+-- Dump completed on 2019-02-28 21:50:46

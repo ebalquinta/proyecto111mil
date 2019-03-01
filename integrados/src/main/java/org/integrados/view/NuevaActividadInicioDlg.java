@@ -14,12 +14,14 @@ public class NuevaActividadInicioDlg extends JFrame{
 
     private JLabel lblFondo;
     private JButton btnVolver;
-    private JToggleButton jToggleButton1;
-    private JToggleButton jToggleButton2;
-    private JToggleButton jToggleButton3;
-    private JToggleButton jToggleButton4;
+    private JToggleButton btnOrdenar;
+    private JToggleButton btnUnir;
+    private JToggleButton btnMemorama;
+    private JToggleButton btnPregYResp;
+    public DocenteBrowseActividadesBrw docenteBrowseActividadesBrw;
     
-    public NuevaActividadInicioDlg() {
+    public NuevaActividadInicioDlg(DocenteBrowseActividadesBrw docenteBrowseActividadesBrw) {
+        this.docenteBrowseActividadesBrw = docenteBrowseActividadesBrw;
         initComponents();
     }
     
@@ -27,10 +29,10 @@ public class NuevaActividadInicioDlg extends JFrame{
         
         lblFondo = new JLabel();
         btnVolver = Util.crearBoton("Volver", 14);
-        jToggleButton1 = new JToggleButton();
-        jToggleButton2 = new JToggleButton();
-        jToggleButton3 = new JToggleButton();
-        jToggleButton4 = new JToggleButton();        
+        btnOrdenar = new JToggleButton();
+        btnUnir = new JToggleButton();
+        btnMemorama = new JToggleButton();
+        btnPregYResp = new JToggleButton();        
        
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -39,65 +41,66 @@ public class NuevaActividadInicioDlg extends JFrame{
         btnVolver.setFont(new java.awt.Font("Comic Sans MS", 1, 14));
         btnVolver.setText("Volver");
         btnVolver.setBounds(295, 510, 170, 30);
-        JFrame aux = this;
         getContentPane().add(btnVolver);
         btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                aux.dispose();
+                ocultar();
+                docenteBrowseActividadesBrw.controlador.mostrarBrw();
             }
         });
 
       
-        // Propiedades del boton jToggleButton1 (ordenar)
-        jToggleButton1.setBackground(new java.awt.Color(255, 255, 204));
-        jToggleButton1.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadOrdenarBtn.jpg")));
-        jToggleButton1.setBounds(230, 150, 140, 140);
-        jToggleButton1.setToolTipText("Crea una nueva actividad de Ordenar");
-        getContentPane().add(jToggleButton1);
-        jToggleButton1.addActionListener(new ActionListener() {
+        // Propiedades del boton btnOrdenar (ordenar)
+        btnOrdenar.setBackground(new java.awt.Color(255, 255, 204));
+        btnOrdenar.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadOrdenarBtn.jpg")));
+        btnOrdenar.setBounds(230, 150, 140, 140);
+        btnOrdenar.setToolTipText("Crea una nueva actividad de Ordenar");
+        getContentPane().add(btnOrdenar);
+        btnOrdenar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });
 
-        // Propiedades del boton jToggleButton2 (Unir)
-        jToggleButton2.setBackground(new java.awt.Color(255, 255, 204));
-        jToggleButton2.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadUnirBtn.jpg")));
-        jToggleButton2.setBounds(400, 150, 140, 140);
-        jToggleButton2.setToolTipText("Crea una nueva actividad de Unir");
-        getContentPane().add(jToggleButton2);
-        jToggleButton2.addActionListener(new ActionListener() {
+        // Propiedades del boton btnUnir (Unir)
+        btnUnir.setBackground(new java.awt.Color(255, 255, 204));
+        btnUnir.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadUnirBtn.jpg")));
+        btnUnir.setBounds(400, 150, 140, 140);
+        btnUnir.setToolTipText("Crea una nueva actividad de Unir");
+        getContentPane().add(btnUnir);
+        btnUnir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });
         
-        // Propiedades del boton jToggleButton3 (Preguntas y respuestas)
-        jToggleButton3.setBackground(new java.awt.Color(255, 255, 204));
-        jToggleButton3.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadMemoramaBtn.jpg")));
-        jToggleButton3.setBounds(230, 320, 140, 140);
-        jToggleButton3.setToolTipText("Crea una nueva actividad de Memorama");
-        getContentPane().add(jToggleButton3);
-        jToggleButton3.addActionListener(new ActionListener() {
+        // Propiedades del boton btnMemorama (Preguntas y respuestas)
+        btnMemorama.setBackground(new java.awt.Color(255, 255, 204));
+        btnMemorama.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadMemoramaBtn.jpg")));
+        btnMemorama.setBounds(230, 320, 140, 140);
+        btnMemorama.setToolTipText("Crea una nueva actividad de Memorama");
+        getContentPane().add(btnMemorama);
+        btnMemorama.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });
         
-        // Propiedades del boton jToggleButton4 (Memorama)
-        jToggleButton4.setBackground(new java.awt.Color(255, 255, 204));
-        jToggleButton4.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadPregRespBtn.jpg")));
-        jToggleButton4.setBounds(400, 320, 140, 140);
-        jToggleButton4.setToolTipText("Crea una nueva actividad de Preguntas y Respuestas");
-        getContentPane().add(jToggleButton4);
-        jToggleButton4.addActionListener(new ActionListener() {
+        // Propiedades del boton btnPregYResp (Memorama)
+        btnPregYResp.setBackground(new java.awt.Color(255, 255, 204));
+        btnPregYResp.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadPregRespBtn.jpg")));
+        btnPregYResp.setBounds(400, 320, 140, 140);
+        btnPregYResp.setToolTipText("Crea una nueva actividad de Preguntas y Respuestas");
+        getContentPane().add(btnPregYResp);
+        btnPregYResp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+                new CrearPregYRespDlg().setVisible(true);
             }
         });
         

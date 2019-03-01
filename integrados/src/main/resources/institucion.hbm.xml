@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="org.integrados.data.usuarios.Institucion" table="Institucion">
-        <id name="id" type="java.lang.Integer" column="id" >
+    <class name="org.integrados.data.usuarios.Institucion" table="institucion" catalog="integrados_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer" column="id">
             <generator class="identity" />
         </id>
-        <!--<property      name="nombreInstitucion" type="string"                                  column="nombreInstitucion" length="45"  not-null="true"/>
-           <many-to-many name="docentes"          class="org.integrados.data.usuarios.Docente"   column="id_Docente"                     not-null="true"/> 
-           <many-to-many name="alumnos"           class="org.integrados.data.usuarios.Alumno"    column="id_Alumno"                      not-null="true"/>
-           <one-to-one   name="administrador"     class="org.integrados.data.usuarios.Docente"   column="id_Docente"                     not-null="true"/>
-        <!-->
-  
-        <!--Relacion tabla "Docentes_institucion" (una Institucion-> Muchos Docentes)
-        <list name="docentes"  cascade="all" inverse="false" table="Docentes_institucion">
-            <key>
-                <column name="id_Institucion"/>
-            </key>
-            <list-index>
-                <column name="fk_Institucion_Docente1_idx"/>
-            </list-index>
-            <one-to-many class="org.integrados.data.usuarios.Docente"/>
-        </list>-->
-        
+         <property name="nombreInstitucion" type="string" column="nombreInstitucion" length="45" not-null="true"/>
+         <many-to-one name="administrador" class="org.integrados.data.usuarios.Docente" fetch="join" column="id_Docente" not-null="true"/>
     </class>
 </hibernate-mapping>

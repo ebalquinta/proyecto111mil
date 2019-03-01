@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.integrados.data.plantillas;
 
 import java.util.ArrayList;
@@ -20,14 +16,14 @@ public class Unir extends Plantilla {
 
     public Unir() {
         super();
-        super.tipoPlantilla = 2;
+        super.tipoPlantilla = "Unir";
         this.bloquesDer = new ArrayList<>();
         this.bloquesIzq = new ArrayList<>();
     }
 
     public Unir(String enunciado, List<Bloque> soluciones, List<Bloque> bloquesDer, List<Bloque> bloquesIzq) {
         super(enunciado, soluciones);
-        super.tipoPlantilla = 2;
+        super.tipoPlantilla = "Unir";
         this.bloquesDer = bloquesDer;
         this.bloquesIzq = bloquesIzq;
     }

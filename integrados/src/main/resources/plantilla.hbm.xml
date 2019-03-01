@@ -1,10 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping.dtd">
-
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-mapping>
-  <class name="org.integrados.data.plantillas.Plantilla" table="Plantilla">
-    <id name="id" type="java.lang.Integer" column="id" >
-      <generator class="identity" />
-    </id>
-  </class>
+    <class name="org.integrados.data.plantillas.Plantilla" table="plantilla">
+        <id name="id" type="java.lang.Integer" column="id" >
+            <generator class="identity" />
+        </id>
+    
+        <discriminator column="tipo_plantilla" type="string" />
+    
+        <property name="tipoPlantilla" type="string" column="tipoPersistente" length="60"/>
+        <property name="enunciado" type="string" column="enunciado" length="1000"/>
+        <property name="imagenEnunciado" type="string" column="imagen_enunciado" length="300"/>
+        <property name="sonidoEnunciado" type="string" column="sonido_enunciado" length="300"/>
+        <list name="soluciones" table="Solucion" lazy="false" cascade="all-delete-orphan">
+            <key column="id_Plantilla" not-null="true"/>
+            <list-index column="id"/>
+            <many-to-many class="org.integrados.data.bloques.Bloque" column="id_Bloque"/>
+        </list>
+        <subclass name="org.integrados.data.plantillas.Unir" discriminator-value="unir" >
+            <list name="bloquesDer" table="Bloques_plantilla_1" lazy="false" cascade="all-delete-orphan">
+                <key column="id_Plantilla" not-null="true"/>
+                <list-index column="id"/>
+                <many-to-many class="org.integrados.data.bloques.Bloque" column="id_Bloque"/>
+            </list>
+            <list name="bloquesIzq" table="Bloques_plantilla_2" lazy="false" cascade="all-delete-orphan">
+                <key column="id_Plantilla" not-null="true"/>
+                <list-index column="id"/>
+                <many-to-many class="org.integrados.data.bloques.Bloque" column="id_Bloque"/>
+            </list>
+        </subclass>
+        <subclass name="org.integrados.data.plantillas.Ordenamiento" discriminator-value="orden" />
+        <subclass name="org.integrados.data.plantillas.PregYResp" discriminator-value="pyr">
+            <list name="opciones" table="Bloques_plantilla_1" lazy="false" cascade="all-delete-orphan">
+                <key column="id_Plantilla" not-null="true"/>
+                <list-index column="id"/>
+                <many-to-many class="org.integrados.data.bloques.Bloque" column="id_Bloque"/>
+            </list>
+        </subclass>
+        <subclass name="org.integrados.data.plantillas.Memorama" discriminator-value="memoria">
+            <list name="bloques1" table="Bloques_plantilla_1" lazy="false" cascade="all-delete-orphan">
+                <key column="id_Plantilla" not-null="true"/>
+                <list-index column="id"/>
+                <many-to-many class="org.integrados.data.bloques.Bloque" column="id_Bloque"/>
+            </list>
+            <list name="bloques2" table="Bloques_plantilla_2" lazy="false" cascade="all-delete-orphan">
+                <key column="id_Plantilla" not-null="true"/>
+                <list-index column="id"/>
+                <many-to-many class="org.integrados.data.bloques.Bloque" column="id_Bloque"/>
+            </list>
+        </subclass>
+    </class>
 </hibernate-mapping>

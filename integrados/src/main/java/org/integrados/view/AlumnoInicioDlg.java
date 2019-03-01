@@ -9,73 +9,55 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import org.integrados.data.util.Util;
 import org.integrados.controller.actividades.DocenteBrowseActividadesCtrl;
-import org.integrados.controller.usuarios.DocenteInicioCtrl;
+import org.integrados.controller.usuarios.AlumnoInicioCtrl;
         
-public class DocenteInicioDlg extends JFrame {
+public class AlumnoInicioDlg extends JFrame {
     private JLabel lblFondo;
     private JButton btnActividades;
-    private JButton btnAlumnos;
-    private JButton btnCerrarSesion;
-    private DocenteInicioCtrl docenteInicioCtrl;
+    private JButton btnSalir;
+    private AlumnoInicioCtrl alumnoInicioCtrl;
     
-    public DocenteInicioDlg(DocenteInicioCtrl docenteInicioCtrl) {
-        this.docenteInicioCtrl = docenteInicioCtrl;
+    public AlumnoInicioDlg(AlumnoInicioCtrl alumnoInicioCtrl) {
+        this.alumnoInicioCtrl = alumnoInicioCtrl;
         initComponents();
-    }
-
-    public DocenteInicioCtrl getDocenteInicioCtrl() {
-        return docenteInicioCtrl;
     }
 
     void initComponents() {
         
-        btnActividades = Util.crearBoton("Actividades", 18);
-        btnAlumnos = Util.crearBoton("Alumnos", 18);
-        btnCerrarSesion = Util.crearBoton("Cerrar Sesión", 14);
+        btnActividades = Util.crearBoton("Jugar", 18);
+        btnSalir = Util.crearBoton("Salir", 18);
         lblFondo = new JLabel();
         
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                docenteInicioCtrl.cerrarAplicacion();
-            }
-        });
-        getContentPane().setLayout(null);
-
-        // Propiedades del botón Actividades
-        btnActividades.setBounds(230, 320, 170, 60);       
-        getContentPane().add(btnActividades);
-        DocenteInicioDlg aux = this;
-        btnActividades.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {                
-                // Aquí debemos enlazar con el browser
-                DocenteBrowseActividadesCtrl ctrl = new DocenteBrowseActividadesCtrl(aux);
-                ctrl.mostrarBrw();
-                ocultar();
+                alumnoInicioCtrl.cerrarAplicacion();
             }
         });
         
-        // Propiedades del botón Alumnos
-        btnAlumnos.setBounds(400, 120, 170, 60);
-        getContentPane().add(btnAlumnos);
-        btnAlumnos.addActionListener(new ActionListener() {
+        getContentPane().setLayout(null);
+
+        // Propiedades del botón Actividades
+        btnActividades.setBounds(400, 120, 170, 60);    
+        getContentPane().add(btnActividades);
+        btnActividades.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
+            public void actionPerformed(ActionEvent ae) {                
+                // Aquí debemos enlazar con la lista de actividades del alumno                    
                 Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });
         
-        // Propiedades de botón Volver
-        btnCerrarSesion.setBounds(295, 510, 170, 30);
-        getContentPane().add(btnCerrarSesion);
-        btnCerrarSesion.addActionListener(new ActionListener() {
+        // Propiedades del botón Alumnos
+        btnSalir.setBounds(230, 320, 170, 60);
+        getContentPane().add(btnSalir);
+        btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                docenteInicioCtrl.cerrarSesion();    
+                alumnoInicioCtrl.cerrarSesion();    
             }
-        });
+        });       
         
         // Propiedades del fondo de pantalla
         ImageIcon icon = createImageIcon("images/DocenteInicioDlgBkg.jpg","descripción");

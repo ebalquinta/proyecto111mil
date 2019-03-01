@@ -8,7 +8,11 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import org.integrados.controller.usuarios.AlumnoInicioCtrl;
+import org.integrados.controller.usuarios.DocenteInicioCtrl;
 import org.integrados.controller.usuarios.LoginCtrl;
+import org.integrados.data.usuarios.Alumno;
+import org.integrados.data.usuarios.Docente;
 import org.integrados.data.util.Util;
 import org.integrados.exceptions.IntegradosException;
 
@@ -90,11 +94,15 @@ public class LoginDlg extends JFrame {
                     return;
                 }
                 
-                // Aquí enlazamos con la siguiente pantalla
-                // La de docente que tiene los botones Actividades y Alumnos
-                
-                DocenteInicioDlg docenteInicioDlg = new DocenteInicioDlg();
-                docenteInicioDlg.mostrar();
+                // Aquí enlazamos con la siguiente pantalla segun el tipo de persona que se recibe
+                if ( loginCtrl.getPersona() instanceof Docente ) {
+                    DocenteInicioCtrl docenteInicioCtrl = new DocenteInicioCtrl(loginCtrl.getApp(), (Docente)loginCtrl.getPersona());
+                    docenteInicioCtrl.iniciar();
+                } else if (loginCtrl.getPersona() instanceof Alumno ) {
+                    AlumnoInicioCtrl alumnoInicioCtrl = new AlumnoInicioCtrl(loginCtrl.getApp(), (Alumno)loginCtrl.getPersona());
+                    alumnoInicioCtrl.iniciar();
+                }
+                loginCtrl.finalizar();
             }
         });
         

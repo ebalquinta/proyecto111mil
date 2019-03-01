@@ -7,19 +7,23 @@ package org.integrados;
 
 import org.integrados.exceptions.IntegradosException;
 import org.integrados.view.Dialogo;
+//import org.integrados.view.MySqlLog;
 
 /**
  *
  * @author balquinta
  */
-public class TestAplicacion { 
-    
+public class TestAplicacion {
+
     public static void main(String[] args) {
-        Aplicacion app = new Aplicacion();
+    
         
+
+        Aplicacion app = new Aplicacion();
+
         try {
             app.inicializar();
-        } catch (IntegradosException e) { 
+        } catch (IntegradosException e) {
             Dialogo.error("ERROR FATAL", "Falló la inicialización");
 //            // Dialogo.error(e.getMessage(), new Dialogo.ListenerCerrarDialogo() {
 //                @Override
@@ -30,6 +34,6 @@ public class TestAplicacion {
             return;
         }
         app.ejecutar();
-        
+
     }
 }
