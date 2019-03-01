@@ -10,11 +10,10 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.integrados.bd.HibernateUtiles;
-import org.integrados.controller.ABM.PersonaABM;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.actividad.Materia;
+import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.bloques.Bloque;
-import org.integrados.data.bloques.BloqueAnd;
 import org.integrados.data.bloques.BloqueImagen;
 import org.integrados.data.bloques.BloqueSonido;
 import org.integrados.data.bloques.BloqueTexto;
@@ -22,6 +21,7 @@ import org.integrados.data.enums.Dificultad;
 import org.integrados.data.enums.Nivel;
 import org.integrados.data.plantillas.Plantilla;
 import org.integrados.data.plantillas.Unir;
+import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.data.usuarios.Persona;
 import org.integrados.exceptions.IntegradosException;
@@ -68,7 +68,8 @@ public class listaActividades {
         Materia materia = new Materia("Lengua");
         guardar(materia);
         
-        Docente docente = get(3);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+        Docente docente = get(1);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+        Alumno alumno = geta(1);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
 //        System.out.println(docente.getDni());
 //        List<Actividad> actividades = listaActividades(4);
 //        for(Actividad a : actividades){
@@ -91,6 +92,9 @@ public class listaActividades {
 //        docente.setActividades(listaActividades);
 //        guardar(docente);
 
+        RegistroActividad reg = new RegistroActividad(actividad1, alumno, docente);
+        guardar(reg);
+
     }
 
     public static Docente get(int id) throws IntegradosException {
@@ -101,6 +105,25 @@ public class listaActividades {
             s = HibernateUtiles.getSession();
             s.beginTransaction();
             p = (Docente) s.get(Docente.class, id);
+            s.getTransaction().commit();
+            System.out.println("");
+            System.out.println("id ***" + p.getId());
+            System.out.println("");
+            s.close();
+            return p;
+        } catch (Exception e) {
+            System.out.println("Error al buscar a la persona id= " + id);
+            return null;
+        }
+    }
+    public static Alumno geta(int id) throws IntegradosException {
+        HibernateUtiles.inicializar();
+        Session s = null;
+        Alumno p = null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            p = (Alumno) s.get(Alumno.class, id);
             s.getTransaction().commit();
             System.out.println("");
             System.out.println("id ***" + p.getId());
@@ -133,6 +156,21 @@ public class listaActividades {
     }
 
     public static void guardar(Actividad p) throws IntegradosException {
+        HibernateUtiles.inicializar();
+        Session s = null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            s.saveOrUpdate(p);
+            s.getTransaction().commit();
+            System.out.println("Actividad guardada");
+            s.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("falla el guardado de Actividad");
+        }
+    }
+    public static void guardar(RegistroActividad p) throws IntegradosException {
         HibernateUtiles.inicializar();
         Session s = null;
         try {

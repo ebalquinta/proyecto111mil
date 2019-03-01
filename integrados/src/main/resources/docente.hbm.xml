@@ -28,7 +28,7 @@
             <index column="id"/>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
         </list>
-        <list name="actividades" table="Actividad" inverse="true" fetch="join" lazy="false">       
+        <list name="actividades" table="Actividad" inverse="true" fetch="join" lazy="false" cascade="all-delete-orphan">       
         <key column="id_Docente" not-null="true"/>
             <index column="id"/>
             <one-to-many class="org.integrados.data.actividad.Actividad"/>

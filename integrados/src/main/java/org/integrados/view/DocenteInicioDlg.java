@@ -10,6 +10,7 @@ import javax.swing.*;
 import org.integrados.data.util.Util;
 import org.integrados.controller.actividades.DocenteBrowseActividadesCtrl;
 import org.integrados.controller.usuarios.DocenteInicioCtrl;
+import org.integrados.services.ServiciosEstadisticaCtrl;
         
 public class DocenteInicioDlg extends JFrame {
     private JLabel lblFondo;
@@ -63,7 +64,9 @@ public class DocenteInicioDlg extends JFrame {
         btnAlumnos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+               ServiciosEstadisticaCtrl ctrl = new ServiciosEstadisticaCtrl(aux);
+                ctrl.mostrarBrw();
+                ocultar();
             }
         });
         
