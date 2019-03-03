@@ -32,14 +32,14 @@ public class PregRespCtrl {
         this.actividad = this.registro.getActividad();
         this.plantilla = (PregYResp) this.registro.getActividad().getPlantilla();
         this.intentos = this.registro.getActividad().getMaxIntentos();
-        jugar();
+        //jugar();
     }
 
-    public PregRespCtrl(Actividad actividad, PregYResp plantilla) {
-        this.plantilla = plantilla;
+    public PregRespCtrl(Actividad actividad) {
         this.actividad = actividad;
+        this.plantilla = (PregYResp) this.actividad.getPlantilla();
+        this.intentos = actividad.getMaxIntentos();
         this.registro = null;
-        jugar();
     }
 
     public void jugar() {

@@ -12,6 +12,8 @@ import org.integrados.data.actividad.Actividad;
 import org.integrados.data.actividad.Materia;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.bloques.Bloque;
+import org.integrados.data.bloques.BloqueImagen;
+import org.integrados.data.bloques.BloqueSonido;
 import org.integrados.data.bloques.BloqueTexto;
 import org.integrados.data.enums.Dificultad;
 import org.integrados.data.enums.Nivel;
@@ -30,9 +32,9 @@ public class PregyResptest {
      */
     public static void main(String[] args) {
         List<Bloque> opciones = new ArrayList();
-        opciones.add(new BloqueTexto("Va a explotar"));
+        opciones.add(new BloqueImagen("Va a explotar"));
         opciones.add(new BloqueTexto("Va a prenderse"));
-        opciones.add(new BloqueTexto("No va a pasar nada"));
+        opciones.add(new BloqueSonido("No va a pasar nada"));
         String enunciado = "¿Que pasa si metemos una lampara en un microondas?"; 
         List<Bloque> soluciones = new ArrayList();
         soluciones.add(opciones.get(1));
@@ -40,7 +42,8 @@ public class PregyResptest {
         Actividad actividad = new Actividad(plantilla, new Docente(), new Materia("Matematica"), enunciado,3, Nivel.INICIAL, Dificultad.ALTO, 3);
         RegistroActividad registro = new RegistroActividad(actividad,new Alumno(),new Docente());
         try{
-            PregRespCtrl p = new PregRespCtrl(registro);
+            PregRespCtrl p = new PregRespCtrl(actividad);
+            p.jugar();
         }catch(Exception e){
            e.printStackTrace();
         }

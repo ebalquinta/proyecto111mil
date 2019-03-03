@@ -56,11 +56,11 @@ public class PregRespBrowse extends javax.swing.JFrame {
         this.initComponents(pregunta);
         this.controller = controller;
         this.respuestas = new ArrayList();
-        
+
     }
 
     public void initComponents(String pregunta) {
-        
+
         //Seteo de los valores de la pregunta
         this.pregunta = new JLabel();
         this.pregunta.setText(pregunta);
@@ -76,22 +76,18 @@ public class PregRespBrowse extends javax.swing.JFrame {
         this.cuadroOpciones = new ArrayList();//es una lista de paneles que contiene los diferentes bloques
         this.checks = new ArrayList();//Lista de checks
         this.initOpciones();
-        
+
         //inicializacion del label bien hecho
         bienHecho = new JLabel("Bien hecho");
         bienHecho.setBounds(400, 150, bienHecho.getText().length() * 10, 30);
         bienHecho.setVisible(false);
         add(bienHecho);
-        
+
         //Creacion de los botones
         JButton terminar = Util.crearBoton("terminar", 14);
         JButton verificar = Util.crearBoton("verificar", 14);
         verificar.setBounds(200, 25, 120, 20);
-        
-        
-        
-        
-        
+
         //Agregacion del listener
         verificar.addActionListener(new ActionListener() {
             @Override
@@ -99,13 +95,16 @@ public class PregRespBrowse extends javax.swing.JFrame {
                 //Se llama el metodo interno opcionesSeleccionadas() 
                 //luego se llama a el metodo verificar() en el controler con una lista de respuestas
                 opcionesSeleccionadas();
-                try{
+                try {
                     controller.verificar(respuestas);
-                }catch(IntegradosException e){
+                } catch (IntegradosException e) {
                     Dialogo.mensaje("Atencion", e.getMessage());
-                }finally{
-                    respuestas.removeAll(respuestas);
-                }              
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    respuestas.clear();
+
+                }
             }
         });
         add(terminar);
@@ -121,7 +120,7 @@ public class PregRespBrowse extends javax.swing.JFrame {
 
     public void setIntentos(int i) {
         this.intentos.setText("Te quedan " + i + " intentos");
-        
+
     }
 
     /**
@@ -145,7 +144,7 @@ public class PregRespBrowse extends javax.swing.JFrame {
             //Se añade el checkbox instanciado a el panel y se añade el panel a el frame
             panelOpcion.add(opcion);
             add(panelOpcion);
-            
+
             //Se incrementa a la cooredenada 
             y += 50;
         }
@@ -154,9 +153,11 @@ public class PregRespBrowse extends javax.swing.JFrame {
     public List<Bloque> getOpciones() {
         return opciones;
     }
-    public void setOpciones(List<Bloque> opciones){
-        this.opciones=opciones;
+
+    public void setOpciones(List<Bloque> opciones) {
+        this.opciones = opciones;
     }
+
     /**
      * Este metodo se encarga de revisar la lista de checks y agregar a la lista
      * rtaAlumno los checksBox seleccionados
@@ -169,9 +170,8 @@ public class PregRespBrowse extends javax.swing.JFrame {
         }
     }
 
-    
     public void setHecho() {
         bienHecho.setVisible(true);
     }
-  
+
 }
