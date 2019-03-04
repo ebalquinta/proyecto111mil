@@ -96,11 +96,14 @@ public class NuevaActividadInicioDlg extends JFrame{
         btnPregYResp.setBounds(400, 320, 140, 140);
         btnPregYResp.setToolTipText("Crea una nueva actividad de Preguntas y Respuestas");
         getContentPane().add(btnPregYResp);
+        
+        NuevaActividadInicioDlg aux = this;
         btnPregYResp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
-                new CrearPregYRespDlg().setVisible(true);
+                ocultar();
+                new CrearPregYRespDlg(aux).setVisible(true);
             }
         });
         

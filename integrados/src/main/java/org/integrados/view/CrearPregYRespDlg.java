@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package org.integrados.view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author VIB
@@ -43,12 +47,14 @@ public class CrearPregYRespDlg  extends javax.swing.JFrame {
     private javax.swing.JTextField txtIngreseTexto;
     private javax.swing.JTextField txtIngreseImagen;
     private javax.swing.JTextField txtIngreseSonido;
+    public NuevaActividadInicioDlg nuevaActividadInicioDlg;
     // End of variables declaration           
     
     /**
      * Creates new form CrearPregYRespDlg
      */
-    public CrearPregYRespDlg() {
+    public CrearPregYRespDlg(NuevaActividadInicioDlg nuevaActividadInicioDlg) {
+        this.nuevaActividadInicioDlg = nuevaActividadInicioDlg;
         initComponents();
     }
 
@@ -167,6 +173,13 @@ public class CrearPregYRespDlg  extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         btnCancelar.setText("Cancelar");
         getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 80, 30));
+        btnCancelar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ocultar();
+                nuevaActividadInicioDlg.mostrar();
+            }
+        });
 
         btnArchivoSonido.setBackground(new java.awt.Color(0, 102, 102));
         btnArchivoSonido.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -322,4 +335,7 @@ public class CrearPregYRespDlg  extends javax.swing.JFrame {
         // TODO add your handling code here:
     }     
         
+    public void ocultar() {
+        this.setVisible(false);
+    } 
 }
