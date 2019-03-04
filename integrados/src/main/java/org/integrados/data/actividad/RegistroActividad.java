@@ -34,6 +34,7 @@ public class RegistroActividad {
         this.actividad = actividad;
         this.alumno = alumno;
         this.docente = docente;
+        this.finalizoCorrectamente=false;
     }
 
     public Integer getId() {
