@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.data.util.Util;
 
 /**
@@ -103,7 +104,7 @@ public class NuevaActividadInicioDlg extends JFrame{
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
                 ocultar();
-                new CrearPregYRespDlg(aux).setVisible(true);
+                new CrearPregYRespCtrl(aux, aux.docenteBrowseActividadesBrw.controlador.docenteInicioDlg).mostrarDlg();
             }
         });
         

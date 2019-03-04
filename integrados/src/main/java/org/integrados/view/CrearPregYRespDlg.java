@@ -7,6 +7,8 @@ package org.integrados.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import org.integrados.controller.actividades.CrearPregYRespCtrl;
+import org.integrados.data.usuarios.Docente;
 
 /**
  *
@@ -47,14 +49,19 @@ public class CrearPregYRespDlg  extends javax.swing.JFrame {
     private javax.swing.JTextField txtIngreseTexto;
     private javax.swing.JTextField txtIngreseImagen;
     private javax.swing.JTextField txtIngreseSonido;
-    public NuevaActividadInicioDlg nuevaActividadInicioDlg;
+    public CrearPregYRespCtrl crearPregYRespCtrl;
+    public Docente docente;
     // End of variables declaration           
     
     /**
      * Creates new form CrearPregYRespDlg
      */
-    public CrearPregYRespDlg(NuevaActividadInicioDlg nuevaActividadInicioDlg) {
-        this.nuevaActividadInicioDlg = nuevaActividadInicioDlg;
+    public CrearPregYRespDlg() {
+        initComponents();
+    }
+    public CrearPregYRespDlg(CrearPregYRespCtrl crearPregYRespCtrl, Docente docente) {
+        this.crearPregYRespCtrl = crearPregYRespCtrl;
+        this.docente = docente;
         initComponents();
     }
 
@@ -177,7 +184,7 @@ public class CrearPregYRespDlg  extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 ocultar();
-                nuevaActividadInicioDlg.mostrar();
+                crearPregYRespCtrl.nuevaActividadInicioDlg.mostrar();
             }
         });
 
@@ -335,6 +342,11 @@ public class CrearPregYRespDlg  extends javax.swing.JFrame {
         // TODO add your handling code here:
     }     
         
+    public void mostrar() {
+        this.setVisible(true);
+        System.out.println("Docente id:" + this.docente.getId());
+    }
+    
     public void ocultar() {
         this.setVisible(false);
     } 
