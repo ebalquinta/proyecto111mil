@@ -96,7 +96,7 @@ clacularPorcentaje y estrellas podrian estar en util.
      * @param texto - El texto a insertar en el combo
      * @return 
      */
-    public static JComboBox crearCombo(String texto) {
+    public static JComboBox crearCombo(String[] texto) {
         JComboBox combo = new JComboBox<>();
         combo.setEditable(true);
 //        combo.setForeground(new Color(0, 102, 102));
@@ -113,7 +113,7 @@ clacularPorcentaje y estrellas podrian estar en util.
 //                combo.setForeground(new java.awt.Color(0, 102, 102));
 //            }
 //        });
-        combo.setModel(new DefaultComboBoxModel<>(new String[] { texto }));
+        combo.setModel(new DefaultComboBoxModel<>(texto));
         return combo;
     }
 

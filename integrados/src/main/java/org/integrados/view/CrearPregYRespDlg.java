@@ -104,20 +104,20 @@ public class CrearPregYRespDlg  extends JFrame {
         
         // Creando elementos de seccion 1
         lblTitulo = Util.crearLabel("Crear Pregunta y Respuestas", 0, 18);
-        comboMateria = Util.crearCombo("Materia");
-        comboNivel = Util.crearCombo("Nivel");
+        comboMateria = Util.crearCombo(new String[] {"Materia 1", "Materia 2", "Materia 3"});
+        comboNivel = Util.crearCombo(new String[] {"Nivel 1", "Nivel 2", "Nivel 3"});
         comboNivel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 comboNivelActionPerformed(evt);
             }
         });
-        comboGrado = Util.crearCombo("Grado");
+        comboGrado = Util.crearCombo(new String[] {"Grado 1", "Grado 2", "Grado 3"});
         comboGrado.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 comboGradoActionPerformed(evt);
             }
         });
-        comboDificultad = Util.crearCombo("Dificultad");
+        comboDificultad = Util.crearCombo(new String[] {"Dificultad 1", "Dificultad 2", "Dificultad 3"});
         comboDificultad.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 comboDificultadActionPerformed(evt);
