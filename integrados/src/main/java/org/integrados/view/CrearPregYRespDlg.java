@@ -23,38 +23,43 @@ public class CrearPregYRespDlg  extends JFrame {
     // Variables declaration     
     public CrearPregYRespCtrl controlador;
     public Docente docente;          
-    private JButton btnAgregar = null;
-    private JButton btnArchivoImagen = null;
-    private JButton btnArchivoSonido = null;
-    private JButton btnProbar = null;
-    private JButton btnGuardar = null;
-    private JButton btnCancelar = null;
-    private JComboBox<String> comboNivel = null;
-    private JComboBox<String> comboDificultad = null;
-    private JComboBox<String> comboMateria = null;
-    private JComboBox<String> comboGrado = null;
+    
+    private JScrollPane panel = null;
     private JLabel lblFondo = null;
+    
+    private JLabel lblTitulo = null;
+    private JComboBox<String> comboMateria = null;
+    private JComboBox<String> comboNivel = null;
+    private JComboBox<String> comboGrado = null;
+    private JComboBox<String> comboDificultad = null;
+    private JLabel lblMaxIntentos = null;
+    private JTextField txtMaxIntentos = null;
+    private JLabel lblTema = null;
+    private JTextField txtTema = null;
+    
+    private JSeparator linePregunta = null;
+    private JLabel lblPregunta = null;
+    private JLabel lblIngreseTexto = null;
+    private JTextField txtIngreseTexto = null;
+    private JLabel lblIngreseImagen = null;
+    private JTextField txtIngreseImagen = null;
+    private JButton btnArchivoImagen = null;
+    private JLabel lblIngreseSonido = null;
+    private JTextField txtIngreseSonido = null;
+    private JButton btnArchivoSonido = null;
+    
+    private JSeparator lineRespuestas = null;
+    private JLabel lblRespuestas = null;
+    private JButton btnAgregar = null;
+    private JTable tablaRespuestas = null;
     private JLabel lblIcoTexto = null;
     private JLabel lblIcoImagen = null;
     private JLabel lblIcoSonido = null;
     private JLabel lblIcoValidar = null;
-    private JLabel lblTitulo = null;
-    private JLabel lblTema = null;
-    private JLabel lblMaxIntentos = null;
-    private JLabel lblRespuestas = null;
-    private JLabel lblIngreseSonido = null;
-    private JLabel lblIngreseImagen = null;
-    private JLabel lblIngreseTexto = null;
-    private JLabel lblPregunta = null;
-    private JScrollPane panel = null;
-    private JSeparator linePregunta = null;
-    private JSeparator lineRespuestas = null;
-    private JTable tablaRespuestas = null;
-    private JTextField txtMaxIntentos = null;
-    private JTextField txtTema = null;
-    private JTextField txtIngreseTexto = null;
-    private JTextField txtIngreseImagen = null;
-    private JTextField txtIngreseSonido = null;
+    
+    private JButton btnProbar = null;
+    private JButton btnGuardar = null;
+    private JButton btnCancelar = null;
     // End of variables declaration           
     
     /**
@@ -123,7 +128,6 @@ public class CrearPregYRespDlg  extends JFrame {
         btnGuardar = new JButton();
         btnCancelar = new JButton();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBackground(new Color(0, 102, 102));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
