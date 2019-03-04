@@ -20,41 +20,41 @@ import org.integrados.data.usuarios.Docente;
  */
 public class CrearPregYRespDlg  extends JFrame {
 
-    // Variables declaration - do not modify                     
-    private JButton btnAgregar;
-    private JButton btnArchivoImagen;
-    private JButton btnArchivoSonido;
-    private JButton btnProbar;
-    private JButton btnGuardar;
-    private JButton btnCancelar;
-    private JComboBox<String> comboNivel;
-    private JComboBox<String> comboDificultad;
-    private JComboBox<String> comboMateria;
-    private JComboBox<String> comboGrado;
-    private JLabel lblFondo;
-    private JLabel lblIcoTexto;
-    private JLabel lblIcoImagen;
-    private JLabel lblIcoSonido;
-    private JLabel lblIcoValidar;
-    private JLabel lblTitulo;
-    private JLabel lblTema;
-    private JLabel lblMaxIntentos;
-    private JLabel lblRespuestas;
-    private JLabel lblIngreseSonido;
-    private JLabel lblIngreseImagen;
-    private JLabel lblIngreseTexto;
-    private JLabel lblPregunta;
-    private JScrollPane panel;
-    private JSeparator linePregunta;
-    private JSeparator lineRespuestas;
-    private JTable tablaRespuestas;
-    private JTextField txtMaxIntentos;
-    private JTextField txtTema;
-    private JTextField txtIngreseTexto;
-    private JTextField txtIngreseImagen;
-    private JTextField txtIngreseSonido;
+    // Variables declaration     
     public CrearPregYRespCtrl controlador;
-    public Docente docente;
+    public Docente docente;          
+    private JButton btnAgregar = null;
+    private JButton btnArchivoImagen = null;
+    private JButton btnArchivoSonido = null;
+    private JButton btnProbar = null;
+    private JButton btnGuardar = null;
+    private JButton btnCancelar = null;
+    private JComboBox<String> comboNivel = null;
+    private JComboBox<String> comboDificultad = null;
+    private JComboBox<String> comboMateria = null;
+    private JComboBox<String> comboGrado = null;
+    private JLabel lblFondo = null;
+    private JLabel lblIcoTexto = null;
+    private JLabel lblIcoImagen = null;
+    private JLabel lblIcoSonido = null;
+    private JLabel lblIcoValidar = null;
+    private JLabel lblTitulo = null;
+    private JLabel lblTema = null;
+    private JLabel lblMaxIntentos = null;
+    private JLabel lblRespuestas = null;
+    private JLabel lblIngreseSonido = null;
+    private JLabel lblIngreseImagen = null;
+    private JLabel lblIngreseTexto = null;
+    private JLabel lblPregunta = null;
+    private JScrollPane panel = null;
+    private JSeparator linePregunta = null;
+    private JSeparator lineRespuestas = null;
+    private JTable tablaRespuestas = null;
+    private JTextField txtMaxIntentos = null;
+    private JTextField txtTema = null;
+    private JTextField txtIngreseTexto = null;
+    private JTextField txtIngreseImagen = null;
+    private JTextField txtIngreseSonido = null;
     // End of variables declaration           
     
     /**
