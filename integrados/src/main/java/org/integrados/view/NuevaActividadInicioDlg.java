@@ -35,7 +35,13 @@ public class NuevaActividadInicioDlg extends JFrame{
         btnMemorama = new JToggleButton();
         btnPregYResp = new JToggleButton();        
        
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                cerrarAplicacion();
+            }
+        });            
         getContentPane().setLayout(null);
          
         // Propiedades de botón Volver
@@ -137,4 +143,12 @@ public class NuevaActividadInicioDlg extends JFrame{
     public void ocultar() {
         this.setVisible(false);
     }   
+    
+    public void cerrarAplicacion() {
+        Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
+        if (resultado == Dialogo.ResultadoDialogo.Yes) {
+            this.ocultar();
+            this.docenteBrowseActividadesBrw.controlador.docenteInicioDlg.getDocenteInicioCtrl().getApp().cerrar();
+        }
+    }
 }
