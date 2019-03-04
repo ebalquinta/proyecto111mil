@@ -1,7 +1,12 @@
 package org.integrados.controller.ABM;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.integrados.bd.HibernateUtiles;
+import org.integrados.data.usuarios.Alumno;
+import org.integrados.data.usuarios.Docente;
 import org.integrados.data.usuarios.Persona;
 import org.integrados.exceptions.IntegradosException;
 
@@ -49,5 +54,37 @@ public class PersonaABM {
         }catch (Exception e){
             System.out.println("Error al borrar la Persona");
         }
+    }
+     
+     public List<Alumno> listaAlumnos(int id) {
+        List<Alumno> alumnos = new ArrayList<>();
+        Session session = null;
+        try {
+            session = HibernateUtiles.getSession();
+            session.beginTransaction();
+            Query query = session.createQuery("Select alumnos FROM Docente where id_Docente='" + id + "'");
+            alumnos = (List<Alumno>) query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+
+        }
+        return alumnos;
+    }
+     
+     public List<Docente> listaDocentes(int id) {
+        List<Docente> docentes = new ArrayList<>();
+        Session session = null;
+        try {
+            session = HibernateUtiles.getSession();
+            session.beginTransaction();
+            Query query = session.createQuery("Select docentes FROM Alumno where id_Docente='" + id + "'");
+            docentes = (List<Docente>) query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+
+        }
+        return docentes;
     }
 }
