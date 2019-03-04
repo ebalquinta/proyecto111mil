@@ -194,13 +194,13 @@ public class CrearPregYRespDlg  extends JFrame {
         tablaRespuestas.setGridColor(new Color(0, 102, 102));
         tablaRespuestas.setMinimumSize(new Dimension(10, 10));
         lblIcoTexto = new JLabel();
-        lblIcoTexto.setIcon(createImageIcon("images/IcoTexto.png","IcoTexto"));
+        lblIcoTexto.setIcon(Util.reziseImageIcon(createImageIcon("images/IcoTexto.png","IcoTexto"), 18, 18));
         lblIcoImagen = new JLabel();
-        lblIcoImagen.setIcon(createImageIcon("images/IcoImagen.png","IcoImagen"));
+        lblIcoImagen.setIcon(Util.reziseImageIcon(createImageIcon("images/IcoImagen.png","IcoImagen"), 20, 20));
         lblIcoSonido = new JLabel();
-        lblIcoSonido.setIcon(createImageIcon("images/IcoSonido.png","IcoSonido"));
+        lblIcoSonido.setIcon(Util.reziseImageIcon(createImageIcon("images/IcoSonido.png","IcoSonido"), 16, 16));
         lblIcoValidar = new JLabel();
-        lblIcoValidar.setIcon(createImageIcon("images/IcoValidar.jpg","IcoValidar"));
+        lblIcoValidar.setIcon(Util.reziseImageIcon(createImageIcon("images/IcoValidar.jpg","IcoValidar"), 16, 16));
         
         
         // Creando elementos de footer
@@ -243,10 +243,10 @@ public class CrearPregYRespDlg  extends JFrame {
         getContentPane().add(lineRespuestas, new AbsoluteConstraints(60, 330, 670, 10));
         getContentPane().add(lblRespuestas, new AbsoluteConstraints(70, 330, 340, 30));
         getContentPane().add(btnAgregar, new AbsoluteConstraints(640, 340, 80, 30));   
-        getContentPane().add(lblIcoTexto, new AbsoluteConstraints(90, 380, 30, 30));
-        getContentPane().add(lblIcoImagen, new AbsoluteConstraints(250, 380, 30, 30));
-        getContentPane().add(lblIcoSonido, new AbsoluteConstraints(410, 380, 30, 30));
-        getContentPane().add(lblIcoValidar, new AbsoluteConstraints(570, 380, -1, -1));
+        getContentPane().add(lblIcoTexto, new AbsoluteConstraints(90, 376, 30, 30));
+        getContentPane().add(lblIcoImagen, new AbsoluteConstraints(250, 380, 20, 20));
+        getContentPane().add(lblIcoSonido, new AbsoluteConstraints(410, 382, 20, 20));
+        getContentPane().add(lblIcoValidar, new AbsoluteConstraints(570, 382, 20, 20));
         panel.setViewportView(tablaRespuestas);
         getContentPane().add(panel, new AbsoluteConstraints(70, 380, 650, 120));
         

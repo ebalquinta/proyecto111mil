@@ -116,5 +116,16 @@ clacularPorcentaje y estrellas podrian estar en util.
         combo.setModel(new DefaultComboBoxModel<>(texto));
         return combo;
     }
+    
+    /**
+     * Redimencionar una imagen
+     * @param image el ImageIcon a redimensionar
+     * @param width el ancho a redimensionar
+     * @param height el alto a redimensionar
+     * @return 
+     */
+     public static ImageIcon reziseImageIcon(ImageIcon image, int width, int height) {
+         return new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+     }
 
 }
