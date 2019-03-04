@@ -32,7 +32,7 @@ public class BloqueABM {
         }
     }
      
-     public Bloque get(int id) throws IntegradosException {
+     public Bloque get(int id) {
         Session s=null;
         Bloque p=null;
         try {

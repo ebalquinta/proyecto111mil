@@ -7,6 +7,7 @@
             <generator class="identity" />
         </id>
         <discriminator column="tipo_bloque" type="string" />
+        <property name="tipoBloque" type="integer"  column="tipoBloquePersistente" not-null="true"/>
 <!-- Ver si anda-->
         <subclass name="org.integrados.data.bloques.BloqueAnd" discriminator-value="bloque_and" >
             <many-to-one name="bloque1" class="org.integrados.data.bloques.BloqueAnd" fetch="join">

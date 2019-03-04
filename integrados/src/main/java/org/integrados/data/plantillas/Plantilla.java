@@ -10,13 +10,6 @@ import org.integrados.data.bloques.*;
  */
 public abstract class Plantilla {
 
-    /*
-    tipo Plantilla:
-    ordenamiento = 1
-    unir = 2
-    preg y resp = 3
-    memorama = 4
-     */
     protected Integer id;
     protected String enunciado;
     protected List<Bloque> soluciones;
@@ -86,18 +79,6 @@ public abstract class Plantilla {
     public String getTipoPlantilla() {
         return tipoPlantilla;
     }
-    
-//    public String verNombrePlantilla() {        
-//        if (tipoPlantilla == 1) {
-//            return "Ordenamiento";
-//        } else if (tipoPlantilla == 2) {
-//            return "Unir";
-//        } else if (tipoPlantilla == 3) {
-//            return "Pregunta y Respuestas";
-//        } else {
-//            return "Memorama";
-//        }
-//    }
 
     public void setTipoPlantilla(String tipoPlantilla) {
         this.tipoPlantilla = tipoPlantilla;
