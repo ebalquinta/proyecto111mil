@@ -93,7 +93,7 @@ clacularPorcentaje y estrellas podrian estar en util.
     
     /**
      * Método para crear un combo box estándar con los estilos básicos 
-     * @param texto - El texto a insertar en el combo
+     * @param texto - El arreglo de texto a insertar en las opciones del combo
      * @return 
      */
     public static JComboBox crearCombo(String[] texto) {
