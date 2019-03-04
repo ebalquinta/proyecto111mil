@@ -27,7 +27,7 @@
                 <param name="type">-6</param>
             </type>
         </property>
-        <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all">
+        <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all" lazy="false">
             <key column="id_Alumno" not-null="true"/>
             <index column="id"></index>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>
