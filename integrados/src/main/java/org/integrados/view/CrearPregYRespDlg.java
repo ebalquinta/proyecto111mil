@@ -10,6 +10,41 @@ package org.integrados.view;
  */
 public class CrearPregYRespDlg  extends javax.swing.JFrame {
 
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnArchivoImagen;
+    private javax.swing.JButton btnArchivoSonido;
+    private javax.swing.JButton btnProbar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<String> comboNivel;
+    private javax.swing.JComboBox<String> comboDificultad;
+    private javax.swing.JComboBox<String> comboMateria;
+    private javax.swing.JComboBox<String> comboGrado;
+    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblIcoTexto;
+    private javax.swing.JLabel lblIcoImagen;
+    private javax.swing.JLabel lblIcoSonido;
+    private javax.swing.JLabel lblIcoValidar;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTema;
+    private javax.swing.JLabel lblMaxIntentos;
+    private javax.swing.JLabel lblRespuestas;
+    private javax.swing.JLabel lblIngreseSonido;
+    private javax.swing.JLabel lblIngreseImagen;
+    private javax.swing.JLabel lblIngreseTexto;
+    private javax.swing.JLabel lblPregunta;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator linePregunta;
+    private javax.swing.JSeparator lineRespuestas;
+    private javax.swing.JTable tablaRespuestas;
+    private javax.swing.JTextField txtMaxIntentos;
+    private javax.swing.JTextField txtTema;
+    private javax.swing.JTextField txtIngreseTexto;
+    private javax.swing.JTextField txtIngreseImagen;
+    private javax.swing.JTextField txtIngreseSonido;
+    // End of variables declaration           
+    
     /**
      * Creates new form CrearPregYRespDlg
      */
@@ -26,134 +61,134 @@ public class CrearPregYRespDlg  extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        txtMaxIntentos = new javax.swing.JTextField();
+        linePregunta = new javax.swing.JSeparator();
+        lblRespuestas = new javax.swing.JLabel();
+        lblIngreseImagen = new javax.swing.JLabel();
+        lblIngreseSonido = new javax.swing.JLabel();
+        lblIngreseTexto = new javax.swing.JLabel();
+        txtIngreseImagen = new javax.swing.JTextField();
+        txtIngreseSonido = new javax.swing.JTextField();
+        lineRespuestas = new javax.swing.JSeparator();
+        lblIcoTexto = new javax.swing.JLabel();
+        lblIcoSonido = new javax.swing.JLabel();
+        lblPregunta = new javax.swing.JLabel();
+        lblIcoValidar = new javax.swing.JLabel();
+        lblIcoImagen = new javax.swing.JLabel();
+        btnProbar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnArchivoSonido = new javax.swing.JButton();
+        comboGrado = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        tablaRespuestas = new javax.swing.JTable();
+        btnAgregar = new javax.swing.JButton();
+        btnArchivoImagen = new javax.swing.JButton();
+        lblTema = new javax.swing.JLabel();
+        lblMaxIntentos = new javax.swing.JLabel();
+        txtIngreseTexto = new javax.swing.JTextField();
+        txtTema = new javax.swing.JTextField();
+        comboNivel = new javax.swing.JComboBox<>();
+        comboDificultad = new javax.swing.JComboBox<>();
+        comboMateria = new javax.swing.JComboBox<>();
+        lblTitulo = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 30, 30));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 670, 10));
+        txtMaxIntentos.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        getContentPane().add(txtMaxIntentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 30, 30));
+        getContentPane().add(linePregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 670, 10));
 
-        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel5.setText("Respuestas(Ingrese al menos 2 opciones)");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 340, 30));
+        lblRespuestas.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        lblRespuestas.setText("Respuestas(Ingrese al menos 2 opciones)");
+        getContentPane().add(lblRespuestas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 340, 30));
 
-        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel7.setText("Ingrese imagen");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 110, 30));
+        lblIngreseImagen.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        lblIngreseImagen.setText("Ingrese imagen");
+        getContentPane().add(lblIngreseImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 110, 30));
 
-        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel6.setText("Ingrese sonido");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 110, 30));
+        lblIngreseSonido.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        lblIngreseSonido.setText("Ingrese sonido");
+        getContentPane().add(lblIngreseSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 110, 30));
 
-        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel8.setText("Ingrese texto");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 110, 30));
+        lblIngreseTexto.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        lblIngreseTexto.setText("Ingrese texto");
+        getContentPane().add(lblIngreseTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 110, 30));
 
-        jTextField4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtIngreseImagen.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        txtIngreseImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtIngreseImagenActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 230, 30));
+        getContentPane().add(txtIngreseImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 230, 30));
 
-        jTextField5.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtIngreseSonido.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        txtIngreseSonido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtIngreseSonidoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 230, 30));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 670, 10));
+        getContentPane().add(txtIngreseSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 230, 30));
+        getContentPane().add(lineRespuestas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 670, 10));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IcoTexto.png"))); // NOI18N
-        jLabel11.setLabelFor(jScrollPane1);
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 30, 30));
+        lblIcoTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IcoTexto.png"))); // NOI18N
+        lblIcoTexto.setLabelFor(jScrollPane1);
+        getContentPane().add(lblIcoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 30, 30));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IcoSonido.png"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 30, 30));
+        lblIcoSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IcoSonido.png"))); // NOI18N
+        getContentPane().add(lblIcoSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 30, 30));
 
-        jLabel9.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel9.setText("Pregunta(complete uno o mas campos)");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 340, 30));
+        lblPregunta.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        lblPregunta.setText("Pregunta(complete uno o mas campos)");
+        getContentPane().add(lblPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 340, 30));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IcoValidar.jpg"))); // NOI18N
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, -1, -1));
+        lblIcoValidar.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IcoValidar.jpg"))); // NOI18N
+        getContentPane().add(lblIcoValidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, -1, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IcoImagen.png"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 30, 30));
+        lblIcoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/IcoImagen.png"))); // NOI18N
+        getContentPane().add(lblIcoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 30, 30));
 
-        jButton6.setBackground(new java.awt.Color(0, 102, 102));
-        jButton6.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 102, 102));
-        jButton6.setText("Probar");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 80, 30));
+        btnProbar.setBackground(new java.awt.Color(0, 102, 102));
+        btnProbar.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        btnProbar.setForeground(new java.awt.Color(0, 102, 102));
+        btnProbar.setText("Probar");
+        getContentPane().add(btnProbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 80, 30));
 
-        jButton7.setBackground(new java.awt.Color(0, 102, 102));
-        jButton7.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton7.setText("Guardar");
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 80, 30));
+        btnGuardar.setBackground(new java.awt.Color(0, 102, 102));
+        btnGuardar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        btnGuardar.setText("Guardar");
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 80, 30));
 
-        jButton8.setBackground(new java.awt.Color(0, 102, 102));
-        jButton8.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton8.setText("Cancelar");
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 80, 30));
+        btnCancelar.setBackground(new java.awt.Color(0, 102, 102));
+        btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 80, 30));
 
-        jButton5.setBackground(new java.awt.Color(0, 102, 102));
-        jButton5.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton5.setText("Archivo");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 80, 30));
+        btnArchivoSonido.setBackground(new java.awt.Color(0, 102, 102));
+        btnArchivoSonido.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        btnArchivoSonido.setText("Archivo");
+        getContentPane().add(btnArchivoSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 80, 30));
 
-        jComboBox6.setBackground(new java.awt.Color(0, 102, 102));
-        jComboBox6.setEditable(true);
-        jComboBox6.setForeground(new java.awt.Color(0, 102, 102));
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grado" }));
-        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+        comboGrado.setBackground(new java.awt.Color(0, 102, 102));
+        comboGrado.setEditable(true);
+        comboGrado.setForeground(new java.awt.Color(0, 102, 102));
+        comboGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grado" }));
+        comboGrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox6ActionPerformed(evt);
+                comboGradoActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 90, 30));
+        getContentPane().add(comboGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 90, 30));
 
         jScrollPane1.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
 
-        jTable1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jTable1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaRespuestas.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        tablaRespuestas.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        tablaRespuestas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -172,153 +207,119 @@ public class CrearPregYRespDlg  extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setFocusCycleRoot(true);
-        jTable1.setGridColor(new java.awt.Color(0, 102, 102));
-        jTable1.setMinimumSize(new java.awt.Dimension(10, 10));
-        jScrollPane1.setViewportView(jTable1);
+        tablaRespuestas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tablaRespuestas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaRespuestas.setFocusCycleRoot(true);
+        tablaRespuestas.setGridColor(new java.awt.Color(0, 102, 102));
+        tablaRespuestas.setMinimumSize(new java.awt.Dimension(10, 10));
+        jScrollPane1.setViewportView(tablaRespuestas);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 650, 120));
 
-        jButton3.setBackground(new java.awt.Color(0, 102, 102));
-        jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton3.setText("Agregar");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 80, 30));
+        btnAgregar.setBackground(new java.awt.Color(0, 102, 102));
+        btnAgregar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        btnAgregar.setText("Agregar");
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 80, 30));
 
-        jButton4.setBackground(new java.awt.Color(0, 102, 102));
-        jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jButton4.setText("Archivo");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 80, 30));
+        btnArchivoImagen.setBackground(new java.awt.Color(0, 102, 102));
+        btnArchivoImagen.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        btnArchivoImagen.setText("Archivo");
+        getContentPane().add(btnArchivoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 80, 30));
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel3.setText("Tema:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 60, 30));
+        lblTema.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        lblTema.setText("Tema:");
+        getContentPane().add(lblTema, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 60, 30));
 
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jLabel4.setText("Max.Intentos:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 90, 30));
+        lblMaxIntentos.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        lblMaxIntentos.setText("Max.Intentos:");
+        getContentPane().add(lblMaxIntentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 90, 30));
 
-        jTextField3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtIngreseTexto.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        txtIngreseTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtIngreseTextoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 520, 30));
+        getContentPane().add(txtIngreseTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 520, 30));
 
-        jTextField2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtTema.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        txtTema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtTemaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 520, 30));
+        getContentPane().add(txtTema, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 520, 30));
 
-        jComboBox2.setBackground(new java.awt.Color(0, 102, 102));
-        jComboBox2.setEditable(true);
-        jComboBox2.setForeground(new java.awt.Color(0, 102, 102));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nivel" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        comboNivel.setBackground(new java.awt.Color(0, 102, 102));
+        comboNivel.setEditable(true);
+        comboNivel.setForeground(new java.awt.Color(0, 102, 102));
+        comboNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nivel" }));
+        comboNivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                comboNivelActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 80, 30));
+        getContentPane().add(comboNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 80, 30));
 
-        jComboBox4.setBackground(new java.awt.Color(0, 102, 102));
-        jComboBox4.setEditable(true);
-        jComboBox4.setForeground(new java.awt.Color(0, 102, 102));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dificultad" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        comboDificultad.setBackground(new java.awt.Color(0, 102, 102));
+        comboDificultad.setEditable(true);
+        comboDificultad.setForeground(new java.awt.Color(0, 102, 102));
+        comboDificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dificultad" }));
+        comboDificultad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+                comboDificultadActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 90, 30));
+        getContentPane().add(comboDificultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 90, 30));
 
-        jComboBox5.setBackground(new java.awt.Color(0, 102, 102));
-        jComboBox5.setEditable(true);
-        jComboBox5.setForeground(new java.awt.Color(0, 102, 102));
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Materia" }));
-        getContentPane().add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 160, 30));
+        comboMateria.setBackground(new java.awt.Color(0, 102, 102));
+        comboMateria.setEditable(true);
+        comboMateria.setForeground(new java.awt.Color(0, 102, 102));
+        comboMateria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Materia" }));
+        getContentPane().add(comboMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 160, 30));
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel2.setText("Crear Pregunta y Respuestas");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 260, 50));
+        lblTitulo.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        lblTitulo.setText("Crear Pregunta y Respuestas");
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 260, 50));
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/Fondo2.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel1.setMaximumSize(new java.awt.Dimension(800, 600));
-        jLabel1.setMinimumSize(new java.awt.Dimension(800, 600));
-        jLabel1.setName(""); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 590));
+        lblFondo.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/Fondo2.jpg"))); // NOI18N
+        lblFondo.setText("lblFondo");
+        lblFondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblFondo.setMaximumSize(new java.awt.Dimension(800, 600));
+        lblFondo.setMinimumSize(new java.awt.Dimension(800, 600));
+        lblFondo.setName(""); // NOI18N
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 590));
 
         pack();
     }// </editor-fold>                        
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void comboDificultadActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
     }                                          
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void comboNivelActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
     }                                          
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void txtTemaActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void txtIngreseTextoActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void txtIngreseImagenActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void txtIngreseSonidoActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
 
-    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void comboGradoActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
     }     
-
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    // End of variables declaration                   
+        
 }
