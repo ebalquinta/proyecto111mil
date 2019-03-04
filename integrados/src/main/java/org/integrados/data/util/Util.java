@@ -98,9 +98,21 @@ clacularPorcentaje y estrellas podrian estar en util.
      */
     public static JComboBox crearCombo(String texto) {
         JComboBox combo = new JComboBox<>();
-        combo.setBackground(new Color(0, 102, 102));
         combo.setEditable(true);
-        combo.setForeground(new Color(0, 102, 102));
+//        combo.setForeground(new Color(0, 102, 102));
+//        combo.addMouseListener(new java.awt.event.MouseAdapter() {
+//            @Override
+//            public void mouseEntered(java.awt.event.MouseEvent evt) {
+//                combo.setBackground(new java.awt.Color(0, 102, 102));                
+//                combo.setForeground(Color.WHITE);
+//            }
+//
+//            @Override
+//            public void mouseExited(java.awt.event.MouseEvent evt) {
+//                combo.setBackground(UIManager.getColor("control"));
+//                combo.setForeground(new java.awt.Color(0, 102, 102));
+//            }
+//        });
         combo.setModel(new DefaultComboBoxModel<>(new String[] { texto }));
         return combo;
     }
