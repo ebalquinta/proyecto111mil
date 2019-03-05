@@ -42,7 +42,7 @@ public class GraficaCtrl {
     
 public void ventanaAnterior(){
     Alumno alumno = listaActividades.get(0).getAlumno();
-        ServiciosEstadisticaCtrl ventanaAnterior = new ServiciosEstadisticaCtrl(alumno);
+        VerActividadesRealizadasCtrl ventanaAnterior = new VerActividadesRealizadasCtrl(alumno);
         ventanaAnterior.mostrarBrw();
         
         graficaBrw.ocultar();

@@ -6,15 +6,15 @@ import org.integrados.controller.ABM.RegistroActividadABM;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.view.Dialogo;
-import org.integrados.view.estadisticas.ServiciosEstadisticaBrw;
+import org.integrados.view.estadisticas.VerActividadesRealizadasDlg;
 
-public class ServiciosEstadisticaCtrl {
-    private ServiciosEstadisticaBrw estadisticaBrw;
+public class VerActividadesRealizadasCtrl {
+    private VerActividadesRealizadasDlg estadisticaBrw;
     private RegistroActividadABM registroABM = new RegistroActividadABM();
     private Alumno alumno;
     
     
-    public ServiciosEstadisticaCtrl(Alumno alumno) {        
+    public VerActividadesRealizadasCtrl(Alumno alumno) {        
         this.alumno = alumno;
     }
     
@@ -25,12 +25,12 @@ public class ServiciosEstadisticaCtrl {
       
       List<RegistroActividad> listaActividadesRealizadas = actividadesRealizadas(listaActividades);
       
-       estadisticaBrw = new ServiciosEstadisticaBrw(this, listaActividadesRealizadas);
+       estadisticaBrw = new VerActividadesRealizadasDlg(this, listaActividadesRealizadas);
         this.estadisticaBrw.mostrar();
     }
     
 //    public void graficar(RegistroActividad actividad) {        
-//        estadisticaDlg = new ServiciosEstadisticaBrw(this);
+//        estadisticaDlg = new VerActividadesRealizadasDlg(this);
 //       // estadisticaDlg.editar(actividad);
 //        estadisticaDlg.mostrar();
 //    }

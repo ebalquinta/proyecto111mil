@@ -5,7 +5,7 @@
  */
 package org.integrados.view.estadisticas;
 
-import org.integrados.controller.estadisticas.ServiciosEstadisticaCtrl;
+import org.integrados.controller.estadisticas.VerActividadesRealizadasCtrl;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -31,7 +31,7 @@ import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
 import org.integrados.controller.estadisticas.GraficaCtrl;
 
-public class ServiciosEstadisticaBrw extends JFrame {
+public class VerActividadesRealizadasDlg extends JFrame {
 
     private JPanel pnlBotonesEdicion = null;
     private JLabel lblFondo;
@@ -40,10 +40,10 @@ public class ServiciosEstadisticaBrw extends JFrame {
     private JButton btnVolver;
     private JTable tablaActividades = null;
     private List<RegistroActividad> listaActividades;
-    private ServiciosEstadisticaCtrl controlador;
+    private VerActividadesRealizadasCtrl controlador;
     private boolean actividadesDisponibles=true;
 
-    public ServiciosEstadisticaBrw(ServiciosEstadisticaCtrl controlador, List<RegistroActividad> listaActividades) {
+    public VerActividadesRealizadasDlg(VerActividadesRealizadasCtrl controlador, List<RegistroActividad> listaActividades) {
         this.listaActividades = listaActividades;
         this.controlador = controlador;
 
