@@ -23,19 +23,21 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.AbstractTableModel;
-import org.integrados.data.actividad.Actividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
+import org.integrados.view.estadisticas.ActividadesNoRealizadasCtrl;
+import org.integrados.view.estadisticas.ServiciosEstadisticaCtrl;
 
 /**
  *
  * @author Yani
  */
 public class DocenteBrowseAlumnoDlg extends JFrame {
-    private DocenteBrowseAlumnoCtrl controlador;
+
+    private final DocenteBrowseAlumnoCtrl controlador;
     private List<Alumno> listaAlumnos = new ArrayList<>();
-    private int contadorRealizadas;
-    private int contadorNoRealizadas;
+    private final int contadorRealizadas;
+    private final int contadorNoRealizadas;
     private JLabel lblFondo;
     private JPanel pnlBotonesEdicion = null;
     public JButton btnDatos = null;
@@ -43,16 +45,16 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
     public JButton btnSinRealizar = null;
     public JButton btnVolver = null;
     private JTable tablaAlumnos = null;
-    
-    public DocenteBrowseAlumnoDlg(DocenteBrowseAlumnoCtrl controlador, List<Alumno> listaAlumnos, int realizadas, int noRealizadas){
+
+    public DocenteBrowseAlumnoDlg(DocenteBrowseAlumnoCtrl controlador, List<Alumno> listaAlumnos, int realizadas, int noRealizadas) {
         this.controlador = controlador;
         this.listaAlumnos = listaAlumnos;
-        this.contadorRealizadas=realizadas;
-        this.contadorNoRealizadas=noRealizadas;
+        this.contadorRealizadas = realizadas;
+        this.contadorNoRealizadas = noRealizadas;
         initComponent();
     }
-    
-    private void initComponent(){
+
+    private void initComponent() {
         this.setTitle("Lista de Alumnos");
         this.pack();
         this.setSize(800, 600);
@@ -64,38 +66,38 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 controlador.cerrarAplicacion();
             }
-        });            
-        
-         JPanel pnlCentral = new JPanel();
+        });
+
+        JPanel pnlCentral = new JPanel();
         BorderLayout pnlCentralLayout = new BorderLayout();
         pnlCentral.setOpaque(false);
         pnlCentral.setLayout(pnlCentralLayout);
-        
-        lblFondo = new JLabel();        
+
+        lblFondo = new JLabel();
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/Fondo.jpg","Fondo");
+        ImageIcon icon = createImageIcon("images/Fondo.jpg", "Fondo");
         lblFondo.setIcon(icon);
 //        lblFondo.setBounds(0, 0, 800, 600);
-        lblFondo.setLayout(new BorderLayout());        
+        lblFondo.setLayout(new BorderLayout());
 
         // Propiedades de la tabla de alumnos
         tablaAlumnos = new JTable();
-        tablaAlumnos.setOpaque(true);           
-        
+        tablaAlumnos.setOpaque(true);
+
         tablaAlumnos.setBackground(new java.awt.Color(250, 255, 113));
         tablaAlumnos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 90, 39)));
-        tablaAlumnos.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); 
-        
+        tablaAlumnos.setFont(new java.awt.Font("Comic Sans MS", 0, 12));
+
         tablaAlumnos.setAlignmentX(1.0F);
         tablaAlumnos.setAlignmentY(1.0F);
         tablaAlumnos.setGridColor(new java.awt.Color(237, 90, 39));
         tablaAlumnos.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tablaAlumnos.setSelectionBackground(new java.awt.Color(85, 196, 190));           
-        
+        tablaAlumnos.setSelectionBackground(new java.awt.Color(85, 196, 190));
+
         JScrollPane jScrollPane = new JScrollPane(tablaAlumnos);
         jScrollPane.setOpaque(false);
         jScrollPane.getViewport().setOpaque(false);
-        
+
         tablaAlumnos.setModel(new AlumnosTableModel(listaAlumnos, this.contadorRealizadas, this.contadorNoRealizadas));
 
         tablaAlumnos.addMouseListener(new MouseAdapter() {
@@ -125,7 +127,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 volver();
             }
         });
-        
+
         // Propiedades del botón datos personales
         btnDatos = Util.crearBoton("Datos Personales", 12);
         btnDatos.setBounds(40, 7, 120, 22);
@@ -134,22 +136,30 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
-                //ventana datos personales del alumno..  solo mostrar
+                //ventana datos personales del alumno..  solo mostrar. (se puede incluir un boton "observaciones" que lleva a la ventana ObservarAlumnoDlg)
+
+                //ocultar();
             }
         });
-        
-         // Propiedades del botón Actividades realizadas
+
+        // Propiedades del botón Actividades realizadas. Lleva a la ventana estadisticas del alumno
         btnRealizadas = Util.crearBoton("Ver Actividades Realizadas", 12);
         btnRealizadas.setBounds(200, 7, 180, 22);
         pnlBotonesEdicion.add(btnRealizadas);
         btnRealizadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
-                //ventana actividades realizadas (pasar lista de registroActividad del alumno);
+                Alumno alumno = getAlumnoSeleccionado();
+                if (alumno != null) {
+                    ServiciosEstadisticaCtrl estadisticas = new ServiciosEstadisticaCtrl(alumno);
+                    estadisticas.mostrarBrw();
+                    ocultar();
+                } else {
+                    Dialogo.mensaje("¡Atención! ", " Debe seleccionar un alumno para realizar esta opción");
+                }
             }
         });
-        
+
         // Propiedades del botón Actividades sin realizar
         btnSinRealizar = Util.crearBoton("Ver Actividades Sin Realizar", 12);
         btnSinRealizar.setBounds(390, 7, 200, 22);
@@ -157,21 +167,25 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
         btnSinRealizar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
-                //ventana actividades sin realizar (pasar lista de registroActividad del alumno);
+                Alumno alumno = getAlumnoSeleccionado();
+                if (alumno
+                        != null) {
+                    ActividadesNoRealizadasCtrl estadisticas = new ActividadesNoRealizadasCtrl(alumno);
+                    estadisticas.mostrarBrw();
+                    ocultar();
+                } else {
+                    Dialogo.mensaje("¡Atención! ", " Debe seleccionar un alumno para realizar esta opción");
+                }
             }
         });
-        
-         getContentPane().add(pnlBotonesEdicion, BorderLayout.SOUTH);
-        
+
+        getContentPane().add(pnlBotonesEdicion, BorderLayout.SOUTH);
+
         this.add(lblFondo);
-        
+
         this.mostrar();
-        
     }
-    
-    
-    
+
     protected ImageIcon createImageIcon(String path, String description) {
         java.net.URL imgURL = getClass().getResource(path);
         if (imgURL != null) {
@@ -181,39 +195,35 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
             return null;
         }
     }
-    
-      public void volver() {
+
+    public void volver() {
         this.controlador.ocultar();
         this.controlador.docenteInicioDlg.initComponents();
     }
-    
-      private void editarActividadActual() {
-        System.out.println("editarActividad");
-    	Alumno alumno = getAlumnoSeleccionado();
 
-    	if (alumno != null) {
+    private void editarActividadActual() {
+        System.out.println("editarActividad");
+        Alumno alumno = getAlumnoSeleccionado();
+
+        if (alumno != null) {
 //            this.controlador.editar(actividad);
-            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
-    	}
+            Dialogo.error("En construcción", "¡Estamos trabajando para usted!");
+        }
     }
-      
-      private Alumno getAlumnoSeleccionado() {
-    	int indexSeleccionado = this.tablaAlumnos.getSelectedRow();
-    	return ((AlumnosTableModel)this.tablaAlumnos.getModel()).getAlumno(indexSeleccionado);
+
+    private Alumno getAlumnoSeleccionado() {
+        int indexSeleccionado = this.tablaAlumnos.getSelectedRow();
+        return ((AlumnosTableModel) this.tablaAlumnos.getModel()).getAlumno(indexSeleccionado);
     }
-      
-    
+
     public void mostrar() {
         this.setVisible(true);
     }
-    
-    
+
     public void ocultar() {
         this.setVisible(false);
-    } 
-    
-    
-    
+    }
+
     /**
      * Modelo de la JTable de Actividades.
      */
@@ -225,8 +235,8 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
 
         public AlumnosTableModel(List<Alumno> alumnos, int realizadas, int noRealizadas) {
             this.alumnos = alumnos;
-            this.contadorRealizadas=realizadas;
-            this.contadorNoRealizadas=noRealizadas;
+            this.contadorRealizadas = realizadas;
+            this.contadorNoRealizadas = noRealizadas;
         }
 
         @Override
@@ -237,15 +247,14 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 return "Apellido";
             } else if (column == 2) {
                 return "Cant. Actividades Realizadas";
-            } else if (column == 3) {
+            } else {
                 return "Cant. Actividades Sin Realizar";
-            }  else 
-                return "Observaciones";    
+            }
         }
 
         @Override
         public boolean isCellEditable(int row, int column) {
-            return false;
+            return true;
         }
 
         @Override
@@ -256,9 +265,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 return String.class;
             } else if (column == 2) {
                 return String.class;
-            }  else if (column == 3) {
-                return String.class;
-            }  else {
+            } else {
                 return String.class;
             }
         }
@@ -272,10 +279,8 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 return alumno.getApellido();
             } else if (column == 2) {
                 return this.contadorRealizadas;
-            } else if (column == 3) {
-                return this.contadorNoRealizadas;
             } else {
-                return alumno.getObservaciones();
+                return this.contadorNoRealizadas;
             }
         }
 
@@ -290,7 +295,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
 
         @Override
         public int getColumnCount() {
-            return 5;
+            return 4;
         }
 
         public Alumno getAlumno(int index) {
@@ -300,15 +305,5 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 return alumnos.get(index);
             }
         }
-    }    
-    
+    }
 }
-    
-    
-    
-    
-    
-    
-
-
-

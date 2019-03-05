@@ -59,7 +59,7 @@ public class RegistroActividadABM {
             s.beginTransaction();
             s.delete(b);
             s.getTransaction().commit();
-            System.out.println("Registro eliminada");
+            System.out.println("Registro eliminado");
             s.close();
         }catch (Exception e){
             System.out.println("Error al borrar la Resgistro actividad");

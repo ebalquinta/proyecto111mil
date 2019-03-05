@@ -18,9 +18,14 @@ public class DocenteBrowseAlumnoCtrl {
     private int contadorRealizadas = 0;
     private int contadorNoRealizadas = 0;
 
+    public DocenteBrowseAlumnoCtrl() {
+    }
+
+    
     public DocenteBrowseAlumnoCtrl(DocenteInicioDlg docenteInicioDlg) {
         this.docenteInicioDlg = docenteInicioDlg;
     }
+    
 
     public void mostrarBrw() {
         Docente docente = this.docenteInicioDlg.getDocenteInicioCtrl().getDocente();
