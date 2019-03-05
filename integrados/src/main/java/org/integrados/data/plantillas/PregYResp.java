@@ -84,7 +84,7 @@ public class PregYResp extends Plantilla {
         if (respuestaAlumno.size() == this.soluciones.size()) {   //para comparar objetos usar equals
             for (Bloque solucion : this.soluciones) {
                 for (Bloque rta : respuestaAlumno) {
-                    if (solucion.equals(rta)) {     //esta parte se modulariza al metodo equals en Bloque. if(equals){respuesta++}
+                    if (rta.equals(solucion)) {     //esta parte se modulariza al metodo equals en Bloque. if(equals){respuesta++}
                         respuestas++;
                     }
                 }

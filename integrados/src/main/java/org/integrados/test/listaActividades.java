@@ -20,6 +20,7 @@ import org.integrados.data.bloques.BloqueTexto;
 import org.integrados.data.enums.Dificultad;
 import org.integrados.data.enums.Nivel;
 import org.integrados.data.plantillas.Plantilla;
+import org.integrados.data.plantillas.PregYResp;
 import org.integrados.data.plantillas.Unir;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
@@ -40,29 +41,33 @@ public class listaActividades {
         //Bloques
         Bloque bImg = new BloqueImagen("url imagen");
         Bloque bSon = new BloqueSonido("url sonido");
-        Bloque bTex = new BloqueTexto("muy bien");
+        Bloque bTex = new BloqueTexto("se prende");
         
         guardar(bImg);
         guardar(bSon);
         guardar(bTex);
         
 
-        //Lista Bloques
+        //Lista opciones
         List<Bloque> bloques = new ArrayList<>();
         bloques.add(bImg);
         bloques.add(bSon);
         bloques.add(bTex);
         
+        //Lista solucion
+        List<Bloque> bloquesSolucion = new ArrayList<>();
+        bloquesSolucion.add(bTex);
 
         //Plantillas
-        Plantilla unir = new Unir();
+        PregYResp unir = new PregYResp();
         
 //        for (Bloque b : unir.getSoluciones()){
 //            System.out.println("bloque: " + b);
 //        }
         
-        unir.setSoluciones(bloques);
-        unir.setEnunciado("uni");
+        unir.setSoluciones(bloquesSolucion);
+        unir.setEnunciado("¿Que pasa si metemos una lampara en un microondas?");
+        unir.setOpciones(bloques);
         guardar(unir);
 
         Materia materia = new Materia("Lengua");

@@ -44,23 +44,11 @@ public class Bloque {
      *
      * }
      */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Bloque other = (Bloque) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean equals(Object obj) {
+//        final Bloque other = (Bloque) obj;
+//        return Objects.equals(this.id, other.id);
+//    }
 
     @Override
     public String toString() {
