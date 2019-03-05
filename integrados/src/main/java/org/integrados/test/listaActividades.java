@@ -97,8 +97,36 @@ public class listaActividades {
 //        docente.setActividades(listaActividades);
 //        guardar(docente);
 
+        // ACTIVIDADES REALIZADAS //
         RegistroActividad reg = new RegistroActividad(actividad1, alumno, docente);
+        reg.setFinalizoCorrectamente(true);
+        reg.setIntentos(3);
+        reg.setCorazon("Muy bien");
+        reg.setEstrella(1);
+        
+        RegistroActividad reg1 = new RegistroActividad(actividad1, alumno, docente);
+        reg1.setFinalizoCorrectamente(true);
+        reg1.setIntentos(1);
+        reg1.setCorazon("Felicitaciones");
+        reg1.setEstrella(3);
+        
+        RegistroActividad reg2 = new RegistroActividad(actividad1, alumno, docente);
+        reg2.setFinalizoCorrectamente(true);
+        reg2.setIntentos(4);
+        reg2.setCorazon("Sigue Trabajando");
+        reg2.setEstrella(2);
+         
+        // ACTIVIDADES NO REALIZADAS //
+        RegistroActividad reg3 = new RegistroActividad(actividad1, alumno, docente);
+        RegistroActividad reg4 = new RegistroActividad(actividad1, alumno, docente);
+        RegistroActividad reg5 = new RegistroActividad(actividad1, alumno, docente);
+        
         guardar(reg);
+        guardar(reg1);
+        guardar(reg2);
+        guardar(reg3);
+        guardar(reg4);
+        guardar(reg5);
 
     }
 
