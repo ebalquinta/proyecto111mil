@@ -127,6 +127,16 @@ public class VerActividadesSinRealizarDlg extends JFrame {
             }
         });
         
+        // Propiedades del botón asignar Actividades
+        btnVolver = Util.crearBoton("Asignar Actividades", 12);
+        btnVolver.setBounds(50, 7, 130, 22);
+        pnlBotonesEdicion.add(btnVolver);
+        btnVolver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Dialogo.error("En construccion: ", "Proximamente");
+            }
+        });
         // Propiedades del botón Volver
         btnVolver = Util.crearBoton("Volver", 12);
         btnVolver.setBounds(650, 7, 90, 22);
