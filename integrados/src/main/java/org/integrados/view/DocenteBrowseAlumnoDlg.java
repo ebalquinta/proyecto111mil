@@ -47,6 +47,10 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
     public JButton btnVolver = null;
     private JTable tablaAlumnos = null;
 
+    public DocenteBrowseAlumnoCtrl getControlador() {
+        return controlador;
+    }
+
     public DocenteBrowseAlumnoDlg(DocenteBrowseAlumnoCtrl controlador, List<Alumno> listaAlumnos, int realizadas, int noRealizadas) {
         this.controlador = controlador;
         this.listaAlumnos = listaAlumnos;
@@ -147,12 +151,13 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
         btnRealizadas = Util.crearBoton("Ver Actividades Realizadas", 12);
         btnRealizadas.setBounds(200, 7, 180, 22);
         pnlBotonesEdicion.add(btnRealizadas);
+        DocenteBrowseAlumnoDlg aux = this;
         btnRealizadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 Alumno alumno = getAlumnoSeleccionado();
                 if (alumno != null) {
-                    VerActividadesRealizadasCtrl estadisticas = new VerActividadesRealizadasCtrl(alumno);
+                    VerActividadesRealizadasCtrl estadisticas = new VerActividadesRealizadasCtrl(alumno, aux);
                     estadisticas.mostrarBrw();
                     ocultar();
                 } else {

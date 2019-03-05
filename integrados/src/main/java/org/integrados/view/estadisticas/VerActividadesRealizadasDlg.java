@@ -140,7 +140,8 @@ public class VerActividadesRealizadasDlg extends JFrame {
         btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                volver();
+                ocultar();
+                controlador.getDocenteBrowseAlumnoDlg().mostrar();
             }
         });
 
@@ -180,11 +181,6 @@ public class VerActividadesRealizadasDlg extends JFrame {
 
     public void ocultar() {
         this.setVisible(false);
-    }
-
-    public void volver() {
-        this.controlador.ventanaAnterior();
-        this.ocultar();
     }
 
 //Indica cuál es la actividad que está seleccionado en la JTable

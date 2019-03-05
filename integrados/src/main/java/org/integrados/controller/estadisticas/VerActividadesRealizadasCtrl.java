@@ -6,16 +6,22 @@ import org.integrados.controller.ABM.RegistroActividadABM;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.view.Dialogo;
+import org.integrados.view.DocenteBrowseAlumnoDlg;
 import org.integrados.view.estadisticas.VerActividadesRealizadasDlg;
 
 public class VerActividadesRealizadasCtrl {
     private VerActividadesRealizadasDlg estadisticaBrw;
     private RegistroActividadABM registroABM = new RegistroActividadABM();
     private Alumno alumno;
+    private DocenteBrowseAlumnoDlg docenteBrowseAlumnoDlg;
     
-    
-    public VerActividadesRealizadasCtrl(Alumno alumno) {        
+    public VerActividadesRealizadasCtrl(Alumno alumno, DocenteBrowseAlumnoDlg docenteBrowseAlumnoDlg) {        
         this.alumno = alumno;
+        this.docenteBrowseAlumnoDlg = docenteBrowseAlumnoDlg;
+    }
+
+    public DocenteBrowseAlumnoDlg getDocenteBrowseAlumnoDlg() {
+        return docenteBrowseAlumnoDlg;
     }
     
     public void mostrarBrw() {
@@ -54,11 +60,5 @@ public class VerActividadesRealizadasCtrl {
             this.estadisticaBrw.ocultar();
             //this.app.cerrar();
         }
-    }
-    
-    
-    public void ventanaAnterior(){
-        DocenteBrowseAlumnoCtrl ventanaAnterior = new DocenteBrowseAlumnoCtrl();
-        ventanaAnterior.mostrarBrw();
     }
 }
