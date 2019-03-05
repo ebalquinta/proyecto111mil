@@ -117,10 +117,10 @@ public class VerActividadesSinRealizarDlg extends JFrame {
         pnlBotonesEdicion.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
 
         // Propiedades del botón Eliminar
-        btnVolver = Util.crearBoton("Eliminar", 12);
-        btnVolver.setBounds(550, 7, 90, 22);
-        pnlBotonesEdicion.add(btnVolver);
-        btnVolver.addActionListener(new ActionListener() {
+        btnEliminar = Util.crearBoton("Eliminar", 12);
+        btnEliminar.setBounds(550, 7, 90, 22);
+        pnlBotonesEdicion.add(btnEliminar);
+        btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 borrarRegistroActividad();
@@ -134,7 +134,8 @@ public class VerActividadesSinRealizarDlg extends JFrame {
         btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                volver();
+                ocultar();
+                controlador.getDocenteBrowseAlumnoDlg().mostrar();
             }
         });
 

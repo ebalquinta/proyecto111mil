@@ -29,7 +29,7 @@ import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
 import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
-import org.integrados.controller.estadisticas.GraficaCtrl;
+import org.integrados.controller.estadisticas.GraficoCtrl;
 
 public class VerActividadesRealizadasDlg extends JFrame {
 
@@ -120,11 +120,12 @@ public class VerActividadesRealizadasDlg extends JFrame {
         btnGrafico = Util.crearBoton("Graficar", 12);
         btnGrafico.setBounds(500, 7, 90, 22);
         pnlBotonesEdicion.add(btnGrafico);  
+        VerActividadesRealizadasDlg aux = this;
         btnGrafico.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                if (actividadesDisponibles){
-                    GraficaCtrl graf = new GraficaCtrl(listaActividades);
+                    GraficoCtrl graf = new GraficoCtrl(listaActividades, aux);
                     graf.mostrarBrw();
                     ocultar();
                 } else{

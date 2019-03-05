@@ -11,6 +11,7 @@ import org.integrados.controller.ABM.RegistroActividadABM;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.view.Dialogo;
+import org.integrados.view.DocenteBrowseAlumnoDlg;
 import org.integrados.view.estadisticas.VerActividadesSinRealizarDlg;
 
 /**
@@ -22,9 +23,15 @@ public class VerActividadesSinRealizarCtrl {
     private VerActividadesSinRealizarDlg actividadDlg;
     private RegistroActividadABM registroABM = new RegistroActividadABM();
     private Alumno alumno;
+    private DocenteBrowseAlumnoDlg docenteBrowseAlumnoDlg;
 
-    public VerActividadesSinRealizarCtrl(Alumno alumno) {
+    public VerActividadesSinRealizarCtrl(Alumno alumno, DocenteBrowseAlumnoDlg docenteBrowseAlumnoDlg) {
         this.alumno = alumno;
+        this.docenteBrowseAlumnoDlg = docenteBrowseAlumnoDlg;
+    }
+
+    public DocenteBrowseAlumnoDlg getDocenteBrowseAlumnoDlg() {
+        return docenteBrowseAlumnoDlg;
     }
 
     public void mostrarBrw() {

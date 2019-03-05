@@ -5,29 +5,32 @@
  */
 package org.integrados.controller.estadisticas;
 
-import org.integrados.view.estadisticas.GraficaBrw;
+import org.integrados.view.estadisticas.GraficoDlg;
 import java.util.List;
 import org.integrados.controller.ABM.RegistroActividadABM;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.view.Dialogo;
+import org.integrados.view.estadisticas.VerActividadesRealizadasDlg;
 
 /**
  *
  * @author Yani
  */
-public class GraficaCtrl {
+public class GraficoCtrl {
 
-    private GraficaBrw graficaBrw;
+    private GraficoDlg graficaBrw;
     private RegistroActividadABM registroABM = new RegistroActividadABM();
     private List<RegistroActividad> listaActividades;
+    private VerActividadesRealizadasDlg verActividadesRealizadasDlg;
 
-    public GraficaCtrl(List<RegistroActividad> listaActividades) {
+    public GraficoCtrl(List<RegistroActividad> listaActividades, VerActividadesRealizadasDlg verActividadesRealizadasDlg) {
         this.listaActividades = listaActividades;
+        this.verActividadesRealizadasDlg = verActividadesRealizadasDlg;
     }
     
     public void mostrarBrw() {
-        graficaBrw = new GraficaBrw(this, listaActividades);
+        graficaBrw = new GraficoDlg(this, listaActividades);
         this.graficaBrw.mostrar();
     }
     
@@ -37,14 +40,5 @@ public class GraficaCtrl {
             this.graficaBrw.ocultar();
             //this.app.cerrar();
         }
-    }
-    
-    
-public void ventanaAnterior(){
-    Alumno alumno = listaActividades.get(0).getAlumno();
-        VerActividadesRealizadasCtrl ventanaAnterior = new VerActividadesRealizadasCtrl(alumno);
-        ventanaAnterior.mostrarBrw();
-        
-        graficaBrw.ocultar();
-    }
+    }    
 }

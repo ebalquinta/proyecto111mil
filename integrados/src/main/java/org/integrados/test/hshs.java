@@ -14,7 +14,7 @@ import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.exceptions.IntegradosException;
-import org.integrados.view.estadisticas.GraficaBrw;
+import org.integrados.view.estadisticas.GraficoDlg;
 
 
 
@@ -47,7 +47,7 @@ public class hshs {
 //            System.out.println(a.getNombre() + " " + a.getId());
 //        }
 
-//GraficaBrw g = new GraficaBrw();
+//GraficaBrw g = new GraficoDlg();
 //g.setVisible(true);
 
         

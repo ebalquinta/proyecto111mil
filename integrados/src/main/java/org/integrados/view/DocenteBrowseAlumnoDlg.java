@@ -46,10 +46,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
     public JButton btnSinRealizar = null;
     public JButton btnVolver = null;
     private JTable tablaAlumnos = null;
-
-    public DocenteBrowseAlumnoCtrl getControlador() {
-        return controlador;
-    }
+    DocenteBrowseAlumnoDlg aux = this;
 
     public DocenteBrowseAlumnoDlg(DocenteBrowseAlumnoCtrl controlador, List<Alumno> listaAlumnos, int realizadas, int noRealizadas) {
         this.controlador = controlador;
@@ -57,6 +54,10 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
         this.contadorRealizadas = realizadas;
         this.contadorNoRealizadas = noRealizadas;
         initComponent();
+    }
+    
+    public DocenteBrowseAlumnoCtrl getControlador() {
+        return controlador;
     }
 
     private void initComponent() {
@@ -151,14 +152,13 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
         btnRealizadas = Util.crearBoton("Ver Actividades Realizadas", 12);
         btnRealizadas.setBounds(200, 7, 180, 22);
         pnlBotonesEdicion.add(btnRealizadas);
-        DocenteBrowseAlumnoDlg aux = this;
         btnRealizadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 Alumno alumno = getAlumnoSeleccionado();
                 if (alumno != null) {
-                    VerActividadesRealizadasCtrl estadisticas = new VerActividadesRealizadasCtrl(alumno, aux);
-                    estadisticas.mostrarBrw();
+                    VerActividadesRealizadasCtrl actividadesRealizadas = new VerActividadesRealizadasCtrl(alumno, aux);
+                    actividadesRealizadas.mostrarBrw();
                     ocultar();
                 } else {
                     Dialogo.mensaje("¡Atención! ", " Debe seleccionar un alumno para realizar esta opción");
@@ -176,8 +176,8 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 Alumno alumno = getAlumnoSeleccionado();
                 if (alumno
                         != null) {
-                    VerActividadesSinRealizarCtrl estadisticas = new VerActividadesSinRealizarCtrl(alumno);
-                    estadisticas.mostrarBrw();
+                    VerActividadesSinRealizarCtrl actividadesSinRealizar = new VerActividadesSinRealizarCtrl(alumno, aux);
+                    actividadesSinRealizar.mostrarBrw();
                     ocultar();
                 } else {
                     Dialogo.mensaje("¡Atención! ", " Debe seleccionar un alumno para realizar esta opción");

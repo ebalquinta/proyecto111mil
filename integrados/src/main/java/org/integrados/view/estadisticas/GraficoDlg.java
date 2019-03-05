@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
-import org.integrados.controller.estadisticas.GraficaCtrl;
+import org.integrados.controller.estadisticas.GraficoCtrl;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -34,7 +34,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author Yani
  */
-public class GraficaBrw extends JFrame {
+public class GraficoDlg extends JFrame {
 
     private JLabel lblFondo;
     private JPanel pnlGrafico;
@@ -45,9 +45,9 @@ public class GraficaBrw extends JFrame {
     private JLabel nombreAlumno;
     private JButton btnGraficar;
     private JButton btnVolver;
-    private GraficaCtrl controlador;
+    private GraficoCtrl controlador;
 
-    public GraficaBrw(GraficaCtrl controlador, List<RegistroActividad> listaRegistro) {
+    public GraficoDlg(GraficoCtrl controlador, List<RegistroActividad> listaRegistro) {
         this.controlador = controlador;
         this.listaRegistro = listaRegistro;
         initComponents();
