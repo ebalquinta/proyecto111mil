@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
 import org.integrados.controller.actividades.DocenteBrowseActividadesCtrl;
+import org.integrados.controller.actividades.PregRespCtrl;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.util.Util;
 
@@ -139,7 +140,9 @@ public class DocenteBrowseActividadesBrw extends JFrame {
         botonProbar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
+              //  Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
+              PregRespCtrl pregCtrl = new PregRespCtrl(getActividadSeleccionada());
+              pregCtrl.jugar();
             }
         });
         
