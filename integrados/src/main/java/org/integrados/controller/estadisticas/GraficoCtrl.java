@@ -28,6 +28,10 @@ public class GraficoCtrl {
         this.listaActividades = listaActividades;
         this.verActividadesRealizadasDlg = verActividadesRealizadasDlg;
     }
+
+    public VerActividadesRealizadasDlg getVerActividadesRealizadasDlg() {
+        return verActividadesRealizadasDlg;
+    }
     
     public void mostrarBrw() {
         graficaBrw = new GraficoDlg(this, listaActividades);

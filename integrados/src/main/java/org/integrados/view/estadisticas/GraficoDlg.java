@@ -115,7 +115,8 @@ public class GraficoDlg extends JFrame {
         btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                controlador.ventanaAnterior();
+                ocultar();
+                controlador.getVerActividadesRealizadasDlg().mostrar();
             }
         });
 
