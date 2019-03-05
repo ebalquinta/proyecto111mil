@@ -1,11 +1,9 @@
 package org.integrados.data.util;
 
-import java.awt.Color;
+import java.awt.*;
+import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.UIManager;
 
 /**
  *paqiuete util: con .java con metodos que sean utiles para implemetar en distintas clases. 
@@ -66,5 +64,68 @@ clacularPorcentaje y estrellas podrian estar en util.
         
         return boton;
     }
+    
+    /**
+     * Método para crear un label estándar con los estilos básicos de tipografía
+     * @param texto - El texto a insertar en el label
+     * @param negrita - Si es 9, grosor normal, si es 1 negrita
+     * @param tamañoletra - El tamaño de la letra a aplicar (en pixeles)
+     * @return 
+     */
+    public static JLabel crearLabel(String texto, int negrita, int tamañoletra) {
+        JLabel label = new JLabel();
+        label.setFont(new Font("Comic Sans MS", negrita, tamañoletra));
+        label.setText(texto);
+        return label;
+    }
+    
+    
+    /**
+     * Método para crear un text field estándar con los estilos básicos de tipografía
+     * @param tamañoletra - El tamaño de la letra a aplicar (en pixeles)
+     * @return 
+     */
+    public static JTextField crearTextField(int tamañoletra) {
+        JTextField textField = new JTextField();
+        textField.setFont(new Font("Comic Sans MS", 0, tamañoletra));
+        return textField;
+    }
+    
+    /**
+     * Método para crear un combo box estándar con los estilos básicos 
+     * @param texto - El arreglo de texto a insertar en las opciones del combo
+     * @return 
+     */
+    public static JComboBox crearCombo(String[] texto) {
+        JComboBox combo = new JComboBox<>();
+        combo.setEditable(true);
+//        combo.setForeground(new Color(0, 102, 102));
+//        combo.addMouseListener(new java.awt.event.MouseAdapter() {
+//            @Override
+//            public void mouseEntered(java.awt.event.MouseEvent evt) {
+//                combo.setBackground(new java.awt.Color(0, 102, 102));                
+//                combo.setForeground(Color.WHITE);
+//            }
+//
+//            @Override
+//            public void mouseExited(java.awt.event.MouseEvent evt) {
+//                combo.setBackground(UIManager.getColor("control"));
+//                combo.setForeground(new java.awt.Color(0, 102, 102));
+//            }
+//        });
+        combo.setModel(new DefaultComboBoxModel<>(texto));
+        return combo;
+    }
+    
+    /**
+     * Redimencionar una imagen
+     * @param image el ImageIcon a redimensionar
+     * @param width el ancho a redimensionar
+     * @param height el alto a redimensionar
+     * @return 
+     */
+     public static ImageIcon reziseImageIcon(ImageIcon image, int width, int height) {
+         return new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+     }
 
 }

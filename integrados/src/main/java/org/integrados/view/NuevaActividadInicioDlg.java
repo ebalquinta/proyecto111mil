@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.data.util.Util;
 
 /**
@@ -34,7 +35,13 @@ public class NuevaActividadInicioDlg extends JFrame{
         btnMemorama = new JToggleButton();
         btnPregYResp = new JToggleButton();        
        
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                cerrarAplicacion();
+            }
+        });            
         getContentPane().setLayout(null);
          
         // Propiedades de botón Volver
@@ -96,11 +103,14 @@ public class NuevaActividadInicioDlg extends JFrame{
         btnPregYResp.setBounds(400, 320, 140, 140);
         btnPregYResp.setToolTipText("Crea una nueva actividad de Preguntas y Respuestas");
         getContentPane().add(btnPregYResp);
+        
+        NuevaActividadInicioDlg aux = this;
         btnPregYResp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
-                new CrearPregYRespDlg().setVisible(true);
+                ocultar();
+                new CrearPregYRespCtrl(aux, aux.docenteBrowseActividadesBrw.controlador.docenteInicioDlg).mostrarDlg();
             }
         });
         
@@ -133,4 +143,12 @@ public class NuevaActividadInicioDlg extends JFrame{
     public void ocultar() {
         this.setVisible(false);
     }   
+    
+    public void cerrarAplicacion() {
+        Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
+        if (resultado == Dialogo.ResultadoDialogo.Yes) {
+            this.ocultar();
+            this.docenteBrowseActividadesBrw.controlador.docenteInicioDlg.getDocenteInicioCtrl().getApp().cerrar();
+        }
+    }
 }
