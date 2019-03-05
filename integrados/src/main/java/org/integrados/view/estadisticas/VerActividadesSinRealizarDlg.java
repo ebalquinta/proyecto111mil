@@ -5,7 +5,7 @@
  */
 package org.integrados.view.estadisticas;
 
-import org.integrados.controller.estadisticas.ActividadesNoRealizadasCtrl;
+import org.integrados.controller.estadisticas.VerActividadesSinRealizarCtrl;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -35,10 +35,10 @@ import org.integrados.view.DocenteBrowseAlumnoDlg;
  *
  * @author Yani
  */
-public class ActividadesNoRealizadasDlg extends JFrame {
+public class VerActividadesSinRealizarDlg extends JFrame {
 
     private List<RegistroActividad> listaActividades;
-    private ActividadesNoRealizadasCtrl controlador;
+    private VerActividadesSinRealizarCtrl controlador;
     private JButton btnVolver;
     private JButton btnEliminar;
     private JButton btnAgregarActividad;
@@ -47,7 +47,7 @@ public class ActividadesNoRealizadasDlg extends JFrame {
     private JLabel nombreAlumno;
     private JTable tablaActividades = null;
 
-    public ActividadesNoRealizadasDlg(ActividadesNoRealizadasCtrl ctrl, List<RegistroActividad> listaARecuperar) {
+    public VerActividadesSinRealizarDlg(VerActividadesSinRealizarCtrl ctrl, List<RegistroActividad> listaARecuperar) {
         this.listaActividades = listaARecuperar;
         this.controlador = ctrl;
         initComponent();

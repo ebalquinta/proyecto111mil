@@ -26,7 +26,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.table.AbstractTableModel;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
-import org.integrados.controller.estadisticas.ActividadesNoRealizadasCtrl;
+import org.integrados.controller.estadisticas.VerActividadesSinRealizarCtrl;
 import org.integrados.controller.estadisticas.ServiciosEstadisticaCtrl;
 
 /**
@@ -171,7 +171,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 Alumno alumno = getAlumnoSeleccionado();
                 if (alumno
                         != null) {
-                    ActividadesNoRealizadasCtrl estadisticas = new ActividadesNoRealizadasCtrl(alumno);
+                    VerActividadesSinRealizarCtrl estadisticas = new VerActividadesSinRealizarCtrl(alumno);
                     estadisticas.mostrarBrw();
                     ocultar();
                 } else {

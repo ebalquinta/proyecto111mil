@@ -11,19 +11,19 @@ import org.integrados.controller.ABM.RegistroActividadABM;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.view.Dialogo;
-import org.integrados.view.estadisticas.ActividadesNoRealizadasDlg;
+import org.integrados.view.estadisticas.VerActividadesSinRealizarDlg;
 
 /**
  *
  * @author Yani
  */
-public class ActividadesNoRealizadasCtrl {
+public class VerActividadesSinRealizarCtrl {
 
-    private ActividadesNoRealizadasDlg actividadDlg;
+    private VerActividadesSinRealizarDlg actividadDlg;
     private RegistroActividadABM registroABM = new RegistroActividadABM();
     private Alumno alumno;
 
-    public ActividadesNoRealizadasCtrl(Alumno alumno) {
+    public VerActividadesSinRealizarCtrl(Alumno alumno) {
         this.alumno = alumno;
     }
 
@@ -31,7 +31,7 @@ public class ActividadesNoRealizadasCtrl {
         List<RegistroActividad> listaActividades = registroABM.listaActividades(alumno.getId());
         List<RegistroActividad> listaActividadesNoRealizadas = actividadesRealizadas(listaActividades);
 
-        actividadDlg = new ActividadesNoRealizadasDlg(this, listaActividadesNoRealizadas);
+        actividadDlg = new VerActividadesSinRealizarDlg(this, listaActividadesNoRealizadas);
         this.actividadDlg.mostrar();
     }
 
