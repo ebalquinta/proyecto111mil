@@ -5,6 +5,7 @@
  */
 package org.integrados.view.estadisticas;
 
+import org.integrados.controller.estadisticas.ServiciosEstadisticaCtrl;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -28,7 +29,7 @@ import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
 import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
-import org.integrados.view.estadisticas.grafico.GraficaCtrl;
+import org.integrados.controller.estadisticas.GraficaCtrl;
 
 public class ServiciosEstadisticaBrw extends JFrame {
 

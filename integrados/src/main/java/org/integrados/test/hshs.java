@@ -14,7 +14,7 @@ import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.exceptions.IntegradosException;
-import org.integrados.view.estadisticas.grafico.GraficaBrw;
+import org.integrados.view.estadisticas.GraficaBrw;
 
 
 

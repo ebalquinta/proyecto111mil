@@ -5,6 +5,7 @@
  */
 package org.integrados.view.estadisticas;
 
+import org.integrados.controller.estadisticas.ActividadesNoRealizadasCtrl;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -29,7 +30,6 @@ import org.integrados.data.util.Util;
 import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
 import org.integrados.view.DocenteBrowseAlumnoDlg;
-import org.integrados.view.estadisticas.grafico.GraficaBrw;
 
 /**
  *

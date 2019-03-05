@@ -25,8 +25,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.table.AbstractTableModel;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
-import org.integrados.view.estadisticas.ActividadesNoRealizadasCtrl;
-import org.integrados.view.estadisticas.ServiciosEstadisticaCtrl;
+import org.integrados.controller.estadisticas.ActividadesNoRealizadasCtrl;
+import org.integrados.controller.estadisticas.ServiciosEstadisticaCtrl;
 
 /**
  *

@@ -3,7 +3,7 @@
  */
 package org.integrados.view;
 
-import org.integrados.view.estadisticas.ServiciosEstadisticaCtrl;
+import org.integrados.controller.estadisticas.ServiciosEstadisticaCtrl;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
