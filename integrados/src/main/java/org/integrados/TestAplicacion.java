@@ -8,7 +8,7 @@ package org.integrados;
 import org.integrados.exceptions.IntegradosException;
 import org.integrados.view.Dialogo;
 //import org.integrados.view.MySqlLog;
-
+ 
 /**
  *
  * @author balquinta

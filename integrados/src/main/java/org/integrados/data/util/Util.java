@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+ 
 /**
  *paqiuete util: con .java con metodos que sean utiles para implemetar en distintas clases. 
 los metodos estaticos. la clase NO (publica).

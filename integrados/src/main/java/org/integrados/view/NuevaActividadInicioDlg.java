@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.data.util.Util;
-
+ 
 /**
  *
  * @author GrupoFront
