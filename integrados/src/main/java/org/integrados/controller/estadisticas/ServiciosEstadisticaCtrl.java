@@ -6,7 +6,6 @@ import org.integrados.controller.ABM.RegistroActividadABM;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.view.Dialogo;
-import org.integrados.view.DocenteBrowseAlumnoCtrl;
 import org.integrados.view.estadisticas.ServiciosEstadisticaBrw;
 
 public class ServiciosEstadisticaCtrl {

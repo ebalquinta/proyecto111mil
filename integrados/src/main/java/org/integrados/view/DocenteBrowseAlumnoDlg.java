@@ -5,6 +5,7 @@
  */
 package org.integrados.view;
 
+import org.integrados.controller.estadisticas.DocenteBrowseAlumnoCtrl;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
