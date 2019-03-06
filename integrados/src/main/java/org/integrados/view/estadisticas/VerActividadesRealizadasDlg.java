@@ -79,7 +79,7 @@ public class VerActividadesRealizadasDlg extends JFrame {
         lblFondo = new JLabel();
 
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/estadisticas/Fondo2.jpg", "Fondo");
+        ImageIcon icon = createImageIcon("../images/Fondo2.jpg", "Fondo");
         lblFondo.setIcon(icon);
         lblFondo.setBounds(0, 0, 800, 600);
         lblFondo.setLayout(new BorderLayout());
@@ -165,12 +165,12 @@ public class VerActividadesRealizadasDlg extends JFrame {
     }
 
     private String recuperarNombreAlumno(List<RegistroActividad> registro) {
-        if (registro.get(0) != null) {
+        try {
             RegistroActividad reg = registro.get(0);
             Alumno alumno = reg.getAlumno();
             actividadesDisponibles = true;
             return "Alumno : " + alumno.getNombre() + " " + alumno.getApellido();
-        } else {
+        } catch (Exception e) {
             actividadesDisponibles = false;
             return "El Alumno: " + " No posee actividades realizadas";
         }

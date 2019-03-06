@@ -23,13 +23,10 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.AbstractTableModel;
-import org.integrados.data.actividad.Actividad;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
 import org.integrados.view.Dialogo;
-import org.integrados.view.DocenteBrowseActividadesBrw;
-import org.integrados.view.DocenteBrowseAlumnoDlg;
 
 /**
  *
@@ -82,7 +79,7 @@ public class VerActividadesSinRealizarDlg extends JFrame {
         lblFondo = new JLabel();
 
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/estadisticas/Fondo2.jpg", "Fondo");
+        ImageIcon icon = createImageIcon("../images/Fondo2.jpg", "Fondo");
         lblFondo.setIcon(icon);
         lblFondo.setBounds(0, 0, 800, 600);
         lblFondo.setLayout(new BorderLayout());
@@ -128,13 +125,13 @@ public class VerActividadesSinRealizarDlg extends JFrame {
         });
         
         // Propiedades del botón asignar Actividades
-        btnVolver = Util.crearBoton("Asignar Actividades", 12);
-        btnVolver.setBounds(50, 7, 130, 22);
-        pnlBotonesEdicion.add(btnVolver);
-        btnVolver.addActionListener(new ActionListener() {
+        btnAgregarActividad = Util.crearBoton("Asignar Actividades", 12);
+        btnAgregarActividad.setBounds(50, 7, 130, 22);
+        pnlBotonesEdicion.add(btnAgregarActividad);
+        btnAgregarActividad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.error("En construccion: ", "Proximamente");
+                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });
         // Propiedades del botón Volver
