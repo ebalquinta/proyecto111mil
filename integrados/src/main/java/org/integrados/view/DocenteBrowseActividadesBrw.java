@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
 import org.integrados.controller.actividades.DocenteBrowseActividadesCtrl;
-import org.integrados.controller.actividades.PregRespCtrl;
+import org.integrados.controller.actividades.JugarPregYRespCtrl;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.util.Util;
 
@@ -141,7 +141,7 @@ public class DocenteBrowseActividadesBrw extends JFrame {
             @Override
             public void actionPerformed(ActionEvent evt) {
               //  Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
-              PregRespCtrl pregCtrl = new PregRespCtrl(getActividadSeleccionada());
+              JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(getActividadSeleccionada());
               pregCtrl.jugar();
             }
         });
