@@ -39,7 +39,7 @@ public class AlumnoInicioCtrl {
         Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
         if (resultado == Dialogo.ResultadoDialogo.Yes) {
             this.alumnoInicioDlg.ocultar();
-            this.app.cerrar();
+            LoginCtrl.app.cerrar();
         }
     }
 

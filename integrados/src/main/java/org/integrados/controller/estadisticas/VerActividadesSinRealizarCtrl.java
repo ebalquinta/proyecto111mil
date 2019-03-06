@@ -8,6 +8,7 @@ package org.integrados.controller.estadisticas;
 import java.util.ArrayList;
 import java.util.List;
 import org.integrados.controller.ABM.RegistroActividadABM;
+import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.view.Dialogo;
@@ -58,7 +59,7 @@ public class VerActividadesSinRealizarCtrl {
         Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
         if (resultado == Dialogo.ResultadoDialogo.Yes) {
             this.actividadDlg.ocultar();
-            //this.app.cerrar();
+            LoginCtrl.app.cerrar();
         }
     }
     

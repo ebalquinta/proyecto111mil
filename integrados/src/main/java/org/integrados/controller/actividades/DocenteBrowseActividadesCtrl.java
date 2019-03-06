@@ -1,15 +1,10 @@
 package org.integrados.controller.actividades;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.integrados.controller.ABM.ActividadABM;
+import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
-import org.integrados.data.actividad.Materia;
-import org.integrados.data.enums.Dificultad;
-import org.integrados.data.enums.Nivel;
-import org.integrados.data.plantillas.PregYResp;
 import org.integrados.data.usuarios.Docente;
-import static org.integrados.test.listaActividades.listaActividades;
 import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
 import org.integrados.view.DocenteBrowseActividadesDlg;
@@ -99,7 +94,7 @@ public class DocenteBrowseActividadesCtrl {
         Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
         if (resultado == Dialogo.ResultadoDialogo.Yes) {
             this.actividadBrw.ocultar();
-//            this.app.cerrar();
+            LoginCtrl.app.cerrar();
         }
     }
     

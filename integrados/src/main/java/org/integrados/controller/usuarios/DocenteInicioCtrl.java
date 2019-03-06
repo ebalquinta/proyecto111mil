@@ -46,7 +46,7 @@ public class DocenteInicioCtrl {
         Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
         if (resultado == Dialogo.ResultadoDialogo.Yes) {
             this.docenteInicioDlg.ocultar();
-            this.app.cerrar();
+            LoginCtrl.app.cerrar();
         }
     }
 
