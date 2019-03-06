@@ -1,5 +1,6 @@
 package org.integrados.controller.actividades;
 
+import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.view.CrearPregYRespDlg;
 import org.integrados.view.Dialogo;
@@ -31,7 +32,7 @@ public class CrearPregYRespCtrl {
         Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
         if (resultado == Dialogo.ResultadoDialogo.Yes) {
             this.crearPregYRespDlg.ocultar();
-            this.docenteInicioDlg.getDocenteInicioCtrl().getApp().cerrar();
+            LoginCtrl.app.cerrar();
         }
     }
 }

@@ -4,6 +4,7 @@ package org.integrados.controller.estadisticas;
 import java.util.List;
 import org.integrados.Aplicacion;
 import org.integrados.controller.ABM.PersonaABM;
+import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
@@ -13,7 +14,6 @@ import org.integrados.view.DocenteInicioDlg;
 
 public class DocenteBrowseAlumnoCtrl {
 
-    private Aplicacion app;
     private DocenteBrowseAlumnoDlg alumnoBrw;
     public DocenteInicioDlg docenteInicioDlg;
     private PersonaABM alumnoABM = new PersonaABM();
@@ -64,7 +64,7 @@ public class DocenteBrowseAlumnoCtrl {
         Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
         if (resultado == Dialogo.ResultadoDialogo.Yes) {
             this.alumnoBrw.ocultar();
-            //this.app.cerrar();   ----> ERROR  Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
+            LoginCtrl.app.cerrar();
         }
     }
 

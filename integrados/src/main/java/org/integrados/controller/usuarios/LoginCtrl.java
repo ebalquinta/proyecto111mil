@@ -22,7 +22,7 @@ import org.integrados.view.LoginDlg;
  */
 public class LoginCtrl {
     
-    private Aplicacion app;
+    public static Aplicacion app;
     private Persona persona;
     private LoginDlg loginDlg;
 
