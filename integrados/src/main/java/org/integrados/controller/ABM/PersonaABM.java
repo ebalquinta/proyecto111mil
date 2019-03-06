@@ -27,6 +27,21 @@ public class PersonaABM {
         }
     }
     
+    public Alumno getAlumno(int id) {
+        Session s=null;
+        Alumno p=null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            p=(Alumno)s.get(Alumno.class, id);
+            s.getTransaction().commit();
+            s.close();
+            return p;
+        } catch(Exception e) {
+            System.out.println("Error al buscar a la persona id= " + id);
+            return null;
+        }
+    }
     public Persona get(int id) {
         Session s=null;
         Persona p=null;

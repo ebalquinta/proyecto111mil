@@ -14,7 +14,7 @@ import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.exceptions.IntegradosException;
-import org.integrados.view.estadisticas.GraficoDlg;
+import org.integrados.view.estadisticas.AsignarActividadesDlg;
 
 
 
@@ -28,14 +28,9 @@ public class hshs {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IntegradosException {
-        
-        Alumno al = getal(1);
-        
-        RegistroActividad r1 = getr(6);
-        r1.setEstrella(3);
-        r1.setFinalizoCorrectamente(true);
-        r1.setIntentos(2);
-        guardarR(r1);
+         Docente d = get(1);
+        AsignarActividadesDlg a = new AsignarActividadesDlg(d);
+        a.mostrar();
         
 //        ObservarAlumnoDlg ob = new ObservarAlumnoDlg(al);
         
