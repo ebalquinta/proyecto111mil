@@ -159,7 +159,6 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 if (alumno != null) {
                     VerActividadesRealizadasCtrl actividadesRealizadas = new VerActividadesRealizadasCtrl(alumno, aux);
                     actividadesRealizadas.mostrarBrw();
-                    ocultar();
                 } else {
                     Dialogo.mensaje("¡Atención! ", " Debe seleccionar un alumno para realizar esta opción");
                 }

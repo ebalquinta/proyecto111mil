@@ -31,9 +31,14 @@ public class VerActividadesRealizadasCtrl {
       List<RegistroActividad> listaActividades = registroABM.listaActividades(alumno.getId());
       
       List<RegistroActividad> listaActividadesRealizadas = actividadesRealizadas(listaActividades);
-      
-       estadisticaBrw = new VerActividadesRealizadasDlg(this, listaActividadesRealizadas);
-        this.estadisticaBrw.mostrar();
+      if (listaActividadesRealizadas.size() == 0) {
+          Dialogo.mensaje("¡Atencion! ", "El alumno no posee actividades realizadas");
+      } else {
+          estadisticaBrw = new VerActividadesRealizadasDlg(this, listaActividadesRealizadas);
+          this.estadisticaBrw.mostrar();
+          this.docenteBrowseAlumnoDlg.ocultar();
+      }
+       
     }
     
     
