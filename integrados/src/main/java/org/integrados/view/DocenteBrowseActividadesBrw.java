@@ -117,8 +117,7 @@ public class DocenteBrowseActividadesBrw extends JFrame {
         botonEdicion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
-                //editarActividadActual();
+                editarActividadActual();
             }
         });
 
@@ -200,8 +199,7 @@ public class DocenteBrowseActividadesBrw extends JFrame {
     	Actividad actividad = getActividadSeleccionada();
 
     	if (actividad != null) {
-//            this.controlador.editar(actividad);
-            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+            this.controlador.editar(actividad);
     	}
     }
     

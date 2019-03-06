@@ -53,7 +53,7 @@ public class NuevaActividadInicioDlg extends JFrame{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 ocultar();
-                docenteBrowseActividadesBrw.controlador.mostrarBrw();
+                docenteBrowseActividadesBrw.controlador.mostrar();
             }
         });
 
@@ -110,7 +110,7 @@ public class NuevaActividadInicioDlg extends JFrame{
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
                 ocultar();
-                new CrearPregYRespCtrl(aux, aux.docenteBrowseActividadesBrw.controlador.docenteInicioDlg).mostrarDlg();
+                new CrearPregYRespCtrl(aux, aux.docenteBrowseActividadesBrw.controlador.docenteInicioDlg).mostrar();
             }
         });
         
