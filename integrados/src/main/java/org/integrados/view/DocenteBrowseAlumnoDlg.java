@@ -173,8 +173,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 Alumno alumno = getAlumnoSeleccionado();
-                if (alumno
-                        != null) {
+                if (alumno != null) {
                     VerActividadesSinRealizarCtrl actividadesSinRealizar = new VerActividadesSinRealizarCtrl(alumno, aux);
                     actividadesSinRealizar.mostrarBrw();
                     ocultar();
