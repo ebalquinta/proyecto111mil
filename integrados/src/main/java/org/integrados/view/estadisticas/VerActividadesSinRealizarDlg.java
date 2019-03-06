@@ -51,7 +51,7 @@ public class VerActividadesSinRealizarDlg extends JFrame {
     }
 
     private void initComponent() {
-        this.setTitle("Lista de Actividades Realizadas");
+        this.setTitle("Lista de Actividades Sin Realizar");
         this.pack();
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
