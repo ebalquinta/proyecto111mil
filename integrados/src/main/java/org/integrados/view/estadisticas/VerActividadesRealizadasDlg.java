@@ -165,12 +165,12 @@ public class VerActividadesRealizadasDlg extends JFrame {
     }
 
     private String recuperarNombreAlumno(List<RegistroActividad> registro) {
-        try {
+        if (registro.get(0) != null) {
             RegistroActividad reg = registro.get(0);
             Alumno alumno = reg.getAlumno();
             actividadesDisponibles = true;
             return "Alumno : " + alumno.getNombre() + " " + alumno.getApellido();
-        } catch (Exception e) {
+        } else {
             actividadesDisponibles = false;
             return "El Alumno: " + " No posee actividades realizadas";
         }

@@ -36,12 +36,6 @@ public class VerActividadesRealizadasCtrl {
         this.estadisticaBrw.mostrar();
     }
     
-//    public void graficar(RegistroActividad actividad) {        
-//        estadisticaDlg = new VerActividadesRealizadasDlg(this);
-//       // estadisticaDlg.editar(actividad);
-//        estadisticaDlg.mostrar();
-//    }
-    
     
     //Metodo que reune las actividades ya realizadas por el alumno
     public List<RegistroActividad> actividadesRealizadas(List<RegistroActividad> listaActividades){
