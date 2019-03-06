@@ -7,7 +7,7 @@ import org.integrados.data.actividad.Actividad;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesBrw;
-import org.integrados.view.DocenteBrowseActividadesDlg;
+import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.view.DocenteInicioDlg;
 import org.integrados.view.NuevaActividadInicioDlg;
  
@@ -18,7 +18,6 @@ import org.integrados.view.NuevaActividadInicioDlg;
 public class DocenteBrowseActividadesCtrl {
     
     private DocenteBrowseActividadesBrw actividadBrw = null;    
-    private DocenteBrowseActividadesDlg actividadDlg = null;
     public DocenteInicioDlg docenteInicioDlg;
     private ActividadABM actividadABM =new ActividadABM();
     
@@ -28,7 +27,7 @@ public class DocenteBrowseActividadesCtrl {
         this.docenteInicioDlg = docenteInicioDlg;
     }
     
-    public void mostrarBrw() {
+    public void mostrar() {
         
        Docente docente =  this.docenteInicioDlg.getDocenteInicioCtrl().getDocente();
      List<Actividad> listaActividades = actividadABM.listaActividades(docente.getId());
@@ -45,22 +44,26 @@ public class DocenteBrowseActividadesCtrl {
         this.actividadBrw.mostrar();
     }   
 
-    public void agregar() {
-        Actividad actividad = new Actividad();
-        //acá podría poner valores por defecto.
-        
-        // actividadDlg = new ActividadDlg(this);
-        // actividadDlg.nuevo(actividad);
-        //actividadDlg.mostrar(actividadBrw.getFrame());
-        
+    public void agregar() {   
         NuevaActividadInicioDlg nuevaActividadInicioDlg = new NuevaActividadInicioDlg(actividadBrw);
         nuevaActividadInicioDlg.mostrar();        
     }
     
-    public void editar(Actividad actividad) {        
-        actividadDlg = new DocenteBrowseActividadesDlg(this);
-        actividadDlg.editar(actividad);
-        actividadDlg.mostrar();
+    public void editar(Actividad actividad) {      
+        String tipoPlantilla = actividad.getPlantilla().getTipoPlantilla();
+        if (tipoPlantilla.equals("Preguntas y Respuestas")) {            
+            CrearPregYRespCtrl actividadDlg = new CrearPregYRespCtrl(this);
+            actividadDlg.editar(actividad);
+        } else if (tipoPlantilla.equals("Memorama")) {
+            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+            return;
+        } else if (tipoPlantilla.equals("Unir")) {
+            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+            return;        
+        } else if (tipoPlantilla.equals("Ordenamiento")) {
+            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+            return;
+        }        
     }
     
     

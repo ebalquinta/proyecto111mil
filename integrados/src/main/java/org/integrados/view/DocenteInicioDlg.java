@@ -55,7 +55,7 @@ public class DocenteInicioDlg extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 // Aquí debemos enlazar con el browser
                 DocenteBrowseActividadesCtrl ctrl = new DocenteBrowseActividadesCtrl(aux);
-                ctrl.mostrarBrw();
+                ctrl.mostrar();
                 ocultar();
             }
         });

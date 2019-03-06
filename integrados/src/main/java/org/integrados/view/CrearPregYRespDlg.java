@@ -12,6 +12,7 @@ import javax.swing.border.*;
 import javax.swing.table.*;
 import org.netbeans.lib.awtextra.*;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
+import org.integrados.data.actividad.Actividad;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.data.util.Util;
  
@@ -23,7 +24,8 @@ public class CrearPregYRespDlg  extends JFrame {
 
     // Variables declaration     
     public CrearPregYRespCtrl controlador;
-    public Docente docente;          
+    public Docente docente;      
+    private String titulo = null;    
     
     private JScrollPane panel = null;
     private JLabel lblFondo = null;
@@ -66,20 +68,41 @@ public class CrearPregYRespDlg  extends JFrame {
     /**
      * Creates new form CrearPregYRespDlg
      */
-    public CrearPregYRespDlg() {
-        initComponents();
-    }
+    
+    /**
+     * Constructor para usar desde la ventana de Nueva Actividad
+     * @param controlador - Controlador de la vista a crear
+     * @param docente - Docente logueado
+     */
     public CrearPregYRespDlg(CrearPregYRespCtrl controlador, Docente docente) {
         this.controlador = controlador;
         this.docente = docente;
+        this.titulo = null;
         initComponents();
+    }
+    /**
+     * Constructor para usar desde la lista de Actividades del Docente, con la opcion de Editar Actividad
+     * @param controlador - Controlador de la vista a crear
+     * @param docente - Docente logueado
+     * @param titulo - Título dinámico on id de actividad a editar 
+     */
+    public CrearPregYRespDlg(CrearPregYRespCtrl controlador, Docente docente, String titulo) {
+        this.controlador = controlador;
+        this.docente = docente;
+        this.titulo = titulo;
+        initComponents();
+        
     }
 
     /**
      * Metodo para inicializar los componentes de la vista
      */          
-    private void initComponents() {      
-        this.setTitle("Nueva Actividad - Pregunta y Respuestas");
+    private void initComponents() {    
+        if (this.controlador.isAlta()) {
+            this.setTitle("Nueva Actividad - Pregunta y Respuestas");
+        } else {
+            this.setTitle(titulo);
+        }
         this.pack();
         this.setSize(800, 600);
         this.setBackground(new Color(0, 102, 102));
@@ -102,8 +125,12 @@ public class CrearPregYRespDlg  extends JFrame {
         lblFondo.setIcon(icon);
         lblFondo.setBounds(0, 0, 800, 600);
         
-        // Creando elementos de seccion 1
-        lblTitulo = Util.crearLabel("Crear Pregunta y Respuestas", 0, 18);
+        // Creando elementos de seccion 1        
+        if (this.controlador.isAlta()) {
+            lblTitulo = Util.crearLabel("Crear Pregunta y Respuestas", 0, 18);
+        } else {
+            lblTitulo = Util.crearLabel("Editar Pregunta y Respuestas", 0, 18);
+        }
         comboMateria = Util.crearCombo(new String[] {"Materia 1", "Materia 2", "Materia 3"});
         comboNivel = Util.crearCombo(new String[] {"Nivel 1", "Nivel 2", "Nivel 3"});
         comboNivel.addActionListener(new ActionListener() {
@@ -211,7 +238,11 @@ public class CrearPregYRespDlg  extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 ocultar();
-                controlador.nuevaActividadInicioDlg.mostrar();
+                if ( controlador.nuevaActividadInicioDlg != null ) {
+                    controlador.nuevaActividadInicioDlg.mostrar();
+                } else if ( controlador.docenteBrowseActividadesCtrl != null ) {
+                    controlador.docenteBrowseActividadesCtrl.mostrar();
+                }
             }
         });
 
@@ -257,7 +288,12 @@ public class CrearPregYRespDlg  extends JFrame {
         
         getContentPane().add(lblFondo, new AbsoluteConstraints(0, 0, 800, 600));
         
+        if (!this.controlador.isAlta()) {
+            actualizarComponentes();
+        }
+        
         pack();
+             
     }                   
 
     private void comboDificultadActionPerformed(ActionEvent evt) {                                           
@@ -296,6 +332,20 @@ public class CrearPregYRespDlg  extends JFrame {
             System.out.println("Couldn't find file: " + path);
             return null;
         }
+    }
+    
+    //Actualiza los componentes con los datos del modelo
+    private void actualizarComponentes() {    
+        Actividad actividad = this.controlador.getActividad();
+        this.comboMateria.setSelectedItem(actividad.getMateria().getMateria());
+        this.comboNivel.setSelectedItem(actividad.getNivel());
+        this.comboGrado.setSelectedItem(actividad.getGrado());
+        this.comboDificultad.setSelectedItem(actividad.getDificultad());
+        this.txtMaxIntentos.setText(actividad.getMaxIntentos().toString());
+        this.txtTema.setText(actividad.getTema());
+        this.txtIngreseTexto.setText(actividad.getPlantilla().getEnunciado());
+        this.txtIngreseImagen.setText(actividad.getPlantilla().getImagenEnunciado());
+        this.txtIngreseSonido.setText(actividad.getPlantilla().getSonidoEnunciado());
     }
     
     public void mostrar() {
