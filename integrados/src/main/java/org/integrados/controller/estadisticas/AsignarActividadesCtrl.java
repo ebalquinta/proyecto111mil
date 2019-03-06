@@ -28,7 +28,7 @@ public class AsignarActividadesCtrl {
         List<Actividad> actividadesDocente = new ArrayList<>();
         List<Actividad> actividadesAlumno;
     
-        for(Actividad actAlumno : actividadesAlumno)
+//        for(Actividad actAlumno : actividadesAlumno)
         
     }
 }
