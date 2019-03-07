@@ -31,7 +31,7 @@ import org.integrados.view.Dialogo;
 public class ActividadDlg {
 
     private ActividadCtrl controlador = null;
-    private ActividadABM actividad = null;
+    private ActividadABMs actividad = null;
     
     //Booleano que indica si se está dando de alta una actividad o es una edición.
     private boolean alta = false;
@@ -57,13 +57,13 @@ public class ActividadDlg {
         this.controlador = controlador;
     }
     
-    public void editar(ActividadABM actividad) {
+    public void editar(ActividadABMs actividad) {
         this.actividad = actividad;
         this.alta = false;        
         this.titulo = "Edición de Actividad nro. " + actividad.getId();
     }
     
-    public void nuevo(ActividadABM actividad) {
+    public void nuevo(ActividadABMs actividad) {
         this.actividad = actividad;
         this.alta = true; 
         this.titulo = "Agregar Nueva Actividad";

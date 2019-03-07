@@ -39,9 +39,9 @@ public class ActividadBrw {
     public JButton botonVolver = null;
     private JTable tablaActividades = null;
     
-    private List<ActividadABM> listaActividades;
+    private List<ActividadABMs> listaActividades;
 
-    public ActividadBrw(ActividadCtrl controlador, List<ActividadABM> listaActividades) {
+    public ActividadBrw(ActividadCtrl controlador, List<ActividadABMs> listaActividades) {
         this.controlador = controlador;
         this.listaActividades = listaActividades;
     }
@@ -174,7 +174,7 @@ public class ActividadBrw {
         this.controlador.agregar();
     }
     
-    public void agregarATabla(ActividadABM actividadNueva) {
+    public void agregarATabla(ActividadABMs actividadNueva) {
         ((ActividadTableModel)tablaActividades.getModel()).addActividad(actividadNueva);
     }
     ////////////////////////////////////Fin->Nueva ActividadABM///////////////////////////////////
@@ -182,7 +182,7 @@ public class ActividadBrw {
     /////////////////////////////////////Editar ActividadABM//////////////////////////////////////
     private void editarActividadActual() {
         System.out.println("editarActividad");
-    	ActividadABM actividad = getActividadSeleccionada();
+    	ActividadABMs actividad = getActividadSeleccionada();
 
     	if (actividad != null) {
 //            this.controlador.editar(actividad);
@@ -190,7 +190,7 @@ public class ActividadBrw {
     	}
     }
     
-    public void actualizarATabla(ActividadABM actividadEditada) {
+    public void actualizarATabla(ActividadABMs actividadEditada) {
         ((ActividadTableModel)tablaActividades.getModel()).updateActividad(actividadEditada);
     }
     ///////////////////////////////////FIN->Editar ActividadABM///////////////////////////////////
@@ -204,7 +204,7 @@ public class ActividadBrw {
     /////////////////////////////////////Borrar ActividadABM//////////////////////////////////////
     private void borrarActividad() {
         System.out.println("borrarActividad");
-    	ActividadABM actividad = getActividadSeleccionada();
+    	ActividadABMs actividad = getActividadSeleccionada();
         
         if (actividad != null)  {
             try {        
@@ -218,7 +218,7 @@ public class ActividadBrw {
     ///////////////////////////////////FIN->Borrar ActividadABM///////////////////////////////////
     
     //Indica cuál es la actividad que está seleccionado en la JTable
-    private ActividadABM getActividadSeleccionada() {
+    private ActividadABMs getActividadSeleccionada() {
     	int indexSeleccionado = this.tablaActividades.getSelectedRow();
     	return ((ActividadTableModel)this.tablaActividades.getModel()).getActividad(indexSeleccionado);
     }
@@ -228,9 +228,9 @@ public class ActividadBrw {
      */
     public class ActividadTableModel extends AbstractTableModel {
 
-        protected List<ActividadABM> actividades;
+        protected List<ActividadABMs> actividades;
 
-        public ActividadTableModel(List<ActividadABM> actividades) {
+        public ActividadTableModel(List<ActividadABMs> actividades) {
             this.actividades = actividades;
         }
 
@@ -272,7 +272,7 @@ public class ActividadBrw {
 
         @Override
         public Object getValueAt(int row, int column) {
-            ActividadABM actividad = actividades.get(row);
+            ActividadABMs actividad = actividades.get(row);
             if (column == 0) {
                 return actividad.getId();
             } else if (column == 1) {
@@ -300,7 +300,7 @@ public class ActividadBrw {
             return 5;
         }
 
-        public ActividadABM getActividad(int index) {
+        public ActividadABMs getActividad(int index) {
             if ((index < 0) || (index > actividades.size())) {
                 return null;
             } else {
@@ -308,19 +308,19 @@ public class ActividadBrw {
             }
         }
 
-        public void removeActividad(ActividadABM actividad) {
+        public void removeActividad(ActividadABMs actividad) {
             actividades.remove(actividad);
             fireTableDataChanged();
         }
 
-        public void addActividad(ActividadABM actividad) {
+        public void addActividad(ActividadABMs actividad) {
             actividades.add(actividad);
             fireTableDataChanged();
         }
 
-        public void updateActividad(ActividadABM actividadActualizado) {
+        public void updateActividad(ActividadABMs actividadActualizado) {
             int index = 0;
-            for (ActividadABM actividad : actividades) {
+            for (ActividadABMs actividad : actividades) {
                 if (actividad.equals(actividadActualizado)) {
                     actividades.set(index, actividadActualizado);
                     break;

@@ -10,11 +10,20 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.integrados.bd.HibernateUtiles;
+import org.integrados.controller.ABM.ActividadABM;
+import org.integrados.controller.ABM.MateriaABM;
+import org.integrados.controller.ABM.PersonaABM;
+import org.integrados.controller.ABM.PlantillaABM;
+import org.integrados.controller.estadisticas.AsignarActividadesCtrl;
+import org.integrados.data.actividad.Actividad;
+import org.integrados.data.actividad.Materia;
 import org.integrados.data.actividad.RegistroActividad;
+import org.integrados.data.enums.Dificultad;
+import org.integrados.data.enums.Nivel;
+import org.integrados.data.plantillas.Plantilla;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.exceptions.IntegradosException;
-import org.integrados.view.estadisticas.AsignarActividadesDlg;
 
 
 
@@ -28,9 +37,13 @@ public class hshs {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IntegradosException {
+        
          Docente d = get(1);
-        AsignarActividadesDlg a = new AsignarActividadesDlg(d);
-        a.mostrar();
+        Actividad a = getr(2);
+        
+         
+        AsignarActividadesCtrl a1 = new AsignarActividadesCtrl(d, a);
+      
         
 //        ObservarAlumnoDlg ob = new ObservarAlumnoDlg(al);
         
@@ -69,14 +82,14 @@ public class hshs {
             return null;
         }
     }
-    public static Alumno getal(int id) throws IntegradosException {
+    public static Plantilla getal(int id) throws IntegradosException {
         HibernateUtiles.inicializar();
         Session s = null;
-        Alumno p = null;
+        Plantilla p = null;
         try {
             s = HibernateUtiles.getSession();
             s.beginTransaction();
-            p = (Alumno) s.get(Alumno.class, id);
+            p = (Plantilla) s.get(Plantilla.class, id);
             s.getTransaction().commit();
             System.out.println("");
             System.out.println("id ***" + p.getId());
@@ -88,14 +101,33 @@ public class hshs {
             return null;
         }
     }
-    public static RegistroActividad getr(int id) throws IntegradosException {
+    public static Actividad getr(int id) throws IntegradosException {
         HibernateUtiles.inicializar();
         Session s = null;
-        RegistroActividad p = null;
+        Actividad p = null;
         try {
             s = HibernateUtiles.getSession();
             s.beginTransaction();
-            p = (RegistroActividad) s.get(RegistroActividad.class, id);
+            p = (Actividad) s.get(Actividad.class, id);
+            s.getTransaction().commit();
+            System.out.println("");
+            System.out.println("id ***" + p.getId());
+            System.out.println("");
+            s.close();
+            return p;
+        } catch (Exception e) {
+            System.out.println("Error al buscar a la persona id= " + id);
+            return null;
+        }
+    }
+    public static Materia getMate(int id) throws IntegradosException {
+        HibernateUtiles.inicializar();
+        Session s = null;
+        Materia p = null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            p = (Materia) s.get(Materia.class, id);
             s.getTransaction().commit();
             System.out.println("");
             System.out.println("id ***" + p.getId());
