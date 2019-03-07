@@ -21,7 +21,7 @@ import org.integrados.exceptions.IntegradosException;
 public class RegistroActividadABM {
     
     
-    public void guardar(RegistroActividad p) throws IntegradosException {
+    public void guardar(RegistroActividad p){
         Session s=null;
         try {
             s = HibernateUtiles.getSession();

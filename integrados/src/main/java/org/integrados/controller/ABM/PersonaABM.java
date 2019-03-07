@@ -42,13 +42,13 @@ public class PersonaABM {
             return null;
         }
     }
-    public Persona get(int id) {
+    public Docente getDocente(int id) {
         Session s=null;
-        Persona p=null;
+        Docente p=null;
         try {
             s = HibernateUtiles.getSession();
             s.beginTransaction();
-            p=(Persona)s.get(Persona.class, id);
+            p=(Docente)s.get(Docente.class, id);
             s.getTransaction().commit();
             s.close();
             return p;
@@ -71,6 +71,11 @@ public class PersonaABM {
         }
     }
      
+     /**
+      * Lista de alumnos
+      * @param id 
+      * @return 
+      */
      public List<Alumno> listaAlumnos(int id) {
         List<Alumno> alumnos = new ArrayList<>();
         Session session = null;
@@ -82,7 +87,7 @@ public class PersonaABM {
             session.getTransaction().commit();
             session.close();
         } catch (Exception e) {
-
+            System.out.println("Error al devolver la lista de alumnos PersonaABM");
         }
         return alumnos;
     }

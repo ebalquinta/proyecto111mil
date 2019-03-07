@@ -11,7 +11,7 @@ import org.integrados.exceptions.IntegradosException;
  */
 public class MateriaABM {
     
-    public void guardar(Materia p) throws IntegradosException {
+    public void guardar(Materia p) {
         Session s = null;
         try {
             s = HibernateUtiles.getSession();
@@ -25,7 +25,7 @@ public class MateriaABM {
         }
     }
     
-    public Materia get(int id) throws IntegradosException {
+    public Materia get(int id){
         Session s = null;
         Materia p = null;
         try {
@@ -41,7 +41,7 @@ public class MateriaABM {
         }
     }
     
-    public void borrar(Materia b) throws IntegradosException{
+    public void borrar(Materia b){
         Session s = null;
         try{
             s = HibernateUtiles.getSession();

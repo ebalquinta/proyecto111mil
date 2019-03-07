@@ -16,7 +16,7 @@ import org.integrados.exceptions.IntegradosException;
  */
 public class PlantillaABM {
     
-    public void guardar(Plantilla p) throws IntegradosException {
+    public void guardar(Plantilla p){
         Session s=null;
         try {
             s = HibernateUtiles.getSession();
@@ -30,7 +30,7 @@ public class PlantillaABM {
         }
     }
     
-    public Plantilla get(int id) throws IntegradosException {
+    public Plantilla get(int id){
         Session s=null;
         Plantilla p=null;
         try {
@@ -46,7 +46,7 @@ public class PlantillaABM {
         }
     }
     
-    public void borrar(Plantilla b) throws IntegradosException{
+    public void borrar(Plantilla b){
         Session s = null;
         try{
             s = HibernateUtiles.getSession();
