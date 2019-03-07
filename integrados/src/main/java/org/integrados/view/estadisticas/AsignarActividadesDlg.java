@@ -155,9 +155,8 @@ public class AsignarActividadesDlg extends JFrame {
         if (Dialogo.confirmacion("Confirmacion", "Esta seguro que desea realizar esta operación") == Dialogo.ResultadoDialogo.Yes) {
             boolean[] booleans = cargarAsignaciones();
             guardarRegistro(booleans);
+            ocultar();
         }
-        
-        ocultar();
     }
 
     /**
