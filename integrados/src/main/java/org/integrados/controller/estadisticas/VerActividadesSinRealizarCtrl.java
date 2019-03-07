@@ -36,7 +36,7 @@ public class VerActividadesSinRealizarCtrl {
     }
 
     public void mostrarBrw() {
-        List<RegistroActividad> listaActividades = registroABM.listaActividades(alumno.getId());
+        List<RegistroActividad> listaActividades = registroABM.listaRegActividadesAlumno(alumno.getId());
         List<RegistroActividad> listaActividadesNoRealizadas = actividadesRealizadas(listaActividades);
 
         actividadDlg = new VerActividadesSinRealizarDlg(this, listaActividadesNoRealizadas);

@@ -28,7 +28,7 @@ public class VerActividadesRealizadasCtrl {
     public void mostrarBrw() {
         
       //recupera la lista de registros actividades del alumno seleccionado
-      List<RegistroActividad> listaActividades = registroABM.listaActividades(alumno.getId());
+      List<RegistroActividad> listaActividades = registroABM.listaRegActividadesAlumno(alumno.getId());
       
       List<RegistroActividad> listaActividadesRealizadas = actividadesRealizadas(listaActividades);
       if (listaActividadesRealizadas.size() == 0) {

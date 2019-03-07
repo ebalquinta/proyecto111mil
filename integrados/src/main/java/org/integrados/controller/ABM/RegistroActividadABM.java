@@ -66,13 +66,29 @@ public class RegistroActividadABM {
         }
     }
     
-    public List<RegistroActividad> listaActividades(int id){
+    public List<RegistroActividad> listaRegActividadesDocente(int id){
         List<RegistroActividad> actividades = new ArrayList<>();
         Session session = null;
         try {
             session = HibernateUtiles.getSession();
             session.beginTransaction();             
             Query query = session.createQuery("from RegistroActividad where id_Docente='" + id  + "'");  
+            actividades = (List<RegistroActividad>) query.list();
+            session.getTransaction().commit();
+            session.close();
+        }catch(Exception e){
+            
+        }
+        return actividades;
+    }
+    
+    public List<RegistroActividad> listaRegActividadesAlumno(int id){
+        List<RegistroActividad> actividades = new ArrayList<>();
+        Session session = null;
+        try {
+            session = HibernateUtiles.getSession();
+            session.beginTransaction();             
+            Query query = session.createQuery("from RegistroActividad where id_Alumno='" + id  + "'");  
             actividades = (List<RegistroActividad>) query.list();
             session.getTransaction().commit();
             session.close();
