@@ -27,6 +27,7 @@ public class DocenteBrowseActividadesBrw extends JFrame {
     public JButton botonVolver = null;
     private JTable tablaActividades = null;
     private List<Actividad> listaActividades;
+    public DocenteBrowseActividadesBrw aux = this;
     
     public DocenteBrowseActividadesBrw(DocenteBrowseActividadesCtrl controlador, List<Actividad> listaActividades) {
         this.controlador = controlador;
@@ -135,12 +136,13 @@ public class DocenteBrowseActividadesBrw extends JFrame {
         // Propiedades del botón Probar
         botonProbar = Util.crearBoton("Probar", 12);
         botonProbar.setBounds(450, 7, 90, 22);
-        pnlBotonesEdicion.add(botonProbar);
+        pnlBotonesEdicion.add(botonProbar);        
         botonProbar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
               //  Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
-              JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(getActividadSeleccionada());
+              ocultar();
+              JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(getActividadSeleccionada(), aux);
               pregCtrl.jugar();
             }
         });
