@@ -5,14 +5,10 @@
  */
 package org.integrados.controller.estadisticas;
 
-import java.util.List;
 import org.integrados.controller.ABM.ActividadABM;
 import org.integrados.controller.ABM.PersonaABM;
-import org.integrados.controller.ABM.RegistroActividadABM;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
-import org.integrados.data.actividad.RegistroActividad;
-import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.view.Dialogo;
 import org.integrados.view.estadisticas.AsignarActividadesDlg;
@@ -23,8 +19,6 @@ import org.integrados.view.estadisticas.AsignarActividadesDlg;
  */
 public class AsignarActividadesCtrl {
     
-    private PersonaABM pers = new PersonaABM();
-    private ActividadABM act = new ActividadABM();
     private AsignarActividadesDlg asignarDlg;
     private Docente docente;
     private Actividad actividad;
@@ -35,9 +29,6 @@ public class AsignarActividadesCtrl {
         this.actividad = actividad;
         mostrarBrw();
     }
-
-    
-    
     
     public void mostrarBrw() {
         AsignarActividadesDlg asignar = new AsignarActividadesDlg(docente, actividad);
@@ -52,43 +43,4 @@ public class AsignarActividadesCtrl {
         }
     }
 
-//    public void guardarAsignaciones(boolean[] asignacion) {
-//        System.out.println("entra en controller");
-//        Docente docen = docente;
-//        Actividad act = actividad;
-//        List<Alumno> listaAlumnos = pers.listaAlumnos(docente.getId());
-//        
-//        for (int i = 0; i < asignacion.length; i++) {
-//            
-//            if (asignacion[i]) {
-//                RegistroActividad nuevoRegistro = new RegistroActividad();
-//                nuevoRegistro.setActividad(actividad);
-//                nuevoRegistro.setAlumno(listaAlumnos.get(i));
-//                nuevoRegistro.setDocente(docente);
-//                
-//                registroABM.guardar(nuevoRegistro);
-//            }
-//        }
-//    }
-
-//    private void comparar(Docente docente, Alumno alumno){
-//        List<Actividad> actividadesDocente = new ArrayList<>();
-//        List<Actividad> actividadesAlumno;
-//    
-////        for(Actividad actAlumno : actividadesAlumno)
-//        
-//       
-//    }
-//    private void comparar(Docente docente, Alumno alumno) {
-//        List<Actividad> actividadesDocente = docente.getActividades();
-//        List<Actividad> actividadesAlumno = recuperarActividadesAlumno(alumno);
-//
-//        for(Actividad actAlumno : actividadesAlumno){
-//            for (Actividad actDocente : actividadesDocente){
-//                if (actAlumno.getId().equals(actDocente.getId())){
-//                    
-//                }
-//            }
-//        }
-//    }
 }
