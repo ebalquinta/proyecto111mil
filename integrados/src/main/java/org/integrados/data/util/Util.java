@@ -150,5 +150,5 @@ clacularPorcentaje y estrellas podrian estar en util.
      public static ImageIcon reziseImageIcon(ImageIcon image, int width, int height) {
          return new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
      }
-
+     
 }

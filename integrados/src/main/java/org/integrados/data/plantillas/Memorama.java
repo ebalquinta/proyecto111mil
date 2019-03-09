@@ -49,7 +49,7 @@ public class Memorama extends Plantilla {
     }
 
     /**
-     * Crea una lista desordenada de bloques and y la devuelve
+     * Crea una lista desordenada de bloquesAnd y la devuelve
      *
      * @return bloquesAnd
      */
@@ -72,7 +72,7 @@ public class Memorama extends Plantilla {
             aux = (int) (Math.random() * bloques1Clonada.size());
             aux2 = (int) (Math.random() * bloques1Clonada.size());
 
-            // Creacion y asignacion a lista de el bloqueAnd
+            // Creacion y asignacion a lista delllllllllllllllllllll bloqueAnd
             b = new BloqueAnd(this.bloques1.get(aux), this.bloques2.get(aux2));
             bloquesAnd.add(b);
 
@@ -104,8 +104,8 @@ public class Memorama extends Plantilla {
             for (Bloque b : respuestaAlumno) {
                 rtaAlumno = (BloqueAnd) b;
                 // tendriamos que usar un equals para esos objetos??
-                if (solucion.getBloque1() == rtaAlumno.getBloque1()) {
-                    if (solucion.getBloque2() == rtaAlumno.getBloque2()) {
+                if (rtaAlumno.getBloque1().equals(solucion.getBloque1())) {
+                    if (rtaAlumno.getBloque2().equals(solucion.getBloque2())) {
                         par++;
                     }
                 }
