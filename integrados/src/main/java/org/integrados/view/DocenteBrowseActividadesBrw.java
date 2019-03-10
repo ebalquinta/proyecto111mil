@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
 import org.integrados.controller.actividades.DocenteBrowseActividadesCtrl;
-import org.integrados.controller.actividades.PregRespCtrl;
+import org.integrados.controller.actividades.JugarPregYRespCtrl;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.util.Util;
 
@@ -27,6 +27,7 @@ public class DocenteBrowseActividadesBrw extends JFrame {
     public JButton botonVolver = null;
     private JTable tablaActividades = null;
     private List<Actividad> listaActividades;
+    public DocenteBrowseActividadesBrw aux = this;
     
     public DocenteBrowseActividadesBrw(DocenteBrowseActividadesCtrl controlador, List<Actividad> listaActividades) {
         this.controlador = controlador;
@@ -135,12 +136,13 @@ public class DocenteBrowseActividadesBrw extends JFrame {
         // Propiedades del botón Probar
         botonProbar = Util.crearBoton("Probar", 12);
         botonProbar.setBounds(450, 7, 90, 22);
-        pnlBotonesEdicion.add(botonProbar);
+        pnlBotonesEdicion.add(botonProbar);        
         botonProbar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
               //  Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
-              PregRespCtrl pregCtrl = new PregRespCtrl(getActividadSeleccionada());
+              ocultar();
+              JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(getActividadSeleccionada(), aux);
               pregCtrl.jugar();
             }
         });

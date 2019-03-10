@@ -7,7 +7,7 @@ package org.integrados.test;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.integrados.controller.actividades.PregRespCtrl;
+import org.integrados.controller.actividades.JugarPregYRespCtrl;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.actividad.Materia;
 import org.integrados.data.actividad.RegistroActividad;
@@ -42,7 +42,7 @@ public class PregyResptest {
         Actividad actividad = new Actividad(plantilla, new Docente(), new Materia("Matematica"), enunciado,3, Nivel.INICIAL, Dificultad.ALTO, 3);
         RegistroActividad registro = new RegistroActividad(actividad,new Alumno(),new Docente());
         try{
-            PregRespCtrl p = new PregRespCtrl(actividad);
+            JugarPregYRespCtrl p = new JugarPregYRespCtrl(actividad);
             p.jugar();
         }catch(Exception e){
            e.printStackTrace();
