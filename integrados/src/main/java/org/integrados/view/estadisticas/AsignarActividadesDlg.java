@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.view.estadisticas;
 
 import java.awt.Color;
@@ -37,11 +32,12 @@ import org.integrados.view.Dialogo;
 public class AsignarActividadesDlg extends JFrame {
 
     private RegistroActividadABM registroABM = new RegistroActividadABM();
-    private PersonaABM pers = new PersonaABM();
+    private PersonaABM personaABM = new PersonaABM();
     private AsignarActividadesCtrl controlador;
     private List<Alumno> listaAlumnos;
-    private Docente docenteInicio;
-    private Actividad actividad;
+    private final Docente docenteInicio;
+    private final Actividad actividad;
+    public boolean altaReg = false;
 
     private JLabel lblFondo;
     private JTable tablaRespuestas = null;
@@ -68,7 +64,7 @@ public class AsignarActividadesDlg extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent evt) {
-                //controlador.cerrarAplicacion();
+                controlador.cerrarAplicacion();
             }
         });
 
@@ -77,8 +73,9 @@ public class AsignarActividadesDlg extends JFrame {
         lblFondo.setFont(new Font("Comic Sans MS", 0, 12)); // NOI18N
 
         // Propiedades del fondo de pantalla
-        //ImageIcon icon = createImageIcon("images/Fondo2.jpg", "Fondo");
-        //lblFondo.setIcon(icon);
+        ImageIcon icon = createImageIcon("images/Fondo2.jpg","Fondo");
+        lblFondo.setIcon(icon);
+        
         lblFondo.setBounds(0, 0, 460, 280);
 
         JLabel lblEnunciado = Util.crearLabel("Seleccione a que alumno/s desea asignar la nueva actividad", 1, 14);
@@ -147,13 +144,18 @@ public class AsignarActividadesDlg extends JFrame {
         getContentPane().add(btnCancelar);
         getContentPane().add(panelTabla);
         this.add(lblFondo);
-    }
+    } // FIN INITCOMPONENT//
 
+    /**
+     * Metodo de boton aceptar: consulta si esta seguro de guardar la seleccion realizada.
+     * si = guarda el registro actividad, no= vuelve a la ventana asignar
+     */
     private void consultaAceptar() {
-        if (Dialogo.confirmacion("Confirmacion", "Esta seguro que desea realizar esta operación") == Dialogo.ResultadoDialogo.Yes) {
+        if (Dialogo.confirmacion("Confirmacion", "¿Esta seguro que desea realizar esta operación?") == Dialogo.ResultadoDialogo.Yes) {
             boolean[] booleans = cargarAsignaciones();
-            guardarRegistro(booleans);
+            guardarRegistro(booleans);            
             ocultar();
+            altaReg = true;
         }
     }
 
@@ -167,7 +169,7 @@ public class AsignarActividadesDlg extends JFrame {
      */
     public Object[][] filasSegunTabla(int id) {
 
-        listaAlumnos = pers.listaAlumnos(docenteInicio.getId());
+        listaAlumnos = personaABM.listaAlumnos(docenteInicio.getId());
         Object[][] matrizObjetos = new Object[listaAlumnos.size()][6];
         int colum = 0;
 
@@ -194,6 +196,10 @@ public class AsignarActividadesDlg extends JFrame {
         }
     }
 
+    /**
+     * Guarda la/s selecion/es de alumnos realiazada por el docente luego de crear la actividad
+     * @return boolean[]
+     */
     private boolean[] cargarAsignaciones() {
         boolean[] asignaciones = new boolean[listaAlumnos.size()];
 
@@ -206,12 +212,12 @@ public class AsignarActividadesDlg extends JFrame {
     }
 
     /**
-     *
+     * Guarda el registro actividad incorporando los atributos not null (actividad, alumno, docente)
      * @param asignacion
      */
     public void guardarRegistro(boolean[] asignacion) {
 
-        List<Alumno> listaAlumnos = pers.listaAlumnos(docenteInicio.getId());
+        List<Alumno> listaAlumnos = personaABM.listaAlumnos(docenteInicio.getId());
 
         for (int i = 0; i < asignacion.length; i++) {
 

@@ -1,27 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.controller.estadisticas;
-
-import org.integrados.controller.ABM.ActividadABM;
-import org.integrados.controller.ABM.PersonaABM;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.view.Dialogo;
 import org.integrados.view.estadisticas.AsignarActividadesDlg;
 
-/**
- *
- * @author Yani
- */
 public class AsignarActividadesCtrl {
     
     private AsignarActividadesDlg asignarDlg;
-    private Docente docente;
-    private Actividad actividad;
+    private final Docente docente;
+    private final Actividad actividad;
 
     
     public AsignarActividadesCtrl(Docente docente, Actividad actividad) {
