@@ -193,6 +193,18 @@ public class CrearPregYRespDlg  extends JFrame {
         lineRespuestas = new JSeparator();
         lblRespuestas = Util.crearLabel("Respuestas (Ingrese al menos 2 opciones)", 1, 14);
         btnAgregar = Util.crearBoton("Agregar", 12);
+        btnAgregar .addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                // Aqui lo que hace el botón
+               AgregarBloque  AgregarBloque = new AgregarBloque();
+                AgregarBloque.mostrar();
+            }
+        });
+        
+   
+              
+       
         tablaRespuestas = new JTable();
         tablaRespuestas.setBorder(BorderFactory.createCompoundBorder());
         tablaRespuestas.setFont(new Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -233,7 +245,7 @@ public class CrearPregYRespDlg  extends JFrame {
         // Creando elementos de footer
         btnProbar = Util.crearBoton("Probar", 12);;
         btnGuardar = Util.crearBoton("Guardar", 12);;
-        btnCancelar = Util.crearBoton("Cancelar", 12);;
+        btnCancelar = Util.crearBoton("Cancelar", 12);
         btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -352,7 +364,9 @@ public class CrearPregYRespDlg  extends JFrame {
         this.setVisible(true);
         System.out.println("Docente id:" + this.docente.getId());
     }
-    
+     public void mostrar1() {
+        this.setVisible(true);
+    }
     public void ocultar() {
         this.setVisible(false);
     } 
