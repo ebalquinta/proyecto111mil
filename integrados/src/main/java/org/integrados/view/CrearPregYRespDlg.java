@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.view;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.*;
 import javax.swing.table.*;
+import org.integrados.controller.actividades.AgregarBloqueCtrl;
 import org.netbeans.lib.awtextra.*;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.data.actividad.Actividad;
@@ -18,7 +13,7 @@ import org.integrados.data.util.Util;
  
 /**
  *
- * @author VIB
+ * @author Grupo Front
  */
 public class CrearPregYRespDlg  extends JFrame {
 
@@ -63,11 +58,7 @@ public class CrearPregYRespDlg  extends JFrame {
     private JButton btnProbar = null;
     private JButton btnGuardar = null;
     private JButton btnCancelar = null;
-    // End of variables declaration           
-    
-    /**
-     * Creates new form CrearPregYRespDlg
-     */
+    // End of variables declaration        
     
     /**
      * Constructor para usar desde la ventana de Nueva Actividad
@@ -84,7 +75,7 @@ public class CrearPregYRespDlg  extends JFrame {
      * Constructor para usar desde la lista de Actividades del Docente, con la opcion de Editar Actividad
      * @param controlador - Controlador de la vista a crear
      * @param docente - Docente logueado
-     * @param titulo - Título dinámico on id de actividad a editar 
+     * @param titulo - Título dinámico con id de actividad a editar 
      */
     public CrearPregYRespDlg(CrearPregYRespCtrl controlador, Docente docente, String titulo) {
         this.controlador = controlador;
@@ -196,14 +187,9 @@ public class CrearPregYRespDlg  extends JFrame {
         btnAgregar .addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                // Aqui lo que hace el botón
-               AgregarBloque  AgregarBloque = new AgregarBloque();
-                AgregarBloque.mostrar();
+                new AgregarBloqueCtrl(controlador).mostrar();
             }
         });
-        
-   
-              
        
         tablaRespuestas = new JTable();
         tablaRespuestas.setBorder(BorderFactory.createCompoundBorder());
