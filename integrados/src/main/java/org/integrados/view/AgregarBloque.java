@@ -109,7 +109,7 @@ public class AgregarBloque extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 // Aqui lo que hace el botón
-           VistaSistemaDeArchivos  VistaSistemaDeArchivos = new VistaSistemaDeArchivos();
+           SistemaDeArchivosDlg  VistaSistemaDeArchivos = new SistemaDeArchivosDlg();
                 VistaSistemaDeArchivos.mostrar();
               }
         });
@@ -161,6 +161,7 @@ public class AgregarBloque extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AgregarBloque().setVisible(true);
             }

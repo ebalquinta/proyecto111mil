@@ -51,11 +51,11 @@ public class SistemaDeArchivosDlg extends javax.swing.JFrame {
       String command=evt.getActionCommand();
        if (command.equals(JFileChooser.APPROVE_SELECTION)){
         File archivoSeleccionado=SeleccionarArchivo.getSelectedFile();
-        JOptionPane.showInternalMessageDialog(this,"Ruta:"
+        JOptionPane.showMessageDialog(this,"Ruta:"
         +archivoSeleccionado.getAbsolutePath()+"/n archivo:"+archivoSeleccionado.getName());
   
        } else if (command.equals(JFileChooser.CANCEL_SELECTION)){
-        JOptionPane.showInternalMessageDialog(this,"Selecciona un Archivo...");
+        JOptionPane.showMessageDialog(this,"Selecciona un Archivo...");
         
     }
       
