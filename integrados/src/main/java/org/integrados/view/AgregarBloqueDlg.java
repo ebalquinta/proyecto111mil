@@ -1,8 +1,7 @@
-
 package org.integrados.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import org.integrados.controller.actividades.AgregarBloqueCtrl;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
@@ -10,186 +9,151 @@ import org.integrados.data.util.Util;
 
 /**
  *
- * @author home
+ * @author Grupo Front
  */
 public class AgregarBloqueDlg extends JFrame {
-    public CrearPregYRespCtrl crearPregYRespCtrl; 
-    public AgregarBloqueCtrl controlador; 
     
-     /**
-     * Metodo para inicializar los componentes de la vista
-     */ 
-    public AgregarBloqueDlg() {
-        initComponents();
-    }
+    // Variables declaration     
+    public CrearPregYRespCtrl crearPregYRespCtrl; 
+    public AgregarBloqueCtrl controlador;  
+    private String titulo = null;   
+                     
+    private JLabel lblTitulo = null;
+    private JLabel lblSubTitulo = null;
+    private JButton btnAceptar = null;
+    private JButton btnCancelar = null;
+    private JButton btnArchivoImagen = null;
+    private JButton btnArchivoSonido = null;
+    private JLabel lblFondo = null;
+    private JLabel lblIngreseImagen = null;
+    private JLabel lblIngreseSonido = null;
+    private JLabel lblIngreseTexto = null;
+    private JSeparator linea = null;
+    private JTextField txtIngreseTexto = null;
+    private JTextField txtIngreseImagen = null;
+    private JTextField txtIngreseSonido = null;
+    // End of variables declaration        
+    
+    /**
+     * Constructor para usar desde Crear Actividad
+     * @param controlador - Controlador de la vista a crear
+     * @param crearPregYRespCtrl - Controlador de la vista anterior
+     */
     public AgregarBloqueDlg(AgregarBloqueCtrl controlador, CrearPregYRespCtrl crearPregYRespCtrl) { 
         this.controlador = controlador; 
         this.crearPregYRespCtrl = crearPregYRespCtrl; 
         initComponents(); 
     } 
-
-        @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
-
-        lblIngreseImagen = new javax.swing.JLabel();
-        lblIngreseSonido = new javax.swing.JLabel();
-        lblIngreseTexto = new javax.swing.JLabel();
-        lblAgregarOpcion = new javax.swing.JLabel();
-        txtIngreseTexto = new javax.swing.JTextField();
-        txtIngreseImagen = new javax.swing.JTextField();
-        txtIngreseSonido = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        btnAceptar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        btnArchivoImagen = new javax.swing.JButton();
-        btnArchivoSonido = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(420, 320));
-        setPreferredSize(new java.awt.Dimension(420, 320));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblIngreseImagen = Util.crearLabel("Ingrese imagen", 0, 14);
-        getContentPane().add(lblIngreseImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 100, 20));
-
-        lblIngreseSonido = Util.crearLabel("Ingrese sonido", 0, 14);
-        getContentPane().add(lblIngreseSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 100, 20));
-
-        lblIngreseTexto = Util.crearLabel("Ingrese texto", 0, 14);
+    /**
+     * Constructor para usar desde Editar Actividad
+     * @param controlador - Controlador de la vista a crear
+     * @param crearPregYRespCtrl - Controlador de la vista anterior
+     * @param titulo - Título dinámico con id del bloque a editar 
+     */
+    public AgregarBloqueDlg(AgregarBloqueCtrl controlador, CrearPregYRespCtrl crearPregYRespCtrl, String titulo) { 
+        this.controlador = controlador; 
+        this.crearPregYRespCtrl = crearPregYRespCtrl; 
+        this.titulo = titulo;
+        initComponents(); 
+    } 
+    
+    /**
+    * Metodo para inicializar los componentes de la vista
+    */        
+    private void initComponents() { 
+        if (this.controlador.isAlta()) {
+            this.setTitle("Nuevo Bloque");
+        } else {
+            this.setTitle(titulo);
+        }
+        this.pack();
+        this.setSize(400, 300);
+        this.setBackground(new Color(0, 102, 102));
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent evt) {
+                controlador.cerrarAplicacion();
+            }
+        });      
         
-        getContentPane().add(lblIngreseTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 100, 20));
-
-       lblAgregarOpcion = Util.crearLabel("Agregar opcion(Complete al menos un campo)", 0, 14);
-        getContentPane().add(lblAgregarOpcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 300, -1));
-        getContentPane().add(txtIngreseTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 230, -1));
+        // Creando elementos            
+        lblFondo = new JLabel();
+        lblFondo.setFont(new Font("Comic Sans MS", 0, 12)); // NOI18N
+        // Propiedades del fondo de pantalla
+        ImageIcon icon = createImageIcon("images/FondoChico.jpg","Fondo");
+        lblFondo.setIcon(icon);
+        lblFondo.setBounds(0, 0, 400, 300);
+        
+        if (this.controlador.isAlta()) {
+            lblTitulo = Util.crearLabel("Agregar Bloque", 0, 18);
+        } else {
+            lblTitulo = Util.crearLabel("Editar Bloque", 0, 18);
+        }
+        lblSubTitulo = Util.crearLabel("(Complete al menos un campo)", 0, 14);
+        lblIngreseTexto = Util.crearLabel("Ingrese texto", 0, 14);
         txtIngreseTexto = Util.crearTextField(14);
-        txtIngreseTexto.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                txtIngreseTextoActionPerformed(evt);
-            }
-
-            private void txtIngreseTextoActionPerformed(ActionEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
+        lblIngreseImagen = Util.crearLabel("Ingrese imagen", 0, 14);
         txtIngreseImagen = Util.crearTextField(14);
-        txtIngreseImagen.addActionListener(new ActionListener() {
+        btnArchivoImagen = Util.crearBoton("Archivo", 12);
+        btnArchivoImagen.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent evt) {
-                txtIngreseImagenActionPerformed(evt);
-            }
-
-            private void txtIngreseImagen2ActionPerformed(ActionEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            public void actionPerformed(ActionEvent ae) {
+                VistaSistemaDeArchivos VistaSistemaDeArchivos = new VistaSistemaDeArchivos();
+                VistaSistemaDeArchivos.mostrar();
             }
         });
-        getContentPane().add(txtIngreseImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 230, -1));
-        getContentPane().add(txtIngreseSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 230, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 310, -1));
-
+        lblIngreseSonido = Util.crearLabel("Ingrese sonido", 0, 14);
+        txtIngreseSonido = Util.crearTextField(14);
+        btnArchivoSonido = Util.crearBoton("Archivo", 12);
+        linea = new JSeparator();
         btnAceptar = Util.crearBoton("Aceptar", 14);
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
-
-        btnCancelar = Util.crearBoton("Cancelar", 14);
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAceptar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 ocultar();
             }
         });
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
-
-        btnArchivoImagen=Util.crearBoton("Archivo", 12);
-        getContentPane().add(btnArchivoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
-         btnArchivoImagen .addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                // Aqui lo que hace el botón
-           VistaSistemaDeArchivos  VistaSistemaDeArchivos = new VistaSistemaDeArchivos();
-                VistaSistemaDeArchivos.mostrar();
-              }
+        btnCancelar = Util.crearBoton("Cancelar", 14);
+        btnCancelar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                ocultar();
+            }
         });
-        btnArchivoSonido=Util.crearBoton("Archivo", 12);
-        getContentPane().add(btnArchivoSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/integrados/view/images/FondoChico.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setPreferredSize(new java.awt.Dimension(400, 320));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());     
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 150, 20));
+        getContentPane().add(lblSubTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 200, 20));
+        getContentPane().add(lblIngreseTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 100, 20));
+        getContentPane().add(txtIngreseTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 320, 30));
+        getContentPane().add(lblIngreseImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 100, 20));
+        getContentPane().add(txtIngreseImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 230, 30));
+        getContentPane().add(btnArchivoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 80, 30));
+        getContentPane().add(lblIngreseSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 100, 20));   
+        getContentPane().add(txtIngreseSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 230, 30));
+        getContentPane().add(btnArchivoSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 80, 30));
+        getContentPane().add(linea, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 320, 1));
+        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 80, 30));
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 80, 30));
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
         pack();
-    }// </editor-fold>                        
-
-    private void txtIngreseImagenActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
-
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarBloqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarBloqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarBloqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarBloqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }   
+            
+    protected ImageIcon createImageIcon(String path, String description) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL, description);
+        } else {
+            System.out.println("Couldn't find file: " + path);
+            return null;
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AgregarBloqueDlg().setVisible(true);
-            }
-        });
     }
+    
     public void mostrar() {
         this.setVisible(true);
     }
     public void ocultar() {
         this.setVisible(false);
-    } 
-    
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnArchivoImagen;
-    private javax.swing.JButton btnArchivoSonido;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblIngreseImagen;
-    private javax.swing.JLabel lblIngreseSonido;
-    private javax.swing.JLabel lblIngreseTexto;
-    private javax.swing.JLabel lblAgregarOpcion;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField txtIngreseTexto;
-    private javax.swing.JTextField txtIngreseImagen;
-    private javax.swing.JTextField txtIngreseSonido;
-    // End of variables declaration                   
+    }          
 }
