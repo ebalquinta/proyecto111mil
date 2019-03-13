@@ -25,6 +25,7 @@ public class SistemaDeArchivosDlg extends javax.swing.JFrame {
     private void initComponents() {
 
         SubirArchivo = new javax.swing.JFileChooser();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -38,8 +39,12 @@ public class SistemaDeArchivosDlg extends javax.swing.JFrame {
                 SubirArchivoActionPerformed(evt);
             }
         });
-        getContentPane().add(SubirArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(SubirArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 380));
         SubirArchivo.getAccessibleContext().setAccessibleParent(SubirArchivo);
+
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 10)); // NOI18N
+        jButton1.setText("volver");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 70, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -105,6 +110,7 @@ public class SistemaDeArchivosDlg extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFileChooser SubirArchivo;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 
 public void mostrar() {
