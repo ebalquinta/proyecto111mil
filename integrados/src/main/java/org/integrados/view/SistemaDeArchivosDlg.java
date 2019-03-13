@@ -45,13 +45,14 @@ public class SistemaDeArchivosDlg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SubirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirArchivoActionPerformed
-      //usado paraagregar un archivo
+      //usado para agregar un archivo
       
       JFileChooser SeleccionarArchivo=(JFileChooser)evt.getSource();
       String command=evt.getActionCommand();
        if (command.equals(JFileChooser.APPROVE_SELECTION)){
         File archivoSeleccionado=SeleccionarArchivo.getSelectedFile();
-        JOptionPane.showInternalMessageDialog(this,"Ruta:"+archivoSeleccionado.getAbsolutePath()+"/n archivo:"+archivoSeleccionado.getName());
+        JOptionPane.showInternalMessageDialog(this,"Ruta:"
+        +archivoSeleccionado.getAbsolutePath()+"/n archivo:"+archivoSeleccionado.getName());
   
        } else if (command.equals(JFileChooser.CANCEL_SELECTION)){
         JOptionPane.showInternalMessageDialog(this,"Selecciona un Archivo...");
@@ -91,6 +92,7 @@ public class SistemaDeArchivosDlg extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new SistemaDeArchivosDlg().setVisible(true);
             }
