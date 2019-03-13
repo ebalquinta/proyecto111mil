@@ -10,6 +10,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
+import org.integrados.controller.actividades.AgregarBloqueCtrl;
 import org.netbeans.lib.awtextra.*;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.data.actividad.Actividad;
@@ -196,14 +197,9 @@ public class CrearPregYRespDlg  extends JFrame {
         btnAgregar .addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                // Aqui lo que hace el botón
-               AgregarBloque  AgregarBloque = new AgregarBloque();
-                AgregarBloque.mostrar();
+                new AgregarBloqueCtrl(controlador).mostrar();
             }
         });
-        
-   
-              
        
         tablaRespuestas = new JTable();
         tablaRespuestas.setBorder(BorderFactory.createCompoundBorder());
