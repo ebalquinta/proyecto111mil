@@ -364,9 +364,7 @@ public class CrearPregYRespDlg  extends JFrame {
         this.setVisible(true);
         System.out.println("Docente id:" + this.docente.getId());
     }
-     public void mostrar1() {
-        this.setVisible(true);
-    }
+   
     public void ocultar() {
         this.setVisible(false);
     } 

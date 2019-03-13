@@ -9,7 +9,7 @@ import org.integrados.data.util.Util;
  *
  * @author home
  */
-public class AgregarBloqueDlg extends javax.swing.JFrame {
+public class AgregarBloque extends javax.swing.JFrame {
 
     /**
      * Creates new form AgregarBloque
@@ -17,7 +17,7 @@ public class AgregarBloqueDlg extends javax.swing.JFrame {
      /**
      * Metodo para inicializar los componentes de la vista
      */ 
-    public AgregarBloqueDlg() {
+    public AgregarBloque() {
         initComponents();
     }
 
@@ -105,6 +105,14 @@ public class AgregarBloqueDlg extends javax.swing.JFrame {
 
         btnArchivoImagen=Util.crearBoton("Archivo", 12);
         getContentPane().add(btnArchivoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
+         btnArchivoImagen .addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                // Aqui lo que hace el botón
+           VistaSistemaDeArchivos  VistaSistemaDeArchivos = new VistaSistemaDeArchivos();
+                VistaSistemaDeArchivos.mostrar();
+              }
+        });
         btnArchivoSonido=Util.crearBoton("Archivo", 12);
         getContentPane().add(btnArchivoSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
 
@@ -141,25 +149,26 @@ public class AgregarBloqueDlg extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarBloqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarBloque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarBloqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarBloque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarBloqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarBloque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarBloqueDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarBloque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarBloqueDlg().setVisible(true);
+                new AgregarBloque().setVisible(true);
             }
         });
     }
-
+ public void mostrar() {
+        this.setVisible(true);
+    }
     // Variables declaration - do not modify                     
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;

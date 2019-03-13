@@ -3,7 +3,9 @@ package org.integrados.view;
 
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
+
 
 /**
  *
@@ -27,41 +29,35 @@ public class VistaSistemaDeArchivos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFileChooser1 = new javax.swing.JFileChooser();
+        SubirArchivo = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+        SubirArchivo.setBackground(new java.awt.Color(0, 102, 102));
+        SubirArchivo.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        SubirArchivo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        SubirArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SubirArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser1ActionPerformed(evt);
+                SubirArchivoActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
-        );
+        getContentPane().add(SubirArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        SubirArchivo.getAccessibleContext().setAccessibleParent(SubirArchivo);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
+    private void SubirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirArchivoActionPerformed
       //usado paraagregar un archivo
       
-      JFileChooser SeleccionarArchivo= (JFileChooser)evt.getSource();
+      JFileChooser SeleccionarArchivo=(JFileChooser)evt.getSource();
       String command=evt.getActionCommand();
        if (command.equals(JFileChooser.APPROVE_SELECTION)){
         File archivoSeleccionado=SeleccionarArchivo.getSelectedFile();
-        JOptionPane.showInternalMessageDialog(this,"Ruta:" +archivoSeleccionado.getAbsolutePath()+ "/n archivo:"+archivoSeleccionado.getName());
+        JOptionPane.showInternalMessageDialog(this,"Ruta:"+archivoSeleccionado.getAbsolutePath()+"/n archivo:"+archivoSeleccionado.getName());
   
        } else if (command.equals(JFileChooser.CANCEL_SELECTION)){
         JOptionPane.showInternalMessageDialog(this,"Selecciona un Archivo...");
@@ -69,7 +65,7 @@ public class VistaSistemaDeArchivos extends javax.swing.JFrame {
     }
       
       
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
+    }//GEN-LAST:event_SubirArchivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,6 +99,7 @@ public class VistaSistemaDeArchivos extends javax.swing.JFrame {
             public void run() {
                 new VistaSistemaDeArchivos().setVisible(true);
             }
+            
         });
         
     }
@@ -110,7 +107,7 @@ public class VistaSistemaDeArchivos extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JFileChooser SubirArchivo;
     // End of variables declaration//GEN-END:variables
 
 public void mostrar() {
