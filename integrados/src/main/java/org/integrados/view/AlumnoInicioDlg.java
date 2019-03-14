@@ -50,7 +50,7 @@ public class AlumnoInicioDlg extends JFrame {
 
         // Propiedades del botón Actividades
         btnActividades.setBackground(new java.awt.Color(255, 255, 204));
-        btnActividades.setIcon(new ImageIcon(getClass().getResource("images/InicioActividadesBtn.jpg")));
+        btnActividades.setIcon(new ImageIcon(getClass().getResource("images/InicioActividadesBtn.png")));
         btnActividades.setBounds(230, 220, 140, 140);
         btnActividades.setToolTipText("Ver tus Actividades Asignadas");
         getContentPane().add(btnActividades);
@@ -64,7 +64,7 @@ public class AlumnoInicioDlg extends JFrame {
         
         // Propiedades del botón Alumnos
         btnSalir.setBackground(new java.awt.Color(255, 255, 204));
-        btnSalir.setIcon(new ImageIcon(getClass().getResource("images/InicioSalirBtn.jpg")));
+        btnSalir.setIcon(new ImageIcon(getClass().getResource("images/InicioSalirBtn.png")));
         btnSalir.setBounds(440, 220, 140, 140);
         btnSalir.setToolTipText("Cerrar Sesión");
         getContentPane().add(btnSalir);

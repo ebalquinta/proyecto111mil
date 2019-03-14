@@ -33,7 +33,7 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
     }
     
     private void initComponents() {
-        
+        this.setTitle("Lista de Actividades");        
         lblFondo = new JLabel();
         lblTitulo = Util.crearTitulo("Elegir Actividad", 1, 42);
         btnVolver = Util.crearBoton("Volver", 14);

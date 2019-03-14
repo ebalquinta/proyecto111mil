@@ -55,7 +55,7 @@ public class DocenteInicioDlg extends JFrame {
 
         // Propiedades del botón Actividades
         btnActividades.setBackground(new java.awt.Color(255, 255, 204));
-        btnActividades.setIcon(new ImageIcon(getClass().getResource("images/InicioActividadesBtn.jpg")));
+        btnActividades.setIcon(new ImageIcon(getClass().getResource("images/InicioActividadesBtn.png")));
         btnActividades.setBounds(230, 220, 140, 140);
         btnActividades.setToolTipText("Ver Lista de Actividades");
         getContentPane().add(btnActividades);
@@ -71,7 +71,7 @@ public class DocenteInicioDlg extends JFrame {
 
         // Propiedades del botón Alumnos
         btnAlumnos.setBackground(new java.awt.Color(255, 255, 204));
-        btnAlumnos.setIcon(new ImageIcon(getClass().getResource("images/InicioAlumnosBtn.jpg")));
+        btnAlumnos.setIcon(new ImageIcon(getClass().getResource("images/InicioAlumnosBtn.png")));
         btnAlumnos.setBounds(440, 220, 140, 140);
         btnAlumnos.setToolTipText("Ver Lista de Alumnos");
         getContentPane().add(btnAlumnos);
