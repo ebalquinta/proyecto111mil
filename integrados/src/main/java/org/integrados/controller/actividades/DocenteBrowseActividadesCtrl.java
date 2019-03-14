@@ -6,7 +6,7 @@ import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.view.Dialogo;
-import org.integrados.view.DocenteBrowseActividadesBrw;
+import org.integrados.view.DocenteBrowseActividadesDlg;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.view.DocenteInicioDlg;
 import org.integrados.view.NuevaActividadInicioDlg;
@@ -17,7 +17,7 @@ import org.integrados.view.NuevaActividadInicioDlg;
  */
 public class DocenteBrowseActividadesCtrl {
     
-    private DocenteBrowseActividadesBrw actividadBrw = null;    
+    private DocenteBrowseActividadesDlg actividadBrw = null;    
     public DocenteInicioDlg docenteInicioDlg;
     private ActividadABM actividadABM =new ActividadABM();
     
@@ -40,7 +40,7 @@ public class DocenteBrowseActividadesCtrl {
 //       listaActividades.add(new Actividad(new PregYResp("¿Quién ganó?"), new Docente(28200914, "Jose", "Gomez"), new Materia("Historia"), "1ra guerra mundial", 5, Nivel.SECUNDARIO, Dificultad.INTERMEDIO, 3));
 //       listaActividades.add(new Actividad(new PregYResp("¿Cuántos genes tiene una molécula de ADN?"), new Docente(28200915, "Pedro", "Sanchez"), new Materia("Biología"), "Genes", 6, Nivel.PRIMARIO, Dificultad.ALTO, 3));
       
-       actividadBrw = new DocenteBrowseActividadesBrw(this, listaActividades);
+       actividadBrw = new DocenteBrowseActividadesDlg(this, listaActividades);
         this.actividadBrw.mostrar();
     }   
 

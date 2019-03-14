@@ -19,9 +19,9 @@ public class NuevaActividadInicioDlg extends JFrame{
     private JToggleButton btnUnir;
     private JToggleButton btnMemorama;
     private JToggleButton btnPregYResp;
-    public DocenteBrowseActividadesBrw docenteBrowseActividadesBrw;
+    public DocenteBrowseActividadesDlg docenteBrowseActividadesBrw;
     
-    public NuevaActividadInicioDlg(DocenteBrowseActividadesBrw docenteBrowseActividadesBrw) {
+    public NuevaActividadInicioDlg(DocenteBrowseActividadesDlg docenteBrowseActividadesBrw) {
         this.docenteBrowseActividadesBrw = docenteBrowseActividadesBrw;
         initComponents();
     }

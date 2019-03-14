@@ -16,7 +16,7 @@ import org.integrados.data.bloques.Bloque;
 import org.integrados.data.bloques.BloqueTexto;
 import org.integrados.exceptions.IntegradosException;
 import org.integrados.view.Dialogo;
-import org.integrados.view.DocenteBrowseActividadesBrw;
+import org.integrados.view.DocenteBrowseActividadesDlg;
 
 /**
  *
@@ -29,7 +29,7 @@ public class JugarPregYRespCtrl {
     private RegistroActividad registro;
     private JugarPregYRespDlg jugarPregYRespDlg;
     private int intentos;
-    private DocenteBrowseActividadesBrw docenteBrowseActividadesBrw;
+    private DocenteBrowseActividadesDlg docenteBrowseActividadesBrw;
 
     public JugarPregYRespCtrl(RegistroActividad registro) {
         this.registro = registro;
@@ -48,7 +48,7 @@ public class JugarPregYRespCtrl {
     }
     
     public JugarPregYRespCtrl(Actividad actividad, 
-        DocenteBrowseActividadesBrw docenteBrowseActividadesBrw) {
+        DocenteBrowseActividadesDlg docenteBrowseActividadesBrw) {
         this.actividad = actividad;
         this.plantilla = (PregYResp) this.actividad.getPlantilla();
         this.intentos = actividad.getMaxIntentos();
@@ -56,7 +56,7 @@ public class JugarPregYRespCtrl {
         this.registro = null;
     }
 
-    public DocenteBrowseActividadesBrw getDocenteBrowseActividadesBrw() {
+    public DocenteBrowseActividadesDlg getDocenteBrowseActividadesBrw() {
         return docenteBrowseActividadesBrw;
     }
 
