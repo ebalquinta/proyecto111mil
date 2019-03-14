@@ -7,14 +7,17 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import org.integrados.controller.actividades.AlumnoBrowseActividadesCtrl;
 import org.integrados.data.util.Util;
 import org.integrados.controller.actividades.DocenteBrowseActividadesCtrl;
 import org.integrados.controller.usuarios.AlumnoInicioCtrl;
+import org.integrados.controller.usuarios.LoginCtrl;
         
 public class AlumnoInicioDlg extends JFrame {
+    private JLabel lblTitulo;
     private JLabel lblFondo;
-    private JButton btnActividades;
-    private JButton btnSalir;
+    private JToggleButton btnActividades;
+    private JToggleButton btnSalir;
     private AlumnoInicioCtrl alumnoInicioCtrl;
     
     public AlumnoInicioDlg(AlumnoInicioCtrl alumnoInicioCtrl) {
@@ -23,10 +26,13 @@ public class AlumnoInicioDlg extends JFrame {
     }
 
     void initComponents() {
-        
-        btnActividades = Util.crearBoton("Jugar", 18);
-        btnSalir = Util.crearBoton("Salir", 18);
+        this.setTitle("Inicio");
+        String titulo =  "Bienvenid@ " + alumnoInicioCtrl.getAlumno().getNombre() + "!";
+        lblTitulo = Util.crearTitulo(titulo, 1, 42);        
+        btnActividades = new JToggleButton();
+        btnSalir = new JToggleButton();
         lblFondo = new JLabel();
+        AlumnoInicioDlg aux = this;
         
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -37,20 +43,30 @@ public class AlumnoInicioDlg extends JFrame {
         });
         
         getContentPane().setLayout(null);
+        
+        // Propiedades de Título
+        lblTitulo.setBounds(40, 40, 720, 60);
+        getContentPane().add(lblTitulo);
 
         // Propiedades del botón Actividades
-        btnActividades.setBounds(400, 120, 170, 60);    
+        btnActividades.setBackground(new java.awt.Color(255, 255, 204));
+        btnActividades.setIcon(new ImageIcon(getClass().getResource("images/InicioActividadesBtn.png")));
+        btnActividades.setBounds(230, 220, 140, 140);
+        btnActividades.setToolTipText("Ver tus Actividades Asignadas");
         getContentPane().add(btnActividades);
         btnActividades.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {                
-                // Aquí debemos enlazar con la lista de actividades del alumno                    
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+            public void actionPerformed(ActionEvent ae) {     
+                ocultar();
+                new AlumnoBrowseActividadesCtrl(aux).mostrar();
             }
         });
         
         // Propiedades del botón Alumnos
-        btnSalir.setBounds(230, 320, 170, 60);
+        btnSalir.setBackground(new java.awt.Color(255, 255, 204));
+        btnSalir.setIcon(new ImageIcon(getClass().getResource("images/InicioSalirBtn.png")));
+        btnSalir.setBounds(440, 220, 140, 140);
+        btnSalir.setToolTipText("Cerrar Sesión");
         getContentPane().add(btnSalir);
         btnSalir.addActionListener(new ActionListener() {
             @Override
@@ -60,7 +76,7 @@ public class AlumnoInicioDlg extends JFrame {
         });       
         
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("images/DocenteInicioDlgBkg.jpg","descripción");
+        ImageIcon icon = createImageIcon("images/FondoConTitulo.jpg","descripción");
         lblFondo.setIcon(icon);
         getContentPane().add(lblFondo);
         lblFondo.setBounds(0, 0, 800, 600);

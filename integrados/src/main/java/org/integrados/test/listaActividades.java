@@ -73,8 +73,8 @@ public class listaActividades {
         Materia materia = new Materia("Lengua");
         guardar(materia);
         
-        Docente docente = get(1);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
-        Alumno alumno = geta(1);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+        Docente docente = get(3);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+        Alumno alumno = geta(4);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
 //        System.out.println(docente.getDni());
 //        List<Actividad> actividades = listaActividades(4);
 //        for(Actividad a : actividades){

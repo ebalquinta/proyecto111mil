@@ -19,6 +19,10 @@ public class AlumnoInicioCtrl {
         this.app = app;
         this.alumno = alumno;
     }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
     
     
     public void iniciar() {

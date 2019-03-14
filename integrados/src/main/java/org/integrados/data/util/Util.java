@@ -68,7 +68,7 @@ clacularPorcentaje y estrellas podrian estar en util.
     /**
      * Método para crear un label estándar con los estilos básicos de tipografía
      * @param texto - El texto a insertar en el label
-     * @param negrita - Si es 9, grosor normal, si es 1 negrita
+     * @param negrita - Si es 0, grosor normal, si es 1 negrita
      * @param tamañoletra - El tamaño de la letra a aplicar (en pixeles)
      * @return 
      */
@@ -79,6 +79,29 @@ clacularPorcentaje y estrellas podrian estar en util.
         return label;
     }
     
+    /**
+     * Método para crear un label para título con los estilos básicos de tipografía
+     * @param texto - El texto a insertar en el label
+     * @param negrita - Si es 0, grosor normal, si es 1 negrita
+     * @param tamañoletra - El tamaño de la letra a aplicar (en pixeles)
+     * @return 
+     */
+    public static JLabel crearTitulo(String texto, int negrita, int tamañoletra) {
+        JLabel label = new JLabel(texto, SwingConstants.CENTER);
+        label.setFont(new Font("Bradley Hand ITC", negrita, tamañoletra));
+//        label.setText(texto);
+        return label;
+    }
+//    Bradley Hand ITC 
+//    Footlight MT Light
+//    Garamond
+//    Goudy Old Style
+//    Harrington
+//    Lucida Calligraphy
+//    Matura MT Script Capitals
+//    Monotype Corsiva
+//    Papyrus
+//    Trebuchet MS
     
     /**
      * Método para crear un text field estándar con los estilos básicos de tipografía

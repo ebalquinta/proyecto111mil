@@ -11,7 +11,6 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.integrados.bd.HibernateUtiles;
 import org.integrados.data.actividad.Actividad;
-import org.integrados.data.actividad.Materia;
 import org.integrados.exceptions.IntegradosException;
 
 /**
