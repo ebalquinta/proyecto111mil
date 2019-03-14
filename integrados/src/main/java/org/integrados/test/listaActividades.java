@@ -19,6 +19,8 @@ import org.integrados.data.bloques.BloqueSonido;
 import org.integrados.data.bloques.BloqueTexto;
 import org.integrados.data.enums.Dificultad;
 import org.integrados.data.enums.Nivel;
+import org.integrados.data.plantillas.Memorama;
+import org.integrados.data.plantillas.Ordenamiento;
 import org.integrados.data.plantillas.Plantilla;
 import org.integrados.data.plantillas.PregYResp;
 import org.integrados.data.plantillas.Unir;
@@ -59,16 +61,19 @@ public class listaActividades {
         bloquesSolucion.add(bTex);
 
         //Plantillas
-        PregYResp unir = new PregYResp();
+        PregYResp preYResp = new PregYResp();
+        Unir unir = new Unir();
+        Memorama memorama = new Memorama();
+        Ordenamiento ordenamiento = new Ordenamiento();
         
 //        for (Bloque b : unir.getSoluciones()){
 //            System.out.println("bloque: " + b);
 //        }
         
-        unir.setSoluciones(bloquesSolucion);
-        unir.setEnunciado("¿Que pasa si metemos una lampara en un microondas?");
-        unir.setOpciones(bloques);
-        guardar(unir);
+        preYResp.setSoluciones(bloquesSolucion);
+        preYResp.setEnunciado("¿Que pasa si metemos una lampara en un microondas?");
+        preYResp.setOpciones(bloques);
+        guardar(preYResp);
 
         Materia materia = new Materia("Lengua");
         guardar(materia);
@@ -82,11 +87,11 @@ public class listaActividades {
 //        }
         
         
-        Actividad actividad1 = new Actividad(unir, docente, materia, "Oraciones", 1, Nivel.PRIMARIO, Dificultad.BAJO, 3);
+        Actividad actividad1 = new Actividad(preYResp, docente, materia, "Oraciones", 1, Nivel.PRIMARIO, Dificultad.BAJO, 3);
         guardar(actividad1);
-        Actividad actividad2 = new Actividad(unir, docente, materia, "Guerra", 1, Nivel.PRIMARIO, Dificultad.BAJO, 3);
+        Actividad actividad2 = new Actividad(preYResp, docente, materia, "Guerra", 1, Nivel.SECUNDARIO, Dificultad.INTERMEDIO, 3);
         guardar(actividad2);
-        Actividad actividad3 = new Actividad(unir, docente, materia, "Celula", 1, Nivel.PRIMARIO, Dificultad.BAJO, 3);
+        Actividad actividad3 = new Actividad(preYResp, docente, materia, "Celula", 1, Nivel.TERCIARIO, Dificultad.ALTO, 3);
         guardar(actividad3);
 
 //        List<Actividad> listaActividades = new ArrayList<>();
@@ -104,13 +109,13 @@ public class listaActividades {
         reg.setCorazon("Muy bien");
         reg.setEstrella(1);
         
-        RegistroActividad reg1 = new RegistroActividad(actividad1, alumno, docente);
+        RegistroActividad reg1 = new RegistroActividad(actividad2, alumno, docente);
         reg1.setFinalizoCorrectamente(true);
         reg1.setIntentos(1);
         reg1.setCorazon("Felicitaciones");
         reg1.setEstrella(3);
         
-        RegistroActividad reg2 = new RegistroActividad(actividad1, alumno, docente);
+        RegistroActividad reg2 = new RegistroActividad(actividad3, alumno, docente);
         reg2.setFinalizoCorrectamente(true);
         reg2.setIntentos(4);
         reg2.setCorazon("Sigue Trabajando");
@@ -118,8 +123,8 @@ public class listaActividades {
          
         // ACTIVIDADES NO REALIZADAS //
         RegistroActividad reg3 = new RegistroActividad(actividad1, alumno, docente);
-        RegistroActividad reg4 = new RegistroActividad(actividad1, alumno, docente);
-        RegistroActividad reg5 = new RegistroActividad(actividad1, alumno, docente);
+        RegistroActividad reg4 = new RegistroActividad(actividad2, alumno, docente);
+        RegistroActividad reg5 = new RegistroActividad(actividad3, alumno, docente);
         
         guardar(reg);
         guardar(reg1);
