@@ -110,7 +110,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    editarActividadActual();
+                    verDatosAlumnoActual();
                 }
             }
         });
@@ -141,7 +141,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
         btnDatos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+                verDatosAlumnoActual();
                 //ventana datos personales del alumno..  solo mostrar. (se puede incluir un boton "observaciones" que lleva a la ventana ObservarAlumnoDlg)
 
                 //ocultar();
@@ -159,6 +159,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
                 if (alumno != null) {
                     VerActividadesRealizadasCtrl actividadesRealizadas = new VerActividadesRealizadasCtrl(alumno, aux);
                     actividadesRealizadas.mostrarBrw();
+                    ocultar();
                 } else {
                     Dialogo.mensaje("¡Atención! ", " Debe seleccionar un alumno para realizar esta opción");
                 }
@@ -205,13 +206,13 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
         this.controlador.docenteInicioDlg.initComponents();
     }
 
-    private void editarActividadActual() {
-        System.out.println("editarActividad");
+    private void verDatosAlumnoActual() {
+        System.out.println("verDatosAlumnoActual");
         Alumno alumno = getAlumnoSeleccionado();
 
         if (alumno != null) {
 //            this.controlador.editar(actividad);
-            Dialogo.error("En construcción", "¡Estamos trabajando para usted!");
+            Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
         }
     }
 
@@ -258,7 +259,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
 
         @Override
         public boolean isCellEditable(int row, int column) {
-            return true;
+            return false;
         }
 
         @Override
