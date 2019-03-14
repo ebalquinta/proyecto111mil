@@ -157,9 +157,13 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
             public void actionPerformed(ActionEvent evt) {
                 Alumno alumno = getAlumnoSeleccionado();
                 if (alumno != null) {
-                    VerActividadesRealizadasCtrl actividadesRealizadas = new VerActividadesRealizadasCtrl(alumno, aux);
-                    actividadesRealizadas.mostrarBrw();
-                    ocultar();
+                    if (aux.contadorNoRealizadas <= 0) {
+                        Dialogo.mensaje("¡Atención! ", "El Alumno no posee actividades realizadas");                        
+                    } else {
+                        VerActividadesRealizadasCtrl actividadesRealizadas = new VerActividadesRealizadasCtrl(alumno, aux);
+                        actividadesRealizadas.mostrarBrw();
+                        ocultar();
+                    }
                 } else {
                     Dialogo.mensaje("¡Atención! ", " Debe seleccionar un alumno para realizar esta opción");
                 }
