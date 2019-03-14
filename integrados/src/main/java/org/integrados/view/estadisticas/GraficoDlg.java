@@ -6,20 +6,11 @@
 package org.integrados.view.estadisticas;
 
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
@@ -29,6 +20,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.netbeans.lib.awtextra.*;
 
 /**
  *
@@ -38,10 +30,8 @@ public class GraficoDlg extends JFrame {
 
     private JLabel lblFondo;
     private JPanel pnlGrafico;
-    private JPanel pnlOpciones;
     private JComboBox desplegable;
-    private List<String> listaOpciones;
-    private List<RegistroActividad> listaRegistro= new ArrayList<>();
+    private List<RegistroActividad> listaRegistro = new ArrayList<>();
     private JLabel nombreAlumno;
     private JButton btnGraficar;
     private JButton btnVolver;
@@ -55,51 +45,42 @@ public class GraficoDlg extends JFrame {
 
     private void initComponents() {
         this.setTitle("Grafica");
+
+        // Mostrar nombre y apellido del alumno
+        String nombre = this.recuperarNombreAlumno(listaRegistro);
+        this.nombreAlumno = Util.crearTitulo(nombre, 1, 32);     
         this.pack();
         this.setSize(800, 600);
+        this.setBackground(new Color(0, 102, 102));
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
+        this.setResizable(false);   
+
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+            public void windowClosing(WindowEvent evt) {
                  controlador.cerrarAplicacion();
             }
         });
-
+        
         lblFondo = new JLabel();
+        lblFondo.setFont(new Font("Comic Sans MS", 0, 12)); // NOI18N
         // Propiedades del fondo de pantalla
-//        ImageIcon icon = createImageIcon("images/estadisticas/Fondo2.jpg", "Fondo");
-//        lblFondo.setIcon(icon);
-//        lblFondo.setBounds(0, 0, 800, 600);
-
-        // Mostrar nombre y apellido del alumno
-        this.nombreAlumno = new JLabel();
-        this.nombreAlumno.setText(this.recuperarNombreAlumno(listaRegistro));
-        this.nombreAlumno.setFont(new Font("Comic Sans MS", 0, 30));
-        this.nombreAlumno.setForeground(Color.BLACK);
-        this.nombreAlumno.setBounds(300, 5, 500, 50);   ///---------------> editar
-
-        JPanel pnlCentral = new JPanel();
-        pnlCentral.setOpaque(false);
-
+        ImageIcon icon = createImageIcon("../images/Fondo2.jpg", "Fondo");
+        lblFondo.setIcon(icon);
+        lblFondo.setBounds(0, 0, 800, 600);
+        
+        // Propiedades de Título
+        
         // PANEL DEL GRAFICO VACIO //
         pnlGrafico = new JPanel();
-        pnlGrafico.setBounds(5, 100, 550, 450);
         pnlGrafico.setBorder(BorderFactory.createLineBorder(Color.black));
 
         // DESPLEGABLE //
-        this.desplegable = new JComboBox<>();
-        desplegable.setBounds(600, 220, 150, 20);
-        desplegable.setFont(new java.awt.Font("Comic Sans MS", 0, 12));
-        desplegable.addItem("Seleccione una opción");
-        desplegable.addItem("Intentos");
-        desplegable.addItem("Estrellas");
+        this.desplegable = Util.crearCombo(new String[] {"Seleccionar", "Intentos", "Estrellas"});
 
         // Propiedades del botón Graficar
-        btnGraficar = new JButton();
         btnGraficar = Util.crearBoton("Graficar", 12);
-        btnGraficar.setBounds(630, 250, 90, 22);
         btnGraficar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -109,9 +90,7 @@ public class GraficoDlg extends JFrame {
         });
 
         // Propiedades del botón Volver
-        btnVolver = new JButton();
         btnVolver = Util.crearBoton("Volver", 12);
-        btnVolver.setBounds(630, 500, 90, 22);
         btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -119,14 +98,17 @@ public class GraficoDlg extends JFrame {
                 controlador.getVerActividadesRealizadasDlg().mostrar();
             }
         });
-
-        // AGREGAR COMPONENTES //
-        getContentPane().add(desplegable);
-        getContentPane().add(nombreAlumno);
-        getContentPane().add(btnGraficar);
-        getContentPane().add(btnVolver);
-        getContentPane().add(pnlGrafico);
-        this.add(lblFondo);
+        
+        
+        
+        getContentPane().setLayout(new AbsoluteLayout());
+        getContentPane().add(nombreAlumno, new AbsoluteConstraints(40, 20, 720, 40));
+        getContentPane().add(pnlGrafico, new AbsoluteConstraints(60, 70, 540, 450));
+        getContentPane().add(desplegable, new AbsoluteConstraints(610, 150, 120, 30));
+        getContentPane().add(btnGraficar, new AbsoluteConstraints(625, 200, 90, 30));
+        getContentPane().add(btnVolver, new AbsoluteConstraints(625, 490, 90, 30));
+        
+        getContentPane().add(lblFondo, new AbsoluteConstraints(0, 0, 800, 600));
     }
 
     public void mostrar() {
@@ -173,11 +155,11 @@ public class GraficoDlg extends JFrame {
         JFreeChart chart=ChartFactory.createLineChart("Estadisticas", nom,"Cantidad",dataset,PlotOrientation.VERTICAL, false, false,false); 
 
         ChartPanel charpanel = new ChartPanel(chart);
-        charpanel.setPreferredSize(new Dimension(548, 440));
+        charpanel.setPreferredSize(new Dimension(500, 410));
         
         pnlGrafico.add(charpanel);
         pnlGrafico.validate();
-        getContentPane().add(pnlGrafico);
+        getContentPane().add(pnlGrafico, new AbsoluteConstraints(60, 70, 540, 450));
     }
 
     private void cargarRowIntentos(List<RegistroActividad> cantidadGrafico, String nom) {

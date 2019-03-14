@@ -229,8 +229,8 @@ public class CrearPregYRespDlg  extends JFrame {
         
         
         // Creando elementos de footer
-        btnProbar = Util.crearBoton("Probar", 12);;
-        btnGuardar = Util.crearBoton("Guardar", 12);;
+        btnProbar = Util.crearBoton("Probar", 12);
+        btnGuardar = Util.crearBoton("Guardar", 12);
         btnCancelar = Util.crearBoton("Cancelar", 12);
         btnCancelar.addActionListener(new ActionListener() {
             @Override

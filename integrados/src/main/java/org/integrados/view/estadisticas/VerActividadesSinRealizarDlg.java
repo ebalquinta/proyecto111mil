@@ -71,19 +71,18 @@ public class VerActividadesSinRealizarDlg extends JFrame {
         pnlCentral.setLayout(pnlCentralLayout);
 
         // Mostrar nombre y apellido del alumno
-        this.nombreAlumno = new JLabel();
-        this.nombreAlumno.setText(this.recuperarNombreAlumno(listaActividades));
-        this.nombreAlumno.setFont(new Font("Comic Sans MS", 0, 30));
-        this.nombreAlumno.setForeground(Color.BLACK);
+        String nombre = this.recuperarNombreAlumno(listaActividades);
+        this.nombreAlumno = Util.crearTitulo(nombre, 1, 32);
         this.nombreAlumno.setOpaque(false);
-        this.nombreAlumno.setBounds(300, 50, 200, 200);
+        this.nombreAlumno.setBackground(new Color(0,0,0,0));
+        this.nombreAlumno.setBounds(40, 50, 720, 40);
 
         lblFondo = new JLabel();
 
         // Propiedades del fondo de pantalla
         ImageIcon icon = createImageIcon("../images/Fondo.jpg", "Fondo");
         lblFondo.setIcon(icon);
-//        lblFondo.setBounds(0, 0, 800, 600);
+        lblFondo.setBounds(0, 0, 800, 600);
         lblFondo.setLayout(new BorderLayout());
 
         // Propiedades de la tabla de actividades
@@ -152,9 +151,8 @@ public class VerActividadesSinRealizarDlg extends JFrame {
                 controlador.getDocenteBrowseAlumnoDlg().mostrar();
             }
         });
-
         getContentPane().add(pnlBotonesEdicion, BorderLayout.SOUTH);
-        getContentPane().add(this.nombreAlumno, BorderLayout.NORTH);  //panel para mostrar nombre del alumno
+        lblFondo.add(this.nombreAlumno, BorderLayout.NORTH);  //panel para mostrar nombre del alumno
 
         this.add(lblFondo);
 
