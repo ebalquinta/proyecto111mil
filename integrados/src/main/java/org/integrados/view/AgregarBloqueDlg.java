@@ -101,8 +101,8 @@ public class AgregarBloqueDlg extends JFrame {
         btnArchivoImagen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                VistaSistemaDeArchivos VistaSistemaDeArchivos = new VistaSistemaDeArchivos();
-                VistaSistemaDeArchivos.mostrar();
+                SistemaDeArchivosDlg sistemaDeArchivosDlg = new SistemaDeArchivosDlg();
+                sistemaDeArchivosDlg.mostrar();
             }
         });
         lblIngreseSonido = Util.crearLabel("Ingrese sonido", 0, 14);
