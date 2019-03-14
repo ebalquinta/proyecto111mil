@@ -33,7 +33,7 @@ public class LoginDlg extends JFrame {
     }
     
     private void initComponents() {
-        
+        this.setTitle("Login");        
         txtUsuario = new JTextField();
         pswClave = new JPasswordField();
         btnAceptar = Util.crearBoton("Aceptar", 14);
@@ -117,7 +117,7 @@ public class LoginDlg extends JFrame {
         });
 
         // Propiedades del botón SobreNosotros
-        btnSobreNosotros.setBounds(292, 510, 170, 30);
+        btnSobreNosotros.setBounds(165, 510, 170, 30);
         getContentPane().add(btnSobreNosotros);
         btnSobreNosotros.addActionListener(new ActionListener() {
             @Override

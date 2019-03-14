@@ -4,34 +4,36 @@ import java.util.List;
 import org.integrados.controller.ABM.ActividadABM;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
-import org.integrados.data.usuarios.Docente;
 import org.integrados.view.Dialogo;
-import org.integrados.view.DocenteBrowseActividadesBrw;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
-import org.integrados.view.DocenteInicioDlg;
+import org.integrados.data.usuarios.Alumno;
+import org.integrados.view.AlumnoBrowseActividadesDlg;
+import org.integrados.view.AlumnoInicioDlg;
 import org.integrados.view.NuevaActividadInicioDlg;
  
 /**
  *
  * @author Grupo Front
  */
-public class DocenteBrowseActividadesCtrl {
+public class AlumnoBrowseActividadesCtrl {
     
-    private DocenteBrowseActividadesBrw actividadBrw = null;    
-    public DocenteInicioDlg docenteInicioDlg;
+    private AlumnoBrowseActividadesDlg actividadBrw = null;    
+    public AlumnoInicioDlg alumnoInicioDlg;
     private ActividadABM actividadABM =new ActividadABM();
     
-    
-    
-    public DocenteBrowseActividadesCtrl(DocenteInicioDlg docenteInicioDlg) {        
-        this.docenteInicioDlg = docenteInicioDlg;
+    public AlumnoBrowseActividadesCtrl(AlumnoInicioDlg alumnoInicioDlg) {        
+        this.alumnoInicioDlg = alumnoInicioDlg;
+    }
+
+    public AlumnoInicioDlg getAlumnoInicioDlg() {
+        return alumnoInicioDlg;
     }
     
     public void mostrar() {
-        
-        Docente docente = (Docente) LoginCtrl.app.getPersonaLogueada();
-        List<Actividad> listaActividades = actividadABM.listaActividades(docente.getId());
-     
+
+        Alumno alumno = (Alumno) LoginCtrl.app.getPersonaLogueada();
+        List<Actividad> listaActividades = actividadABM.listaActividades(alumno.getId());
+
        //Levantar actividades de lista estática
 //       List<Actividad> listaActividades = new ArrayList<Actividad>();
 //       listaActividades.add(new Actividad(new PregYResp("¿Cuál es el símbolo del Magnesio?"), new Docente(28200916, "Marta", "Rodriguez"), new Materia("Química"), "Elementos", 7, Nivel.SECUNDARIO, Dificultad.ALTO, 3));
@@ -40,20 +42,20 @@ public class DocenteBrowseActividadesCtrl {
 //       listaActividades.add(new Actividad(new PregYResp("¿Quién ganó?"), new Docente(28200914, "Jose", "Gomez"), new Materia("Historia"), "1ra guerra mundial", 5, Nivel.SECUNDARIO, Dificultad.INTERMEDIO, 3));
 //       listaActividades.add(new Actividad(new PregYResp("¿Cuántos genes tiene una molécula de ADN?"), new Docente(28200915, "Pedro", "Sanchez"), new Materia("Biología"), "Genes", 6, Nivel.PRIMARIO, Dificultad.ALTO, 3));
       
-       actividadBrw = new DocenteBrowseActividadesBrw(this, listaActividades);
+       actividadBrw = new AlumnoBrowseActividadesDlg(this, listaActividades);
         this.actividadBrw.mostrar();
     }   
 
     public void agregar() {   
-        NuevaActividadInicioDlg nuevaActividadInicioDlg = new NuevaActividadInicioDlg(actividadBrw);
-        nuevaActividadInicioDlg.mostrar();        
+//        NuevaActividadInicioDlg nuevaActividadInicioDlg = new NuevaActividadInicioDlg(actividadBrw);
+//        nuevaActividadInicioDlg.mostrar();        
     }
     
     public void editar(Actividad actividad) {      
         String tipoPlantilla = actividad.getPlantilla().getTipoPlantilla();
         if (tipoPlantilla.equals("Preguntas y Respuestas")) {            
-            CrearPregYRespCtrl actividadDlg = new CrearPregYRespCtrl(this);
-            actividadDlg.editar(actividad);
+//            CrearPregYRespCtrl actividadDlg = new CrearPregYRespCtrl(this);
+//            actividadDlg.editar(actividad);
         } else if (tipoPlantilla.equals("Memorama")) {
             Dialogo.error("En construcción","¡Estamos trabajando para usted!");
             return;
@@ -74,10 +76,10 @@ public class DocenteBrowseActividadesCtrl {
         } catch (Exception e) {
             throw new Exception("Error al guardar", e);
         }        
-        if (alta)
-            this.actividadBrw.agregarATabla(actividad);
-        else
-            this.actividadBrw.actualizarATabla(actividad);
+//        if (alta)
+//            this.actividadBrw.agregarATabla(actividad);
+//        else
+//            this.actividadBrw.actualizarATabla(actividad);
     }
     
     public void borrar(Actividad actividad)  throws Exception {
