@@ -1,13 +1,15 @@
+
 package org.integrados.view;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.event.*;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.table.*;
 import org.integrados.controller.actividades.DocenteBrowseActividadesCtrl;
+import org.integrados.controller.actividades.JugarPregYRespCtrl;
 import org.integrados.data.actividad.Actividad;
-import org.integrados.data.plantillas.PregYResp;
 import org.integrados.data.util.Util;
 
 /**
@@ -15,157 +17,153 @@ import org.integrados.data.util.Util;
  * @author Grupo Front
  */
 public class DocenteBrowseActividadesDlg extends JFrame {
-    
     private JLabel lblFondo;
-
-    private DocenteBrowseActividadesCtrl controlador = null;
-    private Actividad actividad = null;
-    
-    //Booleano que indica si se está dando de alta una actividad o es una edición.
-    private boolean alta = false;
-    private String titulo = null;
-
-//    private JDialog dialogoPrincipal;
-
+    public DocenteBrowseActividadesCtrl controlador;
     private JPanel pnlBotonesEdicion = null;
-    public JButton botonGuardar = null;
-    public JButton botonCancelar = null;
-    private JTextField txtNombre;
-    private JCheckBox chkActivo;
-    private JTextField txtUrl;
-    private JTextField txtFilePath;
-    private JRadioButton rbtnFilePath;
-    private JRadioButton rbtnURL;
+    public JButton botonNuevo = null;
+    public JButton botonEdicion = null;
+    public JButton botonBorrar = null;
+    public JButton botonProbar = null;
+    public JButton botonVolver = null;
+    private JTable tablaActividades = null;
+    private List<Actividad> listaActividades;
+    public DocenteBrowseActividadesDlg aux = this;
     
-    /**
-     * Constructor
-     * @param controlador
-     */
-    public DocenteBrowseActividadesDlg(DocenteBrowseActividadesCtrl controlador) {
-        this.controlador = controlador;                
+    public DocenteBrowseActividadesDlg(DocenteBrowseActividadesCtrl controlador, List<Actividad> listaActividades) {
+        this.controlador = controlador;
+        this.listaActividades = listaActividades;
         initComponents();
     }
     
-    public void editar(Actividad actividad) {
-        this.actividad = actividad;
-        this.alta = false;        
-        this.titulo = "Edición de Actividad nro. " + actividad.getId();
-    }
-    
-    public void nuevo(Actividad actividad) {
-        this.actividad = actividad;
-        this.alta = true; 
-        this.titulo = "Agregar Nueva Actividad";
-    }
-
-    /**
-     * Método que muestra el Dialogo.
-     *
-     * @param parent para que actue como modal con el Frame o Dialog padre
-     */
-//    
-    public void mostrar() {
-        this.setVisible(true);
-    }
-
-    //Inicializa la interfaz de usuario
-    private void initComponents() {
+    private void initComponents() {        
+        this.setTitle("Lista de Actividades");
+        this.pack();
+        this.setSize(800, 600);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                controlador.cerrarAplicacion();
+            }
+        });            
         
-        lblFondo = new JLabel();
-        ///////////////////////////Botones//////////////////////////
-        pnlBotonesEdicion = new JPanel();
-        pnlBotonesEdicion.setLayout(null);
-        pnlBotonesEdicion.setPreferredSize(new java.awt.Dimension(300, 35));
-        pnlBotonesEdicion.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
-        this.add(pnlBotonesEdicion, BorderLayout.SOUTH);
-
         JPanel pnlCentral = new JPanel();
-        this.add(pnlCentral, BorderLayout.CENTER);
-        pnlCentral.setLayout(null);
-
-        JLabel lblNombre = new JLabel();
-        pnlCentral.add(lblNombre);
-        lblNombre.setText("Nombre");
-        lblNombre.setBounds(16, 14, 74, 16);
-
-        txtNombre = new JTextField();
-        pnlCentral.add(txtNombre);
-        txtNombre.setBounds(90, 11, 423, 22);
-//		txtNombre.setDocument(new FiltroTexto(FiltroTexto.ALL,100));
-
-        ButtonGroup group = new ButtonGroup();
-
-        rbtnURL = new JRadioButton();
-        rbtnURL.setText("Desde URL");
-        rbtnURL.setBounds(12, 60, 117, 20);
-        pnlCentral.add(rbtnURL);
-        group.add(rbtnURL);
-        rbtnURL.addChangeListener(new ChangeListener() {
-
-            public void stateChanged(ChangeEvent changEvent) {
-                AbstractButton aButton = (AbstractButton) changEvent.getSource();
-                ButtonModel aModel = aButton.getModel();
-
-                habilitarComponentesURL(aModel.isSelected());
-            }
-        }
-        );
-
-        txtUrl = new JTextField();
-        txtUrl.setBounds(160, 61, 353, 21);
-        pnlCentral.add(txtUrl);
-
-        rbtnFilePath = new JRadioButton();
-        rbtnFilePath.setText("Desde archivo local");
-        rbtnFilePath.setBounds(12, 101, 148, 20);
-        pnlCentral.add(rbtnFilePath);
-        group.add(rbtnFilePath);
-        rbtnFilePath.addChangeListener(new ChangeListener() {
-
-            public void stateChanged(ChangeEvent changEvent) {
-                AbstractButton aButton = (AbstractButton) changEvent.getSource();
-                ButtonModel aModel = aButton.getModel();
-
-                habilitarComponentesFilePath(aModel.isSelected());
-            }
-        }
-        );
-
-        txtFilePath = new JTextField();
-        txtFilePath.setBounds(160, 100, 323, 22);
-        pnlCentral.add(txtFilePath);
-
-        chkActivo = new JCheckBox();
-        pnlCentral.add(chkActivo);
-        chkActivo.setText("Hacer una copia local");
-        chkActivo.setBounds(160, 132, 206, 20);
-
-        botonGuardar = Util.crearBoton("Guardar", 12);
-        botonGuardar.setBounds(169, 9, 100, 22);
-        pnlBotonesEdicion.add(botonGuardar);
-        botonGuardar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                guardar();
-            }
-        });
-
-        botonCancelar = Util.crearBoton("Cancelar", 12);
-        botonCancelar.setBounds(276, 9, 100, 22);
-        pnlBotonesEdicion.add(botonCancelar);
-        botonCancelar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                cancelar();
-            }
-        });
+        BorderLayout pnlCentralLayout = new BorderLayout();
+        pnlCentral.setOpaque(false);
+        pnlCentral.setLayout(pnlCentralLayout);
         
-        
+        lblFondo = new JLabel();        
         // Propiedades del fondo de pantalla
         ImageIcon icon = createImageIcon("images/Fondo.jpg","Fondo");
         lblFondo.setIcon(icon);
-        getContentPane().add(lblFondo);
-        lblFondo.setBounds(0, 0, 800, 600);
+//        lblFondo.setBounds(0, 0, 800, 600);
+        lblFondo.setLayout(new BorderLayout());        
+
+        // Propiedades de la tabla de actividades
+        tablaActividades = new JTable();
+        tablaActividades.setOpaque(true);           
+//        ((DefaultTableCellRenderer)tablaActividades.getDefaultRenderer(Object.class)).setOpaque(false);
+        
+        tablaActividades.setBackground(new java.awt.Color(250, 255, 113));
+        tablaActividades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 90, 39)));
+        tablaActividades.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); 
+        
+        tablaActividades.setAlignmentX(1.0F);
+        tablaActividades.setAlignmentY(1.0F);
+        tablaActividades.setGridColor(new java.awt.Color(237, 90, 39));
+        tablaActividades.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tablaActividades.setSelectionBackground(new java.awt.Color(85, 196, 190));           
+        
+        JScrollPane jScrollPane = new JScrollPane(tablaActividades);
+        jScrollPane.setOpaque(false);
+        jScrollPane.getViewport().setOpaque(false);
+        
+        tablaActividades.setModel(new ActividadTableModel(listaActividades));
+
+        tablaActividades.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    editarActividadActual();
+                }
+            }
+        });
+        pnlCentral.add(jScrollPane, BorderLayout.CENTER);
+        lblFondo.add(pnlCentral, BorderLayout.CENTER);
+
+        pnlBotonesEdicion = new JPanel();
+        pnlBotonesEdicion.setLayout(null);
+        pnlBotonesEdicion.setOpaque(false);
+        pnlBotonesEdicion.setPreferredSize(new java.awt.Dimension(300, 35));
+        pnlBotonesEdicion.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
+
+        // Propiedades del botón Nuevo
+        botonNuevo = Util.crearBoton("Nuevo", 12);
+        botonNuevo.setBounds(150, 7, 90, 22);
+        pnlBotonesEdicion.add(botonNuevo);
+        botonNuevo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                nuevaActividad();
+                ocultar();
+            }
+        });
+
+        // Propiedades del botón Editar
+        botonEdicion = Util.crearBoton("Editar", 12);
+        botonEdicion.setBounds(250, 7, 90, 22);
+        pnlBotonesEdicion.add(botonEdicion);
+        botonEdicion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                editarActividadActual();
+            }
+        });
+
+        // Propiedades del botón Borrar
+        botonBorrar = Util.crearBoton("Borrar", 12);
+        botonBorrar.setBounds(350, 7, 90, 22);
+        pnlBotonesEdicion.add(botonBorrar);
+        botonBorrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                borrarActividad();
+            }
+        });
+        
+        // Propiedades del botón Probar
+        botonProbar = Util.crearBoton("Probar", 12);
+        botonProbar.setBounds(450, 7, 90, 22);
+        pnlBotonesEdicion.add(botonProbar);        
+        botonProbar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              //  Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
+              ocultar();
+              JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(getActividadSeleccionada(), aux);
+              pregCtrl.jugar();
+            }
+        });
+        
+        // Propiedades del botón Volver
+        botonVolver = Util.crearBoton("Volver", 12);
+        botonVolver.setBounds(550, 7, 90, 22);
+        pnlBotonesEdicion.add(botonVolver);
+        botonVolver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                volver();
+            }
+        });
+        
+        getContentPane().add(pnlBotonesEdicion, BorderLayout.SOUTH);
+        
+        this.add(lblFondo);
+        
+        this.mostrar();
+        
     }
     
     protected ImageIcon createImageIcon(String path, String description) {
@@ -177,82 +175,185 @@ public class DocenteBrowseActividadesDlg extends JFrame {
             return null;
         }
     }
-
-    //Habilita o no los componentes de edición de archivos por Path
-    private void habilitarComponentesFilePath(boolean habilitado) {
-        this.txtFilePath.setEnabled(habilitado);
-        this.chkActivo.setEnabled(habilitado);
-    }
-
-    //Habilita o no los componentes de edición de archivos por URL
-    private void habilitarComponentesURL(boolean habilitado) {
-        this.txtUrl.setEnabled(habilitado);
-    }
-
-    //Permite guardar el recurso
-    private void guardar() {
-
-        try {
-            validarComponentes();
-        } catch (Exception e) {
-            Dialogo.error("Error al validar: ", e.getMessage());
-            return;
-        }
-        
-        cargarPropiedades();
-        
-        try {
-            
-            this.controlador.guardar(actividad, alta);
-        } catch (Exception e) {
-            Dialogo.error("Error al guardar: ", e.getMessage());
-            return;
-        } finally {
-            // Código que se ejecuta con o sin excepción.
-        }
-        
-        //Si anduvo todo bien se guardó la actividad y se debe cerrar la ventana de edición
-        ocultar();
-    }
-
-    //Actualiza los componentes con los datos del modelo
-    private void actualizarComponentes() {
-        this.txtNombre.setText(this.actividad.getPlantilla().toString());
-//        this.txtUrl.setText();
-//        this.txtFilePath.setText();
-
-        boolean seUsaURL = (!txtUrl.getText().equals(""));
-        this.rbtnURL.setSelected(seUsaURL);
-        habilitarComponentesURL(seUsaURL);
-
-        boolean seUsaPath = (!txtFilePath.getText().equals(""));
-        this.rbtnFilePath.setSelected(seUsaPath);
-        habilitarComponentesFilePath(seUsaPath);
-
-        this.chkActivo.setSelected(true);
+    
+    public void mostrar() {
+        this.setVisible(true);
     }
     
-    private void cargarPropiedades() {
-        this.actividad.setPlantilla(new PregYResp());
-    }
-
     public void ocultar() {
         this.setVisible(false);
     }   
-
-    //Cancela, en respuesta al requerimiento del usuario
-    private void cancelar() {
-        ocultar();
+    
+    //////////////////////////////////////Nueva Actividad//////////////////////////////////////
+    private void nuevaActividad() {
+        System.out.println("nuevaActividad");
+        this.controlador.agregar();
     }
-
-    //Irían las validaciones de los componentes, antes de pasar los valores a las 
-    //propiedades de la actividad que se está editando.
-    private void validarComponentes() {
+    
+    public void agregarATabla(Actividad actividadNueva) {
+        ((ActividadTableModel)tablaActividades.getModel()).addActividad(actividadNueva);
     }
+    ////////////////////////////////////Fin->Nueva Actividad///////////////////////////////////
+    
+    /////////////////////////////////////Editar Actividad//////////////////////////////////////
+    private void editarActividadActual() {
+        System.out.println("editarActividad");
+    	Actividad actividad = getActividadSeleccionada();
 
+    	if (actividad != null) {
+            this.controlador.editar(actividad);
+    	}
+    }
+    
+    public void actualizarATabla(Actividad actividadEditada) {
+        ((ActividadTableModel)tablaActividades.getModel()).updateActividad(actividadEditada);
+    }
+    ///////////////////////////////////FIN->Editar Actividad///////////////////////////////////
 
+    //////////////////////////////////////////Volver///////////////////////////////////////////
+    public void volver() {
+        this.controlador.ocultar();
+        this.controlador.docenteInicioDlg.initComponents();
+    }
+    ///////////////////////////////////////////FIN->Volver/////////////////////////////////////
     
+    /////////////////////////////////////Borrar Actividad//////////////////////////////////////
+    private void borrarActividad() {
+        System.out.println("borrarActividad");
+    	Actividad actividad = getActividadSeleccionada();
+        
+        if (actividad != null)  {
+            try {        
+                controlador.borrar(actividad);
+                ((ActividadTableModel)tablaActividades.getModel()).removeActividad(actividad);        
+            } catch (Exception e) {
+                Dialogo.error("Error al borrar: ", e.getMessage());
+            }
+        }
+    }   
+    ///////////////////////////////////FIN->Borrar Actividad///////////////////////////////////
     
+    //Indica cuál es la actividad que está seleccionado en la JTable
+    private Actividad getActividadSeleccionada() {
+    	int indexSeleccionado = this.tablaActividades.getSelectedRow();
+    	return ((ActividadTableModel)this.tablaActividades.getModel()).getActividad(indexSeleccionado);
+    }
     
+    /**
+     * Modelo de la JTable de Actividades.
+     */
+    public class ActividadTableModel extends AbstractTableModel {
+
+        protected List<Actividad> actividades;
+
+        public ActividadTableModel(List<Actividad> actividades) {
+            this.actividades = actividades;
+        }
+
+        @Override
+        public String getColumnName(int column) {
+            if (column == 0) {
+                return "Materia";
+            } else if (column == 1) {
+                return "Tema";
+            } else if (column == 2) {
+                return "Grado";
+            } else if (column == 3) {
+                return "Nivel";
+            } else if (column == 4) {
+                return "Dificultad";
+            } else if (column == 5) {
+                return "Tipo";
+            } else 
+                return "Enunciado";    
+        }
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+
+        @Override
+        public Class getColumnClass(int column) {
+            if (column == 0) {
+                return String.class;
+            } else if (column == 1) {
+                return String.class;
+            } else if (column == 2) {
+                return String.class;
+            }  else if (column == 3) {
+                return String.class;
+            } else if (column == 4) {
+                return String.class;
+            } else if (column == 5) {
+                return String.class;
+            } else {
+                return String.class;
+            }
+        }
+
+        @Override
+        public Object getValueAt(int row, int column) {
+            Actividad actividad = actividades.get(row);
+            if (column == 0) {
+                return actividad.getMateria().getMateria();
+            } else if (column == 1) {
+                return actividad.getTema();
+            } else if (column == 2) {
+                return actividad.getGrado();
+            } else if (column == 3) {
+                return actividad.getNivel();
+            } else if (column == 4) {
+                return actividad.getDificultad();
+            } else if (column == 5) {
+                return actividad.getPlantilla().getTipoPlantilla();
+            } else {
+                return actividad.getPlantilla().getEnunciado();
+            }
+        }
+
+        @Override
+        public void setValueAt(Object value, int row, int column) {
+        }
+
+        @Override
+        public int getRowCount() {
+            return actividades.size();
+        }
+
+        @Override
+        public int getColumnCount() {
+            return 7;
+        }
+
+        public Actividad getActividad(int index) {
+            if ((index < 0) || (index > actividades.size())) {
+                return null;
+            } else {
+                return actividades.get(index);
+            }
+        }
+
+        public void removeActividad(Actividad actividad) {
+            actividades.remove(actividad);
+            fireTableDataChanged();
+        }
+
+        public void addActividad(Actividad actividad) {
+            actividades.add(actividad);
+            fireTableDataChanged();
+        }
+
+        public void updateActividad(Actividad actividadActualizado) {
+            int index = 0;
+            for (Actividad actividad : actividades) {
+                if (actividad.equals(actividadActualizado)) {
+                    actividades.set(index, actividadActualizado);
+                    break;
+                }
+                index = index + 1;
+            }
+        }
+    }    
     
 }

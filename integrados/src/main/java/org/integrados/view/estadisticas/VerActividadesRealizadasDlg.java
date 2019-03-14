@@ -28,7 +28,7 @@ import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
 import org.integrados.view.Dialogo;
-import org.integrados.view.DocenteBrowseActividadesBrw;
+import org.integrados.view.DocenteBrowseActividadesDlg;
 import org.integrados.controller.estadisticas.GraficoCtrl;
 
 public class VerActividadesRealizadasDlg extends JFrame {
@@ -187,7 +187,7 @@ public class VerActividadesRealizadasDlg extends JFrame {
 //Indica cuál es la actividad que está seleccionado en la JTable
     private Actividad getActividadSeleccionada() {
         int indexSeleccionado = this.tablaActividades.getSelectedRow();
-        return ((DocenteBrowseActividadesBrw.ActividadTableModel) this.tablaActividades.getModel()).getActividad(indexSeleccionado);
+        return ((DocenteBrowseActividadesDlg.ActividadTableModel) this.tablaActividades.getModel()).getActividad(indexSeleccionado);
     }
 
     /**
