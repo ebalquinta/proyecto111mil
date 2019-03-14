@@ -79,9 +79,9 @@ public class VerActividadesRealizadasDlg extends JFrame {
         lblFondo = new JLabel();
 
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("../images/Fondo2.jpg", "Fondo");
+        ImageIcon icon = createImageIcon("../images/Fondo.jpg", "Fondo");
         lblFondo.setIcon(icon);
-        lblFondo.setBounds(0, 0, 800, 600);
+//        lblFondo.setBounds(0, 0, 800, 600);
         lblFondo.setLayout(new BorderLayout());
 
         // Propiedades de la tabla de actividades
@@ -108,7 +108,7 @@ public class VerActividadesRealizadasDlg extends JFrame {
             pnlCentral.add(jScrollPane, BorderLayout.CENTER);
         }
 
-        lblFondo.add(pnlCentral);
+        lblFondo.add(pnlCentral, BorderLayout.CENTER);
 
         pnlBotonesEdicion = new JPanel();
         pnlBotonesEdicion.setLayout(null);
@@ -118,7 +118,7 @@ public class VerActividadesRealizadasDlg extends JFrame {
 
         // Propiedades del botón Graficar
         btnGrafico = Util.crearBoton("Graficar", 12);
-        btnGrafico.setBounds(500, 7, 90, 22);
+        btnGrafico.setBounds(50, 7, 90, 22);
         pnlBotonesEdicion.add(btnGrafico);  
         VerActividadesRealizadasDlg aux = this;
         btnGrafico.addActionListener(new ActionListener() {
@@ -218,6 +218,11 @@ public class VerActividadesRealizadasDlg extends JFrame {
             }
         }
 
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+        
         @Override
         public Class getColumnClass(int column) {
             if (column == 0) {
