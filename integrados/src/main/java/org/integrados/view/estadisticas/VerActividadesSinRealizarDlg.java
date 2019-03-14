@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.AbstractTableModel;
+import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.util.Util;
@@ -74,14 +75,15 @@ public class VerActividadesSinRealizarDlg extends JFrame {
         this.nombreAlumno.setText(this.recuperarNombreAlumno(listaActividades));
         this.nombreAlumno.setFont(new Font("Comic Sans MS", 0, 30));
         this.nombreAlumno.setForeground(Color.BLACK);
+        this.nombreAlumno.setOpaque(false);
         this.nombreAlumno.setBounds(300, 50, 200, 200);
 
         lblFondo = new JLabel();
 
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("../images/Fondo2.jpg", "Fondo");
+        ImageIcon icon = createImageIcon("../images/Fondo.jpg", "Fondo");
         lblFondo.setIcon(icon);
-        lblFondo.setBounds(0, 0, 800, 600);
+//        lblFondo.setBounds(0, 0, 800, 600);
         lblFondo.setLayout(new BorderLayout());
 
         // Propiedades de la tabla de actividades
@@ -105,7 +107,7 @@ public class VerActividadesSinRealizarDlg extends JFrame {
         tablaActividades.setModel(new ActividadTableModel(listaActividades));
 
         pnlCentral.add(jScrollPane, BorderLayout.CENTER);
-        lblFondo.add(pnlCentral);
+        lblFondo.add(pnlCentral, BorderLayout.CENTER);
 
         pnlBotonesEdicion = new JPanel();
         pnlBotonesEdicion.setLayout(null);
@@ -115,12 +117,17 @@ public class VerActividadesSinRealizarDlg extends JFrame {
 
         // Propiedades del botón Eliminar
         btnEliminar = Util.crearBoton("Eliminar", 12);
-        btnEliminar.setBounds(550, 7, 90, 22);
+        btnEliminar.setBounds(190, 7, 90, 22);
         pnlBotonesEdicion.add(btnEliminar);
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                borrarRegistroActividad();
+                RegistroActividad actividad = getActividadSeleccionada();
+                if (actividad != null) {                
+                    borrarActividadAsignada(actividad);
+                } else {
+                    Dialogo.mensaje("¡Atención! ", " Debe seleccionar una actividad para realizar esta opción");
+                }
             }
         });
         
@@ -181,11 +188,10 @@ public class VerActividadesSinRealizarDlg extends JFrame {
     }
     
     /////////////////////////////////////Borrar RegistroActividad//////////////////////////////////////
-    private void borrarRegistroActividad() {
-        System.out.println("borrarRegistroActividad");
-    	RegistroActividad actividad = getActividadSeleccionada();
-        
-        if (actividad != null)  {
+    private void borrarActividadAsignada(RegistroActividad actividad) {
+        Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea eliminar esta actividad para este alumno?");
+        if (resultado == Dialogo.ResultadoDialogo.Yes) {
+            System.out.println("borrarActividadAsignada");
             try {        
                 controlador.borrar(actividad);   //eliminar de la lista del alumno
                 ((ActividadTableModel)tablaActividades.getModel()).removeActividad(actividad);        
