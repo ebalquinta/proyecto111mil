@@ -16,7 +16,7 @@ public class Casilla extends JLabel{
     
     private int ancho=140;
     private int alto=140;
-    private ImageIcon hide = new ImageIcon("F:\\usuarios\\alumno\\Escritorio\\xd\\proyecto-111mil\\integrados\\src\\main\\resources\\org\\integrados\\view\\imagesMemorama\\imagenes/hide.jpg");
+    private ImageIcon hide = new ImageIcon("../../imagesMemorama/hide.jpg");
     private ImageIcon figura;
     private String sFigura="";
     private boolean congelado=false;

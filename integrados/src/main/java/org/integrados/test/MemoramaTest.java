@@ -5,6 +5,8 @@
  */
 package org.integrados.test; 
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import org.integrados.controller.actividades.JugarMemoramaCtrl;
@@ -19,54 +21,69 @@ import org.integrados.data.enums.Nivel;
 import org.integrados.data.plantillas.Memorama;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
+import org.integrados.data.util.Util;
 
 /**
  *
  * @author alumno
  */
 public class MemoramaTest {
+    List<Bloque> bloques;
+    List<Bloque> bloques2;
+    List<Bloque> solucion;
+    public void principal() {
+        
+        // Obtengo la ruta relativa de donde estoy parado
+        String path = this.getClass().getResource("../").toString();
+        // Reescribo esa ruta en formato correcto para que saque espacios y caracteres especiales
+        String result = Util.getDecodedUrl(path);
+        System.out.println(result);
+        
+        bloques = new ArrayList();
+        bloques.add(new BloqueImagen(result + "view/imagesMemorama/uno.jpg"));
+        bloques.add(new BloqueImagen(result + "view/imagesMemorama/dos.jpg"));
+        bloques.add(new BloqueImagen(result + "view/imagesMemorama/tres.jpg"));
+        bloques.add(new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg"));
+        bloques.add(new BloqueImagen(result + "view/imagesMemorama/cinco.jpg"));
+        bloques.add(new BloqueImagen(result + "view/imagesMemorama/seis.jpg"));
+        bloques.add(new BloqueImagen(result + "view/imagesMemorama/siete.jpg"));
+        bloques.add(new BloqueImagen(result + "view/imagesMemorama/ocho.jpg"));
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        List<Bloque> bloques = new ArrayList();
-        bloques.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/uno.jpg"));
-        bloques.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/dos.jpg"));
-        bloques.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/tres.jpg"));
-        bloques.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/cuatro.jpg"));
-        bloques.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/cinco.jpg"));
-        bloques.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/seis.jpg"));
-        bloques.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/siete.jpg"));
-        bloques.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/ocho.jpg"));
-
-        List<Bloque> bloques2 = new ArrayList();
-        bloques2.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/uno.jpg"));
-        bloques2.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/dos.jpg"));
-        bloques2.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/tres.jpg"));
-        bloques2.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/cuatro.jpg"));
-        bloques2.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/cinco.jpg"));
-        bloques2.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/seis.jpg"));
-        bloques2.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/siete.jpg"));
-        bloques2.add(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/ocho.jpg"));
+        bloques2 = new ArrayList();
+        bloques2.add(new BloqueImagen(result + "view/imagesMemorama/uno.jpg"));
+        bloques2.add(new BloqueImagen(result + "view/imagesMemorama/dos.jpg"));
+        bloques2.add(new BloqueImagen(result + "view/imagesMemorama/tres.jpg"));
+        bloques2.add(new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg"));
+        bloques2.add(new BloqueImagen(result + "view/imagesMemorama/cinco.jpg"));
+        bloques2.add(new BloqueImagen(result + "view/imagesMemorama/seis.jpg"));
+        bloques2.add(new BloqueImagen(result + "view/imagesMemorama/siete.jpg"));
+        bloques2.add(new BloqueImagen(result + "view/imagesMemorama/ocho.jpg"));
 
 
-        List<Bloque> solucion = new ArrayList();
-        solucion.add(new BloqueAnd(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/uno.jpg"), new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/uno.jpg")));
-        solucion.add(new BloqueAnd(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/dos.jpg"), new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/dos.jpg")));
-        solucion.add(new BloqueAnd(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/tres.jpg"), new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/tres.jpg")));
-        solucion.add(new BloqueAnd(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/cuatro.jpg"), new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/cuatro.jpg")));
-        solucion.add(new BloqueAnd(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/cinco.jpg"), new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/cinco.jpg")));
-        solucion.add(new BloqueAnd(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/seis.jpg"), new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/seis.jpg")));
-        solucion.add(new BloqueAnd(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/siete.jpg"), new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/siete.jpg")));
-        solucion.add(new BloqueAnd(new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/ocho.jpg"), new BloqueImagen("F:/usuarios/alumno/Escritorio/xd/proyecto-111mil/integrados/src/main/resources/org/integrados/view/imagesMemorama/imagenes/ocho.jpg")));
+        solucion = new ArrayList();
+        solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/uno.jpg"), new BloqueImagen(result + "view/imagesMemorama/uno.jpg")));
+        solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/dos.jpg"), new BloqueImagen(result + "view/imagesMemorama/dos.jpg")));
+        solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/tres.jpg"), new BloqueImagen(result + "view/imagesMemorama/tres.jpg")));
+        solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg"), new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg")));
+        solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/cinco.jpg"), new BloqueImagen(result + "view/imagesMemorama/cinco.jpg")));
+        solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/seis.jpg"), new BloqueImagen(result + "view/imagesMemorama/seis.jpg")));
+        solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/siete.jpg"), new BloqueImagen(result + "view/imagesMemorama/siete.jpg")));
+        solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/ocho.jpg"), new BloqueImagen(result + "view/imagesMemorama/ocho.jpg")));
+        
 
         Memorama m = new Memorama("xd",solucion,bloques, bloques2);
         Actividad actividad = new Actividad(m, new Docente(), new Materia("Matematica"), "kslkd", 3, Nivel.INICIAL, Dificultad.ALTO, 3);
         RegistroActividad registro = new RegistroActividad(actividad, new Alumno(), new Docente());
         JugarMemoramaCtrl ctrl = new JugarMemoramaCtrl(actividad);
-
+        
+    }
+       
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        MemoramaTest test = new MemoramaTest();
+        test.principal();
     }
 
 }

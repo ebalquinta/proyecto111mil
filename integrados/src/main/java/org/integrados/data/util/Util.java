@@ -1,6 +1,8 @@
 package org.integrados.data.util;
 
 import java.awt.*;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -150,5 +152,20 @@ clacularPorcentaje y estrellas podrian estar en util.
      public static ImageIcon reziseImageIcon(ImageIcon image, int width, int height) {
          return new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
      }
-     
+     /**
+      * Recibo una URL pasada a string y reescribo esa ruta en formato correcto
+      * para que saque espacios y caracteres especiales
+      * @param path - URL pasada a string
+      * @return - Esa misma ruta en formato correcto
+      */
+     public static String getDecodedUrl(String path) {
+        String result = "";
+        try {
+            result = URLDecoder.decode(path, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result.substring(6);
+     }
 }

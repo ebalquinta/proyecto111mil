@@ -8,6 +8,8 @@ package org.integrados.view.actividades.memorama;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import org.integrados.data.bloques.Bloque;
+import org.integrados.data.bloques.BloqueAnd;
 import org.integrados.data.bloques.BloqueImagen;
 
 /**
@@ -17,15 +19,26 @@ import org.integrados.data.bloques.BloqueImagen;
 public class JuegoFrm extends javax.swing.JFrame {
 
     private Tablero tabla;
+    private List<BloqueImagen> bloques;
+
 
     /**
      * Creates new form JuegoFrm
      */
     public JuegoFrm(Tablero tablero) {
         initComponents();
-
-        tabla =tablero;
-     //   tabla.setTablero(bloques);
+//        List<Bloque> bloques = new ArrayList();
+//        bloques.add(new BloqueImagen(test));
+//        bloques.add(new BloqueImagen("../../view/imagesMemorama/dos.jpg"));
+//        bloques.add(new BloqueImagen("../../view/imagesMemorama/tres.jpg"));
+//        bloques.add(new BloqueImagen("../../view/imagesMemorama/cuatro.jpg"));
+//        bloques.add(new BloqueImagen("../../view/imagesMemorama/cinco.jpg"));
+//        bloques.add(new BloqueImagen("../../view/imagesMemorama/seis.jpg"));
+//        bloques.add(new BloqueImagen("../../view/imagesMemorama/siete.jpg"));
+//        bloques.add(new BloqueImagen("../../view/imagesMemorama/ocho.jpg"));
+        
+        tabla = tablero;
+//        tabla.setImagenes(this.bloques);
 
         this.jpContenedor.add(tabla);
         this.jpContenedor.repaint();
