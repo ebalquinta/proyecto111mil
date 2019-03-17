@@ -6,6 +6,7 @@
 package org.integrados.view.actividades.memorama;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import org.integrados.data.bloques.BloqueImagen;
 
@@ -16,17 +17,15 @@ import org.integrados.data.bloques.BloqueImagen;
 public class JuegoFrm extends javax.swing.JFrame {
 
     private Tablero tabla;
-    private List<BloqueImagen> bloques;
-
 
     /**
      * Creates new form JuegoFrm
      */
     public JuegoFrm(Tablero tablero) {
         initComponents();
-        
+
         tabla = tablero;
-//        tabla.setImagenes(bloques);
+     //   tabla.setTablero(bloques);
 
         this.jpContenedor.add(tabla);
         this.jpContenedor.repaint();

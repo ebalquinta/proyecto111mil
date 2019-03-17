@@ -32,7 +32,7 @@ public class MemoramaTest {
     List<Bloque> bloques2;
     List<Bloque> solucion;
     public void principal() {
-        
+        System.out.println("");
         // Obtengo la ruta relativa de donde estoy parado
         String path = this.getClass().getResource("../").toString();
         // Reescribo esa ruta en formato correcto para que saque espacios y caracteres especiales

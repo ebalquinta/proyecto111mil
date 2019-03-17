@@ -8,6 +8,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import org.integrados.data.util.Util;
 /**
  * 
  * @author SAB-005
@@ -16,7 +17,7 @@ public class Casilla extends JLabel{
     
     private int ancho=140;
     private int alto=140;
-    private ImageIcon hide = new ImageIcon("../../imagesMemorama/hide.jpg");
+    private ImageIcon hide;
     private ImageIcon figura;
     private String sFigura="";
     private boolean congelado=false;
@@ -27,6 +28,12 @@ public class Casilla extends JLabel{
       */
     public Casilla( String name ){
         super();
+        // Obtengo la ruta relativa de donde estoy parado
+        String path = this.getClass().getResource("../../").toString();
+        // Reescribo esa ruta en formato correcto para que saque espacios y caracteres especiales
+        String result = Util.getDecodedUrl(path);
+        System.out.println(result);
+        hide = new ImageIcon(result + "imagesMemorama/hide.jpg");
         Dimension d = new Dimension(ancho,alto);
         setName(name);
         setSize( d );
