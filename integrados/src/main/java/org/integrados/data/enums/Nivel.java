@@ -12,5 +12,5 @@ package org.integrados.data.enums;
 public enum Nivel {
     //este enum lo utilizan alumno y actividad. Lo importe en esta clase xq es la primera en usarlo.
     
-    INICIAL, PRIMARIO, SECUNDARIO, TERCIARIO, UNIVERSITARIO
+    Inicial, Primario, Secundario, Terciario, Universitario
 }

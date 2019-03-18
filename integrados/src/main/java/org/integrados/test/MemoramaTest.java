@@ -72,7 +72,7 @@ public class MemoramaTest {
         
 
         Memorama m = new Memorama("xd",solucion,bloques, bloques2);
-        Actividad actividad = new Actividad(m, new Docente(), new Materia("Matematica"), "kslkd", 3, Nivel.INICIAL, Dificultad.ALTO, 3);
+        Actividad actividad = new Actividad(m, new Docente(), new Materia("Matematica"), "kslkd", 3, Nivel.Inicial, Dificultad.Alta, 3);
         RegistroActividad registro = new RegistroActividad(actividad, new Alumno(), new Docente());
         JugarMemoramaCtrl ctrl = new JugarMemoramaCtrl(actividad);
         

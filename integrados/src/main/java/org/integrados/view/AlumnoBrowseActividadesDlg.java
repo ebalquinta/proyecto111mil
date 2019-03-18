@@ -161,7 +161,7 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
 
 
                 Memorama m = new Memorama("xd",solucion,bloques, bloques2);
-                Actividad actividad = new Actividad(m, new Docente(), new Materia("Matematica"), "kslkd", 3, Nivel.INICIAL, Dificultad.ALTO, 3);
+                Actividad actividad = new Actividad(m, new Docente(), new Materia("Matematica"), "kslkd", 3, Nivel.Inicial, Dificultad.Alta, 3);
                 new RegistroActividad(actividad, new Alumno(), new Docente());
                 new JugarMemoramaCtrl(actividad, aux);
                 ocultar();

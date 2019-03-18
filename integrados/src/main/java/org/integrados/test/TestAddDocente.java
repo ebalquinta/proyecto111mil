@@ -29,7 +29,7 @@ public class TestAddDocente {
         
          
         List<Alumno> alumnos = new ArrayList<>();
-        Alumno a = new Alumno(6666, "Es", "Ese", 5, "c", Nivel.SECUNDARIO);
+        Alumno a = new Alumno(6666, "Es", "Ese", 5, "c", Nivel.Secundario);
         alumnos.add(a);
         docente.setAlumnos(alumnos);
 

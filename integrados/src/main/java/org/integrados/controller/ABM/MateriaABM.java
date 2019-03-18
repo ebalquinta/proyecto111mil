@@ -1,6 +1,8 @@
 package org.integrados.controller.ABM;
 
+import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.integrados.bd.HibernateUtiles;
 import org.integrados.data.actividad.Materia;
 import org.integrados.exceptions.IntegradosException;
@@ -39,6 +41,31 @@ public class MateriaABM {
             System.out.println("falla en la devolucion de Materia " + id);
             return null;
         }
+    }
+    
+    public static String[] getMaterias(){
+        Session s = null;
+        List<Materia> p = null;
+        String[] materias = null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            Query query = s.createQuery("FROM Materia m");
+            p = query.list();
+            s.getTransaction().commit();
+            s.close();
+            
+        } catch (Exception e) {
+            System.out.println("falla en la devolucion de lista de Materias");
+            return null;
+        }
+        if (p != null) {
+            materias = new String[p.size()];
+            for (int i = 0; i < p.size(); i++) {
+                materias[i] = p.get(i).getMateria();
+            }
+        }
+        return materias;
     }
     
     public void borrar(Materia b){

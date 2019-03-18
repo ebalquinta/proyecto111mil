@@ -29,7 +29,7 @@ public class TestUpdateDocente {
         System.out.println("*****************************************");
         
         List<Alumno> alumnos = new ArrayList<>();
-        Alumno a = new Alumno(101918, "alumnoDocente", "apellido", 5, "c", Nivel.SECUNDARIO);
+        Alumno a = new Alumno(101918, "alumnoDocente", "apellido", 5, "c", Nivel.Secundario);
         alumnos.add(a);
         d1.setAlumnos(alumnos);
         System.out.println("*****************************************");

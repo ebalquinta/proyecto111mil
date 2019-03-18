@@ -23,7 +23,7 @@ public class TestAddAlumno {
 
     public static boolean agregarAlumno() {
         boolean agregarAlumno = false;
-        Alumno alumno = new Alumno(10987, "Carla", "Carla", 5, "c", Nivel.SECUNDARIO);
+        Alumno alumno = new Alumno(10987, "Carla", "Carla", 5, "c", Nivel.Secundario);
         alumno.setUsuario("alumno90");
         alumno.setClave("alumno90");
 

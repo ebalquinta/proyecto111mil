@@ -51,7 +51,7 @@
             <version>RELEASE82</version>
         </dependency>
         <dependency>
-            <groupId>jfreechart</groupId>
+            <groupId>jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>1.0.0</version>
         </dependency>

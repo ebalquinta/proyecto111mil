@@ -87,11 +87,11 @@ public class listaActividades {
 //        }
         
         
-        Actividad actividad1 = new Actividad(preYResp, docente, materia, "Oraciones", 1, Nivel.PRIMARIO, Dificultad.BAJO, 3);
+        Actividad actividad1 = new Actividad(preYResp, docente, materia, "Oraciones", 1, Nivel.Primario, Dificultad.Baja, 3);
         guardar(actividad1);
-        Actividad actividad2 = new Actividad(preYResp, docente, materia, "Guerra", 1, Nivel.SECUNDARIO, Dificultad.INTERMEDIO, 3);
+        Actividad actividad2 = new Actividad(preYResp, docente, materia, "Guerra", 1, Nivel.Secundario, Dificultad.Intermedia, 3);
         guardar(actividad2);
-        Actividad actividad3 = new Actividad(preYResp, docente, materia, "Celula", 1, Nivel.TERCIARIO, Dificultad.ALTO, 3);
+        Actividad actividad3 = new Actividad(preYResp, docente, materia, "Celula", 1, Nivel.Terciario, Dificultad.Alta, 3);
         guardar(actividad3);
 
 //        List<Actividad> listaActividades = new ArrayList<>();

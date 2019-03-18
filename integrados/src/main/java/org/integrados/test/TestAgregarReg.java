@@ -42,7 +42,7 @@ public class TestAgregarReg {
         
         //Alumnos
         
-        Alumno alumno1 = new Alumno(1, "Pepe", "Caseros", 2, "A", Nivel.PRIMARIO);
+        Alumno alumno1 = new Alumno(1, "Pepe", "Caseros", 2, "A", Nivel.Primario);
         alumno1.setDni(dniAleatorio(alumno1));
         alumno1.setUsuario("alumno1");
         alumno1.setClave("alumno1");
@@ -50,14 +50,14 @@ public class TestAgregarReg {
         savePersona(alumno1);
         
         
-        Alumno alumno2 = new Alumno(1, "Juan", "Perez", 2, "A", Nivel.PRIMARIO);
+        Alumno alumno2 = new Alumno(1, "Juan", "Perez", 2, "A", Nivel.Primario);
         alumno2.setDni(dniAleatorio(alumno2));
         alumno2.setUsuario("alumno");
         alumno2.setClave("alumno");
         
         savePersona(alumno2);
         
-        Alumno alumno3 = new Alumno(1, "Pipo", "Pezcador", 2, "A", Nivel.PRIMARIO);
+        Alumno alumno3 = new Alumno(1, "Pipo", "Pezcador", 2, "A", Nivel.Primario);
         alumno3.setDni(dniAleatorio(alumno3));
         alumno3.setUsuario("alumno3");
         alumno3.setClave("alumno3");
@@ -160,7 +160,7 @@ public class TestAgregarReg {
         
         //Actividad
         
-        Actividad actividad = new Actividad(unir, docente1, materia, "Celula", 1, Nivel.PRIMARIO, Dificultad.BAJO, 3);
+        Actividad actividad = new Actividad(unir, docente1, materia, "Celula", 1, Nivel.Primario, Dificultad.Baja, 3);
         saveObjeto(actividad);
         
         //Registro Actividad

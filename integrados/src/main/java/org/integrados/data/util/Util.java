@@ -6,6 +6,11 @@ import java.net.URLDecoder;
 import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.integrados.controller.ABM.MateriaABM;
+import org.integrados.controller.usuarios.LoginCtrl;
+import org.integrados.data.enums.Dificultad;
+import org.integrados.data.enums.Grado;
+import org.integrados.data.enums.Nivel;
  
 /**
  *paqiuete util: con .java con metodos que sean utiles para implemetar en distintas clases. 
@@ -123,7 +128,7 @@ clacularPorcentaje y estrellas podrian estar en util.
      */
     public static JComboBox crearCombo(String[] texto) {
         JComboBox combo = new JComboBox<>();
-        combo.setEditable(true);
+        combo.setEditable(false);
 //        combo.setForeground(new Color(0, 102, 102));
 //        combo.addMouseListener(new java.awt.event.MouseAdapter() {
 //            @Override
@@ -140,6 +145,32 @@ clacularPorcentaje y estrellas podrian estar en util.
 //        });
         combo.setModel(new DefaultComboBoxModel<>(texto));
         return combo;
+    }
+    
+    public static JComboBox crearComboNivel() {
+        JComboBox combo = new JComboBox<>(Nivel.values());
+        combo.setEditable(false);
+        return combo;        
+    }
+    
+    public static JComboBox crearComboGrado() {
+        JComboBox combo = new JComboBox<>(Grado.values());
+        combo.setEditable(false);
+        return combo;        
+    }
+    
+    public static JComboBox crearComboDificultad() {
+        JComboBox combo = new JComboBox<>(Dificultad.values());
+        combo.setEditable(false);
+        return combo;        
+    }
+    
+    public static JComboBox crearComboMateria() {       
+        JComboBox combo = new JComboBox<>();     
+        combo.setEditable(false);
+        String[] materias = MateriaABM.getMaterias();
+        combo.setModel(new DefaultComboBoxModel<>(materias));
+        return combo;        
     }
     
     /**
