@@ -2,7 +2,9 @@ package org.integrados.view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import javax.swing.*;
+import org.netbeans.lib.awtextra.*;
 import org.integrados.controller.actividades.AgregarBloqueCtrl;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.data.util.Util;
@@ -17,6 +19,8 @@ public class AgregarBloqueDlg extends JFrame {
     public CrearPregYRespCtrl crearPregYRespCtrl; 
     public AgregarBloqueCtrl controlador;  
     private String titulo = null;   
+    public JTextField archivoSeleccionado;
+    public String tipoArchivo; 
                      
     private JLabel lblTitulo = null;
     private JLabel lblSubTitulo = null;
@@ -102,12 +106,24 @@ public class AgregarBloqueDlg extends JFrame {
         btnArchivoImagen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                new SistemaDeArchivosDlg(aux).mostrar();
+                SistemaDeArchivosDlg archivos;
+                JTextField txt = txtIngreseImagen;
+                archivos = new SistemaDeArchivosDlg(aux, txt);
+                archivos.mostrar();
             }
         });
         lblIngreseSonido = Util.crearLabel("Ingrese sonido", 0, 14);
         txtIngreseSonido = Util.crearTextField(14);
         btnArchivoSonido = Util.crearBoton("Archivo", 12);
+        btnArchivoSonido.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                SistemaDeArchivosDlg archivos;
+                JTextField txt = txtIngreseSonido;
+                archivos = new SistemaDeArchivosDlg(aux, txt);
+                archivos.mostrar();
+            }
+        });
         linea = new JSeparator();
         btnAceptar = Util.crearBoton("Aceptar", 14);
         btnAceptar.addActionListener(new ActionListener() {
@@ -122,21 +138,21 @@ public class AgregarBloqueDlg extends JFrame {
             }
         });
 
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());     
-        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 150, 20));
-        getContentPane().add(lblSubTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 200, 20));
-        getContentPane().add(lblIngreseTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 100, 20));
-        getContentPane().add(txtIngreseTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 320, 30));
-        getContentPane().add(lblIngreseImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 100, 20));
-        getContentPane().add(txtIngreseImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 230, 30));
-        getContentPane().add(btnArchivoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 80, 30));
-        getContentPane().add(lblIngreseSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 100, 20));   
-        getContentPane().add(txtIngreseSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 230, 30));
-        getContentPane().add(btnArchivoSonido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 80, 30));
-        getContentPane().add(linea, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 320, 1));
-        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 80, 30));
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 80, 30));
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().setLayout(new AbsoluteLayout());     
+        getContentPane().add(lblTitulo, new AbsoluteConstraints(130, 10, 150, 20));
+        getContentPane().add(lblSubTitulo, new AbsoluteConstraints(100, 30, 200, 20));
+        getContentPane().add(lblIngreseTexto, new AbsoluteConstraints(40, 60, 100, 20));
+        getContentPane().add(txtIngreseTexto, new AbsoluteConstraints(40, 80, 320, 30));
+        getContentPane().add(lblIngreseImagen, new AbsoluteConstraints(40, 110, 100, 20));
+        getContentPane().add(txtIngreseImagen, new AbsoluteConstraints(40, 130, 230, 30));
+        getContentPane().add(btnArchivoImagen, new AbsoluteConstraints(280, 130, 80, 30));
+        getContentPane().add(lblIngreseSonido, new AbsoluteConstraints(40, 160, 100, 20));   
+        getContentPane().add(txtIngreseSonido, new AbsoluteConstraints(40, 180, 230, 30));
+        getContentPane().add(btnArchivoSonido, new AbsoluteConstraints(280, 180, 80, 30));
+        getContentPane().add(linea, new AbsoluteConstraints(40, 230, 320, 1));
+        getContentPane().add(btnAceptar, new AbsoluteConstraints(120, 240, 80, 30));
+        getContentPane().add(btnCancelar, new AbsoluteConstraints(230, 240, 80, 30));
+        getContentPane().add(lblFondo, new AbsoluteConstraints(0, 0, 400, 300));
         pack();
     }   
             
@@ -148,6 +164,18 @@ public class AgregarBloqueDlg extends JFrame {
             System.out.println("Couldn't find file: " + path);
             return null;
         }
+    }
+
+    public String getTipoArchivo() {
+        return tipoArchivo;
+    }
+
+    public JTextField getTxtIngreseImagen() {
+        return txtIngreseImagen;
+    }
+
+    public JTextField getTxtIngreseSonido() {
+        return txtIngreseSonido;
     }
     
     public void mostrar() {

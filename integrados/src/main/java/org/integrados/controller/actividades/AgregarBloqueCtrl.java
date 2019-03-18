@@ -18,6 +18,9 @@ public class AgregarBloqueCtrl {
     private boolean alta = false;
     private String titulo = null;
 
+    public AgregarBloqueCtrl() {
+    }
+    
     public AgregarBloqueCtrl(CrearPregYRespCtrl crearPregYRespCtrl) {
         this.crearPregYRespCtrl = crearPregYRespCtrl;
     }    

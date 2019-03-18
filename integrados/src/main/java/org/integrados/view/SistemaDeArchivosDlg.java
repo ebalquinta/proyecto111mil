@@ -2,117 +2,90 @@
 package org.integrados.view;
 
 import java.io.File;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.JFileChooser;
 import javax.swing.*;
+import javax.swing.border.*;
+import org.netbeans.lib.awtextra.*;
 
 
 /**
  * @author Vivi y Mariela
  */
 public class SistemaDeArchivosDlg extends JFrame {
-    Object vistaAnterior;
+    public Object vistaAnterior;     
+    public JTextField inputAnterior;
+    private JFileChooser selectorDeArchivo;
+    File archivoSeleccionado;
+    
     /**
-     * Creates new form VistaSistemaDeArchivos
+     * Creates new form SistemaDeArchivosDlg
      */
     public SistemaDeArchivosDlg() {
         initComponents();
     }
-    public SistemaDeArchivosDlg(Object vistaAnterior) {
+    public SistemaDeArchivosDlg(Object vistaAnterior, JTextField inputAnterior) {
         this();
-        vistaAnterior = vistaAnterior;
+        this.vistaAnterior = vistaAnterior;
+        this.inputAnterior = inputAnterior;
     }
          
     private void initComponents() {
-
-        SubirArchivo = new JFileChooser();
-        jButton1 = new JButton();
-
+        this.setTitle("Seleccionar Archivo");
+        this.pack();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        SubirArchivo.setBackground(new java.awt.Color(0, 102, 102));
-        SubirArchivo.setFont(new java.awt.Font("Comic Sans MS", 0, 14));
-        SubirArchivo.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        SubirArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        SubirArchivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubirArchivoActionPerformed(evt);
+            
+        // Creando elementos     
+        selectorDeArchivo = new JFileChooser();
+        selectorDeArchivo.setBackground(new Color(0, 102, 102));
+        selectorDeArchivo.setFont(new Font("Comic Sans MS", 0, 14));
+        selectorDeArchivo.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        selectorDeArchivo.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        selectorDeArchivo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                selectorDeArchivoActionPerformed(evt);
             }
         });
-        getContentPane().add(SubirArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 380));
-
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 10)); // NOI18N
-        jButton1.setText("volver");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 70, -1));
-
+        
+        // Agregando elementos 
+        getContentPane().setLayout(new AbsoluteLayout());
+        getContentPane().add(selectorDeArchivo, new AbsoluteConstraints(0, 0, 600, 380));
         pack();
     }                    
 
-    private void SubirArchivoActionPerformed(java.awt.event.ActionEvent evt) {                                             
-      //usado para agregar un archivo
-      
-      JFileChooser SeleccionarArchivo=(JFileChooser)evt.getSource();
-      String command=evt.getActionCommand();
-       if (command.equals(JFileChooser.APPROVE_SELECTION)){
-        File archivoSeleccionado=SeleccionarArchivo.getSelectedFile();
-        JOptionPane.showMessageDialog(this,"Ruta:"
-        +archivoSeleccionado.getAbsolutePath()+"/n archivo:"+archivoSeleccionado.getName());
-  
-       } else if (command.equals(JFileChooser.CANCEL_SELECTION)){
-        JOptionPane.showMessageDialog(this,"Selecciona un Archivo...");
-        
-    }
-      
-      
+    private void selectorDeArchivoActionPerformed(ActionEvent evt) {                    
+        //usado para agregar un archivo
+        String command = evt.getActionCommand();
+        if (command.equals(JFileChooser.APPROVE_SELECTION)) {
+            archivoSeleccionado = selectorDeArchivo.getSelectedFile();
+//            JOptionPane.showMessageDialog(this, "Ruta: "
+//                    + archivoSeleccionado.getAbsolutePath() + "\nArchivo: " + archivoSeleccionado.getName());
+            if (this.vistaAnterior instanceof AgregarBloqueDlg ) {
+                AgregarBloqueDlg vista = (AgregarBloqueDlg) vistaAnterior;
+                vista.mostrar();   
+                inputAnterior.setText(archivoSeleccionado.getAbsolutePath());
+                ocultar();
+            }
+        } else if (command.equals(JFileChooser.CANCEL_SELECTION)) {
+//            JOptionPane.showMessageDialog(this, "Selecciona un Archivo...");
+            ocultar();
+        }   
     }                                            
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new SistemaDeArchivosDlg().setVisible(true);
-            }
-            
-        });
-        
+        new SistemaDeArchivosDlg().setVisible(true);
     }
 
-   
-
-    // Variables declaration - do not modify                     
-    private JFileChooser SubirArchivo;
-    private JButton jButton1;
-    // End of variables declaration                   
-
-public void mostrar() {
+    public void mostrar() {
         this.setVisible(true);
+    }
+    public void ocultar() {
+        this.setVisible(false);
     }
 }
