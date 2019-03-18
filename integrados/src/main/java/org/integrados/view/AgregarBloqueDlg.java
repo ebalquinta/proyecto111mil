@@ -61,6 +61,7 @@ public class AgregarBloqueDlg extends JFrame {
     * Metodo para inicializar los componentes de la vista
     */        
     private void initComponents() { 
+        AgregarBloqueDlg aux = this;
         if (this.controlador.isAlta()) {
             this.setTitle("Nuevo Bloque");
         } else {
@@ -101,8 +102,7 @@ public class AgregarBloqueDlg extends JFrame {
         btnArchivoImagen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                SistemaDeArchivosDlg sistemaDeArchivosDlg = new SistemaDeArchivosDlg();
-                sistemaDeArchivosDlg.mostrar();
+                new SistemaDeArchivosDlg(aux).mostrar();
             }
         });
         lblIngreseSonido = Util.crearLabel("Ingrese sonido", 0, 14);

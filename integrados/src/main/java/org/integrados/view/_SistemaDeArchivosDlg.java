@@ -6,33 +6,37 @@ import javax.swing.JFileChooser;
 import javax.swing.*;
 
 
+
 /**
- * @author Vivi y Mariela
+ *
+ * @author home
  */
-public class SistemaDeArchivosDlg extends JFrame {
+public class _SistemaDeArchivosDlg extends javax.swing.JFrame {
     Object vistaAnterior;
     /**
      * Creates new form VistaSistemaDeArchivos
      */
-    public SistemaDeArchivosDlg() {
+    public _SistemaDeArchivosDlg() {
         initComponents();
     }
-    public SistemaDeArchivosDlg(Object vistaAnterior) {
+    public _SistemaDeArchivosDlg(Object vistaAnterior) {
         this();
         vistaAnterior = vistaAnterior;
     }
-         
+
+       @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SubirArchivo = new JFileChooser();
-        jButton1 = new JButton();
+        SubirArchivo = new javax.swing.JFileChooser();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         SubirArchivo.setBackground(new java.awt.Color(0, 102, 102));
         SubirArchivo.setFont(new java.awt.Font("Comic Sans MS", 0, 14));
-        SubirArchivo.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        SubirArchivo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         SubirArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SubirArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,9 +50,9 @@ public class SistemaDeArchivosDlg extends JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 70, -1));
 
         pack();
-    }                    
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void SubirArchivoActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void SubirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirArchivoActionPerformed
       //usado para agregar un archivo
       
       JFileChooser SeleccionarArchivo=(JFileChooser)evt.getSource();
@@ -64,7 +68,7 @@ public class SistemaDeArchivosDlg extends JFrame {
     }
       
       
-    }                                            
+    }//GEN-LAST:event_SubirArchivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -76,20 +80,20 @@ public class SistemaDeArchivosDlg extends JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(_SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(_SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(_SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(_SistemaDeArchivosDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -98,7 +102,7 @@ public class SistemaDeArchivosDlg extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SistemaDeArchivosDlg().setVisible(true);
+                new _SistemaDeArchivosDlg().setVisible(true);
             }
             
         });
@@ -107,10 +111,10 @@ public class SistemaDeArchivosDlg extends JFrame {
 
    
 
-    // Variables declaration - do not modify                     
-    private JFileChooser SubirArchivo;
-    private JButton jButton1;
-    // End of variables declaration                   
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFileChooser SubirArchivo;
+    private javax.swing.JButton jButton1;
+    // End of variables declaration//GEN-END:variables
 
 public void mostrar() {
         this.setVisible(true);
