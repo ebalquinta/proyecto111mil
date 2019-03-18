@@ -26,9 +26,13 @@ public class CrearPregYRespDlg  extends JFrame {
     private JLabel lblFondo = null;
     
     private JLabel lblTitulo = null;
+    private JLabel lblMateria = null;
     private JComboBox<String> comboMateria = null;
+    private JLabel lblNivel = null;
     private JComboBox<String> comboNivel = null;
+    private JLabel lblGrado = null;
     private JComboBox<String> comboGrado = null;
+    private JLabel lblDificultad = null;
     private JComboBox<String> comboDificultad = null;
     private JLabel lblMaxIntentos = null;
     private JTextField txtMaxIntentos = null;
@@ -122,19 +126,23 @@ public class CrearPregYRespDlg  extends JFrame {
         } else {
             lblTitulo = Util.crearLabel("Editar Pregunta y Respuestas", 0, 18);
         }
+        lblMateria = Util.crearLabel("Materia:", 0, 12);
         comboMateria = Util.crearComboMateria();
+        lblNivel = Util.crearLabel("Nivel:", 0, 12);
         comboNivel = Util.crearComboNivel();
         comboNivel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 comboNivelActionPerformed(evt);
             }
         });
+        lblGrado = Util.crearLabel("Grado:", 0, 12);
         comboGrado = Util.crearComboGrado();
         comboGrado.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 comboGradoActionPerformed(evt);
             }
         });
+        lblDificultad = Util.crearLabel("Dificultad:", 0, 12);
         comboDificultad = Util.crearComboDificultad();
         comboDificultad.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -249,9 +257,13 @@ public class CrearPregYRespDlg  extends JFrame {
         getContentPane().setLayout(new AbsoluteLayout());
      
         getContentPane().add(lblTitulo, new AbsoluteConstraints(270, 10, 260, 50)); 
+        getContentPane().add(lblMateria, new AbsoluteConstraints(70, 56, 160, 12));   
         getContentPane().add(comboMateria, new AbsoluteConstraints(70, 70, 160, 30));   
+        getContentPane().add(lblNivel, new AbsoluteConstraints(250, 56, 100, 12));   
         getContentPane().add(comboNivel, new AbsoluteConstraints(250, 70, 100, 30));           
+        getContentPane().add(lblGrado, new AbsoluteConstraints(370, 56, 100, 12));         
         getContentPane().add(comboGrado, new AbsoluteConstraints(370, 70, 100, 30));  
+        getContentPane().add(lblDificultad, new AbsoluteConstraints(490, 56, 100, 12));  
         getContentPane().add(comboDificultad, new AbsoluteConstraints(490, 70, 100, 30));  
         getContentPane().add(lblMaxIntentos, new AbsoluteConstraints(600, 70, 90, 30));
         getContentPane().add(txtMaxIntentos, new AbsoluteConstraints(690, 70, 30, 30));
