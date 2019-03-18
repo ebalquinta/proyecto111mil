@@ -1,4 +1,3 @@
-
 package org.integrados.view.actividades;
 
 import java.awt.*;
@@ -15,10 +14,9 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
- *
- * @author Jacco
+ * @author Jacco y Mariela
  */
-public class JugarPregYRespDlg extends javax.swing.JFrame {
+public class JugarPregYRespDlg extends JFrame {
 
     private JLabel lblFondo;
     private JLabel lblPregunta;
