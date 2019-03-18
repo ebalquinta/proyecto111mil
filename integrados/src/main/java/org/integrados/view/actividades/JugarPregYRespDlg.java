@@ -96,7 +96,6 @@ public class JugarPregYRespDlg extends JFrame {
             }
         });
         btnEnviar = Util.crearBoton("Enviar", 14);
-//        btnEnviar.setBounds(200, 25, 120, 20);
 
         //Agregacion del listener
         btnEnviar.addActionListener(new ActionListener() {

@@ -1,25 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.integrados.controller.actividades;
 
 import java.util.ArrayList;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.actividad.RegistroActividad;
 import java.util.List;
+import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.bloques.Bloque;
 import org.integrados.data.bloques.BloqueAnd;
 import org.integrados.data.bloques.BloqueImagen;
 import org.integrados.data.plantillas.Memorama;
-import org.integrados.view.actividades.memorama.JuegoFrm;
-import org.integrados.view.actividades.memorama.MemoramaDlg;
+import org.integrados.view.AlumnoBrowseActividadesDlg;
+import org.integrados.view.Dialogo;
+import org.integrados.view.actividades.memorama.JugarMemoramaDlg;
 import org.integrados.view.actividades.memorama.Tablero;
 
 /**
- *
- * @author Jacco
+ * @author Jacco, Vivi y Mariela
  */
 public class JugarMemoramaCtrl {
 
@@ -27,8 +23,9 @@ public class JugarMemoramaCtrl {
     private Actividad actividad;
     private RegistroActividad registro;
     private Tablero tablero;
-    private JuegoFrm frame;
+    private JugarMemoramaDlg jugarMemoramaDlg;
     private int intentos;
+    private AlumnoBrowseActividadesDlg alumnoBrowseActividadesDlg;
 
     public JugarMemoramaCtrl(RegistroActividad registro) {
         this.registro = registro;
@@ -43,12 +40,19 @@ public class JugarMemoramaCtrl {
         this.intentos = actividad.getMaxIntentos();
         this.registro = null;
         tablero = new Tablero(crearListaBloqueImagen(plantilla.desordenar()));
-        frame = new JuegoFrm(this.tablero);
-        frame.setVisible(true);
+        jugarMemoramaDlg = new JugarMemoramaDlg(this.tablero, this);
+        jugarMemoramaDlg.setVisible(true);
     }
     
+    public JugarMemoramaCtrl(Actividad actividad, AlumnoBrowseActividadesDlg alumnoBrowseActividadesDlg) {
+        this(actividad);
+        this.alumnoBrowseActividadesDlg = alumnoBrowseActividadesDlg;
+    }
 
-
+    public AlumnoBrowseActividadesDlg getAlumnoBrowseActividadesDlg() {
+        return alumnoBrowseActividadesDlg;
+    }
+    
     public void jugar() {
         tablero.setImagenes(crearListaBloqueImagen(plantilla.desordenar()));
         tablero.comenzarJuego();
@@ -62,7 +66,7 @@ public class JugarMemoramaCtrl {
 //        if (intentos > 0) {
 //            ArrayList<Bloque> respuestas = new ArrayList();
 //            if (plantilla.verificarResultado(rtaAlumno)) {
-//                frame.setHecho();
+//                jugarMemoramaDlg.setHecho();
 //                if (registro != null) {
 //                    for (Bloque b : rtaAlumno) {
 //                        respuestas.add(b);
@@ -74,7 +78,7 @@ public class JugarMemoramaCtrl {
 //                }
 //            } else {
 //                intentos -= 1;
-//                frame.setIntentos(intentos);
+//                jugarMemoramaDlg.setIntentos(intentos);
 //                //Agrega todos los bloques de la lista a la lista RespuesAlumno que se encuenta en registro
 //                for (Bloque b : rtaAlumno) {
 //                    respuestas.add(b);
@@ -109,4 +113,11 @@ public class JugarMemoramaCtrl {
         return retorno;
     }
 
+    public void cerrarAplicacion() {
+        Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
+        if (resultado == Dialogo.ResultadoDialogo.Yes) {
+            this.jugarMemoramaDlg.ocultar();
+            LoginCtrl.app.cerrar();
+        }
+    }
 }
