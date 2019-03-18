@@ -69,6 +69,12 @@ public class SistemaDeArchivosDlg extends JFrame {
                 inputAnterior.setText(archivoSeleccionado.getAbsolutePath());
                 ocultar();
             }
+            if (this.vistaAnterior instanceof CrearPregYRespDlg ) {
+                CrearPregYRespDlg vista = (CrearPregYRespDlg) vistaAnterior;
+                vista.mostrar();   
+                inputAnterior.setText(archivoSeleccionado.getAbsolutePath());
+                ocultar();
+            }
         } else if (command.equals(JFileChooser.CANCEL_SELECTION)) {
 //            JOptionPane.showMessageDialog(this, "Selecciona un Archivo...");
             ocultar();

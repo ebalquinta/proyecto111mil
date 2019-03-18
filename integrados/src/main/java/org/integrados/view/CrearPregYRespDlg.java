@@ -92,7 +92,8 @@ public class CrearPregYRespDlg  extends JFrame {
     /**
      * Metodo para inicializar los componentes de la vista
      */          
-    private void initComponents() {    
+    private void initComponents() {   
+        CrearPregYRespDlg aux = this; 
         if (this.controlador.isAlta()) {
             this.setTitle("Nueva Actividad - Pregunta y Respuestas");
         } else {
@@ -178,6 +179,15 @@ public class CrearPregYRespDlg  extends JFrame {
             }
         });
         btnArchivoImagen = Util.crearBoton("Archivo", 12);
+        btnArchivoImagen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                SistemaDeArchivosDlg archivos;
+                JTextField txt = txtIngreseImagen;
+                archivos = new SistemaDeArchivosDlg(aux, txt);
+                archivos.mostrar();
+            }
+        });
         lblIngreseSonido = Util.crearLabel("Ingrese sonido", 0, 14);
         txtIngreseSonido = Util.crearTextField(14);
         txtIngreseSonido.addActionListener(new ActionListener() {
@@ -186,6 +196,15 @@ public class CrearPregYRespDlg  extends JFrame {
             }
         });
         btnArchivoSonido = Util.crearBoton("Archivo", 12);
+        btnArchivoSonido.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                SistemaDeArchivosDlg archivos;
+                JTextField txt = txtIngreseSonido;
+                archivos = new SistemaDeArchivosDlg(aux, txt);
+                archivos.mostrar();
+            }
+        });
         
         
         // Creando elementos de seccion 3
