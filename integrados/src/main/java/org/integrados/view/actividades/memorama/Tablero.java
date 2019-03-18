@@ -9,18 +9,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingWorker;
-import org.integrados.data.bloques.Bloque;
 import org.integrados.data.bloques.BloqueImagen;
 
 /**
- * @web yimscito@gmail.com
- * @author Mouse
+ * @author Jacco y Mariela
  */
 public class Tablero extends JPanel {
-
-    //array con los nombres de las figuras 8 en total para 16 pares
-    private String[] band = {"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho"};
-
+    
     private int fila = 4;
     private int col = 4;
     private int ancho_casilla = 140;
@@ -53,7 +48,7 @@ public class Tablero extends JPanel {
             Casilla p = new Casilla(String.valueOf(i + 1));
             p.setFigura(bloques.get(count).getImagen());
             count++;
-            count = (count >= 16) ? 0 : count++;
+            count = (count >= (fila * col)) ? 0 : count++;
             p.showFigura();
             p.addMouseListener(new juegoMouseListener());
             this.add(p);
@@ -79,36 +74,11 @@ public class Tablero extends JPanel {
         //coloca nuevo orden aleatorio de figuras
         for (int i = 0; i < componentes.length; i++) {
             ((Casilla) componentes[i]).setFigura(bloques.get(i).getImagen());
-            /*int n = (int) (Math.random()*(band.length));
-            if( !existe(bloques.get(n).getImagen()) ){//comprueba que figura no este asignada mas de 2 veces
-            ((Casilla)componentes[i]).setFigura(bloques.get(n).getImagen());
-            }else{
-            i--;
-            }*/
         }
     }
 
     public void setImagenes(List<BloqueImagen> b) {
         this.bloques = b;
-    }
-
-    /**
-     * Metodo que comprueba que una casilla existe
-     *
-     * @param int num nombre del objeto
-     * @return Casilla si existe NULL si no existe
-     */
-    private boolean existe(String figura) {
-        int count = 0;
-        Component[] componentes = this.getComponents();
-        for (int i = 0; i < componentes.length; i++) {
-            if (componentes[i] instanceof Casilla) {
-                if (((Casilla) componentes[i]).getNameFigura().equals(figura)) {
-                    count++;
-                }
-            }
-        }
-        return (count == 2) ? true : false;
     }
 
     /**
@@ -144,7 +114,7 @@ public class Tablero extends JPanel {
                     c = 0;
                 }
             } else {
-                System.out.println("Para jugar: FILE -> JUGAR");
+                System.out.println("Para jugar: Haga click en el botón JUGAR");
             }
 
         }
@@ -192,7 +162,7 @@ public class Tablero extends JPanel {
                 aciertos++;
                 if (aciertos == 8) {//win
                     System.out.println("doInBackground: Usted es un ganador!");
-                    JOptionPane.showMessageDialog(null, "Usted es un ganador!");
+                    JOptionPane.showMessageDialog(null, "Felicitaciones! Lo has logrado!!!");
                 }
             } else {//no son iguales
                 casilla1.ocultarFigura();

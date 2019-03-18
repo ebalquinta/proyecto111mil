@@ -1,13 +1,24 @@
 package org.integrados.view;
 
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import org.integrados.controller.actividades.AlumnoBrowseActividadesCtrl;
+import org.integrados.controller.actividades.JugarMemoramaCtrl;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
+import org.integrados.data.actividad.Materia;
+import org.integrados.data.actividad.RegistroActividad;
+import org.integrados.data.bloques.Bloque;
+import org.integrados.data.bloques.BloqueAnd;
+import org.integrados.data.bloques.BloqueImagen;
+import org.integrados.data.enums.Dificultad;
+import org.integrados.data.enums.Nivel;
+import org.integrados.data.plantillas.Memorama;
+import org.integrados.data.usuarios.Alumno;
+import org.integrados.data.usuarios.Docente;
 import org.integrados.data.util.Util;
  
 /**
@@ -25,6 +36,7 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
     private JToggleButton btnPregYResp;
     public AlumnoBrowseActividadesCtrl alumnoBrowseActividadesCtrl;
     public List<Actividad> listaActividades;
+    public AlumnoBrowseActividadesDlg aux;
     
     public AlumnoBrowseActividadesDlg(AlumnoBrowseActividadesCtrl alumnoBrowseActividadesCtrl, List<Actividad> listaActividades) {
         this.alumnoBrowseActividadesCtrl = alumnoBrowseActividadesCtrl;
@@ -32,7 +44,9 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
         initComponents();
     }
     
-    private void initComponents() {
+    private void initComponents() {   
+        this.aux = this;
+        
         this.setTitle("Lista de Actividades");        
         lblFondo = new JLabel();
         lblTitulo = Util.crearTitulo("Elegir Actividad", 1, 42);
@@ -40,12 +54,12 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
         btnOrdenar = new JToggleButton();
         btnUnir = new JToggleButton();
         btnMemorama = new JToggleButton();
-        btnPregYResp = new JToggleButton();        
-       
+        btnPregYResp = new JToggleButton();     
+        
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
+        addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+            public void windowClosing(WindowEvent evt) {
                 cerrarAplicacion();
             }
         });            
@@ -68,7 +82,7 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
 
       
         // Propiedades del boton btnOrdenar (ordenar)
-        btnOrdenar.setBackground(new java.awt.Color(255, 255, 204));
+        btnOrdenar.setBackground(new Color(255, 255, 204));
         btnOrdenar.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadOrdenarBtn.jpg")));
         btnOrdenar.setBounds(230, 150, 140, 140);
         btnOrdenar.setToolTipText("Crea una nueva actividad de Ordenar");
@@ -81,7 +95,7 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
         });
 
         // Propiedades del boton btnUnir (Unir)
-        btnUnir.setBackground(new java.awt.Color(255, 255, 204));
+        btnUnir.setBackground(new Color(255, 255, 204));
         btnUnir.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadUnirBtn.jpg")));
         btnUnir.setBounds(400, 150, 140, 140);
         btnUnir.setToolTipText("Crea una nueva actividad de Unir");
@@ -94,7 +108,7 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
         });
         
         // Propiedades del boton btnMemorama (Preguntas y respuestas)
-        btnMemorama.setBackground(new java.awt.Color(255, 255, 204));
+        btnMemorama.setBackground(new Color(255, 255, 204));
         btnMemorama.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadMemoramaBtn.jpg")));
         btnMemorama.setBounds(230, 320, 140, 140);
         btnMemorama.setToolTipText("Crea una nueva actividad de Memorama");
@@ -103,17 +117,64 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 // Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+
+                List<Bloque> bloques;
+                List<Bloque> bloques2;
+                List<Bloque> solucion;
+                System.out.println("");
+                // Obtengo la ruta relativa de donde estoy parado
+                String path = this.getClass().getResource("../").toString();
+                // Reescribo esa ruta en formato correcto para que saque espacios y caracteres especiales
+                String result = Util.getDecodedUrl(path);
+                System.out.println(result);
+
+                bloques = new ArrayList();
+                bloques.add(new BloqueImagen(result + "view/imagesMemorama/uno.jpg"));
+                bloques.add(new BloqueImagen(result + "view/imagesMemorama/dos.jpg"));
+                bloques.add(new BloqueImagen(result + "view/imagesMemorama/tres.jpg"));
+                bloques.add(new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg"));
+                bloques.add(new BloqueImagen(result + "view/imagesMemorama/cinco.jpg"));
+                bloques.add(new BloqueImagen(result + "view/imagesMemorama/seis.jpg"));
+                bloques.add(new BloqueImagen(result + "view/imagesMemorama/siete.jpg"));
+                bloques.add(new BloqueImagen(result + "view/imagesMemorama/ocho.jpg"));
+
+                bloques2 = new ArrayList();
+                bloques2.add(new BloqueImagen(result + "view/imagesMemorama/uno.jpg"));
+                bloques2.add(new BloqueImagen(result + "view/imagesMemorama/dos.jpg"));
+                bloques2.add(new BloqueImagen(result + "view/imagesMemorama/tres.jpg"));
+                bloques2.add(new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg"));
+                bloques2.add(new BloqueImagen(result + "view/imagesMemorama/cinco.jpg"));
+                bloques2.add(new BloqueImagen(result + "view/imagesMemorama/seis.jpg"));
+                bloques2.add(new BloqueImagen(result + "view/imagesMemorama/siete.jpg"));
+                bloques2.add(new BloqueImagen(result + "view/imagesMemorama/ocho.jpg"));
+
+
+                solucion = new ArrayList();
+                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/uno.jpg"), new BloqueImagen(result + "view/imagesMemorama/uno.jpg")));
+                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/dos.jpg"), new BloqueImagen(result + "view/imagesMemorama/dos.jpg")));
+                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/tres.jpg"), new BloqueImagen(result + "view/imagesMemorama/tres.jpg")));
+                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg"), new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg")));
+                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/cinco.jpg"), new BloqueImagen(result + "view/imagesMemorama/cinco.jpg")));
+                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/seis.jpg"), new BloqueImagen(result + "view/imagesMemorama/seis.jpg")));
+                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/siete.jpg"), new BloqueImagen(result + "view/imagesMemorama/siete.jpg")));
+                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/ocho.jpg"), new BloqueImagen(result + "view/imagesMemorama/ocho.jpg")));
+
+
+                Memorama m = new Memorama("xd",solucion,bloques, bloques2);
+                Actividad actividad = new Actividad(m, new Docente(), new Materia("Matematica"), "kslkd", 3, Nivel.INICIAL, Dificultad.ALTO, 3);
+                new RegistroActividad(actividad, new Alumno(), new Docente());
+                new JugarMemoramaCtrl(actividad, aux);
+                ocultar();
             }
         });
         
         // Propiedades del boton btnPregYResp (Memorama)
-        btnPregYResp.setBackground(new java.awt.Color(255, 255, 204));
+        btnPregYResp.setBackground(new Color(255, 255, 204));
         btnPregYResp.setIcon(new ImageIcon(getClass().getResource("images/NuevaActividadPregRespBtn.jpg")));
         btnPregYResp.setBounds(400, 320, 140, 140);
         btnPregYResp.setToolTipText("Crea una nueva actividad de Preguntas y Respuestas");
         getContentPane().add(btnPregYResp);
         
-        AlumnoBrowseActividadesDlg aux = this;
         btnPregYResp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
