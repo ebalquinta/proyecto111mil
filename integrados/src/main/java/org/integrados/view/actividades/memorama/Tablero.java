@@ -53,7 +53,7 @@ public class Tablero extends JPanel {
             Casilla p = new Casilla(String.valueOf(i + 1));
             p.setFigura(bloques.get(count).getImagen());
             count++;
-            count = (count >= 8) ? 0 : count++;
+            count = (count >= 16) ? 0 : count++;
             p.showFigura();
             p.addMouseListener(new juegoMouseListener());
             this.add(p);
