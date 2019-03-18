@@ -59,60 +59,44 @@ public class Memorama extends Plantilla {
         // Clonacion y creacion de las listas a usar        
         List<Bloque> bloques1Clonada = this.clonarLista(this.bloques1);
         List<Bloque> bloques2Clonada = this.clonarLista(this.bloques2);
-        List<Integer> indicesUtilizados = new ArrayList();
+        List<Integer> indicesUtilizados1 = new ArrayList();
+        List<Integer> indicesUtilizados2 = new ArrayList();
         List<Bloque> bloquesAnd = new ArrayList<>();
 
         // Creacion de las variables auxiliares
         BloqueAnd b;
         int aux;
         int aux2;
+        int finalSize = bloques1Clonada.size();
+        for (int i = 0; i < finalSize; i++) {
 
-        for (int i = 0; bloques1Clonada.size() > i; i++) {
+            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamaño de la lista y checkeando que no se repitan los indices
+            do {
+                aux = (int) (Math.random() * bloques1Clonada.size());
+            } while (sonUtilizados(aux,indicesUtilizados1));
+            do {
+                aux2 = (int) (Math.random() * bloques2Clonada.size());
+            } while (sonUtilizados(aux2,indicesUtilizados2));
 
-            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamaño de la lista
-            aux = (int) (Math.random() * bloques1Clonada.size());
-            aux2 = (int) (Math.random() * bloques1Clonada.size());
+            indicesUtilizados1.add(aux);
+            indicesUtilizados2.add(aux2);
+            // Creacion y asignacion a lista del bloqueAnd
+            b = new BloqueAnd(this.bloques1.get(aux), this.bloques2.get(aux2));
+            bloquesAnd.add(b);
+            
+//            System.out.println(b.toString());
+//            System.out.println("");
 
-            //Checkeo de que no se repitan los indices
-            if (!sonUtilizados(aux,aux2,indicesUtilizados)) {
-                indicesUtilizados.add(aux);
-                indicesUtilizados.add(aux2);
-                // Creacion y asignacion a lista del bloqueAnd
-                b = new BloqueAnd(this.bloques1.get(aux), this.bloques2.get(aux2));
-                bloquesAnd.add(b);
-
-                // Eliminacion de los bloques ya asignados
-                bloques1Clonada.remove(aux);
-                bloques2Clonada.remove(aux2);
-            }else{
-                i--;
-            }
         }
 
         return bloquesAnd;
     }
 
-    private boolean sonUtilizados(int indice1, int indice2, List<Integer> indicesUtilizados) {
-        if (!indicesUtilizados.contains(indice1) & !indicesUtilizados.contains(indice2)) {
+    private boolean sonUtilizados(int indice, List<Integer> indicesUtilizados) {
+        if ( !indicesUtilizados.contains(indice) ) {
             return false;
-        } else {
-            if (!indicesUtilizados.contains(indice1) & indicesUtilizados.contains(indice2)) {
-                indice2 = (int) (Math.random() * bloques1.size());
-                sonUtilizados(indice1, indice2, indicesUtilizados);
-            } else {
-                if (indicesUtilizados.contains(indice1) & !indicesUtilizados.contains(indice2)) {
-                    indice1 = (int) (Math.random() * bloques1.size());
-                    sonUtilizados(indice1, indice2, indicesUtilizados);
-                } else {
-                    if (indicesUtilizados.contains(indice1) & indicesUtilizados.contains(indice2)) {
-                        indice1 = (int) (Math.random() * bloques1.size());
-                        indice2 = (int) (Math.random() * bloques1.size());
-                        sonUtilizados(indice1, indice2, indicesUtilizados);
-                    }
-                }
-            }
         }
-        return false;
+        return true;
     }
 
         /**
