@@ -13,8 +13,7 @@ import org.integrados.data.bloques.Bloque;
 import org.integrados.data.bloques.BloqueAnd;
 import org.integrados.data.bloques.BloqueImagen;
 import org.integrados.data.plantillas.Memorama;
-import org.integrados.view.actividades.memorama.JuegoFrm;
-import org.integrados.view.actividades.memorama.MemoramaDlg;
+import org.integrados.view.actividades.memorama.JugarMemoramaDlg;
 import org.integrados.view.actividades.memorama.Tablero;
 
 /**
@@ -27,7 +26,7 @@ public class JugarMemoramaCtrl {
     private Actividad actividad;
     private RegistroActividad registro;
     private Tablero tablero;
-    private JuegoFrm frame;
+    private JugarMemoramaDlg frame;
     private int intentos;
 
     public JugarMemoramaCtrl(RegistroActividad registro) {
@@ -43,7 +42,7 @@ public class JugarMemoramaCtrl {
         this.intentos = actividad.getMaxIntentos();
         this.registro = null;
         tablero = new Tablero(crearListaBloqueImagen(plantilla.desordenar()));
-        frame = new JuegoFrm(this.tablero);
+        frame = new JugarMemoramaDlg(this.tablero);
         frame.setVisible(true);
     }
     

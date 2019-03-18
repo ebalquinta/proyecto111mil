@@ -14,14 +14,14 @@ import org.integrados.data.bloques.BloqueImagen;
  *
  * @author sab-005
  */
-public class JuegoFrm extends javax.swing.JFrame {
+public class JugarMemoramaDlg extends javax.swing.JFrame {
 
     private Tablero tabla;
 
     /**
      * Creates new form JuegoFrm
      */
-    public JuegoFrm(Tablero tablero) {
+    public JugarMemoramaDlg(Tablero tablero) {
         initComponents();
 
         tabla = tablero;
@@ -128,13 +128,13 @@ public class JuegoFrm extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(JuegoFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(JugarMemoramaDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(JuegoFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(JugarMemoramaDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(JuegoFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(JugarMemoramaDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(JuegoFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(JugarMemoramaDlg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
@@ -142,8 +142,8 @@ public class JuegoFrm extends javax.swing.JFrame {
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            @Override
 //            public void run() {
-//                new JuegoFrm().setVisible(true);
-////                new JuegoFrm().setVisible(true);
+//                new JugarMemoramaDlg().setVisible(true);
+////                new JugarMemoramaDlg().setVisible(true);
 //            }
 //        });
 //    }
