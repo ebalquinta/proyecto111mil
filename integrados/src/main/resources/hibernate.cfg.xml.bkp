@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/integrados_db?zeroDateTimeBehavior=convertToNull</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">xxx</property> <!--clave de cada uno-->
+        <!--    mapeo usuarios-->
+        <mapping resource="docente.hbm.xml"/>
+        <mapping resource="alumno.hbm.xml"/>
+        <mapping resource="domicilio.hbm.xml"/>
+        <mapping resource="institucion.hbm.xml"/>
+        <!--  mapeo actividad-->
+        <mapping resource="registroActividad.hbm.xml"/>
+        <mapping resource="actividad.hbm.xml"/>
+        <mapping resource="materia.hbm.xml"/>
+        <!--    mapeo bloque-->
+        <mapping resource="bloque.hbm.xml"/>
+        
+        <!--    mapeo plantilla-->
+        <mapping resource="plantilla.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
