@@ -140,10 +140,15 @@ public class DocenteBrowseActividadesDlg extends JFrame {
         botonProbar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-              //  Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
-              ocultar();
-              JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(getActividadSeleccionada(), aux);
-              pregCtrl.jugar();
+                //  Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
+                Actividad actividad = getActividadSeleccionada();
+                if (actividad != null) {
+                    ocultar();
+                    JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(getActividadSeleccionada(), aux);
+                    pregCtrl.jugar();
+                } else {
+                    Dialogo.mensaje("¡Atención! ", " Debe seleccionar una actividad para realizar esta opción");
+                }
             }
         });
         
