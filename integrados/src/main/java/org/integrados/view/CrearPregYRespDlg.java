@@ -7,6 +7,7 @@ import javax.swing.table.*;
 import org.integrados.controller.actividades.AgregarBloqueCtrl;
 import org.netbeans.lib.awtextra.*;
 import org.integrados.controller.actividades.CrearPregYRespCtrl;
+import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.data.util.Util;
@@ -26,6 +27,8 @@ public class CrearPregYRespDlg  extends JFrame {
     private JLabel lblFondo = null;
     
     private JLabel lblTitulo = null;
+    
+    private JLabel lblCategoria = null;
     private JLabel lblMateria = null;
     private JComboBox<String> comboMateria = null;
     private JLabel lblNivel = null;
@@ -127,6 +130,7 @@ public class CrearPregYRespDlg  extends JFrame {
         } else {
             lblTitulo = Util.crearLabel("Editar Pregunta y Respuestas", 0, 18);
         }
+        lblCategoria = Util.crearLabel("Categoría (complete todos los campos)", 1, 14);
         lblMateria = Util.crearLabel("Materia:", 0, 12);
         comboMateria = Util.crearComboMateria();
         lblNivel = Util.crearLabel("Nivel:", 0, 12);
@@ -209,7 +213,7 @@ public class CrearPregYRespDlg  extends JFrame {
         
         // Creando elementos de seccion 3
         lineRespuestas = new JSeparator();
-        lblRespuestas = Util.crearLabel("Respuestas (Ingrese al menos 2 opciones)", 1, 14);
+        lblRespuestas = Util.crearLabel("Respuestas (Ingrese al menos 2 opciones y al menos 1 de ellas válida)", 1, 14);
         btnAgregar = Util.crearBoton("Agregar", 12);
         btnAgregar .addActionListener(new ActionListener() {
             @Override
@@ -223,10 +227,10 @@ public class CrearPregYRespDlg  extends JFrame {
         tablaRespuestas.setFont(new Font("Comic Sans MS", 0, 12)); // NOI18N
         tablaRespuestas.setModel(new DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, false},
+                {null, null, null, false},
+                {null, null, null, false},
+                {null, null, null, false}
             },
             new String [] {
                 "           Texto", "           Imagen", "           Sonido", "           Es Valida"
@@ -258,16 +262,17 @@ public class CrearPregYRespDlg  extends JFrame {
         // Creando elementos de footer
         btnProbar = Util.crearBoton("Probar", 12);
         btnGuardar = Util.crearBoton("Guardar", 12);
+        btnGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                guardarActividad();
+            }
+        });
         btnCancelar = Util.crearBoton("Cancelar", 12);
         btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ocultar();
-                if ( controlador.nuevaActividadInicioDlg != null ) {
-                    controlador.nuevaActividadInicioDlg.mostrar();
-                } else if ( controlador.docenteBrowseActividadesCtrl != null ) {
-                    controlador.docenteBrowseActividadesCtrl.mostrar();
-                }
+                volver();
             }
         });
 
@@ -276,43 +281,44 @@ public class CrearPregYRespDlg  extends JFrame {
         getContentPane().setLayout(new AbsoluteLayout());
      
         getContentPane().add(lblTitulo, new AbsoluteConstraints(270, 10, 260, 50)); 
-        getContentPane().add(lblMateria, new AbsoluteConstraints(70, 56, 160, 12));   
-        getContentPane().add(comboMateria, new AbsoluteConstraints(70, 70, 160, 30));   
-        getContentPane().add(lblNivel, new AbsoluteConstraints(250, 56, 100, 12));   
-        getContentPane().add(comboNivel, new AbsoluteConstraints(250, 70, 100, 30));           
-        getContentPane().add(lblGrado, new AbsoluteConstraints(370, 56, 100, 12));         
-        getContentPane().add(comboGrado, new AbsoluteConstraints(370, 70, 100, 30));  
-        getContentPane().add(lblDificultad, new AbsoluteConstraints(490, 56, 100, 12));  
-        getContentPane().add(comboDificultad, new AbsoluteConstraints(490, 70, 100, 30));  
-        getContentPane().add(lblMaxIntentos, new AbsoluteConstraints(600, 70, 90, 30));
-        getContentPane().add(txtMaxIntentos, new AbsoluteConstraints(690, 70, 30, 30));
-        getContentPane().add(lblTema, new AbsoluteConstraints(70, 110, 50, 30));
-        getContentPane().add(txtTema, new AbsoluteConstraints(120, 110, 600, 30));
+        getContentPane().add(lblCategoria, new AbsoluteConstraints(70, 50, 340, 30));
+        getContentPane().add(lblMateria, new AbsoluteConstraints(70, 76, 160, 12));   
+        getContentPane().add(comboMateria, new AbsoluteConstraints(70, 90, 160, 30));   
+        getContentPane().add(lblNivel, new AbsoluteConstraints(250, 76, 100, 12));   
+        getContentPane().add(comboNivel, new AbsoluteConstraints(250, 90, 100, 30));           
+        getContentPane().add(lblGrado, new AbsoluteConstraints(370, 76, 100, 12));         
+        getContentPane().add(comboGrado, new AbsoluteConstraints(370, 90, 100, 30));  
+        getContentPane().add(lblDificultad, new AbsoluteConstraints(490, 76, 100, 12));  
+        getContentPane().add(comboDificultad, new AbsoluteConstraints(490, 90, 100, 30));  
+        getContentPane().add(lblMaxIntentos, new AbsoluteConstraints(600, 90, 90, 30));
+        getContentPane().add(txtMaxIntentos, new AbsoluteConstraints(690, 90, 30, 30));
+        getContentPane().add(lblTema, new AbsoluteConstraints(70, 130, 50, 30));
+        getContentPane().add(txtTema, new AbsoluteConstraints(120, 130, 600, 30));
 
-        getContentPane().add(linePregunta, new AbsoluteConstraints(60, 160, 670, 10));
-        getContentPane().add(lblPregunta, new AbsoluteConstraints(70, 160, 340, 30));
-        getContentPane().add(lblIngreseTexto, new AbsoluteConstraints(70, 200, 110, 30)); 
-        getContentPane().add(txtIngreseTexto, new AbsoluteConstraints(180, 200, 540, 30));
-        getContentPane().add(lblIngreseImagen, new AbsoluteConstraints(70, 240, 110, 30));   
-        getContentPane().add(txtIngreseImagen, new AbsoluteConstraints(180, 240, 440, 30));
-        getContentPane().add(btnArchivoImagen, new AbsoluteConstraints(640, 240, 80, 30));
-        getContentPane().add(lblIngreseSonido, new AbsoluteConstraints(70, 280, 110, 30));
-        getContentPane().add(txtIngreseSonido, new AbsoluteConstraints(180, 280, 440, 30));
-        getContentPane().add(btnArchivoSonido, new AbsoluteConstraints(640, 280, 80, 30));     
+        getContentPane().add(linePregunta, new AbsoluteConstraints(60, 180, 670, 10));
+        getContentPane().add(lblPregunta, new AbsoluteConstraints(70, 180, 340, 30));
+        getContentPane().add(lblIngreseTexto, new AbsoluteConstraints(70, 220, 110, 30)); 
+        getContentPane().add(txtIngreseTexto, new AbsoluteConstraints(180, 220, 540, 30));
+        getContentPane().add(lblIngreseImagen, new AbsoluteConstraints(70, 260, 110, 30));   
+        getContentPane().add(txtIngreseImagen, new AbsoluteConstraints(180, 260, 440, 30));
+        getContentPane().add(btnArchivoImagen, new AbsoluteConstraints(640, 260, 80, 30));
+        getContentPane().add(lblIngreseSonido, new AbsoluteConstraints(70, 300, 110, 30));
+        getContentPane().add(txtIngreseSonido, new AbsoluteConstraints(180, 300, 440, 30));
+        getContentPane().add(btnArchivoSonido, new AbsoluteConstraints(640, 300, 80, 30));     
 
-        getContentPane().add(lineRespuestas, new AbsoluteConstraints(60, 330, 670, 10));
-        getContentPane().add(lblRespuestas, new AbsoluteConstraints(70, 330, 340, 30));
-        getContentPane().add(btnAgregar, new AbsoluteConstraints(640, 340, 80, 30));   
-        getContentPane().add(lblIcoTexto, new AbsoluteConstraints(90, 376, 30, 30));
-        getContentPane().add(lblIcoImagen, new AbsoluteConstraints(250, 380, 20, 20));
-        getContentPane().add(lblIcoSonido, new AbsoluteConstraints(410, 382, 20, 20));
-        getContentPane().add(lblIcoValidar, new AbsoluteConstraints(570, 382, 20, 20));
+        getContentPane().add(lineRespuestas, new AbsoluteConstraints(60, 350, 670, 10));
+        getContentPane().add(lblRespuestas, new AbsoluteConstraints(70, 350, 340, 30));
+        getContentPane().add(btnAgregar, new AbsoluteConstraints(640, 360, 80, 30));   
+        getContentPane().add(lblIcoTexto, new AbsoluteConstraints(90, 396, 30, 30));
+        getContentPane().add(lblIcoImagen, new AbsoluteConstraints(250, 401, 20, 20));
+        getContentPane().add(lblIcoSonido, new AbsoluteConstraints(410, 401, 20, 20));
+        getContentPane().add(lblIcoValidar, new AbsoluteConstraints(570, 401, 20, 20));
         panel.setViewportView(tablaRespuestas);
-        getContentPane().add(panel, new AbsoluteConstraints(70, 380, 650, 120));
+        getContentPane().add(panel, new AbsoluteConstraints(70, 400, 650, 120));
         
-        getContentPane().add(btnProbar, new AbsoluteConstraints(250, 520, 80, 30));    
-        getContentPane().add(btnGuardar, new AbsoluteConstraints(360, 520, 80, 30));
-        getContentPane().add(btnCancelar, new AbsoluteConstraints(460, 520, 80, 30));         
+        getContentPane().add(btnProbar, new AbsoluteConstraints(250, 530, 80, 30));    
+        getContentPane().add(btnGuardar, new AbsoluteConstraints(360, 530, 80, 30));
+        getContentPane().add(btnCancelar, new AbsoluteConstraints(460, 530, 80, 30));         
 
         
         getContentPane().add(lblFondo, new AbsoluteConstraints(0, 0, 800, 600));
@@ -377,6 +383,58 @@ public class CrearPregYRespDlg  extends JFrame {
         this.txtIngreseSonido.setText(actividad.getPlantilla().getSonidoEnunciado());
     }
     
+    //Valida si los campos requeridos están completos y guarda la Actividad
+    private void guardarActividad() {
+        System.out.println("Validando campos");
+        String materia = comboMateria.getSelectedItem().toString();
+        String nivel = comboNivel.getSelectedItem().toString();
+        String grado = comboGrado.getSelectedItem().toString();
+        String dificultad = comboDificultad.getSelectedItem().toString();
+        String maxIntentos = txtMaxIntentos.getText();
+        String tema = txtTema.getText();
+        String texto = txtIngreseTexto.getText();
+        String imagen = txtIngreseImagen.getText();
+        String sonido = txtIngreseSonido.getText();
+        int filas = tablaRespuestas.getRowCount();
+        int validas = 0;
+        if (filas > 0) {
+            for (int i = 0; i < filas; i++) {
+                System.out.println("" + tablaRespuestas.getValueAt(i, 3));
+                if ((boolean) tablaRespuestas.getValueAt(i, 3)) {
+                    validas++;
+                }
+            }
+        }
+        if ( 
+            (maxIntentos.length() == 0) 
+            ||
+            (tema.length() == 0) 
+            ||
+            ( (texto.length() == 0) && (imagen.length() == 0) && (sonido.length() == 0) )
+            ||
+            ( filas == 0 || ( filas >0 && validas == 0 ))
+        ){        
+            Dialogo.mensaje("¡Error de Validación! ", " Debe completar todos los campos requeridos antes de continuar");
+        }
+        else {    
+            System.out.println("Campos requeridos completos");  
+            String camposCompletados = "Está a punto de crear una Actividad con la siguiente información:\n\nMateria: " + materia + "\nNivel: " + nivel + "\nGrado: " + grado + "\nDificultad: " + dificultad + "\nMax.Intentos: " + maxIntentos + "\nTema: " + tema + "\nTexto: " + texto + "\nImagen: " + imagen + "\nSonido: " + sonido + "\nRespuestas: " + filas + "\nVálidas: " + validas + "\n\n¿Desea Continuar?";
+            Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion(camposCompletados);       
+            if (resultado == Dialogo.ResultadoDialogo.Yes) {
+                // acá iría el método del controlador que guarda la actividad en la base de datos
+                volver();
+            }
+        }
+    }
+    
+    public void volver() {
+        if ( controlador.nuevaActividadInicioDlg != null ) {
+            controlador.nuevaActividadInicioDlg.mostrar();
+        } else if ( controlador.docenteBrowseActividadesCtrl != null ) {
+            controlador.docenteBrowseActividadesCtrl.mostrar();
+        }        
+        ocultar();
+    }
     public void mostrar() {
         this.setVisible(true);
         System.out.println("Docente id:" + this.docente.getId());
