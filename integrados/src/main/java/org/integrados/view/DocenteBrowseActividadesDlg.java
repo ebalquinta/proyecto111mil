@@ -194,10 +194,10 @@ public class DocenteBrowseActividadesDlg extends JFrame {
     
     /////////////////////////////////////Editar Actividad//////////////////////////////////////
     private void editarActividadActual() {
-        System.out.println("editarActividad");
     	Actividad actividad = getActividadSeleccionada();
 
     	if (actividad != null) {
+            System.out.println("editarActividad");
             this.controlador.editar(actividad);
     	} else {
             Dialogo.mensaje("¡Atención! ", " Debe seleccionar una actividad para realizar esta opción");
