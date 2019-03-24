@@ -24,6 +24,7 @@ public class SistemaDeArchivosDlg extends JFrame {
      */
     public SistemaDeArchivosDlg() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     public SistemaDeArchivosDlg(Object vistaAnterior, JTextField inputAnterior) {
         this();

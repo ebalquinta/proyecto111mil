@@ -1,4 +1,4 @@
-package org.integrados.view.actividades;
+package org.integrados.view.actividades.pregyresp;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -64,7 +64,7 @@ public class JugarPregYRespDlg extends JFrame {
         lblFondo = new JLabel();   
         lblFondo.setFont(new Font("Comic Sans MS", 0, 12)); // NOI18N
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("../images/Fondo2.jpg","Fondo");
+        ImageIcon icon = createImageIcon("../../images/Fondo2.jpg","Fondo");
         lblFondo.setIcon(icon);
         lblFondo.setBounds(0, 0, 800, 600);
         
