@@ -18,12 +18,12 @@
             <column name="id_Domicilio" />
         </many-to-one>
         
-        <list name="alumnos" table="Alumnos_docente" lazy="false" cascade="all-delete-orphan">
+        <list name="alumnos" table="Alumnos_docente" lazy="false" cascade="all-delete-orphan" fetch="join">
             <key column="id_Docente" not-null="true"/>
             <list-index column="id"/>
             <many-to-many class="org.integrados.data.usuarios.Alumno" column="id_Alumno"/>
         </list>
-        <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all-delete-orphan" fetch="join" lazy="false">
+        <list name="registroActividades" table="Registro_actividad" inverse="true" cascade="all-delete-orphan" lazy="false">
             <key column="id_Docente" not-null="true"/>
             <index column="id"/>
             <one-to-many class="org.integrados.data.actividad.RegistroActividad"/>

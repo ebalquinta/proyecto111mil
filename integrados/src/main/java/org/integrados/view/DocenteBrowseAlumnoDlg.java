@@ -37,8 +37,6 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
 
     private final DocenteBrowseAlumnoCtrl controlador;
     private List<Alumno> listaAlumnos = new ArrayList<>();
-    private final int contadorRealizadas;
-    private final int contadorNoRealizadas;
     private JLabel lblFondo;
     private JPanel pnlBotonesEdicion = null;
     public JButton btnDatos = null;
@@ -48,11 +46,9 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
     private JTable tablaAlumnos = null;
     DocenteBrowseAlumnoDlg aux = this;
 
-    public DocenteBrowseAlumnoDlg(DocenteBrowseAlumnoCtrl controlador, List<Alumno> listaAlumnos, int realizadas, int noRealizadas) {
+    public DocenteBrowseAlumnoDlg(DocenteBrowseAlumnoCtrl controlador, List<Alumno> listaAlumnos) {
         this.controlador = controlador;
         this.listaAlumnos = listaAlumnos;
-        this.contadorRealizadas = realizadas;
-        this.contadorNoRealizadas = noRealizadas;
         initComponent();
     }
     
@@ -104,7 +100,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
         jScrollPane.setOpaque(false);
         jScrollPane.getViewport().setOpaque(false);
 
-        tablaAlumnos.setModel(new AlumnosTableModel(listaAlumnos, this.contadorRealizadas, this.contadorNoRealizadas));
+        tablaAlumnos.setModel(new AlumnosTableModel(listaAlumnos));
 
         tablaAlumnos.addMouseListener(new MouseAdapter() {
             @Override
@@ -157,7 +153,7 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
             public void actionPerformed(ActionEvent evt) {
                 Alumno alumno = getAlumnoSeleccionado();
                 if (alumno != null) {
-                    if (aux.contadorNoRealizadas <= 0) {
+                    if (controlador.cantRealizadas(alumno) <= 0) {  //revisar forma de comprobar si el alumno posee actividades realizadas
                         Dialogo.mensaje("¡Atención! ", "El Alumno no posee actividades realizadas");                        
                     } else {
                         VerActividadesRealizadasCtrl actividadesRealizadas = new VerActividadesRealizadasCtrl(alumno, aux);
@@ -240,13 +236,9 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
     public class AlumnosTableModel extends AbstractTableModel {
 
         protected List<Alumno> alumnos;
-        protected int contadorRealizadas;
-        protected int contadorNoRealizadas;
 
-        public AlumnosTableModel(List<Alumno> alumnos, int realizadas, int noRealizadas) {
+        public AlumnosTableModel(List<Alumno> alumnos) {
             this.alumnos = alumnos;
-            this.contadorRealizadas = realizadas;
-            this.contadorNoRealizadas = noRealizadas;
         }
 
         @Override
@@ -288,9 +280,9 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
             } else if (column == 1) {
                 return alumno.getApellido();
             } else if (column == 2) {
-                return this.contadorRealizadas;
+                return controlador.cantRealizadas(alumno);
             } else {
-                return this.contadorNoRealizadas;
+                return controlador.cantNoRealizadas(alumno);
             }
         }
 
