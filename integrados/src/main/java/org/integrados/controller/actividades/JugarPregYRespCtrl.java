@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.plantillas.PregYResp;
-import org.integrados.view.actividades.JugarPregYRespDlg;
+import org.integrados.view.actividades.pregyresp.JugarPregYRespDlg;
 import java.util.List;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.bloques.Bloque;

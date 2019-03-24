@@ -137,7 +137,7 @@ public class JugarPregYRespDlg extends javax.swing.JFrame {
         //Se recorre la lista de opciones 
         for (Bloque b : opciones) {
             //Se instancia un panel por cada opcion pasandole el bloque y la coordenada "y"
-            org.integrados.view.actividades.Panel panelOpcion = new org.integrados.view.actividades.Panel(b, y);
+            org.integrados.view.actividades.pregyresp.Panel panelOpcion = new org.integrados.view.actividades.pregyresp.Panel(b, y);
 
             //Se instancia un checkbox llamado opcion, se setean las coordenadas y se agrega a la lista de checks
             JCheckBox opcion = new JCheckBox();

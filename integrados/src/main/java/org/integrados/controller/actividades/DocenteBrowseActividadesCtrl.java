@@ -54,6 +54,7 @@ public class DocenteBrowseActividadesCtrl {
         if (tipoPlantilla.equals("Preguntas y Respuestas")) {            
             CrearPregYRespCtrl actividadDlg = new CrearPregYRespCtrl(this);
             actividadDlg.editar(actividad);
+            this.actividadBrw.ocultar();
         } else if (tipoPlantilla.equals("Memorama")) {
             Dialogo.error("En construcción","¡Estamos trabajando para usted!");
             return;
@@ -65,7 +66,24 @@ public class DocenteBrowseActividadesCtrl {
             return;
         }        
     }
-    
+                
+    public void probar(Actividad actividad, DocenteBrowseActividadesDlg docenteBrowseActividadesDlg ) {      
+        String tipoPlantilla = actividad.getPlantilla().getTipoPlantilla();
+        if (tipoPlantilla.equals("Preguntas y Respuestas")) {       
+            JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(actividad, docenteBrowseActividadesDlg);
+            pregCtrl.jugar();
+            this.actividadBrw.ocultar();
+        } else if (tipoPlantilla.equals("Memorama")) {
+            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+            return;
+        } else if (tipoPlantilla.equals("Unir")) {
+            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+            return;        
+        } else if (tipoPlantilla.equals("Ordenamiento")) {
+            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+            return;
+        }        
+    }
     
     public void guardar(Actividad actividad, boolean alta) throws Exception {        
         try {
