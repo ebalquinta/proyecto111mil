@@ -37,7 +37,7 @@ public class SistemaDeArchivosDlg extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             
         // Creando elementos     
         selectorDeArchivo = new JFileChooser();
