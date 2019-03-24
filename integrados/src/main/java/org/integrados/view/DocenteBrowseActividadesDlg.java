@@ -140,15 +140,7 @@ public class DocenteBrowseActividadesDlg extends JFrame {
         botonProbar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                //  Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! "); 
-                Actividad actividad = getActividadSeleccionada();
-                if (actividad != null) {
-                    ocultar();
-                    JugarPregYRespCtrl pregCtrl = new JugarPregYRespCtrl(getActividadSeleccionada(), aux);
-                    pregCtrl.jugar();
-                } else {
-                    Dialogo.mensaje("¡Atención! ", " Debe seleccionar una actividad para realizar esta opción");
-                }
+                probarActividadActual();
             }
         });
         
@@ -207,7 +199,9 @@ public class DocenteBrowseActividadesDlg extends JFrame {
 
     	if (actividad != null) {
             this.controlador.editar(actividad);
-    	}
+    	} else {
+            Dialogo.mensaje("¡Atención! ", " Debe seleccionar una actividad para realizar esta opción");
+        }
     }
     
     public void actualizarATabla(Actividad actividadEditada) {
@@ -224,19 +218,34 @@ public class DocenteBrowseActividadesDlg extends JFrame {
     
     /////////////////////////////////////Borrar Actividad//////////////////////////////////////
     private void borrarActividad() {
-        System.out.println("borrarActividad");
     	Actividad actividad = getActividadSeleccionada();
         
         if (actividad != null)  {
+            System.out.println("borrarActividad");
             try {        
                 controlador.borrar(actividad);
                 ((ActividadTableModel)tablaActividades.getModel()).removeActividad(actividad);        
             } catch (Exception e) {
                 Dialogo.error("Error al borrar: ", e.getMessage());
             }
+        } else {
+            Dialogo.mensaje("¡Atención! ", " Debe seleccionar una actividad para realizar esta opción");
         }
     }   
     ///////////////////////////////////FIN->Borrar Actividad///////////////////////////////////
+    
+    /////////////////////////////////////Probar Actividad//////////////////////////////////////
+    private void probarActividadActual() {
+    	Actividad actividad = getActividadSeleccionada();
+
+    	if (actividad != null) {
+            System.out.println("probarActividad");
+            this.controlador.probar(actividad, aux);
+    	} else {
+            Dialogo.mensaje("¡Atención! ", " Debe seleccionar una actividad para realizar esta opción");
+        }
+    }
+    ///////////////////////////////////FIN->Probar Actividad///////////////////////////////////
     
     //Indica cuál es la actividad que está seleccionado en la JTable
     private Actividad getActividadSeleccionada() {

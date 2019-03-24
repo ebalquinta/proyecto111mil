@@ -211,12 +211,13 @@ public class DocenteBrowseAlumnoDlg extends JFrame {
     }
 
     private void verDatosAlumnoActual() {
-        System.out.println("verDatosAlumnoActual");
         Alumno alumno = getAlumnoSeleccionado();
 
         if (alumno != null) {
-//            this.controlador.editar(actividad);
+            System.out.println("verDatosAlumnoActual");
             Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+        } else {
+            Dialogo.mensaje("¡Atención! ", " Debe seleccionar un alumno para realizar esta opción");
         }
     }
 
