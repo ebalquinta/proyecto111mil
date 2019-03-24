@@ -215,7 +215,7 @@ public class CrearPregYRespDlg  extends JFrame {
         lineRespuestas = new JSeparator();
         lblRespuestas = Util.crearLabel("Respuestas (Ingrese al menos 2 opciones y al menos 1 de ellas válida)", 1, 14);
         btnAgregar = Util.crearBoton("Agregar", 12);
-        btnAgregar .addActionListener(new ActionListener() {
+        btnAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 new AgregarBloqueCtrl(controlador).mostrar();

@@ -35,6 +35,10 @@ public class CrearPregYRespCtrl {
         this.docenteInicioDlg = docenteInicioDlg;
     }
 
+    public CrearPregYRespDlg getCrearPregYRespDlg() {
+        return crearPregYRespDlg;
+    }
+
     public Actividad getActividad() {
         return actividad;
     }
