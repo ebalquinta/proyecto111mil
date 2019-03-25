@@ -150,8 +150,8 @@ public class AgregarBloqueDlg extends JFrame {
         getContentPane().add(txtIngreseSonido, new AbsoluteConstraints(40, 180, 230, 30));
         getContentPane().add(btnArchivoSonido, new AbsoluteConstraints(280, 180, 80, 30));
         getContentPane().add(linea, new AbsoluteConstraints(40, 230, 320, 1));
-        getContentPane().add(btnAceptar, new AbsoluteConstraints(120, 240, 80, 30));
-        getContentPane().add(btnCancelar, new AbsoluteConstraints(230, 240, 80, 30));
+        getContentPane().add(btnAceptar, new AbsoluteConstraints(110, 240, 80, 30));
+        getContentPane().add(btnCancelar, new AbsoluteConstraints(220, 240, 80, 30));
         getContentPane().add(lblFondo, new AbsoluteConstraints(0, 0, 400, 300));
         pack();
     }   

@@ -85,6 +85,10 @@ public class DocenteBrowseActividadesCtrl {
         }        
     }
     
+    public void asignarAlumnos(Actividad actividad) {
+        new AsignarAlumnosCtrl((Docente)LoginCtrl.app.getPersonaLogueada(), actividad);
+    }
+    
     public void guardar(Actividad actividad, boolean alta) throws Exception {        
         try {
             this.actividadABM.guardar(actividad);
