@@ -234,9 +234,12 @@ public class DocenteBrowseActividadesDlg extends JFrame {
         
         if (actividad != null)  {
             System.out.println("borrarActividad");
-            try {        
-                controlador.borrar(actividad);
-                ((ActividadTableModel)tablaActividades.getModel()).removeActividad(actividad);        
+            try {    
+                Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención! ", "Está a punto de eliminar esta actividad\n\n¿Desea Continuar?");       
+                if (resultado == Dialogo.ResultadoDialogo.Yes) {
+                    controlador.borrar(actividad);
+                    ((ActividadTableModel)tablaActividades.getModel()).removeActividad(actividad); 
+                }
             } catch (Exception e) {
                 Dialogo.error("Error al borrar: ", e.getMessage());
             }
