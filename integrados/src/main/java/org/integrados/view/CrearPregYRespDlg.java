@@ -307,7 +307,7 @@ public class CrearPregYRespDlg  extends JFrame {
         getContentPane().add(btnArchivoSonido, new AbsoluteConstraints(640, 300, 80, 30));     
 
         getContentPane().add(lineRespuestas, new AbsoluteConstraints(60, 350, 670, 10));
-        getContentPane().add(lblRespuestas, new AbsoluteConstraints(70, 350, 340, 30));
+        getContentPane().add(lblRespuestas, new AbsoluteConstraints(70, 350, 500, 30));
         getContentPane().add(btnAgregar, new AbsoluteConstraints(640, 360, 80, 30));   
         getContentPane().add(lblIcoTexto, new AbsoluteConstraints(90, 396, 30, 30));
         getContentPane().add(lblIcoImagen, new AbsoluteConstraints(250, 401, 20, 20));
@@ -419,7 +419,7 @@ public class CrearPregYRespDlg  extends JFrame {
         else {    
             System.out.println("Campos requeridos completos");  
             String camposCompletados = "Está a punto de crear una Actividad con la siguiente información:\n\nMateria: " + materia + "\nNivel: " + nivel + "\nGrado: " + grado + "\nDificultad: " + dificultad + "\nMax.Intentos: " + maxIntentos + "\nTema: " + tema + "\nTexto: " + texto + "\nImagen: " + imagen + "\nSonido: " + sonido + "\nRespuestas: " + filas + "\nVálidas: " + validas + "\n\n¿Desea Continuar?";
-            Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion(camposCompletados);       
+            Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención! ", camposCompletados);       
             if (resultado == Dialogo.ResultadoDialogo.Yes) {
                 // acá iría el método del controlador que guarda la actividad en la base de datos
                 volver();
