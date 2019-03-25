@@ -24,6 +24,7 @@ public class DocenteBrowseActividadesDlg extends JFrame {
     public JButton botonEdicion = null;
     public JButton botonBorrar = null;
     public JButton botonProbar = null;
+    public JButton botonAsignar = null;
     public JButton botonVolver = null;
     private JTable tablaActividades = null;
     private List<Actividad> listaActividades;
@@ -42,9 +43,9 @@ public class DocenteBrowseActividadesDlg extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
+        addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+            public void windowClosing(WindowEvent evt) {
                 controlador.cerrarAplicacion();
             }
         });            
@@ -66,15 +67,15 @@ public class DocenteBrowseActividadesDlg extends JFrame {
         tablaActividades.setOpaque(true);           
 //        ((DefaultTableCellRenderer)tablaActividades.getDefaultRenderer(Object.class)).setOpaque(false);
         
-        tablaActividades.setBackground(new java.awt.Color(250, 255, 113));
-        tablaActividades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 90, 39)));
-        tablaActividades.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); 
+        tablaActividades.setBackground(new Color(250, 255, 113));
+        tablaActividades.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(237, 90, 39)));
+        tablaActividades.setFont(new Font("Comic Sans MS", 0, 12)); 
         
         tablaActividades.setAlignmentX(1.0F);
         tablaActividades.setAlignmentY(1.0F);
-        tablaActividades.setGridColor(new java.awt.Color(237, 90, 39));
-        tablaActividades.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tablaActividades.setSelectionBackground(new java.awt.Color(85, 196, 190));           
+        tablaActividades.setGridColor(new Color(237, 90, 39));
+        tablaActividades.setIntercellSpacing(new Dimension(0, 0));
+        tablaActividades.setSelectionBackground(new Color(85, 196, 190));
         
         JScrollPane jScrollPane = new JScrollPane(tablaActividades);
         jScrollPane.setOpaque(false);
@@ -96,12 +97,12 @@ public class DocenteBrowseActividadesDlg extends JFrame {
         pnlBotonesEdicion = new JPanel();
         pnlBotonesEdicion.setLayout(null);
         pnlBotonesEdicion.setOpaque(false);
-        pnlBotonesEdicion.setPreferredSize(new java.awt.Dimension(300, 35));
+        pnlBotonesEdicion.setPreferredSize(new Dimension(300, 35));
         pnlBotonesEdicion.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
 
         // Propiedades del botón Nuevo
-        botonNuevo = Util.crearBoton("Nuevo", 12);
-        botonNuevo.setBounds(150, 7, 90, 22);
+        botonNuevo = Util.crearBoton("Nueva Actividad", 12);
+        botonNuevo.setBounds(20, 6, 120, 22);
         pnlBotonesEdicion.add(botonNuevo);
         botonNuevo.addActionListener(new ActionListener() {
             @Override
@@ -113,7 +114,7 @@ public class DocenteBrowseActividadesDlg extends JFrame {
 
         // Propiedades del botón Editar
         botonEdicion = Util.crearBoton("Editar", 12);
-        botonEdicion.setBounds(250, 7, 90, 22);
+        botonEdicion.setBounds(200, 6, 90, 22);
         pnlBotonesEdicion.add(botonEdicion);
         botonEdicion.addActionListener(new ActionListener() {
             @Override
@@ -124,7 +125,7 @@ public class DocenteBrowseActividadesDlg extends JFrame {
 
         // Propiedades del botón Borrar
         botonBorrar = Util.crearBoton("Borrar", 12);
-        botonBorrar.setBounds(350, 7, 90, 22);
+        botonBorrar.setBounds(300, 6, 90, 22);
         pnlBotonesEdicion.add(botonBorrar);
         botonBorrar.addActionListener(new ActionListener() {
             @Override
@@ -135,7 +136,7 @@ public class DocenteBrowseActividadesDlg extends JFrame {
         
         // Propiedades del botón Probar
         botonProbar = Util.crearBoton("Probar", 12);
-        botonProbar.setBounds(450, 7, 90, 22);
+        botonProbar.setBounds(400, 6, 90, 22);
         pnlBotonesEdicion.add(botonProbar);        
         botonProbar.addActionListener(new ActionListener() {
             @Override
@@ -144,9 +145,20 @@ public class DocenteBrowseActividadesDlg extends JFrame {
             }
         });
         
+        // Propiedades del botón Asignar
+        botonAsignar = Util.crearBoton("Asignar Alumnos", 12);
+        botonAsignar.setBounds(500, 6, 120, 22);
+        pnlBotonesEdicion.add(botonAsignar);
+        botonAsignar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                asignarAlumnos();
+            }
+        });
+        
         // Propiedades del botón Volver
         botonVolver = Util.crearBoton("Volver", 12);
-        botonVolver.setBounds(550, 7, 90, 22);
+        botonVolver.setBounds(688, 6, 90, 22);
         pnlBotonesEdicion.add(botonVolver);
         botonVolver.addActionListener(new ActionListener() {
             @Override
@@ -246,6 +258,19 @@ public class DocenteBrowseActividadesDlg extends JFrame {
         }
     }
     ///////////////////////////////////FIN->Probar Actividad///////////////////////////////////
+    
+    /////////////////////////////////////Asignar Alumnos a Actividad Actual//////////////////////////////////////
+    private void asignarAlumnos() {
+    	Actividad actividad = getActividadSeleccionada();
+
+    	if (actividad != null) {
+            System.out.println("asignarAlumnos");
+            this.controlador.asignarAlumnos(actividad);
+    	} else {
+            Dialogo.mensaje("¡Atención! ", " Debe seleccionar una actividad para realizar esta opción");
+        }
+    }
+    ///////////////////////////////////FIN->Asignar Alumnos a Actividad Actual///////////////////////////////////
     
     //Indica cuál es la actividad que está seleccionado en la JTable
     private Actividad getActividadSeleccionada() {

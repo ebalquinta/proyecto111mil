@@ -128,7 +128,7 @@ public class AgregarBloqueDlg extends JFrame {
         btnAceptar = Util.crearBoton("Aceptar", 14);
         btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                ocultar();
+                guardarBloque();
             }
         });
         btnCancelar = Util.crearBoton("Cancelar", 14);
@@ -150,8 +150,8 @@ public class AgregarBloqueDlg extends JFrame {
         getContentPane().add(txtIngreseSonido, new AbsoluteConstraints(40, 180, 230, 30));
         getContentPane().add(btnArchivoSonido, new AbsoluteConstraints(280, 180, 80, 30));
         getContentPane().add(linea, new AbsoluteConstraints(40, 230, 320, 1));
-        getContentPane().add(btnAceptar, new AbsoluteConstraints(120, 240, 80, 30));
-        getContentPane().add(btnCancelar, new AbsoluteConstraints(230, 240, 80, 30));
+        getContentPane().add(btnAceptar, new AbsoluteConstraints(110, 240, 80, 30));
+        getContentPane().add(btnCancelar, new AbsoluteConstraints(220, 240, 80, 30));
         getContentPane().add(lblFondo, new AbsoluteConstraints(0, 0, 400, 300));
         pack();
     }   
@@ -176,6 +176,31 @@ public class AgregarBloqueDlg extends JFrame {
 
     public JTextField getTxtIngreseSonido() {
         return txtIngreseSonido;
+    }
+    
+    //Valida si los campos requeridos están completos y guarda la Actividad
+    private void guardarBloque() {
+        System.out.println("Validando campos");
+        String texto = txtIngreseTexto.getText();
+        String imagen = txtIngreseImagen.getText();
+        String sonido = txtIngreseSonido.getText();
+        if ( (texto.length() == 0) && (imagen.length() == 0) && (sonido.length() == 0) ) {        
+            Dialogo.mensaje("¡Error de Validación! ", " Debe completar al menos un campo antes de continuar");
+        }
+        else {    
+            System.out.println("Campos requeridos completos");  
+            String camposCompletados = "Está a punto de crear un Bloque con la siguiente información:\n\nTexto: " + texto + "\nImagen: " + imagen + "\nSonido: " + sonido + "\n\n¿Desea Continuar?";
+            Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion(camposCompletados);       
+            if (resultado == Dialogo.ResultadoDialogo.Yes) {
+                // Me fijo de que vista vine y mando el bloque a esa vista
+                if ( controlador.getCrearPregYRespCtrl() != null ) {  
+                    CrearPregYRespDlg vistaAnterior = controlador.getCrearPregYRespCtrl().getCrearPregYRespDlg();
+                    // Acá iria el método que manda el bloque a la tabla de la vista de CrearPregYResp
+                    vistaAnterior.mostrar();
+                    ocultar();
+                }
+            }
+        }
     }
     
     public void mostrar() {
