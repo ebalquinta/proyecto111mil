@@ -67,7 +67,11 @@ public class CrearPregYRespCtrl {
         this.crearPregYRespDlg.mostrar();
     }
 
-    
+    /**
+     * pasaje de string checkbox grado a int para ser guardado en BD
+     * @param gradoS
+     * @return 
+     */
     public int verificarGrado(String gradoS){
         int grado;
         if(gradoS.equals("Primero")){
@@ -86,6 +90,11 @@ public class CrearPregYRespCtrl {
         return grado;
     }
     
+    /**
+     * convierte dato string a int
+     * @param numString
+     * @return 
+     */
     public int stringAInt(String numString) {
         return Integer.parseInt(numString);
     }

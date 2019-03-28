@@ -401,7 +401,7 @@ public class CrearPregYRespDlg extends JFrame {
     }
 
     /**
-     *
+     * iniciar tabla como null para evitar nullPointerException
      * @param infoBloque
      */
     public Object[][] iniciarTabla() {
