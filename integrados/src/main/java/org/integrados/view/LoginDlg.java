@@ -117,7 +117,7 @@ public class LoginDlg extends JFrame {
         });
 
         // Propiedades del botón SobreNosotros
-        btnSobreNosotros.setBounds(165, 510, 170, 30);
+        btnSobreNosotros.setBounds(568, 510, 170, 30);
         getContentPane().add(btnSobreNosotros);
         btnSobreNosotros.addActionListener(new ActionListener() {
             @Override
