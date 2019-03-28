@@ -5,5 +5,5 @@ package org.integrados.data.enums;
  */
 public enum Grado {
     
-    Primero, Segundo, Tercero, Cuarto, Quinto
+    Primero, Segundo, Tercero, Cuarto, Quinto, Sexto
 }

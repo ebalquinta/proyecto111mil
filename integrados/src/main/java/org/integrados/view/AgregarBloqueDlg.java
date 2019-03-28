@@ -193,9 +193,11 @@ public class AgregarBloqueDlg extends JFrame {
             Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion(camposCompletados);       
             if (resultado == Dialogo.ResultadoDialogo.Yes) {
                 // Me fijo de que vista vine y mando el bloque a esa vista
+                Object[] arregloString = {texto, imagen, sonido, false};
                 if ( controlador.getCrearPregYRespCtrl() != null ) {  
                     CrearPregYRespDlg vistaAnterior = controlador.getCrearPregYRespCtrl().getCrearPregYRespDlg();
                     // Acá iria el método que manda el bloque a la tabla de la vista de CrearPregYResp
+                    crearPregYRespCtrl.getCrearPregYRespDlg().agregarRow(arregloString);
                     vistaAnterior.mostrar();
                     ocultar();
                 }
