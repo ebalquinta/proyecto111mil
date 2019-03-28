@@ -47,6 +47,8 @@ public class AgregarBloqueCtrl {
         this.agregarBloqueDlg.mostrar();
     }
     
+    
+    
     public void cerrarAplicacion() {
         Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención!", "¿Realmente desea salir?");
         if (resultado == Dialogo.ResultadoDialogo.Yes) {
