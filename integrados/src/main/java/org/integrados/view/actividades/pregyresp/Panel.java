@@ -45,7 +45,7 @@ public class Panel extends JPanel {
                 break;
             case 2:
                 this.bloqueImagen = (BloqueImagen) bloque;
-                //agregar al panel el sonido
+                //agregar al panel la imagen
                 break;
             case 3:
                 this.bloqueTexto = (BloqueTexto) bloque;

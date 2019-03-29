@@ -17,7 +17,7 @@ import org.integrados.exceptions.IntegradosException;
 public class BloqueABM {
     
     
-     public void guardar(Bloque p) throws IntegradosException {
+     public void guardar(Bloque p){
         Session s=null;
         try {
             s = HibernateUtiles.getSession();
@@ -48,7 +48,7 @@ public class BloqueABM {
         }
     }
     
-    public void borrar(Bloque b) throws IntegradosException{
+    public void borrar(Bloque b){
         Session s = null;
         try{
             s.beginTransaction();

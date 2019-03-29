@@ -76,8 +76,8 @@ public class AsignarAlumnosDlg extends JFrame {
         lblFondo.setFont(new Font("Comic Sans MS", 0, 12)); // NOI18N
 
         // Propiedades del fondo de pantalla
-        ImageIcon icon = createImageIcon("../images/FondoChico.jpg","Fondo");
-        lblFondo.setIcon(icon);        
+        ImageIcon icon = createImageIcon("../images/FondoChico.jpg", "Fondo");
+        lblFondo.setIcon(icon);
         lblFondo.setBounds(0, 0, 400, 300);
 
         lblTitulo = Util.crearLabel("Asignar Alumno/s a Actividad", 0, 18);
@@ -87,7 +87,7 @@ public class AsignarAlumnosDlg extends JFrame {
 
         // Creando tabla de alumnos
         tablaRespuestas = new JTable();
-        tablaRespuestas.setOpaque(true);   
+        tablaRespuestas.setOpaque(true);
         tablaRespuestas.setBackground(new Color(250, 255, 113));
         tablaRespuestas.setBorder(BorderFactory.createLineBorder(new Color(237, 90, 39)));
         tablaRespuestas.setFont(new Font("Comic Sans MS", 0, 12));
@@ -95,8 +95,8 @@ public class AsignarAlumnosDlg extends JFrame {
         tablaRespuestas.setAlignmentY(1.0F);
         tablaRespuestas.setGridColor(new Color(237, 90, 39));
         tablaRespuestas.setIntercellSpacing(new Dimension(0, 0));
-        tablaRespuestas.setSelectionBackground(new Color(85, 196, 190));      
-        
+        tablaRespuestas.setSelectionBackground(new Color(85, 196, 190));
+
         tablaRespuestas.setModel(new DefaultTableModel(filasSegunTabla(docenteInicio.getId()),
                 new String[]{
                     "Nombre", "Apellido", "Grado", "División", "Nivel", "Asignar"
@@ -121,7 +121,7 @@ public class AsignarAlumnosDlg extends JFrame {
         scroll.setViewportView(tablaRespuestas);
         scroll.setPreferredSize(new Dimension(400, 150));
         scroll.getPreferredSize();
-        
+
         panelTabla.setOpaque(false);
         panelTabla.setSize(scroll.getPreferredSize());
         panelTabla.setLocation(0, 60);
@@ -159,13 +159,14 @@ public class AsignarAlumnosDlg extends JFrame {
     } // FIN INITCOMPONENT//
 
     /**
-     * Metodo de boton aceptar: consulta si esta seguro de guardar la seleccion realizada.
-     * si = guarda el registro actividad, no= vuelve a la ventana asignar
+     * Metodo de boton aceptar: consulta si esta seguro de guardar la seleccion
+     * realizada. si = guarda el registro actividad, no= vuelve a la ventana
+     * asignar
      */
     private void consultaAceptar() {
         if (Dialogo.confirmacion("Confirmacion", "¿Esta seguro que desea realizar esta operación?") == Dialogo.ResultadoDialogo.Yes) {
             boolean[] booleans = cargarAsignaciones();
-            guardarRegistro(booleans);            
+            guardarRegistro(booleans);
             ocultar();
             altaReg = true;
         }
@@ -174,26 +175,28 @@ public class AsignarAlumnosDlg extends JFrame {
     /**
      * Devuelve matriz object cargada con lista de alumnos del docente
      *
-     * llama a metodo devolverFila(alumno)
+     * llama a metodo comprobarExistentes(alumno) si el alumno ya posee la actividad a asignar, no lo muestra como opcion
      *
      * @param id docente
-     * @return
+     * @return Object [][]
      */
     public Object[][] filasSegunTabla(int id) {
 
         listaAlumnos = personaABM.listaAlumnos(docenteInicio.getId());
-        Object[][] matrizObjetos = new Object[listaAlumnos.size()][6];
-        int colum = 0;
+        Object[][] matrizObjetos = new Object[listaAlumnos.size() + 4][6];
 
         for (int f = 0; f < listaAlumnos.size(); f++) {
-
             Alumno alumno = listaAlumnos.get(f);
-            matrizObjetos[f][0] = alumno.getNombre();
-            matrizObjetos[f][1] = alumno.getApellido();
-            matrizObjetos[f][2] = alumno.getGrado().toString();
-            matrizObjetos[f][3] = alumno.getDivision();
-            matrizObjetos[f][4] = alumno.getNivel().toString();
-            matrizObjetos[f][5] = false;
+            int fila = 0;
+            if (controlador.comprobarExistentes(alumno)) {
+                matrizObjetos[fila][0] = alumno.getNombre();
+                matrizObjetos[fila][1] = alumno.getApellido();
+                matrizObjetos[fila][2] = alumno.getGrado().toString();
+                matrizObjetos[fila][3] = alumno.getDivision();
+                matrizObjetos[fila][4] = alumno.getNivel().toString();
+                matrizObjetos[fila][5] = false;
+                fila++;
+            }
         }
         return matrizObjetos;
     }
@@ -209,7 +212,9 @@ public class AsignarAlumnosDlg extends JFrame {
     }
 
     /**
-     * Guarda la/s selecion/es de alumnos realiazada por el docente luego de crear la actividad
+     * Guarda la/s selecion/es de alumnos realiazada por el docente luego de
+     * crear la actividad
+     *
      * @return boolean[]
      */
     private boolean[] cargarAsignaciones() {
@@ -224,7 +229,9 @@ public class AsignarAlumnosDlg extends JFrame {
     }
 
     /**
-     * Guarda el registro actividad incorporando los atributos not null (actividad, alumno, docente)
+     * Guarda el registro actividad incorporando los atributos not null
+     * (actividad, alumno, docente)
+     *
      * @param asignacion
      */
     public void guardarRegistro(boolean[] asignacion) {
