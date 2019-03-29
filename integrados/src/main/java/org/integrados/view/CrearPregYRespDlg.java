@@ -614,9 +614,11 @@ public class CrearPregYRespDlg extends JFrame {
 
     public Object[] bloqueToObject (Bloque bloque, List<Bloque> soluciones) {
         boolean valido = false;
-//        if (soluciones.contains(bloque)) {
-//            valido = true;
-//        }
+        for (Bloque b : soluciones) {
+            if ((b.getTipoBloque() == bloque.getTipoBloque()) && b.equals(bloque)) {
+                valido = true;
+            }            
+        }
         
         /*Arreglo de texto, imagen, sonido, checkbox*/
         Object[] arreglo = { null, null, null, valido };        
@@ -686,8 +688,6 @@ public class CrearPregYRespDlg extends JFrame {
                 break;
             case 3:                
                 valor = ((BloqueTexto)bloque).getTexto();
-                break;
-            case 4:     
                 break;
         }   
         return valor;
