@@ -9,16 +9,15 @@ import org.integrados.data.usuarios.*;
 import static org.integrados.data.util.Util.*;
 import org.integrados.exceptions.IntegradosException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestCargaDeDatos {
 
     public static void main(String[] args) throws IntegradosException, ParseException {
 
         agregarDocentes();
-
-        agregarInstitucion();
-
-        agregarAlumnos();
+        agregarInstitucion();        
 
     }
 //----------------------------------------------------------------------------------------//
@@ -180,10 +179,11 @@ public class TestCargaDeDatos {
      * agrega a diez Docentes
      *
      * @throws IntegradosException
+     * @throws java.text.ParseException
      */
-    public static void agregarDocentes() throws IntegradosException {
-
-        for (int i = 0; i < 10; i++) {
+    public static void agregarDocentes() throws IntegradosException, ParseException {
+        for (int i = 0; i < 5; i++) {
+            List<Alumno> alumnos = agregarAlumnos();
             int dni = randBetween(10471825, 50182673);
             String nombre = nombreAleatorio();
             String apellido = apellidoAleatorio();
@@ -191,8 +191,9 @@ public class TestCargaDeDatos {
             docente.setDomicilio(domicilioAleatorio());
             docente.setTelefono("0249 4" + dni);
             docente.setMail(nombre + "_" + apellido + "@gmail.com");
-            docente.setUsuario(nombre + randBetween(1, 100));
+            docente.setUsuario(dni+"");
             docente.setClave(nombre);
+            docente.setAlumnos(alumnos);
             savePersona(docente);
         }
     }
@@ -209,13 +210,15 @@ public class TestCargaDeDatos {
     }
 
     /**
-     * Agrega a quince Alumnos
+     * agrega a 5 alumnos por docente
      *
+     * @return lista de alumnos para un docente
      * @throws IntegradosException
      * @throws java.text.ParseException
      */
-    public static void agregarAlumnos() throws IntegradosException, ParseException {
-        for (int i = 0; i < 25; i++) {
+    public static List<Alumno> agregarAlumnos() throws IntegradosException, ParseException {
+        List<Alumno> alumnos = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
             int dni = randBetween(10471825, 50182673);
             String nombre = nombreAleatorio();
             String apellido = apellidoAleatorio();
@@ -226,13 +229,33 @@ public class TestCargaDeDatos {
             alumno.setDomicilio(domicilioAleatorio());
             alumno.setTelefono("0249 4" + dni);
             alumno.setMail(nombre + "_" + apellido + "@gmail.com");
-            alumno.setUsuario(nombre + randBetween(1, 100));
+            alumno.setUsuario(dni+"");
             alumno.setClave(nombre);
             alumno.setFechaNacimiento(fechaAleatoria());
-            alumno.setEdadMadurativa(randBetween(1,18));
+            alumno.setEdadMadurativa(randBetween(1, 18));
             alumno.setObservaciones("");
             savePersona(alumno);
+            alumnos.add(alumno);
+
         }
+        return alumnos;
+
     }
 
+//    public static Alumno getAlumnos() throws IntegradosException {
+//        HibernateUtiles.inicializar();
+//        Session s;
+//        Alumno a;
+//        try {
+//            s = HibernateUtiles.getSession();
+//            s.beginTransaction();
+//            a = (Alumno) s.get();
+//            s.getTransaction().commit();
+//            s.close();
+//            return a;
+//        } catch (IntegradosException e) {
+//            return null;
+//
+//        }
+//    }
 }
