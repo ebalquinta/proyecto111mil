@@ -398,6 +398,11 @@ public class CrearPregYRespDlg extends JFrame {
         this.txtIngreseTexto.setText(actividad.getPlantilla().getEnunciado());
         this.txtIngreseImagen.setText(actividad.getPlantilla().getImagenEnunciado());
         this.txtIngreseSonido.setText(actividad.getPlantilla().getSonidoEnunciado());
+        List<Bloque> opciones = ((PregYResp) actividad.getPlantilla()).getOpciones();
+        List<Bloque> soluciones = ((PregYResp) actividad.getPlantilla()).getSoluciones();
+        for (Bloque b: opciones) {
+            this.agregarRow(this.bloqueToObject(b, soluciones));
+        }
     }
 
     /**
@@ -532,9 +537,9 @@ public class CrearPregYRespDlg extends JFrame {
      * @return boolean (alta del bloque en la BD)
      */
     public Bloque guardarBloque(String texto, String imagen, String sonido) {
-        if (texto != null) {
+        if (texto != null && (!texto.equals(""))) {
             if ((imagen != null) && (!imagen.equals(""))){
-                if (sonido != null) {
+                if (sonido != null && (!sonido.equals(""))) {
                     Bloque bloqueTexto = new BloqueTexto(texto);
                     Bloque bloqueImagen = new BloqueImagen(imagen);
                     Bloque bloqueSonido = new BloqueSonido(sonido);
@@ -580,8 +585,8 @@ public class CrearPregYRespDlg extends JFrame {
 
                 return bloqueTexto;
             }
-        } else if (imagen != null) {
-            if (sonido != null) {
+        } else if ((imagen != null) && (!imagen.equals(""))) {
+            if ((sonido != null) && (!sonido.equals(""))) {
                 Bloque bloqueImagen = new BloqueImagen(imagen);
                 Bloque bloqueSonido = new BloqueSonido(sonido);
 
@@ -598,7 +603,7 @@ public class CrearPregYRespDlg extends JFrame {
 
                 return bloqueImagen;
             }
-        } else if (sonido != null) {
+        } else if ((sonido != null) && (!sonido.equals(""))) {
             Bloque bloqueSonido = new BloqueSonido(sonido);
             bloqueABM.guardar(bloqueSonido);
 
@@ -607,6 +612,87 @@ public class CrearPregYRespDlg extends JFrame {
         return null;
     }
 
+    public Object[] bloqueToObject (Bloque bloque, List<Bloque> soluciones) {
+        boolean valido = false;
+//        if (soluciones.contains(bloque)) {
+//            valido = true;
+//        }
+        
+        /*Arreglo de texto, imagen, sonido, checkbox*/
+        Object[] arreglo = { null, null, null, valido };        
+        
+        /*
+        tipoBloque: 
+        sonido = 1
+        imagen = 2
+        texto = 3
+        and = 4
+         */
+        if (bloque.getTipoBloque() != 4) {
+            this.actualizarArreglo(arreglo, bloque);
+        } else { 
+            Bloque bloque1 = ((BloqueAnd)bloque).getBloque1();
+            Bloque bloque2 = ((BloqueAnd)bloque).getBloque2();
+            int tipoBloque1 = bloque1.getTipoBloque();
+            int tipoBloque2 = bloque2.getTipoBloque();
+            if ((tipoBloque1 != 4) && (tipoBloque2 != 4)) {                
+                this.actualizarArreglo(arreglo, bloque1);             
+                this.actualizarArreglo(arreglo, bloque2);
+            } else if (tipoBloque1 == 4) {
+                Bloque bloque1_1 = ((BloqueAnd) bloque1).getBloque1();
+                Bloque bloque1_2 = ((BloqueAnd) bloque1).getBloque2();            
+                this.actualizarArreglo(arreglo, bloque1_1);             
+                this.actualizarArreglo(arreglo, bloque1_2);
+                
+            } else if (tipoBloque2 == 4) {
+                Bloque bloque2_1 = ((BloqueAnd) bloque2).getBloque1();
+                Bloque bloque2_2 = ((BloqueAnd) bloque2).getBloque2();            
+                this.actualizarArreglo(arreglo, bloque2_1);             
+                this.actualizarArreglo(arreglo, bloque2_2);                
+            }        
+        }
+        
+        return arreglo;
+    }
+    
+    private void actualizarArreglo(Object[] arreglo, Bloque bloque) {        
+        switch (bloque.getTipoBloque()) {
+            case 1:                
+                arreglo[2] = this.getBloqueString(bloque);
+                break;
+            case 2:                
+                arreglo[1] = this.getBloqueString(bloque);
+                break;
+            case 3:                
+                arreglo[0] = this.getBloqueString(bloque);
+                break;
+        }
+    }
+    public String getBloqueString(Bloque bloque) {    
+        /*
+        tipoBloque: 
+        sonido = 1
+        imagen = 2
+        texto = 3
+        and = 4
+         */
+        String valor = null;
+        switch (bloque.getTipoBloque()) {
+            case 1:                
+                valor = ((BloqueSonido)bloque).getSonido();
+                break;
+            case 2:                
+                valor = ((BloqueImagen)bloque).getImagen();
+                break;
+            case 3:                
+                valor = ((BloqueTexto)bloque).getTexto();
+                break;
+            case 4:     
+                break;
+        }   
+        return valor;
+    }
+        
     /**
      * Guardar Actividad en BD
      *
