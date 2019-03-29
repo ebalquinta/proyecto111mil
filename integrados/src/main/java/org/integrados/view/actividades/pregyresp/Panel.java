@@ -6,6 +6,7 @@
 package org.integrados.view.actividades.pregyresp;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.integrados.data.bloques.Bloque;
@@ -13,6 +14,7 @@ import org.integrados.data.bloques.BloqueAnd;
 import org.integrados.data.bloques.BloqueImagen;
 import org.integrados.data.bloques.BloqueSonido;
 import org.integrados.data.bloques.BloqueTexto;
+import org.integrados.data.util.Util;
 
 /**
  *
@@ -46,13 +48,20 @@ public class Panel extends JPanel {
             case 2:
                 this.bloqueImagen = (BloqueImagen) bloque;
                 //agregar al panel la imagen
+                JLabel imagen = new JLabel();
+                ImageIcon icon = createImageIcon(this.bloqueImagen.getImagen(),"Fondo");
+                if (icon != null) {
+                    imagen.setIcon(Util.reziseImageIcon(icon, 60, 40));
+                }
+                imagen.setBounds(50, y, 60, 40);
+                add(imagen);
                 break;
             case 3:
                 this.bloqueTexto = (BloqueTexto) bloque;
-                JLabel opcion = new JLabel();
-                opcion.setText(bloqueTexto.getTexto());
-                opcion.setBounds(500, y, 500, 20);
-                add(opcion);
+                JLabel texto = new JLabel();
+                texto.setText(bloqueTexto.getTexto());
+                texto.setBounds(50, y, 60, 40);
+                add(texto);
                 break;
             case 4:
                 this.bloqueAnd= (BloqueAnd) bloque;
@@ -60,5 +69,16 @@ public class Panel extends JPanel {
                 initComponents(bloqueAnd.getBloque2(), y + 10);
                 break;
         }
+    }  
+    
+    protected ImageIcon createImageIcon(String path, String description) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL, description);
+        } else {
+            System.out.println("Couldn't find file: " + path);
+            return null;
+        }
     }
+    
 }
