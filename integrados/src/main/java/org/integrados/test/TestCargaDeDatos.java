@@ -11,14 +11,17 @@ import org.integrados.exceptions.IntegradosException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import org.integrados.data.actividad.*;
+import org.integrados.data.bloques.*;
+import org.integrados.data.plantillas.*;
 
 public class TestCargaDeDatos {
 
     public static void main(String[] args) throws IntegradosException, ParseException {
 
         agregarDocentes();
-        agregarInstitucion();        
-
+        agregarInstitucion();
+        agregarMaterias();
     }
 //----------------------------------------------------------------------------------------//
 
@@ -176,7 +179,7 @@ public class TestCargaDeDatos {
 
     //----------------------------------------------------------------------------------------//
     /**
-     * agrega a diez Docentes
+     * agrega a cinco Docentes
      *
      * @throws IntegradosException
      * @throws java.text.ParseException
@@ -191,7 +194,7 @@ public class TestCargaDeDatos {
             docente.setDomicilio(domicilioAleatorio());
             docente.setTelefono("0249 4" + dni);
             docente.setMail(nombre + "_" + apellido + "@gmail.com");
-            docente.setUsuario(dni+"");
+            docente.setUsuario(dni + "");
             docente.setClave(nombre);
             docente.setAlumnos(alumnos);
             savePersona(docente);
@@ -199,7 +202,7 @@ public class TestCargaDeDatos {
     }
 
     /**
-     * Se agrega una Institución
+     * Agrega una Institución con un nombre y un Docente administrador
      *
      * @throws IntegradosException
      */
@@ -210,7 +213,7 @@ public class TestCargaDeDatos {
     }
 
     /**
-     * agrega a 5 alumnos por docente
+     * agrega a cinco alumnos por docente
      *
      * @return lista de alumnos para un docente
      * @throws IntegradosException
@@ -229,7 +232,7 @@ public class TestCargaDeDatos {
             alumno.setDomicilio(domicilioAleatorio());
             alumno.setTelefono("0249 4" + dni);
             alumno.setMail(nombre + "_" + apellido + "@gmail.com");
-            alumno.setUsuario(dni+"");
+            alumno.setUsuario(dni + "");
             alumno.setClave(nombre);
             alumno.setFechaNacimiento(fechaAleatoria());
             alumno.setEdadMadurativa(randBetween(1, 18));
@@ -242,20 +245,18 @@ public class TestCargaDeDatos {
 
     }
 
-//    public static Alumno getAlumnos() throws IntegradosException {
-//        HibernateUtiles.inicializar();
-//        Session s;
-//        Alumno a;
-//        try {
-//            s = HibernateUtiles.getSession();
-//            s.beginTransaction();
-//            a = (Alumno) s.get();
-//            s.getTransaction().commit();
-//            s.close();
-//            return a;
-//        } catch (IntegradosException e) {
-//            return null;
-//
-//        }
-//    }
+    /**
+     * Agrega las materias
+     * 
+     * @throws IntegradosException 
+     */
+    public static void agregarMaterias() throws IntegradosException {
+        String[] materias = {"Historia", "Geografía", "Matemática", "Lengua", "Química", "Biología", "Cívica", "Física", "Inglés", "Contabilidad", "Psicología", "Filosofía"};
+        for (int i = 0; i < materias.length; i++) {
+            Materia materia = new Materia(materias[i]);
+            saveObjeto(materia);
+
+        }
+
+    }
 }
