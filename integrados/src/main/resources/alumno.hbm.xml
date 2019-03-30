@@ -18,7 +18,8 @@
         <property name="grado" type="integer" column="grado" not-null="true" />
         <property name="division" type="string" column="division" length="10" not-null="true" />
         <property name="observaciones" type="string" column="observaciones" length="2000" />
-        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
+        
+        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join" lazy="false">
             <column name="id_Domicilio" />
         </many-to-one>
         <property name="nivel" column="nivel" not-null="true">
