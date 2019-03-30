@@ -460,9 +460,7 @@ public class CrearPregYRespDlg extends JFrame {
             Dialogo.ResultadoDialogo resultado = Dialogo.confirmacion("¡Atención! ", camposCompletados);
             if (resultado == Dialogo.ResultadoDialogo.Yes) {
                 // acá iría el método del controlador que guarda la actividad en la base de datos
-
-                //Guardar Materia
-                Materia materiaa = guardarMateria(materia);
+                Materia materiaa = materiaABM.getSegunString(materia);
                 //Guardar Bloques y plantilla
                 Plantilla plantilla = guardarPlantilla(tablaRespuestas, texto, imagen, sonido);
                 //Guardar actividad
@@ -472,17 +470,10 @@ public class CrearPregYRespDlg extends JFrame {
             }
         }
     }
-
-    /**
-     * Guardar materia en bd
-     *
-     * @param materia
-     * @return
-     */
-    public Materia guardarMateria(String materia) {
-        Materia mate = new Materia(materia);
-        this.materiaABM.guardar(mate);
-        return mate;
+    
+    public Materia getMateria(){
+        
+        return null;
     }
 
     /**
