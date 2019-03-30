@@ -64,7 +64,6 @@ public class Memorama extends Plantilla {
         List<Bloque> bloquesSolucionClonada = new ArrayList<>();
 
         // Creacion de las variables auxiliares
-        BloqueAnd b;
         int aux;
         int aux2;
         int finalSize = bloques1Clonada.size();
