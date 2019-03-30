@@ -55,50 +55,79 @@ public class Unir extends Plantilla {
         // Clonacion y creacion de las listas a usar        
         List<Bloque> bloquesDerClonada = this.clonarLista(this.bloquesDer);
         List<Bloque> bloquesIzqClonada = this.clonarLista(this.bloquesIzq);
-        List<Bloque> bloquesAnd = new ArrayList<>();
+        List<Integer> indicesUtilizadosMayor = new ArrayList();
+        List<Integer> indicesUtilizadosMenor = new ArrayList();
+        List<Bloque> bloquesSolucionClonada = new ArrayList<>();
 
         // Creacion de las variables auxiliares
-        BloqueAnd b;
         int aux;
         int aux2;
-        // Controla que las listas sean iguales para que haya pares
-        if (this.bloquesDer.size() != this.bloquesIzq.size()) {
-
-            // Si hay un par averigua cual lista es la impar
-            if (this.bloquesDer.size() > this.bloquesIzq.size()) {
-
-                // Crea y asigna un bloqueAnd tomando de un bloque de la lista de mayor cantidad y asignandole null al otro
-                aux = (int) (Math.random() * bloquesDerClonada.size());
-                b = new BloqueAnd(bloquesDerClonada.get(aux), null);
-                bloquesAnd.add(b);
-
-                // Elimina de la lista clonada el bloque para que las listas queden pares
-                bloquesDerClonada.remove(aux);
+        int finalSize;
+        List<Bloque> listaMayor; 
+        List<Bloque> listaMenor; 
+        // Controla que las listas sean distintas para que haya pares
+        if (bloquesDerClonada.size() != bloquesIzqClonada.size()) {
+            // averigua cual lista es la mayor
+            if (bloquesDerClonada.size() > bloquesIzqClonada.size()) {
+                finalSize = bloquesDerClonada.size();
+                listaMayor = bloquesDerClonada;
+                listaMenor = bloquesIzqClonada;
             } else {
-                aux = (int) (Math.random() * bloquesIzqClonada.size());
-                b = new BloqueAnd(bloquesIzqClonada.get(aux), null);
-                bloquesAnd.add(b);
-                bloquesIzqClonada.remove(aux);
+                finalSize = bloquesIzqClonada.size();
+                listaMayor = bloquesIzqClonada;
+                listaMenor = bloquesDerClonada;
             }
+            
+            for (int i = 0; finalSize > i; i++) {
+                // Crea y asigna una lista solucion tomando de un bloque de la lista de mayor cantidad y asignandole null al otro
+                
+                if (listaMayor.size() > listaMenor.size()) {
+                    do {
+                        aux = (int) (Math.random() * listaMayor.size());
+                    } while (sonUtilizados(aux,indicesUtilizadosMayor));
+                    
+                    bloquesSolucionClonada.add(listaMayor.get(aux));
+                    bloquesSolucionClonada.add(null);         
+                    indicesUtilizadosMayor.add(aux);      
+                    // Elimina de la lista clonada el bloque para que las listas queden pares
+                    listaMayor.remove(aux);
+                } else {
+                    do {
+                        aux = (int) (Math.random() * listaMayor.size());
+                    } while (sonUtilizados(aux,indicesUtilizadosMayor));
+                    do {
+                        aux2 = (int) (Math.random() * listaMenor.size());
+                    } while (sonUtilizados(aux2,indicesUtilizadosMenor));
+                    
+                    bloquesSolucionClonada.add(listaMayor.get(aux));
+                    bloquesSolucionClonada.add(listaMenor.get(aux2));                          
+                    indicesUtilizadosMayor.add(aux);    
+                    indicesUtilizadosMenor.add(aux2);                          
+                }                                      
+            }            
+        } else {
+            for (int i = 0; bloquesDerClonada.size() > i; i++) {
+                do {
+                    aux = (int) (Math.random() * bloquesDerClonada.size());
+                } while (sonUtilizados(aux,indicesUtilizadosMayor));
+                do {
+                    aux2 = (int) (Math.random() * bloquesIzqClonada.size());
+                } while (sonUtilizados(aux2,indicesUtilizadosMenor));
+                
+                bloquesSolucionClonada.add(bloquesDerClonada.get(aux));
+                bloquesSolucionClonada.add(bloquesIzqClonada.get(aux2));                        
+                indicesUtilizadosMayor.add(aux);    
+                indicesUtilizadosMenor.add(aux2);                     
+            }
+        }    
+        return bloquesSolucionClonada;
+    }
 
+    private boolean sonUtilizados(int indice, List<Integer> indicesUtilizados) {
+        if ( !indicesUtilizados.contains(indice) ) {
+            return false;
         }
-
-        for (int i = 0; bloquesDerClonada.size() > i; i++) {
-
-            // Asignacion de numeros aleatorios a los indices auxiliares teniendo en cuenta el tamao de la lista
-            aux = (int) (Math.random() * bloquesDerClonada.size());
-            aux2 = (int) (Math.random() * bloquesDerClonada.size());
-
-            // Creacion y asignacion a lista de el bloqueAnd
-            b = new BloqueAnd(bloquesDerClonada.get(aux), bloquesIzqClonada.get(aux2));
-            bloquesAnd.add(b);
-
-            // Eliminacion de los bloques ya asignados
-            bloquesDerClonada.remove(aux);
-            bloquesIzqClonada.remove(aux2);
-        }
-
-        return bloquesAnd;
+        return true;
     }
 
     /**
@@ -112,22 +141,21 @@ public class Unir extends Plantilla {
      */
     @Override
     public Boolean verificarResultado(List<Bloque> respuestaAlumno) {
-
-        BloqueAnd rtaAlumno;
-        BloqueAnd solucion;
-        int par = 0;
-        for (Bloque s : this.soluciones) {
-            solucion = (BloqueAnd) s;
-            for (Bloque b : respuestaAlumno) {
-                rtaAlumno = (BloqueAnd) b;
-                // comparando dos objetos con == :  se compara a un mismo espacion en memoria(heap). con equals compara sus hashCode.
-                if ((solucion.getBloque1() == rtaAlumno.getBloque1()) && (solucion.getBloque2() == rtaAlumno.getBloque2())) //para comparar objetos usar equals
-                {
-                    par++;
-                }
-            }
-        }
-        return (par == this.soluciones.size());
+//
+//        BloqueAnd rtaAlumno;
+//        BloqueAnd solucion;
+//        int par = 0;
+//        for (Bloque s : this.soluciones) {
+//            for (Bloque b : respuestaAlumno) {
+//                // comparando dos objetos con == :  se compara a un mismo espacion en memoria(heap). con equals compara sus hashCode.
+//                if ((solucion.getBloque1() == rtaAlumno.getBloque1()) && (solucion.getBloque2() == rtaAlumno.getBloque2())) //para comparar objetos usar equals
+//                {
+//                    par++;
+//                }
+//            }
+//        }
+//        return (par == this.soluciones.size());
+        return false;
     }
 
     @Override
