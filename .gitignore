@@ -35,3 +35,5 @@ integrados/pom\.xml
 /otros/pruebaABM/nbproject/private/
 /otros/pruebaABM/build/
 /integrados/target/integrados-1.0.jar
+
+*.beforefix
