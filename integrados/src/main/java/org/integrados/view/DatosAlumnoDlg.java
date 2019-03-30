@@ -73,8 +73,9 @@ public class DatosAlumnoDlg extends JFrame {
         // parámetro desde el método verDatosAlumnoActual() de la vista 
         // DocenteBrowswAlumnoDlg.
         
-        //String domicilio = this.alumno.getDomicilio().toString();
-        String domicilio = "A solucionar";
+        String domicilio = this.alumno.getDomicilio().toString();
+        //String domicilio = "A solucionar";
+        
         lblDomicilio = Util.crearLabel("Domicilio: " + domicilio, 1, tamañoFont);
         lblDomicilio.setBounds(130, 140, 800, 160);
         getContentPane().add(lblDomicilio);

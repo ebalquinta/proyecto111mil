@@ -14,7 +14,7 @@
         <property name="telefono" type="string" column="telefono" length="50" not-null="false"/>
         <property name="mail" type="string" column="mail" length="60" not-null="false"/>
 
-        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join">
+        <many-to-one name="domicilio" class="org.integrados.data.usuarios.Domicilio" fetch="join" lazy="false">
             <column name="id_Domicilio" />
         </many-to-one>
         
