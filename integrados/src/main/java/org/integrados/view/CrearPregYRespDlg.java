@@ -536,80 +536,24 @@ public class CrearPregYRespDlg extends JFrame {
      * @param sonido
      * @return boolean (alta del bloque en la BD)
      */
-    public Bloque guardarBloque(String texto, String imagen, String sonido) {
-        if (texto != null && (!texto.equals(""))) {
-            if ((imagen != null) && (!imagen.equals(""))){
-                if (sonido != null && (!sonido.equals(""))) {
-                    Bloque bloqueTexto = new BloqueTexto(texto);
-                    Bloque bloqueImagen = new BloqueImagen(imagen);
-                    Bloque bloqueSonido = new BloqueSonido(sonido);
-
-                    bloqueABM.guardar(bloqueTexto);
-                    bloqueABM.guardar(bloqueImagen);
-                    bloqueABM.guardar(bloqueSonido);
-
-                    Bloque bloqueAnd_1 = new BloqueAnd(bloqueTexto, bloqueImagen);
-                    Bloque bloqueAnd_2 = new BloqueAnd(bloqueSonido, bloqueAnd_1);
-
-                    bloqueABM.guardar(bloqueAnd_1);
-                    bloqueABM.guardar(bloqueAnd_2);
-
-                    return bloqueAnd_2;
-                } else {
-                    Bloque bloqueTexto = new BloqueTexto(texto);
-                    Bloque bloqueImagen = new BloqueImagen(imagen);
-
-                    bloqueABM.guardar(bloqueTexto);
-                    bloqueABM.guardar(bloqueImagen);
-
-                    Bloque bloqueAnd_1 = new BloqueAnd(bloqueTexto, bloqueImagen);
-                    bloqueABM.guardar(bloqueAnd_1);
-
-                    return bloqueAnd_1;
-                }
-            } else if ((sonido != null) && (!sonido.equals(""))) {
-                Bloque bloqueTexto = new BloqueTexto(texto);
-                Bloque bloqueSonido = new BloqueSonido(sonido);
-
-                bloqueABM.guardar(bloqueTexto);
-                bloqueABM.guardar(bloqueSonido);
-
-                Bloque bloqueAnd_1 = new BloqueAnd(bloqueTexto, bloqueSonido);
-                bloqueABM.guardar(bloqueAnd_1);
-
-                return bloqueAnd_1;
-            } else {
-                Bloque bloqueTexto = new BloqueTexto(texto);
-
-                bloqueABM.guardar(bloqueTexto);
-
-                return bloqueTexto;
-            }
-        } else if ((imagen != null) && (!imagen.equals(""))) {
-            if ((sonido != null) && (!sonido.equals(""))) {
-                Bloque bloqueImagen = new BloqueImagen(imagen);
-                Bloque bloqueSonido = new BloqueSonido(sonido);
-
-                bloqueABM.guardar(bloqueImagen);
-                bloqueABM.guardar(bloqueSonido);
-
-                Bloque bloqueAnd_1 = new BloqueAnd(bloqueImagen, bloqueSonido);
-                bloqueABM.guardar(bloqueAnd_1);
-
-                return bloqueAnd_1;
-            } else {
-                Bloque bloqueImagen = new BloqueImagen(imagen);
-                bloqueABM.guardar(bloqueImagen);
-
-                return bloqueImagen;
-            }
-        } else if ((sonido != null) && (!sonido.equals(""))) {
+    public Bloque guardarBloque(String texto, String imagen, String sonido) {        
+        if ( (((texto != null) && (!texto.equals(""))) && (((imagen != null) && (!imagen.equals(""))) || ((sonido != null) && (!sonido.equals(""))))) || (((imagen != null) && (!imagen.equals(""))) && (((texto != null) && (!texto.equals(""))) || ((sonido != null) && (!sonido.equals(""))))) || (((sonido != null) && (!sonido.equals(""))) && (((imagen != null) && (!imagen.equals(""))) || ((texto != null) && (!texto.equals(""))))) || (((sonido != null) && (!sonido.equals(""))) && ((imagen != null) && (!imagen.equals(""))) && ((texto != null) && (!texto.equals("")))) )  {                
+            Bloque bloqueAnd = new BloqueAnd(texto, imagen, sonido);
+            return bloqueAnd;
+        }
+        else if ((texto != null) && (!texto.equals(""))) {            
+            Bloque bloqueTexto = new BloqueTexto(texto);
+            bloqueABM.guardar(bloqueTexto);
+            return bloqueTexto;
+       } else if ((imagen != null) && (!imagen.equals(""))) {            
+            Bloque bloqueImagen = new BloqueImagen(imagen);
+            bloqueABM.guardar(bloqueImagen);
+            return bloqueImagen;
+       } else {                       
             Bloque bloqueSonido = new BloqueSonido(sonido);
             bloqueABM.guardar(bloqueSonido);
-
             return bloqueSonido;
-        }
-        return null;
+       }
     }
 
     public Object[] bloqueToObject (Bloque bloque, List<Bloque> soluciones) {
@@ -618,79 +562,36 @@ public class CrearPregYRespDlg extends JFrame {
             if ((b.getTipoBloque() == bloque.getTipoBloque()) && b.equals(bloque)) {
                 valido = true;
             }            
-        }
-        
+        }        
         /*Arreglo de texto, imagen, sonido, checkbox*/
-        Object[] arreglo = { null, null, null, valido };        
-        
-        /*
-        tipoBloque: 
-        sonido = 1
-        imagen = 2
-        texto = 3
-        and = 4
-         */
-        if (bloque.getTipoBloque() != 4) {
-            this.actualizarArreglo(arreglo, bloque);
-        } else { 
-            Bloque bloque1 = ((BloqueAnd)bloque).getBloque1();
-            Bloque bloque2 = ((BloqueAnd)bloque).getBloque2();
-            int tipoBloque1 = bloque1.getTipoBloque();
-            int tipoBloque2 = bloque2.getTipoBloque();
-            if ((tipoBloque1 != 4) && (tipoBloque2 != 4)) {                
-                this.actualizarArreglo(arreglo, bloque1);             
-                this.actualizarArreglo(arreglo, bloque2);
-            } else if (tipoBloque1 == 4) {
-                Bloque bloque1_1 = ((BloqueAnd) bloque1).getBloque1();
-                Bloque bloque1_2 = ((BloqueAnd) bloque1).getBloque2();            
-                this.actualizarArreglo(arreglo, bloque1_1);             
-                this.actualizarArreglo(arreglo, bloque1_2);
-                
-            } else if (tipoBloque2 == 4) {
-                Bloque bloque2_1 = ((BloqueAnd) bloque2).getBloque1();
-                Bloque bloque2_2 = ((BloqueAnd) bloque2).getBloque2();            
-                this.actualizarArreglo(arreglo, bloque2_1);             
-                this.actualizarArreglo(arreglo, bloque2_2);                
-            }        
-        }
-        
+        Object[] arreglo = { null, null, null, valido };  
+        this.actualizarArreglo(arreglo, bloque);        
         return arreglo;
     }
     
-    private void actualizarArreglo(Object[] arreglo, Bloque bloque) {        
-        switch (bloque.getTipoBloque()) {
-            case 1:                
-                arreglo[2] = this.getBloqueString(bloque);
-                break;
-            case 2:                
-                arreglo[1] = this.getBloqueString(bloque);
-                break;
-            case 3:                
-                arreglo[0] = this.getBloqueString(bloque);
-                break;
-        }
-    }
-    public String getBloqueString(Bloque bloque) {    
-        /*
+    private void actualizarArreglo(Object[] arreglo, Bloque bloque) {  
+         /*
         tipoBloque: 
         sonido = 1
         imagen = 2
         texto = 3
         and = 4
          */
-        String valor = null;
         switch (bloque.getTipoBloque()) {
             case 1:                
-                valor = ((BloqueSonido)bloque).getSonido();
+                arreglo[2] = ((BloqueSonido)bloque).getSonido();
                 break;
             case 2:                
-                valor = ((BloqueImagen)bloque).getImagen();
+                arreglo[1] = ((BloqueImagen)bloque).getImagen();
                 break;
             case 3:                
-                valor = ((BloqueTexto)bloque).getTexto();
+                arreglo[0] = ((BloqueTexto)bloque).getTexto();
                 break;
-        }   
-        return valor;
+            case 4:
+                arreglo[0] = ((BloqueAnd)bloque).getTexto();
+                arreglo[1] = ((BloqueAnd)bloque).getImagen();
+                arreglo[2] = ((BloqueAnd)bloque).getSonido();
+        }
     }
         
     /**
