@@ -150,15 +150,11 @@ public class AlumnoBrowseActividadesDlg extends JFrame{
 
 
                 solucion = new ArrayList();
-                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/uno.jpg"), new BloqueImagen(result + "view/imagesMemorama/uno.jpg")));
-                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/dos.jpg"), new BloqueImagen(result + "view/imagesMemorama/dos.jpg")));
-                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/tres.jpg"), new BloqueImagen(result + "view/imagesMemorama/tres.jpg")));
-                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg"), new BloqueImagen(result + "view/imagesMemorama/cuatro.jpg")));
-                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/cinco.jpg"), new BloqueImagen(result + "view/imagesMemorama/cinco.jpg")));
-                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/seis.jpg"), new BloqueImagen(result + "view/imagesMemorama/seis.jpg")));
-                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/siete.jpg"), new BloqueImagen(result + "view/imagesMemorama/siete.jpg")));
-                solucion.add(new BloqueAnd(new BloqueImagen(result + "view/imagesMemorama/ocho.jpg"), new BloqueImagen(result + "view/imagesMemorama/ocho.jpg")));
-
+                
+                for (int i = 0; i < bloques.size(); i++ ) {
+                    solucion.add(bloques.get(i));
+                    solucion.add(bloques2.get(i));
+                }
 
                 Memorama m = new Memorama("xd",solucion,bloques, bloques2);
                 Actividad actividad = new Actividad(m, new Docente(), new Materia("Matematica"), "kslkd", 3, Nivel.Inicial, Dificultad.Alta, 3);
