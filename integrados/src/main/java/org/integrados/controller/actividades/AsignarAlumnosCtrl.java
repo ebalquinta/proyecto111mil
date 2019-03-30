@@ -37,7 +37,7 @@ public class AsignarAlumnosCtrl {
      */
     public boolean comprobarExistentes(Alumno alumno) {
         List<RegistroActividad> reg = registroABM.listaRegActividadesAlumno(alumno.getId());
-        boolean existe = false;
+        boolean existe = true;
 
         for (RegistroActividad registro : reg) {
             if (registro != null) {
