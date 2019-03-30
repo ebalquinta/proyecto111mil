@@ -175,7 +175,8 @@ public class AsignarAlumnosDlg extends JFrame {
     /**
      * Devuelve matriz object cargada con lista de alumnos del docente
      *
-     * llama a metodo comprobarExistentes(alumno) si el alumno ya posee la actividad a asignar, no lo muestra como opcion
+     * llama a metodo comprobarExistentes(alumno) si el alumno ya posee la
+     * actividad a asignar, no lo muestra como opcion
      *
      * @param id docente
      * @return Object [][]
@@ -184,10 +185,9 @@ public class AsignarAlumnosDlg extends JFrame {
 
         listaAlumnos = personaABM.listaAlumnos(docenteInicio.getId());
         Object[][] matrizObjetos = new Object[listaAlumnos.size() + 4][6];
-
+        int fila = 0;
         for (int f = 0; f < listaAlumnos.size(); f++) {
             Alumno alumno = listaAlumnos.get(f);
-            int fila = 0;
             if (controlador.comprobarExistentes(alumno)) {
                 matrizObjetos[fila][0] = alumno.getNombre();
                 matrizObjetos[fila][1] = alumno.getApellido();
