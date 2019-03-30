@@ -120,7 +120,7 @@ public class TestAgregarReg {
         saveObjeto(bSon);
         Bloque bTex = new BloqueTexto("¿Cuanto es 2+2?");
         saveObjeto(bTex);
-        Bloque bAnd = new BloqueAnd(bImg, bTex);
+        Bloque bAnd = new BloqueAnd("¿cuanto es 2 +2?", "url imagen", null);
         saveObjeto(bAnd);  
         
         //Lista Bloques
