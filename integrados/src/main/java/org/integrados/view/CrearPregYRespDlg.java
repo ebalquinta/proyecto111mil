@@ -428,7 +428,9 @@ public class CrearPregYRespDlg extends JFrame {
         tableModel.addRow(infoBloque);
     }
 
-    //Valida si los campos requeridos están completos y guarda la Actividad
+    /**
+     * Valida si los campos requeridos están completos y guarda o actualiza la Actividad
+     */
     private void guardarActividad() {
         System.out.println("Validando campos");
         String materia = comboMateria.getSelectedItem().toString();
@@ -440,11 +442,12 @@ public class CrearPregYRespDlg extends JFrame {
         String texto = txtIngreseTexto.getText();
         String imagen = txtIngreseImagen.getText();
         String sonido = txtIngreseSonido.getText();
+        
+        //Valido si los campos requeridos están completos 
         int filas = tablaRespuestas.getRowCount();
         int validas = 0;
         if (filas > 0) {
             for (int i = 0; i < filas; i++) {
-                System.out.println("" + tablaRespuestas.getValueAt(i, 3));
                 if ((boolean) tablaRespuestas.getValueAt(i, 3)) {
                     validas++;
                 }
@@ -462,23 +465,13 @@ public class CrearPregYRespDlg extends JFrame {
             if (resultado == Dialogo.ResultadoDialogo.Yes) {
                 // acá iría el método del controlador que guarda la actividad en la base de datos
                 Materia materiaa = materiaABM.getSegunString(materia);
-                if (this.controlador.isAlta()) {
-                    //Guardar Bloques y plantilla
-                    Plantilla plantilla = guardarPlantilla(tablaRespuestas, texto, imagen, sonido);
-                    //Guardar actividad
-                    guardarActividadBD(plantilla, materiaa, tema, grado, nivel, dificultad, maxIntentos);
-                } else {
-                    Plantilla plantilla = guardarPlantilla(tablaRespuestas, texto, imagen, sonido);
-                    editarActividadBD(plantilla, materiaa, tema, grado, nivel, dificultad, maxIntentos);
-                }
+                //Guardar Bloques y plantilla
+                Plantilla plantilla = guardarPlantilla(tablaRespuestas, texto, imagen, sonido);                
+                guardarActividadBD(plantilla, materiaa, tema, grado, nivel, dificultad, maxIntentos);
 
                 volver();
             }
         }
-    }
-
-    public void editarActividadBD(Plantilla plantilla, Materia materia, String tema, String gradoS, String nivel, String dificultad, String maxIntentosS) {
-
     }
 
     /**
@@ -495,45 +488,45 @@ public class CrearPregYRespDlg extends JFrame {
         int filas = tabla.getRowCount();
         List<Bloque> listaOpciones = new ArrayList<>();
         List<Bloque> listaSoluciones = new ArrayList<>();
-
-        listaOpciones = ((PregYResp) this.controlador.getActividad().getPlantilla()).getOpciones();
-        System.out.println("lista opciones: " + listaOpciones.toString());
+        if (!this.controlador.isAlta()) {
+            // Si estoy editando, borro los bloques existentes en la actividad para volver a crearlos
+            try {
+                listaOpciones = ((PregYResp) this.controlador.getActividad().getPlantilla()).getOpciones();
+                listaSoluciones = ((PregYResp) this.controlador.getActividad().getPlantilla()).getSoluciones();
+                System.out.println("lista opciones existente: " + listaOpciones.toString());
+                System.out.println("lista solucion existente: " + listaSoluciones.toString());
+                int size = listaOpciones.size();
+                for (int i = 0; i < size; i++) {      
+                    Bloque b = listaOpciones.get(0);                    
+                    bloqueABM.borrar(b);
+                    listaOpciones.remove(b);    
+                    listaSoluciones.remove(b);
+                }
+            } catch (Exception e) {
+                System.out.println("error en borrar lista opciones y soluciones al editar");
+            }
+        }
+        System.out.println("lista opciones luego de borrar: " + listaOpciones.toString());
+        System.out.println("lista solucion luego de borrar: " + listaSoluciones.toString());
+        
         // Guardar bloques para opciones y soluciones
         for (int i = 0; i < filas; i++) {
             String texto1 = (String) tableModel.getValueAt(i, 0);
             String imagen1 = (String) tabla.getValueAt(i, 1);
             String sonido1 = (String) tabla.getValueAt(i, 2);
-            if (this.controlador.isAlta()) {
-                Bloque bloque = guardarBloque(texto1, imagen1, sonido1);
+            
+            Bloque bloque = guardarBloque(texto1, imagen1, sonido1);
 
-                if (bloque != null) {
-                    listaOpciones.add(bloque);
+            if (bloque != null) {
+                listaOpciones.add(bloque);
 
-                    if ((boolean) tabla.getValueAt(i, 3)) {
-                        listaSoluciones.add(bloque);
-                    }
-                }
-            } else {
-                try {
-                    Bloque bloque = listaOpciones.get(i);
-                    listaOpciones.remove(bloque);
-                    listaSoluciones.remove(bloque);
-                    bloqueABM.borrar(bloque);
-                } catch (Exception e) {
-                    System.out.println("error en borrar lista opciones y soluciones al editar");
-                }
-
-                Bloque bloque = guardarBloque(texto1, imagen1, sonido1);
-
-                if (bloque != null) {
-                    listaOpciones.add(bloque);
-
-                    if ((boolean) tabla.getValueAt(i, 3)) {
-                        listaSoluciones.add(bloque);
-                    }
+                if ((boolean) tabla.getValueAt(i, 3)) {
+                    listaSoluciones.add(bloque);
                 }
             }
         }
+        System.out.println("lista opciones luego de agregar: " + listaOpciones.toString());
+        System.out.println("lista solucion luego de agregar: " + listaSoluciones.toString());
         //Guardar plantilla 
         PregYResp plantilla = null;
         if (this.controlador.isAlta()) {
@@ -556,7 +549,7 @@ public class CrearPregYRespDlg extends JFrame {
     }
 
     /**
-     * Guardar bloque para las 8 convinaciones posibles entre los 3 string
+     * Guardar bloque para las 8 combinaciones posibles entre los 3 string
      * ingresantes
      *
      * @param texto
