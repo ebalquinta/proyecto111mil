@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.integrados.bd.HibernateUtiles;
+import org.integrados.data.actividad.Actividad;
 import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.data.usuarios.Persona;
@@ -106,5 +107,20 @@ public class PersonaABM {
 
         }
         return docentes;
+    }
+     public List<Actividad> listaActividad(int id) {
+        List<Actividad> actividad = new ArrayList<>();
+        Session session = null;
+        try {
+            session = HibernateUtiles.getSession();
+            session.beginTransaction();
+            Query query = session.createQuery("Select actividades FROM Actividad where id_Docente='" + id + "'");
+            actividad = (List<Actividad>) query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+
+        }
+        return actividad;
     }
 }

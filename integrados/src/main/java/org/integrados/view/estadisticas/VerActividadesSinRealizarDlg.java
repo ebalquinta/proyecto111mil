@@ -23,9 +23,11 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.AbstractTableModel;
+import org.integrados.controller.estadisticas.AsignarActividadesCtrl;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.RegistroActividad;
 import org.integrados.data.usuarios.Alumno;
+import org.integrados.data.usuarios.Docente;
 import org.integrados.data.util.Util;
 import org.integrados.view.Dialogo;
 
@@ -37,6 +39,8 @@ public class VerActividadesSinRealizarDlg extends JFrame {
 
     private List<RegistroActividad> listaActividades;
     private VerActividadesSinRealizarCtrl controlador;
+    private Alumno alumnoSeleccionado = null;
+    
     private JButton btnVolver;
     private JButton btnEliminar;
     private JButton btnAgregarActividad;
@@ -45,9 +49,10 @@ public class VerActividadesSinRealizarDlg extends JFrame {
     private JLabel nombreAlumno;
     private JTable tablaActividades = null;
 
-    public VerActividadesSinRealizarDlg(VerActividadesSinRealizarCtrl ctrl, List<RegistroActividad> listaARecuperar) {
+    public VerActividadesSinRealizarDlg(VerActividadesSinRealizarCtrl ctrl, List<RegistroActividad> listaARecuperar, Alumno alumnoSeleccionado) {
         this.listaActividades = listaARecuperar;
         this.controlador = ctrl;
+        this.alumnoSeleccionado = alumnoSeleccionado;
         initComponent();
     }
 
@@ -137,6 +142,7 @@ public class VerActividadesSinRealizarDlg extends JFrame {
         btnAgregarActividad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
+               // AsignarActividadesCtrl asignarActividadesCtrl = new AsignarActividadesCtrl(alumnoSeleccionado);
                 Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
             }
         });

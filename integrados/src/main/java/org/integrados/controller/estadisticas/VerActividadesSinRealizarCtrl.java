@@ -39,7 +39,7 @@ public class VerActividadesSinRealizarCtrl {
         List<RegistroActividad> listaActividades = registroABM.listaRegActividadesAlumno(alumno.getId());
         List<RegistroActividad> listaActividadesNoRealizadas = actividadesRealizadas(listaActividades);
 
-        actividadDlg = new VerActividadesSinRealizarDlg(this, listaActividadesNoRealizadas);
+        actividadDlg = new VerActividadesSinRealizarDlg(this, listaActividadesNoRealizadas, alumno);
         this.actividadDlg.mostrar();
     }
 
