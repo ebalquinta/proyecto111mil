@@ -53,7 +53,7 @@ public class BloqueAnd extends Bloque {
 
     @Override
     public String toString() {
-        return "BloqueAnd{" + "texto=" + texto + ", imagen=" + imagen + ", sonido=" + sonido + '}';
+        return super.toString()+", "+ "BloqueAnd{" + "texto=" + texto + ", imagen=" + imagen + ", sonido=" + sonido + '}';
     }
 
 }
