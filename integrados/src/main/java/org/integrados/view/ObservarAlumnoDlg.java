@@ -36,9 +36,11 @@ public class ObservarAlumnoDlg extends JFrame {
     private JPanel pnlBotonesEdicion = null;
     private Alumno alumno;
     private String observacion;
+    private DatosAlumnoDlg ventanaAnterior;
 
-    public ObservarAlumnoDlg(Alumno alumno) {
+    public ObservarAlumnoDlg(Alumno alumno, DatosAlumnoDlg ventanaAnterior) {
         this.alumno = alumno;
+        this.ventanaAnterior = ventanaAnterior;
         initComponent();
     }
 
@@ -48,7 +50,7 @@ public class ObservarAlumnoDlg extends JFrame {
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);      //Modificar para que cierre igual a las demas ventanas
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -58,9 +60,9 @@ public class ObservarAlumnoDlg extends JFrame {
         // titulo observaciones
         this.nombreAlumno = new JLabel();
         this.nombreAlumno.setText("Observaciones");
-        this.nombreAlumno.setFont(new Font("Comic Sans MS", 0, 45));
+        this.nombreAlumno.setFont(new Font("Comic Sans MS", 0, 35));
         this.nombreAlumno.setForeground(Color.BLACK);
-        this.nombreAlumno.setBounds(250, 30, 500, 50);
+        this.nombreAlumno.setBounds(250, 30, 500, 75);
         
         // Propiedades del fondo de pantalla
         JLabel lblFondo = new JLabel();
@@ -97,15 +99,11 @@ public class ObservarAlumnoDlg extends JFrame {
         });
         
         lblFondo.add(scroll);
-        
         getContentPane().add(this.nombreAlumno);
         getContentPane().add(this.btnVolver);
         getContentPane().add(scroll);
         getContentPane().add(lblFondo);
-
         this.add(lblFondo);
-        
-
         this.mostrar();
 
     } ////// FIN ---> INITCOMPONENT ////// 
@@ -122,7 +120,8 @@ public class ObservarAlumnoDlg extends JFrame {
 
     public void volver() {
         guardarCambios();
-        this.ocultar();
+        this.setVisible(false);
+        this.ventanaAnterior.setVisible(true);
         // ------------------------------------> Volveria a la ventana anterior
     }
 
