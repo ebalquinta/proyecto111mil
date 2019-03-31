@@ -46,6 +46,21 @@ public class PlantillaABM {
         }
     }
     
+     public void set(Plantilla plantilla){
+         Session s=null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            s.update(plantilla);
+            s.getTransaction().commit();
+            System.out.println("Plantilla actualizada");
+            s.close();            
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("falla al actualizar la plantilla");
+        }
+     }
+    
     public void borrar(Plantilla b){
         Session s = null;
         try{

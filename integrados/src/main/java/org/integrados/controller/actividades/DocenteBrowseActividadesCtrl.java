@@ -2,12 +2,12 @@ package org.integrados.controller.actividades;
 
 import java.util.List;
 import org.integrados.controller.ABM.ActividadABM;
+import org.integrados.controller.ABM.PlantillaABM;
 import org.integrados.controller.usuarios.LoginCtrl;
 import org.integrados.data.actividad.Actividad;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.view.Dialogo;
 import org.integrados.view.DocenteBrowseActividadesDlg;
-import org.integrados.controller.actividades.CrearPregYRespCtrl;
 import org.integrados.view.DocenteInicioDlg;
 import org.integrados.view.NuevaActividadInicioDlg;
  
@@ -20,6 +20,7 @@ public class DocenteBrowseActividadesCtrl {
     private DocenteBrowseActividadesDlg actividadBrw = null;    
     public DocenteInicioDlg docenteInicioDlg;
     private ActividadABM actividadABM =new ActividadABM();
+    private PlantillaABM plantillaABM = new PlantillaABM();
     
     
     
@@ -105,6 +106,7 @@ public class DocenteBrowseActividadesCtrl {
     public void borrar(Actividad actividad)  throws Exception {
         try {
             this.actividadABM.borrar(actividad);
+            this.plantillaABM.borrar(actividad.getPlantilla());
             //Se debe borrar la actividad en la base de datos.
         } catch (Exception e) {
             throw new Exception("Error al borrar", e);
