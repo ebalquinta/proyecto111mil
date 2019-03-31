@@ -94,19 +94,4 @@ public class ActividadABM {
         }
         return actividades;
     }
-    
-    public void borrarEnCascada(Actividad actividad){
-        Session s = null;
-        try{
-            s = HibernateUtiles.getSession();
-            s.beginTransaction();
-            //s.delete(b);
-            //Query query = s.createQuery("from Actividad where id_Docente='" + id  + "'");  
-            s.getTransaction().commit();
-            System.out.println("Actividad eliminada");
-            s.close();
-        }catch (Exception e){
-            System.out.println("Error al borrar la Actividad");
-        }
-    }
 }
