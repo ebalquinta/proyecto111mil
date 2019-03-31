@@ -66,6 +66,7 @@ public class BloqueABM {
     public void borrar(Bloque b){
         Session s = null;
         try{
+            s = HibernateUtiles.getSession();
             s.beginTransaction();
             s.delete(b);
             s.getTransaction().commit();
