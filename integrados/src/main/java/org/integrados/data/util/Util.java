@@ -3,6 +3,7 @@ package org.integrados.data.util;
 import java.awt.*;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.text.Normalizer;
 import java.text.ParseException;
 import javax.swing.*;
 import java.text.SimpleDateFormat;
@@ -223,5 +224,19 @@ public class Util {
             e.printStackTrace();
         }
         return result.substring(6);
+    }
+    
+    public static String normalizer(String s)  {
+        return Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+    }
+
+    public static String replacer(String param) {
+        String t1 = "àâäçéèëêùûüôöïî";
+        String t2 = "aaaceeeeuuuooii";
+        String s = param;
+        for (int i = 0; i < t1.length(); i++) {
+            s = "replace(" + s + ",'" + t1.charAt(i) + "','" + t2.charAt(i) + "')";
+        }
+        return s;
     }
 }
