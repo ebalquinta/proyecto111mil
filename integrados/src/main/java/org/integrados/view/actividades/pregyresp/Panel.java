@@ -56,8 +56,8 @@ public class Panel extends JPanel {
                 break;
             case 4:
                 this.bloqueAnd= (BloqueAnd) bloque;
-                initComponents(bloqueAnd.getBloque1(), y);
-                initComponents(bloqueAnd.getBloque2(), y + 10);
+//                initComponents(bloqueAnd.getBloque1(), y);
+//                initComponents(bloqueAnd.getBloque2(), y + 10);
                 break;
         }
     }
