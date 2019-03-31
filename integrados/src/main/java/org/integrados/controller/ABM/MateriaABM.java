@@ -48,7 +48,8 @@ public class MateriaABM {
         try {
             s = HibernateUtiles.getSession();
             s.beginTransaction();
-            Query query = s.createQuery("from Materia where materia.materia='" + materia  + "'");  
+            System.out.println("String de Materia a buscar " + materia);
+            Query query = s.createQuery("from Materia where materia='" + materia  + "'");
             mate = (Materia) query.getSingleResult();
             s.getTransaction().commit();
             s.close();
