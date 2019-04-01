@@ -2,37 +2,48 @@ package org.integrados.data.bloques;
 
 public class BloqueAnd extends Bloque {
 
-    private Bloque bloque1;
-    private Bloque bloque2;
+    private String texto;
+    private String imagen;
+    private String sonido;
     
     //ver si es necesario inicializar en null
     public BloqueAnd() {
         super();
         super.tipoBloque = 4;
-        this.bloque1= null;
-        this.bloque2= null;
+        this.texto= null;
+        this.imagen= null;
+        this.sonido=null;
     }
 
-    public BloqueAnd(Bloque bloque1, Bloque bloque2) {
+    public BloqueAnd(String texto, String imagen, String sonido) {
         this();
-        this.bloque1=bloque1;
-        this.bloque2=bloque2;
+        this.texto = texto;
+        this.imagen = imagen;
+        this.sonido = sonido;
     }
 
-    public Bloque getBloque1() {
-        return bloque1;
+    public String getTexto() {
+        return texto;
     }
 
-    public void setBloque1(Bloque bloque1) {
-        this.bloque1 = bloque1;
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
-    public Bloque getBloque2() {
-        return bloque2;
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setBloque2(Bloque bloque2) {
-        this.bloque2 = bloque2;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getSonido() {
+        return sonido;
+    }
+
+    public void setSonido(String sonido) {
+        this.sonido = sonido;
     }
 
     @Override
@@ -42,7 +53,7 @@ public class BloqueAnd extends Bloque {
 
     @Override
     public String toString() {
-        return super.toString() +"\n"+ "BloqueAnd{" + "bloque1=" + bloque1 + ", Bloque2=" + bloque2 + '}';
+        return super.toString()+" "+ "BloqueAnd{" + "texto=" + texto + ", imagen=" + imagen + ", sonido=" + sonido + "}";
     }
 
 }

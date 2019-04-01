@@ -134,13 +134,7 @@ CREATE TABLE `bloque` (
   `ruta_sonido` varchar(300) DEFAULT NULL,
   `ruta_imagen` varchar(300) DEFAULT NULL,
   `texto` varchar(1000) DEFAULT NULL,
-  `id_Bloque1` int(11) DEFAULT NULL,
-  `id_Bloque2` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_Bloque_Bloque1_idx` (`id_Bloque1`),
-  KEY `fk_Bloque_Bloque2_idx` (`id_Bloque2`),
-  CONSTRAINT `fk_Bloque_Bloque1` FOREIGN KEY (`id_Bloque1`) REFERENCES `bloque` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Bloque_Bloque2` FOREIGN KEY (`id_Bloque2`) REFERENCES `bloque` (`id`) ON DELETE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -443,4 +437,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-28 21:50:46
+-- Dump completed on 2019-03-30 14:41:23

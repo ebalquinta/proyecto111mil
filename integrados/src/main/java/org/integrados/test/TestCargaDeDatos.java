@@ -106,7 +106,7 @@ public class TestCargaDeDatos {
      * @return nombre
      */
     public static String nombreAleatorio() {
-        String[] nombres = {"Viviana", "Sebastián", "Leandro", "Paz", "Bruno", "Mariela", "Ezequel", "Yanina", "Jacco"};
+        String[] nombres = {"Viviana", "Sebastian", "Leandro", "Paz", "Bruno", "Mariela", "Ezequel", "Yanina", "Jacco"};
         int i = (int) (Math.random() * 9);
         return nombres[i];
     }
@@ -251,7 +251,7 @@ public class TestCargaDeDatos {
      * @throws IntegradosException 
      */
     public static void agregarMaterias() throws IntegradosException {
-        String[] materias = {"Historia", "Geografía", "Matemática", "Lengua", "Química", "Biología", "Cívica", "Física", "Inglés", "Contabilidad", "Psicología", "Filosofía"};
+        String[] materias = {"Historia", "Geografia", "Matematica", "Lengua", "Quimica", "Biologia", "Civica", "Fisica", "Ingles", "Contabilidad", "Psicologia", "Filosofia"};
         for (int i = 0; i < materias.length; i++) {
             Materia materia = new Materia(materias[i]);
             saveObjeto(materia);

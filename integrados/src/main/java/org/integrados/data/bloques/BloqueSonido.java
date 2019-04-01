@@ -38,7 +38,7 @@ public class BloqueSonido extends Bloque {
     
     @Override
     public String toString() {
-        return super.toString()+"\n" + "BloqueSonido{" + "sonido=" + sonido + '}';
+        return super.toString()+" " + "BloqueSonido{" + "sonido=" + sonido + "}";
     }
 
 }

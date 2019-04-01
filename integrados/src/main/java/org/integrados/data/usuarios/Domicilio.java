@@ -75,7 +75,16 @@ public class Domicilio {
 
     @Override
     public String toString() {
-        return "Domicilio{" + "id=" + id + ", calle=" + calle + ", numero=" + numero + ", piso=" + piso + ", departamento=" + departamento + '}';
+        String retorno = "";
+        if (calle!=null)
+            retorno += calle;
+        if (numero!=null)
+            retorno += " " + numero;
+        if (piso!=null)
+            retorno += ", Piso " + piso;
+        if (departamento!=null)
+            retorno += ", Departamento " + departamento;
+        return retorno;
     }
 
 }

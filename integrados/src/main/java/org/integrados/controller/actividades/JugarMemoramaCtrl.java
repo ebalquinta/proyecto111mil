@@ -100,14 +100,9 @@ public class JugarMemoramaCtrl {
     
     private List<BloqueImagen> crearListaBloqueImagen(List<Bloque> lista){
         List<BloqueImagen> retorno = new ArrayList();
-        BloqueAnd ba;
         for(Bloque b:lista){
-            ba = (BloqueAnd) b;
-            if(ba.getBloque1() != null){
-                retorno.add((BloqueImagen)ba.getBloque1());
-                if(ba.getBloque2() != null){
-                    retorno.add((BloqueImagen)ba.getBloque2());
-                }
+            if (b.getTipoBloque() == 2) {
+                retorno.add((BloqueImagen)b);
             }
         }
         return retorno;

@@ -42,6 +42,23 @@ public class MateriaABM {
             return null;
         }
     }
+    public Materia getSegunString(String materia){
+        Session s = null;
+        Materia mate = null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            System.out.println("String de Materia a buscar " + materia);
+            Query query = s.createQuery("from Materia where materia='" + materia  + "'");
+            mate = (Materia) query.getSingleResult();
+            s.getTransaction().commit();
+            s.close();
+            return mate;
+        } catch (Exception e) {
+            System.out.println("falla en la devolucion de Materia " + materia);
+            return null;
+        }
+    }
     
     public static String[] getMaterias(){
         Session s = null;

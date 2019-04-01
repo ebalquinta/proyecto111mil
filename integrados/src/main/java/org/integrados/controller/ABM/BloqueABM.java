@@ -32,6 +32,21 @@ public class BloqueABM {
         }
     }
      
+     public void set(Bloque bloque){
+         Session s=null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            s.update(bloque);
+            s.getTransaction().commit();
+            System.out.println("Bloque actualizado");
+            s.close();            
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("falla al actualizar el Bloque");
+        }
+     }
+     
      public Bloque get(int id) {
         Session s=null;
         Bloque p=null;
@@ -51,6 +66,7 @@ public class BloqueABM {
     public void borrar(Bloque b){
         Session s = null;
         try{
+            s = HibernateUtiles.getSession();
             s.beginTransaction();
             s.delete(b);
             s.getTransaction().commit();

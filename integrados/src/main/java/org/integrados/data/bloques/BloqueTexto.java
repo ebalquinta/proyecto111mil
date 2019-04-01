@@ -39,7 +39,7 @@ public class BloqueTexto extends Bloque {
     
     @Override
     public String toString() {
-        return super.toString()+"\n" + "BloqueTexto{" + "texto=" + texto + '}';
+        return super.toString()+" " + "BloqueTexto{" + "texto=" + texto + "}";
     }
 
 }

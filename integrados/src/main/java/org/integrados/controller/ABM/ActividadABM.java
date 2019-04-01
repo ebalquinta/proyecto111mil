@@ -34,6 +34,21 @@ public class ActividadABM {
         }
     }
     
+     public void set(Actividad actividad){
+         Session s=null;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            s.update(actividad);
+            s.getTransaction().commit();
+            System.out.println("Actividad actualizada");
+            s.close();            
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("falla al actualizar la actividad");
+        }
+     }
+    
     public Actividad get(int id){
         Session s=null;
         Actividad p=null;

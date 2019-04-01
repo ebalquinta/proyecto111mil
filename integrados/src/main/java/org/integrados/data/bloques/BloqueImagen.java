@@ -31,7 +31,7 @@ public class BloqueImagen extends Bloque {
     
     @Override
     public String toString() {
-        return super.toString()+"\n"+ "BloqueImagen{" + "imagen=" + imagen + '}';
+        return super.toString()+" "+ "BloqueImagen{" + "imagen=" + imagen + "}";
     }
 
 }
