@@ -35,6 +35,11 @@ public class MemoramaTest {
     List<Bloque> bloques;
     List<Bloque> bloques2;
     List<Bloque> solucion;
+    
+    List<Bloque> bloques3;
+    List<Bloque> bloques4;
+    List<Bloque> solucion1;
+
 
     public void ejecutarMemorama() throws IntegradosException {
         System.out.println("Inicio Memorama");
@@ -86,7 +91,52 @@ public class MemoramaTest {
         registro.setIntentos(2);
         registro.setCorazon("Excelente");
         guardarRegistroActividad(registro);
-        //JugarMemoramaCtrl ctrl = new JugarMemoramaCtrl(actividad);
+//JugarMemoramaCtrl ctrl = new JugarMemoramaCtrl(actividad);
+
+
+        bloques3 = new ArrayList();
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/dog.jpg"));
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/gatito.jpg"));
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/labicha.jpg"));
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/leon.jpg"));
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/leopardo.jpg"));
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/mono.jpg"));
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/panda.jpg"));
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/tigre.jpg"));
+
+        bloques4 = new ArrayList();
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/dog.jpg"));
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/gatito.jpg"));
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/labicha.jpg"));
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/leon.jpg"));
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/leopardo.jpg"));
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/mono.jpg"));
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/panda.jpg"));
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/tigre.jpg"));
+
+        solucion1 = new ArrayList();
+        for (int i = 0; i < bloques3.size(); i++) {
+            solucion1.add(bloques3.get(i));
+            solucion1.add(bloques4.get(i));
+        }
+
+        Memorama memorama1 = new Memorama("Reconocer el par de animales", solucion1, bloques3, bloques4);
+        guardarPlantilla(memorama1);
+        Memorama memoramaRecuperado1 = (Memorama) getPlantilla(2);
+        Docente docente1 = getDocente(1);
+        Materia materia1 = getMateria(6);
+        Actividad actividad1 = new Actividad(memoramaRecuperado1, docente1, materia1, "Animales", 3, Nivel.Inicial, Dificultad.Baja, 3);
+        guardarActividad(actividad1);
+        Actividad actividadRecuperada1 = getActividad(2);
+        Alumno alumno1 = getAlumno(1);
+        RegistroActividad registro1 = new RegistroActividad(actividadRecuperada1, alumno1, docente1);
+        registro1.setRespuestaAlumno(bloques3);
+        registro1.setFinalizoCorrectamente(Boolean.TRUE);
+        registro1.setEstrella(2);
+        registro1.setIntentos(1);
+        registro1.setCorazon("Bien");
+        guardarRegistroActividad(registro1);
+//JugarMemoramaCtrl ctrl = new JugarMemoramaCtrl(actividad);
 
     }
 
