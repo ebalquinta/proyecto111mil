@@ -80,14 +80,7 @@ public class SistemaDeArchivosDlg extends JFrame {
 //            JOptionPane.showMessageDialog(this, "Selecciona un Archivo...");
             ocultar();
         }   
-    }                                            
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        new SistemaDeArchivosDlg().setVisible(true);
-    }
+    }  
 
     public void mostrar() {
         this.setVisible(true);
