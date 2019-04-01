@@ -22,6 +22,11 @@ public class TestCargaDeDatos {
         agregarDocentes();
         agregarInstitucion();
         agregarMaterias();
+        MemoramaTest test = new MemoramaTest();
+        test.ejecutarMemorama();
+       // listaActividades pregYResp = new listaActividades();
+        //pregYResp.ejecutarPregYResp();
+
     }
 //----------------------------------------------------------------------------------------//
 
@@ -87,8 +92,24 @@ public class TestCargaDeDatos {
             return null;
         }
     }
-//----------------------------------------------------------------------------------------//
 
+    public static Alumno getAlumno(int id) throws IntegradosException {
+        HibernateUtiles.inicializar();
+        Session s;
+        Alumno a;
+        try {
+            s = HibernateUtiles.getSession();
+            s.beginTransaction();
+            a = (Alumno) s.get(Alumno.class, id);
+            s.getTransaction().commit();
+            s.close();
+            return a;
+        } catch (IntegradosException e) {
+            return null;
+        }
+    }
+
+//----------------------------------------------------------------------------------------//
     /**
      * genera numeros aleatorios entre los valores pasados por parametro
      *
@@ -106,7 +127,7 @@ public class TestCargaDeDatos {
      * @return nombre
      */
     public static String nombreAleatorio() {
-        String[] nombres = {"Viviana", "Sebastian", "Leandro", "Paz", "Bruno", "Mariela", "Ezequel", "Yanina", "Jacco"};
+        String[] nombres = {"Viviana", "Sebastian", "Leandro", "Paz", "Bruno", "Mariela", "Ezequiel", "Yanina", "Jacco"};
         int i = (int) (Math.random() * 9);
         return nombres[i];
     }
@@ -177,7 +198,7 @@ public class TestCargaDeDatos {
         return niveles[i];
     }
 
-    //----------------------------------------------------------------------------------------//
+//----------------------------------------------------------------------------------------//
     /**
      * agrega a cinco Docentes
      *
@@ -247,8 +268,8 @@ public class TestCargaDeDatos {
 
     /**
      * Agrega las materias
-     * 
-     * @throws IntegradosException 
+     *
+     * @throws IntegradosException
      */
     public static void agregarMaterias() throws IntegradosException {
         String[] materias = {"Historia", "Geografia", "Matematica", "Lengua", "Quimica", "Biologia", "Civica", "Fisica", "Ingles", "Contabilidad", "Psicologia", "Filosofia"};

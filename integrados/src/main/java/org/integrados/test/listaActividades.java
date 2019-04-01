@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package org.integrados.test;
 
@@ -28,6 +28,7 @@ import org.integrados.data.usuarios.Alumno;
 import org.integrados.data.usuarios.Docente;
 import org.integrados.data.usuarios.Persona;
 import org.integrados.exceptions.IntegradosException;
+import static org.integrados.test.MemoramaTest.getMateria;
 
 /**
  *
@@ -35,58 +36,44 @@ import org.integrados.exceptions.IntegradosException;
  */
 public class listaActividades {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws IntegradosException {
+    
+    public void ejecutarPregYResp() throws IntegradosException {
 
-        //Bloques
+//Bloques
         Bloque bImg = new BloqueImagen("url imagen");
         Bloque bSon = new BloqueSonido("url sonido");
         Bloque bTex = new BloqueTexto("se prende");
-        
         guardar(bImg);
         guardar(bSon);
         guardar(bTex);
-        
 
-        //Lista opciones
+//Lista opciones
         List<Bloque> bloques = new ArrayList<>();
         bloques.add(bImg);
         bloques.add(bSon);
         bloques.add(bTex);
-        
-        //Lista solucion
+//Lista solucion
         List<Bloque> bloquesSolucion = new ArrayList<>();
         bloquesSolucion.add(bTex);
 
-        //Plantillas
+//Plantillas
         PregYResp preYResp = new PregYResp();
-        Unir unir = new Unir();
-        Memorama memorama = new Memorama();
-        Ordenamiento ordenamiento = new Ordenamiento();
-        
-//        for (Bloque b : unir.getSoluciones()){
-//            System.out.println("bloque: " + b);
-//        }
-        
+// for (Bloque b : unir.getSoluciones()){
+// System.out.println("bloque: " + b);
+// }
         preYResp.setSoluciones(bloquesSolucion);
         preYResp.setEnunciado("¿Que pasa si metemos una lampara en un microondas?");
         preYResp.setOpciones(bloques);
         guardar(preYResp);
 
-        Materia materia = new Materia("Lengua");
-        guardar(materia);
-        
-        Docente docente = get(1);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
-        Alumno alumno = geta(2);  //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
-//        System.out.println(docente.getDni());
-//        List<Actividad> actividades = listaActividades(4);
-//        for(Actividad a : actividades){
-//            System.out.println("id actividad " + a.getId());
-//        }
-        
-        
+        Materia materia = getMateria(4);
+        Docente docente = get(1); //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+        Alumno alumno = geta(2); //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+// System.out.println(docente.getDni());
+// List<Actividad> actividades = listaActividades(4);
+// for(Actividad a : actividades){
+// System.out.println("id actividad " + a.getId());
+// }
         Actividad actividad1 = new Actividad(preYResp, docente, materia, "Oraciones", 1, Nivel.Primario, Dificultad.Baja, 3);
         guardar(actividad1);
         Actividad actividad2 = new Actividad(preYResp, docente, materia, "Guerra", 1, Nivel.Secundario, Dificultad.Intermedia, 3);
@@ -94,38 +81,33 @@ public class listaActividades {
         Actividad actividad3 = new Actividad(preYResp, docente, materia, "Celula", 1, Nivel.Terciario, Dificultad.Alta, 3);
         guardar(actividad3);
 
-//        List<Actividad> listaActividades = new ArrayList<>();
-//        listaActividades.add(actividad1);
-//        listaActividades.add(actividad2);
-//        listaActividades.add(actividad3);
+// List<Actividad> listaActividades = new ArrayList<>();
+// listaActividades.add(actividad1);
+// listaActividades.add(actividad2);
+// listaActividades.add(actividad3);
 //
-//        docente.setActividades(listaActividades);
-//        guardar(docente);
-
-        // ACTIVIDADES REALIZADAS //
+// docente.setActividades(listaActividades);
+// guardar(docente);
+// ACTIVIDADES REALIZADAS //
         RegistroActividad reg = new RegistroActividad(actividad1, alumno, docente);
         reg.setFinalizoCorrectamente(true);
         reg.setIntentos(3);
         reg.setCorazon("Muy bien");
         reg.setEstrella(1);
-        
         RegistroActividad reg1 = new RegistroActividad(actividad2, alumno, docente);
         reg1.setFinalizoCorrectamente(true);
         reg1.setIntentos(1);
         reg1.setCorazon("Felicitaciones");
         reg1.setEstrella(3);
-        
         RegistroActividad reg2 = new RegistroActividad(actividad3, alumno, docente);
         reg2.setFinalizoCorrectamente(true);
         reg2.setIntentos(4);
         reg2.setCorazon("Sigue Trabajando");
         reg2.setEstrella(2);
-         
-        // ACTIVIDADES NO REALIZADAS //
+// ACTIVIDADES NO REALIZADAS //
         RegistroActividad reg3 = new RegistroActividad(actividad1, alumno, docente);
         RegistroActividad reg4 = new RegistroActividad(actividad2, alumno, docente);
         RegistroActividad reg5 = new RegistroActividad(actividad3, alumno, docente);
-        
         guardar(reg);
         guardar(reg1);
         guardar(reg2);
@@ -154,6 +136,7 @@ public class listaActividades {
             return null;
         }
     }
+
     public static Alumno geta(int id) throws IntegradosException {
         HibernateUtiles.inicializar();
         Session s = null;
@@ -173,6 +156,7 @@ public class listaActividades {
             return null;
         }
     }
+
     public static Plantilla getp(int id) throws IntegradosException {
         HibernateUtiles.inicializar();
         Session s = null;
@@ -208,6 +192,7 @@ public class listaActividades {
             System.out.println("falla el guardado de Actividad");
         }
     }
+
     public static void guardar(RegistroActividad p) throws IntegradosException {
         HibernateUtiles.inicializar();
         Session s = null;
@@ -270,6 +255,7 @@ public class listaActividades {
             System.out.println("falla el guardado de plantilla");
         }
     }
+
     public static void guardar(Materia p) throws IntegradosException {
         HibernateUtiles.inicializar();
         Session s = null;
@@ -287,8 +273,8 @@ public class listaActividades {
 
     public static Materia getm(int id) throws IntegradosException {
         HibernateUtiles.inicializar();
-        Session s = null;
-        Materia p = null;
+        Session s;
+        Materia p;
         try {
             s = HibernateUtiles.getSession();
             s.beginTransaction();
@@ -296,25 +282,23 @@ public class listaActividades {
             s.getTransaction().commit();
             s.close();
             return p;
-        } catch (Exception e) {
+        } catch (IntegradosException e) {
             System.out.println("falla en la devolucion de Materia " + id);
             return null;
         }
     }
-    
-    public static List<Actividad> listaActividades(int id) throws IntegradosException{
+
+    public static List<Actividad> listaActividades(int id) throws IntegradosException {
         HibernateUtiles.inicializar();
         List<Actividad> actividades = new ArrayList<>();
-        Session session = null;
+        Session session;
         try {
             session = HibernateUtiles.getSession();
-            session.beginTransaction();             
-            Query query = session.createQuery("from Actividad where id_Docente='" + id  + "'");  
-            actividades =  query.list();
+            session.beginTransaction();
+            Query query = session.createQuery("from Actividad where id_Docente='" + id + "'");
+            actividades = query.list();
             session.getTransaction().commit();
-            
-        }catch(Exception e){
-            
+        } catch (IntegradosException e) {
         }
         return actividades;
     }
