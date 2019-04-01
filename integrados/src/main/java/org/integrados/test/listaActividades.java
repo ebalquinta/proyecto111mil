@@ -40,9 +40,9 @@ public class listaActividades {
     public void ejecutarPregYResp() throws IntegradosException {
 
 //Bloques
-        Bloque bImg = new BloqueImagen("url imagen");
-        Bloque bSon = new BloqueSonido("url sonido");
-        Bloque bTex = new BloqueTexto("se prende");
+        Bloque bImg = new BloqueTexto("cien kilos");
+        Bloque bSon = new BloqueTexto("un kilo");
+        Bloque bTex = new BloqueTexto("mil kilos");
         guardar(bImg);
         guardar(bSon);
         guardar(bTex);
@@ -62,23 +62,92 @@ public class listaActividades {
 // System.out.println("bloque: " + b);
 // }
         preYResp.setSoluciones(bloquesSolucion);
-        preYResp.setEnunciado("¿Que pasa si metemos una lampara en un microondas?");
+        preYResp.setEnunciado("¿Cuantos kilos son una tonelada?");
         preYResp.setOpciones(bloques);
         guardar(preYResp);
 
-        Materia materia = getMateria(4);
+        Materia materia = getMateria(3);
         Docente docente = get(1); //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
-        Alumno alumno = geta(2); //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+        Alumno alumno = geta(1); //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
 // System.out.println(docente.getDni());
 // List<Actividad> actividades = listaActividades(4);
 // for(Actividad a : actividades){
 // System.out.println("id actividad " + a.getId());
 // }
-        Actividad actividad1 = new Actividad(preYResp, docente, materia, "Oraciones", 1, Nivel.Primario, Dificultad.Baja, 3);
+
+
+
+//Bloques
+        Bloque bImg1 = new BloqueTexto("Por el Norte");
+        Bloque bSon1 = new BloqueTexto("Por el Oeste");
+        Bloque bTex1 = new BloqueTexto("Por el Este");
+        guardar(bImg1);
+        guardar(bSon1);
+        guardar(bTex1);
+
+//Lista opciones
+        List<Bloque> bloques1 = new ArrayList<>();
+        bloques1.add(bImg1);
+        bloques1.add(bSon1);
+        bloques1.add(bTex1);
+//Lista solucion
+        List<Bloque> bloquesSolucion1 = new ArrayList<>();
+        bloquesSolucion1.add(bTex1);
+
+//Plantillas
+        PregYResp preYResp1 = new PregYResp();
+// for (Bloque b : unir.getSoluciones()){
+// System.out.println("bloque: " + b);
+// }
+        preYResp1.setSoluciones(bloquesSolucion1);
+        preYResp1.setEnunciado("¿Por donde sale el sol?");
+        preYResp1.setOpciones(bloques1);
+        guardar(preYResp1);
+
+        Materia materia1 = getMateria(2);
+        Docente docente1 = get(1); //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+        Alumno alumno1 = geta(1);
+
+
+        
+        //Bloques
+        Bloque bImg2 = new BloqueTexto("Red");
+        Bloque bSon2 = new BloqueTexto("Yellow");
+        Bloque bTex2 = new BloqueTexto("Blue");
+        guardar(bImg2);
+        guardar(bSon2);
+        guardar(bTex2);
+
+//Lista opciones
+        List<Bloque> bloques2 = new ArrayList<>();
+        bloques2.add(bImg2);
+        bloques2.add(bSon2);
+        bloques2.add(bTex2);
+//Lista solucion
+        List<Bloque> bloquesSolucion2 = new ArrayList<>();
+        bloquesSolucion2.add(bTex2);
+
+//Plantillas
+        PregYResp preYResp2 = new PregYResp();
+// for (Bloque b : unir.getSoluciones()){
+// System.out.println("bloque: " + b);
+// }
+        preYResp2.setSoluciones(bloquesSolucion2);
+        preYResp2.setEnunciado("¿Como se escribe azul en Ingles?");
+        preYResp2.setOpciones(bloques2);
+        guardar(preYResp2);
+
+        Materia materia2 = getMateria(9);
+        Docente docente2 = get(1); //----------------------------> INGRESAR EL DOCENTE DE LA BASE DE DATOS AL QUE LE QUIERAN AGREGAR ACTIVIDADES
+        Alumno alumno2 = geta(1);
+        
+        
+
+        Actividad actividad1 = new Actividad(preYResp, docente, materia, "Medidas", 1, Nivel.Primario, Dificultad.Baja, 3);
         guardar(actividad1);
-        Actividad actividad2 = new Actividad(preYResp, docente, materia, "Guerra", 1, Nivel.Secundario, Dificultad.Intermedia, 3);
+        Actividad actividad2 = new Actividad(preYResp1, docente1, materia1, "Puntos Cardinales", 1, Nivel.Secundario, Dificultad.Intermedia, 3);
         guardar(actividad2);
-        Actividad actividad3 = new Actividad(preYResp, docente, materia, "Celula", 1, Nivel.Terciario, Dificultad.Alta, 3);
+        Actividad actividad3 = new Actividad(preYResp, docente2, materia2, "Colores", 1, Nivel.Terciario, Dificultad.Alta, 3);
         guardar(actividad3);
 
 // List<Actividad> listaActividades = new ArrayList<>();
@@ -94,20 +163,20 @@ public class listaActividades {
         reg.setIntentos(3);
         reg.setCorazon("Muy bien");
         reg.setEstrella(1);
-        RegistroActividad reg1 = new RegistroActividad(actividad2, alumno, docente);
+        RegistroActividad reg1 = new RegistroActividad(actividad2, alumno1, docente1);
         reg1.setFinalizoCorrectamente(true);
         reg1.setIntentos(1);
         reg1.setCorazon("Felicitaciones");
         reg1.setEstrella(3);
-        RegistroActividad reg2 = new RegistroActividad(actividad3, alumno, docente);
+        RegistroActividad reg2 = new RegistroActividad(actividad3, alumno2, docente2);
         reg2.setFinalizoCorrectamente(true);
         reg2.setIntentos(4);
         reg2.setCorazon("Sigue Trabajando");
         reg2.setEstrella(2);
 // ACTIVIDADES NO REALIZADAS //
         RegistroActividad reg3 = new RegistroActividad(actividad1, alumno, docente);
-        RegistroActividad reg4 = new RegistroActividad(actividad2, alumno, docente);
-        RegistroActividad reg5 = new RegistroActividad(actividad3, alumno, docente);
+        RegistroActividad reg4 = new RegistroActividad(actividad2, alumno1, docente1);
+        RegistroActividad reg5 = new RegistroActividad(actividad3, alumno2, docente2);
         guardar(reg);
         guardar(reg1);
         guardar(reg2);
