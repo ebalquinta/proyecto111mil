@@ -78,12 +78,12 @@ public class MemoramaTest {
         Memorama memorama = new Memorama("Reconocer el par de numeros", solucion, bloques, bloques2);
         guardarPlantilla(memorama);
         Memorama memoramaRecuperado = (Memorama) getPlantilla(1);
-        Docente docente = getDocente(2);
+        Docente docente = getDocente(1);
         Materia materia = getMateria(3);
         Actividad actividad = new Actividad(memoramaRecuperado, docente, materia, "Numeros", 3, Nivel.Inicial, Dificultad.Alta, 3);
         guardarActividad(actividad);
         Actividad actividadRecuperada = getActividad(1);
-        Alumno alumno = getAlumno(2);
+        Alumno alumno = getAlumno(1);
         RegistroActividad registro = new RegistroActividad(actividadRecuperada, alumno, docente);
         registro.setRespuestaAlumno(bloques);
         registro.setFinalizoCorrectamente(Boolean.TRUE);
@@ -97,7 +97,7 @@ public class MemoramaTest {
         bloques3 = new ArrayList();
         bloques3.add(new BloqueImagen(result + "view/imagesMemorama/dog.jpg"));
         bloques3.add(new BloqueImagen(result + "view/imagesMemorama/gatito.jpg"));
-        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/labicha.jpg"));
+        bloques3.add(new BloqueImagen(result + "view/imagesMemorama/serpiente.jpg"));
         bloques3.add(new BloqueImagen(result + "view/imagesMemorama/leon.jpg"));
         bloques3.add(new BloqueImagen(result + "view/imagesMemorama/leopardo.jpg"));
         bloques3.add(new BloqueImagen(result + "view/imagesMemorama/mono.jpg"));
@@ -107,7 +107,7 @@ public class MemoramaTest {
         bloques4 = new ArrayList();
         bloques4.add(new BloqueImagen(result + "view/imagesMemorama/dog.jpg"));
         bloques4.add(new BloqueImagen(result + "view/imagesMemorama/gatito.jpg"));
-        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/labicha.jpg"));
+        bloques4.add(new BloqueImagen(result + "view/imagesMemorama/serpiente.jpg"));
         bloques4.add(new BloqueImagen(result + "view/imagesMemorama/leon.jpg"));
         bloques4.add(new BloqueImagen(result + "view/imagesMemorama/leopardo.jpg"));
         bloques4.add(new BloqueImagen(result + "view/imagesMemorama/mono.jpg"));
