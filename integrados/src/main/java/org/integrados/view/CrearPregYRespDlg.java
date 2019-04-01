@@ -429,7 +429,8 @@ public class CrearPregYRespDlg extends JFrame {
     }
 
     /**
-     * Valida si los campos requeridos están completos y guarda o actualiza la Actividad
+     * Valida si los campos requeridos están completos y guarda o actualiza la
+     * Actividad
      */
     private void guardarActividad() {
         System.out.println("Validando campos");
@@ -442,7 +443,7 @@ public class CrearPregYRespDlg extends JFrame {
         String texto = txtIngreseTexto.getText();
         String imagen = txtIngreseImagen.getText();
         String sonido = txtIngreseSonido.getText();
-        
+
         //Valido si los campos requeridos están completos 
         int filas = tablaRespuestas.getRowCount();
         int validas = 0;
@@ -466,7 +467,7 @@ public class CrearPregYRespDlg extends JFrame {
                 // acá iría el método del controlador que guarda la actividad en la base de datos
                 Materia materiaa = materiaABM.getSegunString(materia);
                 //Guardar Bloques y plantilla
-                Plantilla plantilla = guardarPlantilla(tablaRespuestas, texto, imagen, sonido);                
+                Plantilla plantilla = guardarPlantilla(tablaRespuestas, texto, imagen, sonido);
                 guardarActividadBD(plantilla, materiaa, tema, grado, nivel, dificultad, maxIntentos);
 
                 volver();
@@ -496,10 +497,10 @@ public class CrearPregYRespDlg extends JFrame {
                 System.out.println("lista opciones existente: " + listaOpciones.toString());
                 System.out.println("lista solucion existente: " + listaSoluciones.toString());
                 int size = listaOpciones.size();
-                for (int i = 0; i < size; i++) {      
-                    Bloque b = listaOpciones.get(0);                    
-                    bloqueABM.borrar(b);
-                    listaOpciones.remove(b);    
+                for (int i = 0; i < size; i++) {
+                    Bloque b = listaSoluciones.get(0);
+                    //bloqueABM.borrar(b);
+                    //listaOpciones.remove(b);
                     listaSoluciones.remove(b);
                 }
             } catch (Exception e) {
@@ -508,20 +509,68 @@ public class CrearPregYRespDlg extends JFrame {
         }
         System.out.println("lista opciones luego de borrar: " + listaOpciones.toString());
         System.out.println("lista solucion luego de borrar: " + listaSoluciones.toString());
-        
+
         // Guardar bloques para opciones y soluciones
         for (int i = 0; i < filas; i++) {
-            String texto1 = (String) tableModel.getValueAt(i, 0);
+            String texto1 = (String) tabla.getValueAt(i, 0);
             String imagen1 = (String) tabla.getValueAt(i, 1);
             String sonido1 = (String) tabla.getValueAt(i, 2);
-            
-            Bloque bloque = guardarBloque(texto1, imagen1, sonido1);
 
-            if (bloque != null) {
-                listaOpciones.add(bloque);
+            Bloque bloque = null;
 
-                if ((boolean) tabla.getValueAt(i, 3)) {
-                    listaSoluciones.add(bloque);
+            if (this.controlador.isAlta()) {
+                bloque = guardarBloque(texto1, imagen1, sonido1);
+                if (bloque != null) {
+                    listaOpciones.add(bloque);
+
+                    if ((boolean) tabla.getValueAt(i, 3)) {
+                        listaSoluciones.add(bloque);
+                    }
+                }
+            } else {
+                if (i < listaOpciones.size()) {
+                    bloque = bloqueABM.get(listaOpciones.get(i).getId());
+                    /*
+                        tipoBloque: 
+                        sonido = 1
+                        imagen = 2
+                        texto = 3
+                        and = 4
+                     */
+                    switch (bloque.getTipoBloque()) {
+                        case 1:
+                            ((BloqueSonido) bloque).setSonido(sonido1);
+                            break;
+                        case 2:
+                            ((BloqueImagen) bloque).setImagen(imagen1);
+                            break;
+                        case 3:
+                            ((BloqueTexto) bloque).setTexto(texto1);
+                            break;
+                        case 4:
+                            ((BloqueAnd) bloque).setSonido(sonido1);
+                            ((BloqueAnd) bloque).setImagen(imagen1);
+                            ((BloqueAnd) bloque).setTexto(texto1);
+                            break;
+                    }
+
+                    bloque = actualizarBloque((Bloque) bloque);
+                    
+                    if (((boolean) tabla.getValueAt(i, 3)) && (!listaSoluciones.contains(bloque))) {
+                        listaSoluciones.add(bloque);
+                    } else if (!((boolean) tabla.getValueAt(i, 3)) && (listaSoluciones.contains(bloque))) {
+                        listaSoluciones.remove(bloque);
+                    }
+                    
+                } else {
+                    bloque = guardarBloque(texto1, imagen1, sonido1);
+                    if (bloque != null) {
+                        listaOpciones.add(bloque);
+
+                        if ((boolean) tabla.getValueAt(i, 3)) {
+                            listaSoluciones.add(bloque);
+                        }
+                    }
                 }
             }
         }
@@ -536,14 +585,18 @@ public class CrearPregYRespDlg extends JFrame {
 
             plantillaABM.guardar(plantilla);
         } else {
-            plantilla = (PregYResp) this.controlador.getActividad().getPlantilla();
+            plantilla = (PregYResp) plantillaABM.get(this.controlador.getActividad().getPlantilla().getId());
+            System.out.println(" plantilla " + plantilla.toString());
             plantilla.setEnunciado(texto);
+            System.out.println("texto: " + texto);
             plantilla.setImagenEnunciado(imagen);
             plantilla.setSonidoEnunciado(sonido);
             plantilla.setSoluciones(listaSoluciones);
+            System.out.println("lista soluciones set soluciones: " + listaSoluciones.toString());
             plantilla.setOpciones(listaOpciones);
+            System.out.println("lista soluciones set opciones: " + listaOpciones.toString());
 
-            plantillaABM.set(plantilla);
+            plantillaABM.guardar(plantilla);
         }
         return (Plantilla) plantilla;
     }
@@ -584,24 +637,28 @@ public class CrearPregYRespDlg extends JFrame {
      * @param sonido
      * @return
      */
-    public Bloque actualizarBloque(String texto, String imagen, String sonido) {
-        if ((((texto != null) && (!texto.equals(""))) && (((imagen != null) && (!imagen.equals(""))) || ((sonido != null) && (!sonido.equals(""))))) || (((imagen != null) && (!imagen.equals(""))) && (((texto != null) && (!texto.equals(""))) || ((sonido != null) && (!sonido.equals(""))))) || (((sonido != null) && (!sonido.equals(""))) && (((imagen != null) && (!imagen.equals(""))) || ((texto != null) && (!texto.equals(""))))) || (((sonido != null) && (!sonido.equals(""))) && ((imagen != null) && (!imagen.equals(""))) && ((texto != null) && (!texto.equals(""))))) {
-            Bloque bloqueAnd = new BloqueAnd(texto, imagen, sonido);
-            bloqueABM.set(bloqueAnd);
-            return bloqueAnd;
-        } else if ((texto != null) && (!texto.equals(""))) {
-            Bloque bloqueTexto = new BloqueTexto(texto);
-            bloqueABM.set(bloqueTexto);
-            return bloqueTexto;
-        } else if ((imagen != null) && (!imagen.equals(""))) {
-            Bloque bloqueImagen = new BloqueImagen(imagen);
-            bloqueABM.set(bloqueImagen);
-            return bloqueImagen;
-        } else {
-            Bloque bloqueSonido = new BloqueSonido(sonido);
-            bloqueABM.set(bloqueSonido);
-            return bloqueSonido;
-        }
+    public Bloque actualizarBloque(Bloque bloque) {
+        bloqueABM.set(bloque);
+        Bloque bloqueRetorno = bloqueABM.get(bloque.getId());
+
+//        if ((((texto != null) && (!texto.equals(""))) && (((imagen != null) && (!imagen.equals(""))) || ((sonido != null) && (!sonido.equals(""))))) || (((imagen != null) && (!imagen.equals(""))) && (((texto != null) && (!texto.equals(""))) || ((sonido != null) && (!sonido.equals(""))))) || (((sonido != null) && (!sonido.equals(""))) && (((imagen != null) && (!imagen.equals(""))) || ((texto != null) && (!texto.equals(""))))) || (((sonido != null) && (!sonido.equals(""))) && ((imagen != null) && (!imagen.equals(""))) && ((texto != null) && (!texto.equals(""))))) {
+//            Bloque bloqueAnd = new BloqueAnd(texto, imagen, sonido);
+//            bloqueABM.set(bloqueAnd);
+//            return bloqueAnd;
+//        } else if ((texto != null) && (!texto.equals(""))) {
+//            Bloque bloqueTexto = new BloqueTexto(texto);
+//            bloqueABM.set(bloqueTexto);
+//            return bloqueTexto;
+//        } else if ((imagen != null) && (!imagen.equals(""))) {
+//            Bloque bloqueImagen = new BloqueImagen(imagen);
+//            bloqueABM.set(bloqueImagen);
+//            return bloqueImagen;
+//        } else {
+//            Bloque bloqueSonido = new BloqueSonido(sonido);
+//            bloqueABM.set(bloqueSonido);
+//            return bloqueSonido;
+//        }
+        return bloqueRetorno;
     }
 
     public Object[] bloqueToObject(Bloque bloque, List<Bloque> soluciones) {
