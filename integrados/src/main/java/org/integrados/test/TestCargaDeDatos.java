@@ -24,7 +24,7 @@ public class TestCargaDeDatos {
         agregarMaterias();
         MemoramaTest test = new MemoramaTest();
         test.ejecutarMemorama();
-       // listaActividades pregYResp = new listaActividades();
+        //listaActividades pregYResp = new listaActividades();
         //pregYResp.ejecutarPregYResp();
 
     }
