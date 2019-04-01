@@ -467,9 +467,12 @@ public class CrearPregYRespDlg extends JFrame {
                 // acá iría el método del controlador que guarda la actividad en la base de datos
                 Materia materiaa = materiaABM.getSegunString(materia);
                 //Guardar Bloques y plantilla
-                Plantilla plantilla = guardarPlantilla(tablaRespuestas, texto, imagen, sonido);
-                guardarActividadBD(plantilla, materiaa, tema, grado, nivel, dificultad, maxIntentos);
-
+                if (this.controlador.isAlta()) {
+                    Plantilla plantilla = guardarPlantilla(tablaRespuestas, texto, imagen, sonido);
+                    guardarActividadBD(plantilla, materiaa, tema, grado, nivel, dificultad, maxIntentos);
+                } else {                
+                    Dialogo.mensaje(" En construcción ", " ¡Estamos trabajando para usted! ");
+                }
                 volver();
             }
         }
