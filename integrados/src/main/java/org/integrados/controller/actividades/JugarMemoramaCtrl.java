@@ -11,6 +11,7 @@ import org.integrados.data.bloques.BloqueImagen;
 import org.integrados.data.plantillas.Memorama;
 import org.integrados.view.AlumnoBrowseActividadesDlg;
 import org.integrados.view.Dialogo;
+import org.integrados.view.DocenteBrowseActividadesDlg;
 import org.integrados.view.actividades.memorama.JugarMemoramaDlg;
 import org.integrados.view.actividades.memorama.Tablero;
 
@@ -26,6 +27,7 @@ public class JugarMemoramaCtrl {
     private JugarMemoramaDlg jugarMemoramaDlg;
     private int intentos;
     private AlumnoBrowseActividadesDlg alumnoBrowseActividadesDlg;
+    private DocenteBrowseActividadesDlg docenteBrowseActividadesDlg;
 
     public JugarMemoramaCtrl(RegistroActividad registro) {
         this.registro = registro;
@@ -47,16 +49,26 @@ public class JugarMemoramaCtrl {
     public JugarMemoramaCtrl(Actividad actividad, AlumnoBrowseActividadesDlg alumnoBrowseActividadesDlg) {
         this(actividad);
         this.alumnoBrowseActividadesDlg = alumnoBrowseActividadesDlg;
+        this.docenteBrowseActividadesDlg = null;
+    }
+    
+    public JugarMemoramaCtrl(Actividad actividad, DocenteBrowseActividadesDlg docenteBrowseActividadesDlg) {
+        this(actividad);
+        this.docenteBrowseActividadesDlg = docenteBrowseActividadesDlg;
+        this.alumnoBrowseActividadesDlg = null;
     }
 
     public AlumnoBrowseActividadesDlg getAlumnoBrowseActividadesDlg() {
         return alumnoBrowseActividadesDlg;
     }
+
+    public DocenteBrowseActividadesDlg getDocenteBrowseActividadesDlg() {
+        return docenteBrowseActividadesDlg;
+    }
     
     public void jugar() {
         tablero.setImagenes(crearListaBloqueImagen(plantilla.desordenar()));
-        tablero.comenzarJuego();
-       
+        tablero.comenzarJuego();       
     }
 
 //    public void verificar(List<Bloque> rtaAlumno) throws IntegradosException {

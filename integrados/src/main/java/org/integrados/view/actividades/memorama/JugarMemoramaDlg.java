@@ -58,8 +58,12 @@ public class JugarMemoramaDlg extends JFrame {
         btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ocultar();
-                controller.getAlumnoBrowseActividadesDlg().mostrar();
+                ocultar();                
+                if (controller.getAlumnoBrowseActividadesDlg() != null) {
+                    controller.getAlumnoBrowseActividadesDlg().mostrar();
+                } else if (controller.getAlumnoBrowseActividadesDlg()!= null) {
+                    controller.getAlumnoBrowseActividadesDlg().mostrar();
+                }                
             }
         });
         btnJugar = Util.crearBoton("Jugar", 14);
