@@ -147,7 +147,7 @@ public class listaActividades {
         guardar(actividad1);
         Actividad actividad2 = new Actividad(preYResp1, docente1, materia1, "Puntos Cardinales", 1, Nivel.Secundario, Dificultad.Intermedia, 3);
         guardar(actividad2);
-        Actividad actividad3 = new Actividad(preYResp, docente2, materia2, "Colores", 1, Nivel.Terciario, Dificultad.Alta, 3);
+        Actividad actividad3 = new Actividad(preYResp2, docente2, materia2, "Colores", 1, Nivel.Terciario, Dificultad.Alta, 3);
         guardar(actividad3);
 
 // List<Actividad> listaActividades = new ArrayList<>();
