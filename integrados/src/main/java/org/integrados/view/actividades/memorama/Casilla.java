@@ -33,7 +33,7 @@ public class Casilla extends JLabel{
         // Reescribo esa ruta en formato correcto para que saque espacios y caracteres especiales
         String result = Util.getDecodedUrl(path);
 //        System.out.println(result);
-        hide = new ImageIcon(result + "imagesMemorama/hide.jpg");
+        hide = new ImageIcon(result + "imagesMemorama/hide.png");
         Dimension d = new Dimension(ancho,alto);
         setName(name);
         setSize( d );
