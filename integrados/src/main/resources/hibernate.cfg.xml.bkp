@@ -6,8 +6,8 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/integrados_db?zeroDateTimeBehavior=convertToNull</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">xxx</property> <!--clave de cada uno-->
+        <property name="hibernate.connection.username">admin</property>
+        <property name="hibernate.connection.password">admin</property> <!--clave de cada uno-->
         <!--    mapeo usuarios-->
         <mapping resource="docente.hbm.xml"/>
         <mapping resource="alumno.hbm.xml"/>

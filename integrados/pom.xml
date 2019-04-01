@@ -63,8 +63,8 @@
         </dependency>
     </dependencies> 
     
-<!--        <build>
-        <finalName>my-app</finalName>
+    <!--  <build>
+        <finalName>Integrados2.0</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -90,5 +90,5 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>-->
+    </build> -->
 </project>
