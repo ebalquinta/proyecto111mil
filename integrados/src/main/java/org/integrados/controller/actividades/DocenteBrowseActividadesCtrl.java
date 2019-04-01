@@ -75,7 +75,10 @@ public class DocenteBrowseActividadesCtrl {
             pregCtrl.jugar();
             this.actividadBrw.ocultar();
         } else if (tipoPlantilla.equals("Memorama")) {
-            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+//            Dialogo.error("En construcción","¡Estamos trabajando para usted!");
+               
+            JugarMemoramaCtrl memoramaCtrl = new JugarMemoramaCtrl(actividad, docenteBrowseActividadesDlg);
+            memoramaCtrl.jugar();
             return;
         } else if (tipoPlantilla.equals("Unir")) {
             Dialogo.error("En construcción","¡Estamos trabajando para usted!");
