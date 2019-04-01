@@ -80,6 +80,11 @@ public class MemoramaTest {
         Actividad actividadRecuperada = getActividad(1);
         Alumno alumno = getAlumno(2);
         RegistroActividad registro = new RegistroActividad(actividadRecuperada, alumno, docente);
+        registro.setRespuestaAlumno(bloques);
+        registro.setFinalizoCorrectamente(Boolean.TRUE);
+        registro.setEstrella(3);
+        registro.setIntentos(2);
+        registro.setCorazon("Excelente");
         guardarRegistroActividad(registro);
         //JugarMemoramaCtrl ctrl = new JugarMemoramaCtrl(actividad);
 
